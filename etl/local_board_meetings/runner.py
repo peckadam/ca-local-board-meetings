@@ -18,6 +18,7 @@ from .storage import (
     connect,
     future_meetings,
     meetings_for_calendar,
+    prune_unseen_future_meetings,
     save_agenda_record,
     set_calendar_event_id,
     upsert_meetings,
@@ -68,6 +69,12 @@ def main(argv: list[str] | None = None) -> int:
     updated_by_id = {source.board_id: source for source in updated_sources}
     save_registry(args.registry, [updated_by_id.get(source.board_id, source) for source in all_sources])
     new_meetings, updated_meetings = upsert_meetings(conn, all_meetings, started_at)
+    prune_unseen_future_meetings(
+        conn,
+        [source.board_id for source in sources],
+        [meeting.stable_id for meeting in all_meetings],
+        started_at,
+    )
 
     agendas_downloaded = 0
     agenda_upload_links: dict[str, str] = {}
@@ -118,6 +125,7 @@ def main(argv: list[str] | None = None) -> int:
 def check_source(source: BoardSource, lookahead_days: int, respect_robots: bool) -> tuple[list[Meeting], list[dict[str, str]], BoardSource]:
     urls = [source.meeting_schedule_url, source.agenda_minutes_url, source.executive_committee_url, source.main_website]
     urls = list(dict.fromkeys([url for url in urls if url]))
+    configured_content_urls = {source.meeting_schedule_url, source.agenda_minutes_url, source.executive_committee_url} - {"", source.main_website}
     meetings: list[Meeting] = []
     failures: list[dict[str, str]] = []
     notes = source.notes
@@ -128,7 +136,8 @@ def check_source(source: BoardSource, lookahead_days: int, respect_robots: bool)
             page = fetch_url(url, respect_robots=respect_robots)
             if "pdf" in page.content_type.lower():
                 continue
-            meetings.extend(extract_meetings(source, page.text, page.url, date.today(), lookahead_days))
+            if url != source.main_website or not configured_content_urls:
+                meetings.extend(extract_meetings(source, page.text, page.url, date.today(), lookahead_days))
             candidates = find_candidate_pages(page.text, page.url)
             if candidates["meeting"]:
                 candidate_updates["meeting_schedule_url"] = candidates["meeting"][0]
@@ -138,14 +147,16 @@ def check_source(source: BoardSource, lookahead_days: int, respect_robots: bool)
                 candidate_updates["executive_committee_url"] = candidates["executive"][0]
         except Exception as exc:
             failures.append({"board_name": source.board_name, "url": url, "error": str(exc)})
-    if candidate_updates:
-        note = "Candidate links found automatically; verify exact endpoints before raising confidence."
-        notes = source.notes if note in source.notes else f"{source.notes} {note}"
-        confidence = "medium"
     data = asdict(mark_checked(source, notes=notes, confidence=confidence))
+    applied_candidate_update = False
     for key, value in candidate_updates.items():
         if not data.get(key) or data.get(key) == source.main_website:
             data[key] = value
+            applied_candidate_update = True
+    if applied_candidate_update:
+        note = "Candidate links found automatically; verify exact endpoints before raising confidence."
+        data["notes"] = data["notes"] if note in data["notes"] else f"{data['notes']} {note}"
+        data["confidence"] = "medium"
     return _dedupe_meetings(meetings), failures, BoardSource(**data)
 
 

@@ -228,6 +228,9 @@ def _candidate_text_blocks(soup: BeautifulSoup) -> list[str]:
             text = node.get_text(" ", strip=True)
             if len(text) < 8 or len(text) > 800:
                 continue
+            lowered = text.lower()
+            if "select date" in lowered or re.fullmatch(r"(?:\d+ events?,?\s*)+\d+", lowered):
+                continue
             if any(pattern.search(text) for pattern in DATE_PATTERNS):
                 blocks.append(text)
     return blocks

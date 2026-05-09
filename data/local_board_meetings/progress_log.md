@@ -75,3 +75,10 @@ Moved Permanently
 - Missing agendas within 72 hours: 0
 - Failures requiring human review: 0
 
+## 2026-05-09T22:51:27.135106+00:00 (dry-run)
+
+- Boards checked: 1
+- Meetings found: 2
+- Missing agendas within 72 hours: 0
+- Failures requiring human review: 0
+

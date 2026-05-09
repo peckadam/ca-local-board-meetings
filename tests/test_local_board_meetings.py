@@ -1,12 +1,12 @@
 from __future__ import annotations
 
 import unittest
-from datetime import date, time
+from datetime import date, datetime, time, timezone
 
 from etl.local_board_meetings.extraction import extract_agenda_links, extract_meetings, parse_date, parse_time
 from etl.local_board_meetings.graph import meeting_to_event_payload
 from etl.local_board_meetings.models import BoardSource, Meeting
-from etl.local_board_meetings.storage import agenda_hash
+from etl.local_board_meetings.storage import agenda_hash, connect, future_meetings, prune_unseen_future_meetings, upsert_meetings
 from etl.local_board_meetings.web_calendar import render_ics
 
 
@@ -74,6 +74,62 @@ class LocalBoardMeetingTests(unittest.TestCase):
         meetings = extract_meetings(source, html, "https://example.gov/meetings", date(2026, 5, 1), 180)
         self.assertEqual(len(meetings), 1)
         self.assertEqual(meetings[0].stable_id, "sample-wdb:board-meeting:2026-05-14")
+
+    def test_calendar_select_date_controls_are_ignored(self) -> None:
+        source = BoardSource(
+            board_id="sample-wdb",
+            board_name="Sample WDB",
+            local_area="Sample County",
+            main_website="https://example.gov",
+            meeting_schedule_url="https://example.gov",
+            agenda_minutes_url="https://example.gov",
+            executive_committee_url="",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        html = """
+        <div>This Month 5/9/2026 May 2026 Select date.</div>
+        <article>May 21 @ 1:00 pm Workforce Board Meeting</article>
+        """
+        meetings = extract_meetings(source, html, "https://example.gov/calendar", date(2026, 5, 9), 180)
+        self.assertEqual([meeting.meeting_date for meeting in meetings], [date(2026, 5, 21)])
+
+    def test_prunes_unseen_future_meetings_for_checked_board(self) -> None:
+        conn = connect(__import__("pathlib").Path(":memory:"))
+        seen_at = datetime(2026, 5, 9, tzinfo=timezone.utc)
+        old = Meeting(
+            board_id="sample-wdb",
+            board_name="Sample WDB",
+            meeting_type="Board Meeting",
+            meeting_date=date(2026, 5, 13),
+            start_time=None,
+            timezone="America/Los_Angeles",
+            location="",
+            virtual_url="",
+            source_page_url="https://example.gov/general-calendar",
+            agenda_url="",
+            agenda_label="",
+            confidence_notes="old false positive",
+        )
+        current = Meeting(
+            board_id="sample-wdb",
+            board_name="Sample WDB",
+            meeting_type="Board Meeting",
+            meeting_date=date(2026, 5, 21),
+            start_time=None,
+            timezone="America/Los_Angeles",
+            location="",
+            virtual_url="",
+            source_page_url="https://example.gov/workforce-board",
+            agenda_url="",
+            agenda_label="",
+            confidence_notes="current",
+        )
+        upsert_meetings(conn, [old, current], seen_at)
+        deleted = prune_unseen_future_meetings(conn, ["sample-wdb"], [current.stable_id], seen_at)
+        self.assertEqual(deleted, 1)
+        self.assertEqual([meeting.stable_id for meeting in future_meetings(conn, seen_at)], [current.stable_id])
 
     def test_agenda_hash_is_stable(self) -> None:
         self.assertEqual(agenda_hash(b"agenda"), agenda_hash(b"agenda"))

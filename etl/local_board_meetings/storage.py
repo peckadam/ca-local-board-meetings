@@ -112,6 +112,32 @@ def upsert_meetings(conn: sqlite3.Connection, meetings: Iterable[Meeting], seen_
     return new_count, updated_count
 
 
+def prune_unseen_future_meetings(
+    conn: sqlite3.Connection,
+    board_ids: Iterable[str],
+    seen_stable_ids: Iterable[str],
+    today: datetime,
+) -> int:
+    board_ids = sorted(set(board_ids))
+    if not board_ids:
+        return 0
+    seen_stable_ids = sorted(set(seen_stable_ids))
+    board_placeholders = ",".join("?" for _ in board_ids)
+    params: list[str] = [*board_ids, today.date().isoformat()]
+    query = f"""
+        DELETE FROM meetings
+        WHERE board_id IN ({board_placeholders})
+          AND date(meeting_date) >= date(?)
+    """
+    if seen_stable_ids:
+        seen_placeholders = ",".join("?" for _ in seen_stable_ids)
+        query += f" AND stable_id NOT IN ({seen_placeholders})"
+        params.extend(seen_stable_ids)
+    cursor = conn.execute(query, params)
+    conn.commit()
+    return cursor.rowcount
+
+
 def meetings_for_calendar(conn: sqlite3.Connection, today: datetime, lookahead_days: int) -> list[sqlite3.Row]:
     return conn.execute(
         """
