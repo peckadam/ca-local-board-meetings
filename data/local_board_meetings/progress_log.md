@@ -39,3 +39,32 @@ Live smoke test is blocked until Microsoft Graph credentials are present in the 
 - Review: Foothill WDB - https://www.foothillwdb.org/ - <urlopen error [Errno 8] nodename nor servname provided, or not known>
 - Review: Fresno Regional WDB - https://www.fresno-ca-wdb.com/ - <urlopen error [Errno 8] nodename nor servname provided, or not known>
 
+## 2026-05-09T22:15:18.117066+00:00 (dry-run)
+
+- Boards checked: 45
+- Meetings found: 46
+- Missing agendas within 72 hours: 3
+- Failures requiring human review: 23
+- Review: Foothill WDB - https://www.foothillwdb.org/ - <urlopen error [Errno 8] nodename nor servname provided, or not known>
+- Review: Fresno Regional WDB - https://www.fresno-ca-wdb.com/ - <urlopen error [Errno 8] nodename nor servname provided, or not known>
+- Review: Humboldt County WDB - https://humboldtgov.org/1709/Workforce-Development-Board - HTTP Error 404: Not Found
+- Review: Kern/Inyo/Mono WDB - https://www.kern-inyo-mono.org/ - <urlopen error [Errno 8] nodename nor servname provided, or not known>
+- Review: Kings County WDB - https://kingsworkforce.org/ - HTTP Error 403: Forbidden
+- Review: Long Beach WIN - https://www.longbeach.gov/economicdevelopment/workforce-development/ - HTTP Error 301: The HTTP server returned a redirect error that would lead to an infinite loop.
+The last 30x error message was:
+Moved Permanently
+- Review: Los Angeles City WDB - https://ewddlacity.com/index.php/wdb - HTTP Error 404: Not Found
+- Review: Los Angeles County WDB - https://wdb.lacounty.gov/ - <urlopen error [Errno 8] nodename nor servname provided, or not known>
+- Review: Merced County WDB - http://www.workforce-merced.com/ - <urlopen error [Errno 8] nodename nor servname provided, or not known>
+- Review: Monterey County WDB - https://www.montereycountywdb.org/ - <urlopen error timed out>
+- Review: North Central Counties (NCCC) - https://ncccwdb.org/ - <urlopen error [Errno 8] nodename nor servname provided, or not known>
+- Review: Oakland WDB - https://www.oaklandworkforce.org/ - <urlopen error [Errno 8] nodename nor servname provided, or not known>
+- Review: Riverside County WDB - https://www.rivcoworkforce.com/ - <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.rivcoworkforce.com'. (_ssl.c:1129)>
+- Review: San Benito County WDB - https://sbcworkforce.org/ - <urlopen error [Errno 8] nodename nor servname provided, or not known>
+- Review: San Bernardino County WDB - https://wp.sbcounty.gov/workforce/ - HTTP Error 410: Gone
+- Review: San Diego Workforce Partnership - https://workforce.org/ - HTTP Error 403: Forbidden
+- Review: San Francisco OEWD - https://oewd.org/ - HTTP Error 308: Permanent Redirect
+- Review: San Joaquin County WorkNet - https://www.sjcworknet.org/pdfs/STEP Application Packet 1-6-26.pdf - URL can't contain control characters. '/pdfs/STEP Application Packet 1-6-26.pdf' (found at least ' ')
+- Review: Solano County WDB - https://www.solanowdb.org/ - <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.solanowdb.org'. (_ssl.c:1129)>
+- Review: Sonoma County WDB - https://sonomawdb.org/ - <urlopen error [Errno 8] nodename nor servname provided, or not known>
+

@@ -15,6 +15,7 @@ class LocalBoardMeetingTests(unittest.TestCase):
         self.assertEqual(parse_date("Board Meeting: May 14, 2026 at 9:00 AM"), date(2026, 5, 14))
         self.assertEqual(parse_date("Executive Committee 2026-06-02"), date(2026, 6, 2))
         self.assertEqual(parse_date("Agenda for 7/8/2026"), date(2026, 7, 8))
+        self.assertEqual(parse_date("Wednesday, May 13 Agenda", date(2026, 5, 9)), date(2026, 5, 13))
 
     def test_parse_time(self) -> None:
         self.assertEqual(parse_time("10:30 a.m."), time(10, 30))

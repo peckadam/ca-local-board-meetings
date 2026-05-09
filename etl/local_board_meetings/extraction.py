@@ -15,6 +15,7 @@ DATE_PATTERNS = [
     re.compile(rf"\b({MONTH_NAMES})\.?\s+(\d{{1,2}})(?:st|nd|rd|th)?(?:,)?\s+(20\d{{2}})\b", re.I),
     re.compile(r"\b(20\d{2})[-/](\d{1,2})[-/](\d{1,2})\b"),
     re.compile(r"\b(\d{1,2})/(\d{1,2})/(20\d{2})\b"),
+    re.compile(rf"\b({MONTH_NAMES})\.?\s+(\d{{1,2}})(?:st|nd|rd|th)?\b", re.I),
 ]
 TIME_RE = re.compile(r"\b(\d{1,2})(?::(\d{2}))?\s*([ap]\.?m\.?)\b", re.I)
 AGENDA_TERMS = ("agenda", "packet", "board packet")
@@ -23,7 +24,7 @@ EXEC_TERMS = ("executive", "exec committee")
 EXCLUDED_LINK_HOST_TERMS = ("facebook.com", "linkedin.com", "twitter.com", "x.com", "forms.office.com", "survey")
 
 
-def parse_date(text: str) -> Optional[date]:
+def parse_date(text: str, reference_date: date | None = None, lookahead_days: int = 180) -> Optional[date]:
     text = " ".join(text.split())
     match = DATE_PATTERNS[0].search(text)
     if match:
@@ -35,6 +36,15 @@ def parse_date(text: str) -> Optional[date]:
     match = DATE_PATTERNS[2].search(text)
     if match:
         return date(int(match.group(3)), int(match.group(1)), int(match.group(2)))
+    match = DATE_PATTERNS[3].search(text)
+    if match and reference_date:
+        month = _month_number(match.group(1))
+        day = int(match.group(2))
+        candidate = date(reference_date.year, month, day)
+        if candidate < reference_date - timedelta(days=14):
+            candidate = date(reference_date.year + 1, month, day)
+        if candidate <= reference_date + timedelta(days=lookahead_days):
+            return candidate
     return None
 
 
@@ -105,7 +115,7 @@ def extract_meetings(source: BoardSource, html: str, page_url: str, today: date,
     meetings: dict[str, Meeting] = {}
     max_date = today + timedelta(days=lookahead_days)
     for block in text_blocks:
-        meeting_date = parse_date(block)
+        meeting_date = parse_date(block, today, lookahead_days)
         if not meeting_date or meeting_date < today - timedelta(days=14) or meeting_date > max_date:
             continue
         meeting_type = infer_meeting_type(block)
@@ -159,6 +169,12 @@ def best_agenda_for_date(links: Iterable[AgendaLink], meeting_date: date) -> Opt
         meeting_date.strftime("%m/%d/%Y"),
         meeting_date.strftime("%m-%d-%Y"),
         meeting_date.strftime("%Y%m%d"),
+        meeting_date.strftime("%B %-d") if hasattr(meeting_date, "strftime") else "",
+        meeting_date.strftime("%B %d"),
+        meeting_date.strftime("%b %-d") if hasattr(meeting_date, "strftime") else "",
+        meeting_date.strftime("%b %d"),
+        meeting_date.strftime("%m/%d"),
+        meeting_date.strftime("%m-%d"),
         meeting_date.strftime("%B %-d, %Y") if hasattr(meeting_date, "strftime") else "",
         meeting_date.strftime("%B %d, %Y"),
     }

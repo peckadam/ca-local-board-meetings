@@ -6,36 +6,208 @@ METHOD:PUBLISH
 X-WR-CALNAME:California Local Workforce Board Meetings
 X-WR-TIMEZONE:America/Los_Angeles
 BEGIN:VEVENT
+UID:golden-sierra-workforce-board:board-meeting:2026-05-09@cwa-local-board-
+ meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260509T090000
+DTEND;TZID=America/Los_Angeles:20260509T100000
+SUMMARY:Golden Sierra Workforce Board - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://goldensierra.com/calendar\nAgenda URL: Not
+  found yet\nLocation: Not published\nVirtual link: Not published\nConfiden
+ ce notes: Extracted from official source page text\; verify manually if th
+ e source page uses embedded calendars or PDFs.
+URL:https://goldensierra.com/calendar
+END:VEVENT
+BEGIN:VEVENT
+UID:golden-sierra-workforce-board:board-meeting:2026-05-11@cwa-local-board-
+ meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260511T100000
+DTEND;TZID=America/Los_Angeles:20260511T110000
+SUMMARY:Golden Sierra Workforce Board - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://goldensierra.com/\nAgenda URL: Not found y
+ et\nLocation: Not published\nVirtual link: Not published\nConfidence notes
+ : Extracted from official source page text\; verify manually if the source
+  page uses embedded calendars or PDFs.
+URL:https://goldensierra.com/
+END:VEVENT
+BEGIN:VEVENT
+UID:golden-sierra-workforce-board:board-meeting:2026-05-12@cwa-local-board-
+ meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260512T103000
+DTEND;TZID=America/Los_Angeles:20260512T113000
+SUMMARY:Golden Sierra Workforce Board - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://goldensierra.com/\nAgenda URL: Not found y
+ et\nLocation: Not published\nVirtual link: Not published\nConfidence notes
+ : Extracted from official source page text\; verify manually if the source
+  page uses embedded calendars or PDFs.
+URL:https://goldensierra.com/
+END:VEVENT
+BEGIN:VEVENT
+UID:golden-sierra-workforce-board:board-meeting:2026-05-13@cwa-local-board-
+ meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260513T120000
+DTEND;TZID=America/Los_Angeles:20260513T130000
+SUMMARY:Golden Sierra Workforce Board - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://goldensierra.com/calendar\nAgenda URL: Not
+  found yet\nLocation: Not published\nVirtual link: Not published\nConfiden
+ ce notes: Extracted from official source page text\; verify manually if th
+ e source page uses embedded calendars or PDFs.
+URL:https://goldensierra.com/calendar
+END:VEVENT
+BEGIN:VEVENT
+UID:golden-sierra-workforce-board:board-meeting:2026-05-14@cwa-local-board-
+ meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260514T110000
+DTEND;TZID=America/Los_Angeles:20260514T120000
+SUMMARY:Golden Sierra Workforce Board - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://goldensierra.com/calendar\nAgenda URL: Not
+  found yet\nLocation: Not published\nVirtual link: Not published\nConfiden
+ ce notes: Extracted from official source page text\; verify manually if th
+ e source page uses embedded calendars or PDFs.
+URL:https://goldensierra.com/calendar
+END:VEVENT
+BEGIN:VEVENT
+UID:golden-sierra-workforce-board:board-meeting:2026-05-18@cwa-local-board-
+ meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260518T110000
+DTEND;TZID=America/Los_Angeles:20260518T120000
+SUMMARY:Golden Sierra Workforce Board - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://goldensierra.com/calendar\nAgenda URL: Not
+  found yet\nLocation: Not published\nVirtual link: Not published\nConfiden
+ ce notes: Extracted from official source page text\; verify manually if th
+ e source page uses embedded calendars or PDFs.
+URL:https://goldensierra.com/calendar
+END:VEVENT
+BEGIN:VEVENT
+UID:golden-sierra-workforce-board:board-meeting:2026-05-19@cwa-local-board-
+ meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260519T160000
+DTEND;TZID=America/Los_Angeles:20260519T170000
+SUMMARY:Golden Sierra Workforce Board - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://goldensierra.com/calendar\nAgenda URL: Not
+  found yet\nLocation: Not published\nVirtual link: Not published\nConfiden
+ ce notes: Extracted from official source page text\; verify manually if th
+ e source page uses embedded calendars or PDFs.
+URL:https://goldensierra.com/calendar
+END:VEVENT
+BEGIN:VEVENT
+UID:golden-sierra-workforce-board:board-meeting:2026-05-20@cwa-local-board-
+ meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260520T130000
+DTEND;TZID=America/Los_Angeles:20260520T140000
+SUMMARY:Golden Sierra Workforce Board - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://goldensierra.com/calendar\nAgenda URL: Not
+  found yet\nLocation: Not published\nVirtual link: Not published\nConfiden
+ ce notes: Extracted from official source page text\; verify manually if th
+ e source page uses embedded calendars or PDFs.
+URL:https://goldensierra.com/calendar
+END:VEVENT
+BEGIN:VEVENT
+UID:golden-sierra-workforce-board:board-meeting:2026-05-21@cwa-local-board-
+ meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260521T110000
+DTEND;TZID=America/Los_Angeles:20260521T120000
+SUMMARY:Golden Sierra Workforce Board - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://goldensierra.com/calendar\nAgenda URL: Not
+  found yet\nLocation: Not published\nVirtual link: Not published\nConfiden
+ ce notes: Extracted from official source page text\; verify manually if th
+ e source page uses embedded calendars or PDFs.
+URL:https://goldensierra.com/calendar
+END:VEVENT
+BEGIN:VEVENT
+UID:golden-sierra-workforce-board:board-meeting:2026-05-25@cwa-local-board-
+ meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260525T090000
+DTEND;TZID=America/Los_Angeles:20260525T100000
+SUMMARY:Golden Sierra Workforce Board - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://goldensierra.com/calendar\nAgenda URL: Not
+  found yet\nLocation: Not published\nVirtual link: Not published\nConfiden
+ ce notes: Extracted from official source page text\; verify manually if th
+ e source page uses embedded calendars or PDFs.
+URL:https://goldensierra.com/calendar
+END:VEVENT
+BEGIN:VEVENT
+UID:golden-sierra-workforce-board:board-meeting:2026-05-26@cwa-local-board-
+ meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260526T160000
+DTEND;TZID=America/Los_Angeles:20260526T170000
+SUMMARY:Golden Sierra Workforce Board - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://goldensierra.com/calendar\nAgenda URL: Not
+  found yet\nLocation: Not published\nVirtual link: Not published\nConfiden
+ ce notes: Extracted from official source page text\; verify manually if th
+ e source page uses embedded calendars or PDFs.
+URL:https://goldensierra.com/calendar
+END:VEVENT
+BEGIN:VEVENT
 UID:imperial-county-wdb:board-meeting:2026-05-27@cwa-local-board-meetings
-DTSTAMP:20260509T213000Z
+DTSTAMP:20260509T221518Z
 DTSTART;TZID=America/Los_Angeles:20260527T090000
 DTEND;TZID=America/Los_Angeles:20260527T100000
 SUMMARY:Imperial County WDB - Board Meeting
 LOCATION:
-DESCRIPTION:Source page: https://www.ivworkforce.com/\nAgenda URL: Not foun
- d yet\nLocation: Not published\nVirtual link: Not published\nConfidence no
- tes: Extracted from official source page text\; verify manually if the sou
- rce page uses embedded calendars or PDFs.
-URL:https://www.ivworkforce.com/
+DESCRIPTION:Source page: https://www.ivworkforce.com/about/meetings/may-27-
+ 2026-executive-committee-meeting\nAgenda URL: Not found yet\nLocation: Not
+  published\nVirtual link: Not published\nConfidence notes: Extracted from 
+ official source page text\; verify manually if the source page uses embedd
+ ed calendars or PDFs.
+URL:https://www.ivworkforce.com/about/meetings/may-27-2026-executive-commit
+ tee-meeting
 END:VEVENT
 BEGIN:VEVENT
 UID:imperial-county-wdb:executive-committee:2026-05-27@cwa-local-board-meet
  ings
-DTSTAMP:20260509T213000Z
-DTSTART;TZID=America/Los_Angeles:20260527T090000
-DTEND;TZID=America/Los_Angeles:20260527T100000
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260527T110000
+DTEND;TZID=America/Los_Angeles:20260527T120000
 SUMMARY:Imperial County WDB - Executive Committee
 LOCATION:
-DESCRIPTION:Source page: https://www.ivworkforce.com/\nAgenda URL: Not foun
- d yet\nLocation: Not published\nVirtual link: Not published\nConfidence no
- tes: Extracted from official source page text\; verify manually if the sou
- rce page uses embedded calendars or PDFs.
-URL:https://www.ivworkforce.com/
+DESCRIPTION:Source page: https://www.ivworkforce.com/about/meetings/may-27-
+ 2026-executive-committee-meeting\nAgenda URL: Not found yet\nLocation: Not
+  published\nVirtual link: Not published\nConfidence notes: Extracted from 
+ official source page text\; verify manually if the source page uses embedd
+ ed calendars or PDFs.
+URL:https://www.ivworkforce.com/about/meetings/may-27-2026-executive-commit
+ tee-meeting
+END:VEVENT
+BEGIN:VEVENT
+UID:golden-sierra-workforce-board:board-meeting:2026-05-27@cwa-local-board-
+ meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260527T130000
+DTEND;TZID=America/Los_Angeles:20260527T140000
+SUMMARY:Golden Sierra Workforce Board - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://goldensierra.com/calendar\nAgenda URL: Not
+  found yet\nLocation: Not published\nVirtual link: Not published\nConfiden
+ ce notes: Extracted from official source page text\; verify manually if th
+ e source page uses embedded calendars or PDFs.
+URL:https://goldensierra.com/calendar
 END:VEVENT
 BEGIN:VEVENT
 UID:northern-rural-training-nortec:board-meeting:2026-05-28@cwa-local-board
  -meetings
-DTSTAMP:20260509T213000Z
+DTSTAMP:20260509T221518Z
 DTSTART;TZID=America/Los_Angeles:20260528T090000
 DTEND;TZID=America/Los_Angeles:20260528T100000
 SUMMARY:Northern Rural Training (NoRTEC) - Board Meeting
@@ -47,41 +219,155 @@ DESCRIPTION:Source page: https://www.ncen.org/\nAgenda URL: Not found yet\n
 URL:https://www.ncen.org/
 END:VEVENT
 BEGIN:VEVENT
+UID:golden-sierra-workforce-board:board-meeting:2026-05-28@cwa-local-board-
+ meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260528T110000
+DTEND;TZID=America/Los_Angeles:20260528T120000
+SUMMARY:Golden Sierra Workforce Board - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://goldensierra.com/calendar\nAgenda URL: Not
+  found yet\nLocation: Not published\nVirtual link: Not published\nConfiden
+ ce notes: Extracted from official source page text\; verify manually if th
+ e source page uses embedded calendars or PDFs.
+URL:https://goldensierra.com/calendar
+END:VEVENT
+BEGIN:VEVENT
+UID:golden-sierra-workforce-board:board-meeting:2026-06-01@cwa-local-board-
+ meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260601T090000
+DTEND;TZID=America/Los_Angeles:20260601T100000
+SUMMARY:Golden Sierra Workforce Board - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://goldensierra.com/calendar\nAgenda URL: Not
+  found yet\nLocation: Not published\nVirtual link: Not published\nConfiden
+ ce notes: Extracted from official source page text\; verify manually if th
+ e source page uses embedded calendars or PDFs.
+URL:https://goldensierra.com/calendar
+END:VEVENT
+BEGIN:VEVENT
+UID:stanislaus-county-wdb:board-meeting:2026-06-01@cwa-local-board-meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260601T120000
+DTEND;TZID=America/Los_Angeles:20260601T130000
+SUMMARY:Stanislaus County WDB - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://www.stanworkforce.com/workforce-board/\nAg
+ enda URL: https://www.stanworkforce.com/media/vjvjdk2a/ydc-agenda-06-10-24
+ _cancelled.pdf\nLocation: Not published\nVirtual link: Not published\nConf
+ idence notes: Extracted from official source page text\; verify manually i
+ f the source page uses embedded calendars or PDFs.
+URL:https://www.stanworkforce.com/media/vjvjdk2a/ydc-agenda-06-10-24_cancel
+ led.pdf
+END:VEVENT
+BEGIN:VEVENT
+UID:golden-sierra-workforce-board:board-meeting:2026-06-02@cwa-local-board-
+ meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260602T160000
+DTEND;TZID=America/Los_Angeles:20260602T170000
+SUMMARY:Golden Sierra Workforce Board - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://goldensierra.com/calendar\nAgenda URL: Not
+  found yet\nLocation: Not published\nVirtual link: Not published\nConfiden
+ ce notes: Extracted from official source page text\; verify manually if th
+ e source page uses embedded calendars or PDFs.
+URL:https://goldensierra.com/calendar
+END:VEVENT
+BEGIN:VEVENT
+UID:golden-sierra-workforce-board:board-meeting:2026-06-03@cwa-local-board-
+ meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260603T130000
+DTEND;TZID=America/Los_Angeles:20260603T140000
+SUMMARY:Golden Sierra Workforce Board - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://goldensierra.com/calendar\nAgenda URL: Not
+  found yet\nLocation: Not published\nVirtual link: Not published\nConfiden
+ ce notes: Extracted from official source page text\; verify manually if th
+ e source page uses embedded calendars or PDFs.
+URL:https://goldensierra.com/calendar
+END:VEVENT
+BEGIN:VEVENT
+UID:golden-sierra-workforce-board:board-meeting:2026-06-04@cwa-local-board-
+ meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260604T110000
+DTEND;TZID=America/Los_Angeles:20260604T120000
+SUMMARY:Golden Sierra Workforce Board - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://goldensierra.com/calendar\nAgenda URL: Not
+  found yet\nLocation: Not published\nVirtual link: Not published\nConfiden
+ ce notes: Extracted from official source page text\; verify manually if th
+ e source page uses embedded calendars or PDFs.
+URL:https://goldensierra.com/calendar
+END:VEVENT
+BEGIN:VEVENT
 UID:san-luis-obispo-county-wdb:board-meeting:2026-06-10@cwa-local-board-mee
  tings
-DTSTAMP:20260509T213000Z
+DTSTAMP:20260509T221518Z
 DTSTART;TZID=America/Los_Angeles:20260610T083000
 DTEND;TZID=America/Los_Angeles:20260610T093000
 SUMMARY:San Luis Obispo County WDB - Board Meeting
 LOCATION:
 DESCRIPTION:Source page: https://www.slocounty.ca.gov/departments/social-se
- rvices/workforce-development-board\nAgenda URL: Not found yet\nLocation: N
- ot published\nVirtual link: Not published\nConfidence notes: Extracted fro
- m official source page text\; verify manually if the source page uses embe
- dded calendars or PDFs.
+ rvices/workforce-development-board/meetings/executive-committee-meeting-06
+ -10-2026\nAgenda URL: Not found yet\nLocation: Not published\nVirtual link
+ : Not published\nConfidence notes: Extracted from official source page tex
+ t\; verify manually if the source page uses embedded calendars or PDFs.
 URL:https://www.slocounty.ca.gov/departments/social-services/workforce-deve
- lopment-board
+ lopment-board/meetings/executive-committee-meeting-06-10-2026
 END:VEVENT
 BEGIN:VEVENT
 UID:san-luis-obispo-county-wdb:executive-committee:2026-06-10@cwa-local-boa
  rd-meetings
-DTSTAMP:20260509T213000Z
+DTSTAMP:20260509T221518Z
 DTSTART;TZID=America/Los_Angeles:20260610T083000
 DTEND;TZID=America/Los_Angeles:20260610T093000
 SUMMARY:San Luis Obispo County WDB - Executive Committee
 LOCATION:
 DESCRIPTION:Source page: https://www.slocounty.ca.gov/departments/social-se
- rvices/workforce-development-board\nAgenda URL: Not found yet\nLocation: N
- ot published\nVirtual link: Not published\nConfidence notes: Extracted fro
- m official source page text\; verify manually if the source page uses embe
- dded calendars or PDFs.
+ rvices/workforce-development-board/meetings/executive-committee-meeting-06
+ -10-2026\nAgenda URL: Not found yet\nLocation: Not published\nVirtual link
+ : Not published\nConfidence notes: Extracted from official source page tex
+ t\; verify manually if the source page uses embedded calendars or PDFs.
 URL:https://www.slocounty.ca.gov/departments/social-services/workforce-deve
- lopment-board
+ lopment-board/meetings/executive-committee-meeting-06-10-2026
+END:VEVENT
+BEGIN:VEVENT
+UID:santa-cruz-county-wdb:board-meeting:2026-08-10@cwa-local-board-meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260810T090000
+DTEND;TZID=America/Los_Angeles:20260810T100000
+SUMMARY:Santa Cruz County WDB - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://www.santacruzhumanservices.org/FamilyChild
+ ren/SystemImprovementPlan(SIP)/SIPSteeringCommittee\nAgenda URL: Not found
+  yet\nLocation: Not published\nVirtual link: Not published\nConfidence not
+ es: Extracted from official source page text\; verify manually if the sour
+ ce page uses embedded calendars or PDFs.
+URL:https://www.santacruzhumanservices.org/FamilyChildren/SystemImprovement
+ Plan(SIP)/SIPSteeringCommittee
+END:VEVENT
+BEGIN:VEVENT
+UID:novaworks-workforce-board:board-meeting:2026-08-26@cwa-local-board-meet
+ ings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20260826T133000
+DTEND;TZID=America/Los_Angeles:20260826T143000
+SUMMARY:NOVAworks Workforce Board - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://novaworks.org/about-us/board/\nAgenda URL:
+  Not found yet\nLocation: Not published\nVirtual link: Not published\nConf
+ idence notes: Extracted from official source page text\; verify manually i
+ f the source page uses embedded calendars or PDFs.
+URL:https://novaworks.org/about-us/board/
 END:VEVENT
 BEGIN:VEVENT
 UID:northern-rural-training-nortec:board-meeting:2026-08-27@cwa-local-board
  -meetings
-DTSTAMP:20260509T213000Z
+DTSTAMP:20260509T221518Z
 DTSTART;TZID=America/Los_Angeles:20260827T090000
 DTEND;TZID=America/Los_Angeles:20260827T100000
 SUMMARY:Northern Rural Training (NoRTEC) - Board Meeting
@@ -91,5 +377,31 @@ DESCRIPTION:Source page: https://www.ncen.org/\nAgenda URL: Not found yet\n
  tracted from official source page text\; verify manually if the source pag
  e uses embedded calendars or PDFs.
 URL:https://www.ncen.org/
+END:VEVENT
+BEGIN:VEVENT
+UID:stanislaus-county-wdb:board-meeting:2026-10-13@cwa-local-board-meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20261013T090000
+DTEND;TZID=America/Los_Angeles:20261013T100000
+SUMMARY:Stanislaus County WDB - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://www.stanworkforce.com/workforce-board/\nAg
+ enda URL: Not found yet\nLocation: Not published\nVirtual link: Not publis
+ hed\nConfidence notes: Extracted from official source page text\; verify m
+ anually if the source page uses embedded calendars or PDFs.
+URL:https://www.stanworkforce.com/workforce-board/
+END:VEVENT
+BEGIN:VEVENT
+UID:stanislaus-county-wdb:committee:2026-10-13@cwa-local-board-meetings
+DTSTAMP:20260509T221518Z
+DTSTART;TZID=America/Los_Angeles:20261013T130000
+DTEND;TZID=America/Los_Angeles:20261013T140000
+SUMMARY:Stanislaus County WDB - Committee
+LOCATION:
+DESCRIPTION:Source page: https://www.stanworkforce.com/workforce-board/\nAg
+ enda URL: Not found yet\nLocation: Not published\nVirtual link: Not publis
+ hed\nConfidence notes: Extracted from official source page text\; verify m
+ anually if the source page uses embedded calendars or PDFs.
+URL:https://www.stanworkforce.com/workforce-board/
 END:VEVENT
 END:VCALENDAR
