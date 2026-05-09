@@ -31,6 +31,27 @@ class LocalBoardMeetingTests(unittest.TestCase):
         self.assertEqual(len(links), 2)
         self.assertEqual(links[0].url, "https://example.gov/files/2026-05-14-agenda.pdf")
 
+    def test_month_named_pdf_in_agenda_section(self) -> None:
+        html = """
+        <h5>2026 Board Agendas</h5>
+        <p><a href="/files/may.pdf">May</a></p>
+        <p><a href="/files/june.pdf">June</a></p>
+        """
+        source = BoardSource(
+            board_id="sample-wdb",
+            board_name="Sample WDB",
+            local_area="Sample County",
+            main_website="https://example.gov",
+            meeting_schedule_url="https://example.gov",
+            agenda_minutes_url="https://example.gov",
+            executive_committee_url="",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        meetings = extract_meetings(source, html + "<p>May 13, 2026</p>", "https://example.gov/meetings", date(2026, 5, 9), 180)
+        self.assertEqual(meetings[0].agenda_url, "https://example.gov/files/may.pdf")
+
     def test_duplicate_meeting_stable_id(self) -> None:
         source = BoardSource(
             board_id="sample-wdb",

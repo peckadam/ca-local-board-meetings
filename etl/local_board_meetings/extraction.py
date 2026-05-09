@@ -80,10 +80,13 @@ def extract_agenda_links(html: str, page_url: str) -> List[AgendaLink]:
         href = anchor["href"].strip()
         label = anchor.get_text(" ", strip=True)
         candidate = f"{label} {href}".lower()
+        context_label = _agenda_context_label(anchor, label)
         if any(term in candidate for term in AGENDA_TERMS) and (
             ".pdf" in candidate or "agenda" in candidate or "packet" in candidate
         ):
             links.append(AgendaLink(absolute_url(page_url, href), label or href, page_url))
+        elif ".pdf" in href.lower() and context_label:
+            links.append(AgendaLink(absolute_url(page_url, href), context_label, page_url))
     return _dedupe_agendas(links)
 
 
@@ -177,12 +180,44 @@ def best_agenda_for_date(links: Iterable[AgendaLink], meeting_date: date) -> Opt
         meeting_date.strftime("%m-%d"),
         meeting_date.strftime("%B %-d, %Y") if hasattr(meeting_date, "strftime") else "",
         meeting_date.strftime("%B %d, %Y"),
+        f"{meeting_date.year} {meeting_date.strftime('%B')}",
+        f"{meeting_date.year} {meeting_date.strftime('%b')}",
     }
     for link in links:
         haystack = f"{link.label} {link.url}".lower()
         if any(token and token.lower() in haystack for token in tokens):
             return link
+        if str(meeting_date.year) in haystack and meeting_date.strftime("%B").lower() in haystack:
+            return link
+        if str(meeting_date.year) in haystack and meeting_date.strftime("%b").lower() in haystack:
+            return link
     return None
+
+
+def _agenda_context_label(anchor, label: str) -> str:
+    normalized_label = label.strip()
+    if _month_number_or_none(normalized_label) is None:
+        return ""
+    nearby_text = []
+    parent = anchor.parent
+    if parent:
+        nearby_text.append(parent.get_text(" ", strip=True))
+    for previous in anchor.find_all_previous(["h1", "h2", "h3", "h4", "h5", "strong"], limit=4):
+        nearby_text.append(previous.get_text(" ", strip=True))
+    context = " ".join(nearby_text)
+    if "agenda" not in context.lower():
+        return ""
+    year_match = re.search(r"\b(20\d{2})\b", context)
+    if year_match:
+        return f"{year_match.group(1)} Board Agendas - {normalized_label}"
+    return f"Agenda - {normalized_label}"
+
+
+def _month_number_or_none(value: str) -> int | None:
+    try:
+        return _month_number(value)
+    except ValueError:
+        return None
 
 
 def _candidate_text_blocks(soup: BeautifulSoup) -> list[str]:

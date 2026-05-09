@@ -68,3 +68,10 @@ Moved Permanently
 - Review: Solano County WDB - https://www.solanowdb.org/ - <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.solanowdb.org'. (_ssl.c:1129)>
 - Review: Sonoma County WDB - https://sonomawdb.org/ - <urlopen error [Errno 8] nodename nor servname provided, or not known>
 
+## 2026-05-09T22:36:09.683588+00:00 (dry-run)
+
+- Boards checked: 1
+- Meetings found: 4
+- Missing agendas within 72 hours: 0
+- Failures requiring human review: 0
+
