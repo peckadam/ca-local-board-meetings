@@ -19,6 +19,39 @@ This file is the operating memory for the meeting monitor. The automation should
 - Known traps: the general calendar includes workshops and other non-board events; calendar UI controls can expose dates that are not meetings.
 - Automation rule: use the Workforce Board category page only.
 
+### Contra Costa County WDB
+
+- Official source: `https://www.wdbccc.com/meetings-agendas/`
+- Current structure: The page has sections for Board of Directors, Executive Committee, Business and Economic Development Committee, and Youth Committee.
+- Cadence observed on 2026-05-09: page text states Executive Committee generally meets 2nd Wednesday monthly from 3:00 PM to 5:00 PM; BED Committee generally meets 1st Wednesday every other month from 3:00 PM to 5:00 PM; Youth Council generally meets 4th Monday in Jan/Apr/Aug/Oct from 12:00 PM to 1:30 PM.
+- Known traps: Board Member Interest links to Meetings & Agendas but is not a schedule source. Committee cadence text is not the same thing as a published meeting date. Visible dated Legistar links were committee-specific during audit.
+- Status: partially audited; full Board of Directors cadence/dates still need official confirmation.
+
+### NOVAworks Workforce Board
+
+- Official source: `https://novaworks.org/about-us/board/`
+- Current structure: Board page has an `Upcoming Meetings` section plus board materials and past meetings.
+- Cadence observed on 2026-05-09: upcoming meetings include August 26, 2026 and December 2, 2026, Noon to 1:30 PM. April 22, 2026 was already outside the 14-day post-meeting check window.
+- Known traps: past agenda links remain on the same page and must be matched by exact date. The page uses `Noon to 1:30 p.m.`, which must parse as a 12:00 PM start.
+- Automation rule: generic extraction is acceptable after the Noon parsing fix and date-matched agenda handling.
+
+### Orange County WDB
+
+- Official source: `https://workforce.ocgov.com/oc-workforce-development-board/board-members/meeting-agendas-and-minutes`
+- Do not use: policies/procedures pages.
+- Current structure: Meeting Agendas and Minutes page has sections for OCWDB Full Board, Executive Committee, Program Services Committee, and Business Services Committee.
+- Cadence observed on 2026-05-09: current fetched page showed recent full-board agenda packets, including January 28, 2026 and April 29, 2026. No future full-board meeting was visible in the 180-day window at audit time.
+- Known traps: committee agenda packets are present on the same page as full-board packets; agenda links labeled `View Agenda` must be date/section matched.
+- Automation rule: use only the official Meeting Agendas and Minutes page; date matching required.
+
+### South Bay WIB
+
+- Official source: `https://www.sbwib.org/2026-meeting-agendas`
+- Current structure: Annual page grouped by body/committee, including Business/Technology/Economic Development Committee, SBWIB Executive Committee, South Bay Workforce Investment Board, Performance & Evaluation Committee, Youth Development Council Committee, and One-Stop Policy Committee.
+- Cadence observed on 2026-05-09: full-board dates visible on the 2026 page were January 15, 2026 and April 16, 2026; Executive Committee dates included January 8, February 12, March 12, and April 9; Youth Development Council had May 5.
+- Known traps: dates inherit meaning from the nearest section heading. A Youth Development Council date must not become a full board meeting.
+- Automation rule: use the `south_bay_sectioned_agendas` strategy.
+
 ### Stanislaus County WDB
 
 - Official meeting source: `https://www.stanworkforce.com/workforce-board/`
@@ -43,7 +76,6 @@ These sources are still `medium` until manually profiled. Each needs the same tr
 
 - Alameda County WDB
 - Anaheim WDB
-- Contra Costa County WDB
 - Foothill WDB
 - Fresno Regional WDB
 - Humboldt County WDB
@@ -57,11 +89,9 @@ These sources are still `medium` until manually profiled. Each needs the same tr
 - Merced County WDB
 - Monterey County WDB
 - Mother Lode Workforce Development Board
-- NOVAworks Workforce Board
 - North Central Counties WDB
 - Northern Rural Training / NoRTEC
 - Oakland WDB
-- Orange County WDB
 - Richmond WDB
 - Riverside County WDB
 - Sacramento SETA
@@ -78,7 +108,6 @@ These sources are still `medium` until manually profiled. Each needs the same tr
 - SELACO WDB
 - Solano County WDB
 - Sonoma County WDB
-- South Bay WIB
 - Ventura County WDB
 - Verdugo WDB
 - Workforce Alliance North Bay

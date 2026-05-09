@@ -22,6 +22,69 @@
       "verification_notes": "Audited 2026-05-09. Correct source is the public-meeting Workforce Board category page."
     },
     {
+      "board_id": "contra-costa-county-wdb",
+      "status": "partially_audited",
+      "cadence": "Meetings & Agendas page states Executive Committee generally meets 2nd Wednesday monthly 3:00-5:00 PM; BED generally meets 1st Wednesday every other month 3:00-5:00 PM; Youth Council generally meets 4th Monday in Jan/Apr/Aug/Oct 12:00-1:30 PM. Full-board date cadence still needs verification.",
+      "extraction_strategy": "generic",
+      "agenda_rules": {
+        "source": "https://www.wdbccc.com/meetings-agendas/",
+        "notes": "Visible dated Legistar links were present for BED and Youth sections during audit. Full Board of Directors dates were not visible in fetched HTML."
+      },
+      "known_traps": [
+        "The Board Member Interest page links to Meetings & Agendas but is not itself a schedule source.",
+        "Committee cadence text can be mistaken for specific meeting dates unless date links are section-scoped."
+      ],
+      "verification_notes": "Audited 2026-05-09 as partially complete; needs official full-board cadence/date confirmation."
+    },
+    {
+      "board_id": "novaworks-workforce-board",
+      "status": "audited",
+      "cadence": "Board page publishes upcoming board meetings and materials. Upcoming meetings observed on 2026-05-09 include Aug. 26, 2026 and Dec. 2, 2026, both Noon to 1:30 PM; Apr. 22, 2026 was already past the 14-day lookback window.",
+      "extraction_strategy": "generic",
+      "agenda_rules": {
+        "source": "https://novaworks.org/about-us/board/",
+        "date_match_required": true
+      },
+      "known_traps": [
+        "Past agenda links remain on the same page and must not be used for future meetings.",
+        "The page uses 'Noon to 1:30 p.m.', which must parse as a 12:00 PM start."
+      ],
+      "verification_notes": "Audited 2026-05-09. Generic extraction is acceptable after Noon parsing fix and date-matched agenda handling."
+    },
+    {
+      "board_id": "orange-county-wdb",
+      "status": "audited",
+      "cadence": "Official Meeting Agendas and Minutes page publishes full board and committee agenda packet links. Future cadence not fully inferable from fetched page, but source endpoint is verified.",
+      "extraction_strategy": "generic",
+      "agenda_rules": {
+        "source": "https://workforce.ocgov.com/oc-workforce-development-board/board-members/meeting-agendas-and-minutes",
+        "date_match_required": true,
+        "exclude": [
+          "policies and procedures pages"
+        ]
+      },
+      "known_traps": [
+        "The policies/procedures page contains plan dates and should not be used as a meeting source.",
+        "Committee agenda packets are present on the same page as full board packets."
+      ],
+      "verification_notes": "Audited 2026-05-09. Registry corrected from policies/procedures to Meeting Agendas and Minutes."
+    },
+    {
+      "board_id": "south-bay-wib",
+      "status": "audited",
+      "cadence": "Annual meeting agendas page is grouped by body/committee. 2026 page shows SBWIB full board dates, Executive Committee dates, and multiple committee dates.",
+      "extraction_strategy": "south_bay_sectioned_agendas",
+      "agenda_rules": {
+        "source": "https://www.sbwib.org/2026-meeting-agendas",
+        "section_heading_required": true
+      },
+      "known_traps": [
+        "Dates on the page are grouped under headings; a date under Youth Development Council is not a full board meeting.",
+        "The page title and nav repeat 'South Bay Workforce Investment Board', so parser must start inside the 2026 Meeting Agendas content area."
+      ],
+      "verification_notes": "Audited 2026-05-09. Added section-aware extraction strategy."
+    },
+    {
       "board_id": "stanislaus-county-wdb",
       "status": "audited",
       "cadence": "Full Workforce Development Board page publishes one upcoming board meeting plus current agenda and historical agenda/minute archives. The same page also publishes committee meetings.",

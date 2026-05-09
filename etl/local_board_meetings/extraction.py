@@ -49,6 +49,10 @@ def parse_date(text: str, reference_date: date | None = None, lookahead_days: in
 
 
 def parse_time(text: str) -> Optional[time]:
+    noon_match = re.search(r"\bnoon\b", text, re.I)
+    meridian_match = TIME_RE.search(text)
+    if noon_match and (not meridian_match or noon_match.start() < meridian_match.start()):
+        return time(12, 0)
     match = TIME_RE.search(text)
     if not match:
         return None
@@ -121,6 +125,8 @@ def extract_meetings(
 ) -> List[Meeting]:
     if extraction_strategy == "stanislaus_workforce_board":
         return extract_stanislaus_workforce_board_meetings(source, html, page_url, today, lookahead_days)
+    if extraction_strategy == "south_bay_sectioned_agendas":
+        return extract_south_bay_sectioned_meetings(source, html, page_url, today, lookahead_days)
     soup = BeautifulSoup(html, "html.parser")
     agenda_links = extract_agenda_links(html, page_url)
     text_blocks = _candidate_text_blocks(soup)
@@ -184,6 +190,61 @@ def extract_stanislaus_workforce_board_meetings(
         ),
     )
     return [meeting]
+
+
+def extract_south_bay_sectioned_meetings(
+    source: BoardSource,
+    html: str,
+    page_url: str,
+    today: date,
+    lookahead_days: int,
+) -> List[Meeting]:
+    soup = BeautifulSoup(html, "html.parser")
+    lines = [line.strip() for line in soup.get_text("\n", strip=True).splitlines() if line.strip()]
+    section_types = {
+        "BUSINESS, TECHNOLOGY & ECONOMIC DEVELOPMENT COMMITTEE": "Committee",
+        "SBWIB EXECUTIVE COMMITTEE": "Executive Committee",
+        "SOUTH BAY WORKFORCE INVESTMENT BOARD": "Board Meeting",
+        "PERFORMANCE & EVALUATION COMMITTEE": "Committee",
+        "YOUTH DEVELOPMENT COUNCIL COMMITTEE": "Committee",
+        "ONE-STOP POLICY COMMITTEE": "Committee",
+    }
+    current_type = ""
+    meetings: dict[str, Meeting] = {}
+    max_date = today + timedelta(days=lookahead_days)
+    in_agenda_area = False
+    for line in lines:
+        if line == "2026 Meeting Agendas":
+            in_agenda_area = True
+            continue
+        if not in_agenda_area:
+            continue
+        if line.startswith("South Bay Workforce Investment Board"):
+            break
+        if line in section_types:
+            current_type = section_types[line]
+            continue
+        meeting_date = parse_date(line, today, lookahead_days)
+        if not current_type or not meeting_date:
+            continue
+        if meeting_date < today - timedelta(days=14) or meeting_date > max_date:
+            continue
+        meeting = Meeting(
+            board_id=source.board_id,
+            board_name=source.board_name,
+            meeting_type=current_type,
+            meeting_date=meeting_date,
+            start_time=None,
+            timezone="America/Los_Angeles",
+            location="",
+            virtual_url="",
+            source_page_url=page_url,
+            agenda_url="",
+            agenda_label="",
+            confidence_notes="Profiled South Bay extraction: dates are assigned to the section heading that precedes them on the annual meeting agendas page.",
+        )
+        meetings[meeting.stable_id] = meeting
+    return sorted(meetings.values(), key=lambda m: (m.meeting_date, m.meeting_type))
 
 
 def infer_meeting_type(text: str) -> str:

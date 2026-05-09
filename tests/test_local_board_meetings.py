@@ -20,6 +20,7 @@ class LocalBoardMeetingTests(unittest.TestCase):
     def test_parse_time(self) -> None:
         self.assertEqual(parse_time("10:30 a.m."), time(10, 30))
         self.assertEqual(parse_time("1 PM"), time(13, 0))
+        self.assertEqual(parse_time("Noon to 1:30 p.m."), time(12, 0))
 
     def test_agenda_link_detection(self) -> None:
         html = """
@@ -132,6 +133,39 @@ class LocalBoardMeetingTests(unittest.TestCase):
         self.assertEqual(meetings[0].meeting_date, date(2026, 6, 1))
         self.assertEqual(meetings[0].meeting_type, "Board Meeting")
         self.assertEqual(meetings[0].agenda_url, "")
+
+    def test_south_bay_sectioned_agendas_assign_meeting_type(self) -> None:
+        source = BoardSource(
+            board_id="south-bay-wib",
+            board_name="South Bay WIB",
+            local_area="South Bay",
+            main_website="https://www.sbwib.org/",
+            meeting_schedule_url="https://www.sbwib.org/2026-meeting-agendas",
+            agenda_minutes_url="https://www.sbwib.org/2026-meeting-agendas",
+            executive_committee_url="",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        html = """
+        <h1>2026 Meeting Agendas</h1>
+        <p>SBWIB EXECUTIVE COMMITTEE</p>
+        <p>April 9, 2026</p>
+        <p>SOUTH BAY WORKFORCE INVESTMENT BOARD</p>
+        <p>April 16, 2026</p>
+        <p>YOUTH DEVELOPMENT COUNCIL COMMITTEE</p>
+        <p>May 5, 2026</p>
+        <p>South Bay Workforce Investment Board</p>
+        """
+        meetings = extract_meetings(
+            source,
+            html,
+            "https://www.sbwib.org/2026-meeting-agendas",
+            date(2026, 4, 1),
+            180,
+            extraction_strategy="south_bay_sectioned_agendas",
+        )
+        self.assertEqual([m.meeting_type for m in meetings], ["Executive Committee", "Board Meeting", "Committee"])
 
     def test_prunes_unseen_future_meetings_for_checked_board(self) -> None:
         conn = connect(__import__("pathlib").Path(":memory:"))
