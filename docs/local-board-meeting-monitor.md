@@ -71,6 +71,7 @@ For cron on a local machine, run the refresh script:
 
 - The registry starts from the existing official CWA local-board website manifest and adds Mother Lode.
 - Exact meeting/agenda endpoints are refined as official pages reveal schedule, agenda, minutes, or executive committee links.
+- Source-specific structure, cadence, and false-positive traps are documented in `docs/local-board-source-intelligence.md` and encoded in `data/local_board_meetings/source_profiles.json` when a generic extractor is not reliable enough.
 - The fetcher uses a descriptive user agent, retry/backoff, and robots.txt checks by default.
 - Meetings within 10 days are eligible for agenda downloads when an agenda URL has been found.
 - Missing agendas within 72 hours are expected sometimes, especially for special meetings, but are always listed in the run report.

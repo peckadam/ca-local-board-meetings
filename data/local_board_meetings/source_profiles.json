@@ -1,0 +1,67 @@
+{
+  "profiles": [
+    {
+      "board_id": "golden-sierra-workforce-board",
+      "status": "audited",
+      "cadence": "Public meeting category currently shows Workforce Board and Executive Committee meetings; verify month/list category views daily because the general calendar includes unrelated workshops.",
+      "extraction_strategy": "generic",
+      "agenda_rules": {
+        "allowed_source_urls": [
+          "https://goldensierra.com/calendar/category/public-meeting/workforce-board"
+        ],
+        "exclude": [
+          "general Golden Sierra calendar",
+          "workshops",
+          "job seeker/employer events"
+        ]
+      },
+      "known_traps": [
+        "The general /calendar page contains many non-board workshops that look like meetings.",
+        "Calendar UI date controls can look like event dates."
+      ],
+      "verification_notes": "Audited 2026-05-09. Correct source is the public-meeting Workforce Board category page."
+    },
+    {
+      "board_id": "stanislaus-county-wdb",
+      "status": "audited",
+      "cadence": "Full Workforce Development Board page publishes one upcoming board meeting plus current agenda and historical agenda/minute archives. The same page also publishes committee meetings.",
+      "extraction_strategy": "stanislaus_workforce_board",
+      "agenda_rules": {
+        "current_board_section": "CURRENT AGENDA through PREVIOUS AGENDAS & MINUTES",
+        "meeting_section": "UPCOMING BOARD MEETING through PREVIOUS AGENDAS & MINUTES",
+        "exclude_sections": [
+          "Workforce Strategy & Innovation Committee",
+          "Youth Development Committee",
+          "Business Development Committee",
+          "historical agenda archives"
+        ],
+        "reject_if_url_contains": [
+          "cancelled",
+          "canceled"
+        ]
+      },
+      "known_traps": [
+        "Historical Youth Development Committee PDFs include dates that can be falsely matched to current board meetings.",
+        "The 2024 canceled Youth Development Committee agenda must not be treated as a current Stanislaus board agenda.",
+        "Committee current-agenda links are on the same page as the full board agenda."
+      ],
+      "verification_notes": "Audited 2026-05-09. Full board upcoming meeting is parsed only from the Upcoming Board Meeting section."
+    },
+    {
+      "board_id": "tulare-county-wib",
+      "status": "audited",
+      "cadence": "Board page publishes annual board meeting dates and month-labeled annual agenda PDF links. Program & Evaluation Committee page publishes committee dates separately.",
+      "extraction_strategy": "generic",
+      "agenda_rules": {
+        "board_source": "https://www.tularewib.org/wibboard",
+        "committee_source": "https://www.tularewib.org/pec",
+        "month_label_agendas": true
+      },
+      "known_traps": [
+        "Employment Connection homepage is not the agenda source.",
+        "Wix PDF links may be labeled only by month under a year-specific agenda heading."
+      ],
+      "verification_notes": "Audited 2026-05-09. May 13, 2026 board agenda is linked as the May PDF under 2026 Board Agendas."
+    }
+  ]
+}

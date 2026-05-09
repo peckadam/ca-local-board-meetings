@@ -13,6 +13,7 @@ from .graph import CALENDAR_NAME, GraphClient, GraphConfigError
 from .models import BoardSource, Meeting, StoredAgenda
 from .registry import load_registry, mark_checked, save_registry
 from .reporting import append_progress_log, build_summary, write_reports
+from .site_profiles import load_profiles
 from .storage import (
     agenda_exists,
     connect,
@@ -48,6 +49,7 @@ def main(argv: list[str] | None = None) -> int:
         GraphClient.from_env()
     conn = connect(args.db)
     all_sources = load_registry(args.registry, args.seed_manifest)
+    profiles = load_profiles(args.source_profiles)
     sources = all_sources
     if args.boards:
         selected = {item.lower() for item in args.boards}
@@ -61,7 +63,12 @@ def main(argv: list[str] | None = None) -> int:
 
     for source in sources:
         LOGGER.info("Checking %s", source.board_name)
-        source_meetings, source_failures, updated_source = check_source(source, args.lookahead_days, args.respect_robots)
+        source_meetings, source_failures, updated_source = check_source(
+            source,
+            args.lookahead_days,
+            args.respect_robots,
+            profiles.get(source.board_id),
+        )
         all_meetings.extend(source_meetings)
         failures.extend(source_failures)
         updated_sources.append(updated_source)
@@ -122,7 +129,7 @@ def main(argv: list[str] | None = None) -> int:
     return 0
 
 
-def check_source(source: BoardSource, lookahead_days: int, respect_robots: bool) -> tuple[list[Meeting], list[dict[str, str]], BoardSource]:
+def check_source(source: BoardSource, lookahead_days: int, respect_robots: bool, profile=None) -> tuple[list[Meeting], list[dict[str, str]], BoardSource]:
     urls = [source.meeting_schedule_url, source.agenda_minutes_url, source.executive_committee_url, source.main_website]
     urls = list(dict.fromkeys([url for url in urls if url]))
     configured_content_urls = {source.meeting_schedule_url, source.agenda_minutes_url, source.executive_committee_url} - {"", source.main_website}
@@ -137,7 +144,16 @@ def check_source(source: BoardSource, lookahead_days: int, respect_robots: bool)
             if "pdf" in page.content_type.lower():
                 continue
             if url != source.main_website or not configured_content_urls:
-                meetings.extend(extract_meetings(source, page.text, page.url, date.today(), lookahead_days))
+                meetings.extend(
+                    extract_meetings(
+                        source,
+                        page.text,
+                        page.url,
+                        date.today(),
+                        lookahead_days,
+                        extraction_strategy=profile.extraction_strategy if profile else "generic",
+                    )
+                )
             candidates = find_candidate_pages(page.text, page.url)
             if candidates["meeting"]:
                 candidate_updates["meeting_schedule_url"] = candidates["meeting"][0]
@@ -223,6 +239,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--agenda-dir", type=Path, default=DEFAULT_AGENDAS)
     parser.add_argument("--public-dir", type=Path, default=DEFAULT_PUBLIC)
     parser.add_argument("--progress-log", type=Path, default=DEFAULT_PROGRESS)
+    parser.add_argument("--source-profiles", type=Path, default=DATA_DIR / "source_profiles.json")
     parser.add_argument("--respect-robots", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--log-level", default="INFO", choices=["DEBUG", "INFO", "WARNING", "ERROR"])
     return parser.parse_args(argv)

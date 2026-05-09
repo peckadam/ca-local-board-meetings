@@ -95,6 +95,44 @@ class LocalBoardMeetingTests(unittest.TestCase):
         meetings = extract_meetings(source, html, "https://example.gov/calendar", date(2026, 5, 9), 180)
         self.assertEqual([meeting.meeting_date for meeting in meetings], [date(2026, 5, 21)])
 
+    def test_stanislaus_profile_ignores_committee_and_stale_agendas(self) -> None:
+        source = BoardSource(
+            board_id="stanislaus-county-wdb",
+            board_name="Stanislaus County WDB",
+            local_area="Stanislaus County",
+            main_website="https://www.stanworkforce.com/",
+            meeting_schedule_url="https://www.stanworkforce.com/workforce-board/",
+            agenda_minutes_url="https://www.stanworkforce.com/workforce-board/",
+            executive_committee_url="",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        html = """
+        <a href="/media/vshjwvol/wdb-agenda-pkt_3-2-26-rev.pdf">Download the latest agenda</a>
+        <h2>UPCOMING BOARD MEETING</h2>
+        <p>Date: Monday, June 1, 2026</p>
+        <p>Time: 12:00 PM - 2:00 PM</p>
+        <h2>PREVIOUS AGENDAS & MINUTES</h2>
+        <a href="/media/vjvjdk2a/ydc-agenda-06-10-24_cancelled.pdf">June 10, 2024</a>
+        <h2>COMMITTEES</h2>
+        <h3>Youth Development Committee</h3>
+        <p>Date: Tuesday, October 13, 2026</p>
+        <a href="/media/vjvjdk2a/ydc-agenda-06-10-24_cancelled.pdf">Current Agenda</a>
+        """
+        meetings = extract_meetings(
+            source,
+            html,
+            "https://www.stanworkforce.com/workforce-board/",
+            date(2026, 5, 9),
+            180,
+            extraction_strategy="stanislaus_workforce_board",
+        )
+        self.assertEqual(len(meetings), 1)
+        self.assertEqual(meetings[0].meeting_date, date(2026, 6, 1))
+        self.assertEqual(meetings[0].meeting_type, "Board Meeting")
+        self.assertEqual(meetings[0].agenda_url, "")
+
     def test_prunes_unseen_future_meetings_for_checked_board(self) -> None:
         conn = connect(__import__("pathlib").Path(":memory:"))
         seen_at = datetime(2026, 5, 9, tzinfo=timezone.utc)

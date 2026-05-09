@@ -111,7 +111,16 @@ def find_candidate_pages(html: str, page_url: str) -> dict[str, list[str]]:
     return {key: sorted(set(value)) for key, value in candidates.items()}
 
 
-def extract_meetings(source: BoardSource, html: str, page_url: str, today: date, lookahead_days: int) -> List[Meeting]:
+def extract_meetings(
+    source: BoardSource,
+    html: str,
+    page_url: str,
+    today: date,
+    lookahead_days: int,
+    extraction_strategy: str = "generic",
+) -> List[Meeting]:
+    if extraction_strategy == "stanislaus_workforce_board":
+        return extract_stanislaus_workforce_board_meetings(source, html, page_url, today, lookahead_days)
     soup = BeautifulSoup(html, "html.parser")
     agenda_links = extract_agenda_links(html, page_url)
     text_blocks = _candidate_text_blocks(soup)
@@ -139,6 +148,42 @@ def extract_meetings(source: BoardSource, html: str, page_url: str, today: date,
         )
         meetings[meeting.stable_id] = meeting
     return sorted(meetings.values(), key=lambda m: (m.meeting_date, m.board_name, m.meeting_type))
+
+
+def extract_stanislaus_workforce_board_meetings(
+    source: BoardSource,
+    html: str,
+    page_url: str,
+    today: date,
+    lookahead_days: int,
+) -> List[Meeting]:
+    soup = BeautifulSoup(html, "html.parser")
+    text = soup.get_text("\n", strip=True)
+    board_section = _between_markers(text, "UPCOMING BOARD MEETING", "PREVIOUS AGENDAS & MINUTES")
+    if not board_section:
+        return []
+    meeting_date = parse_date(board_section, today, lookahead_days)
+    if not meeting_date or meeting_date < today - timedelta(days=14) or meeting_date > today + timedelta(days=lookahead_days):
+        return []
+    agenda = _stanislaus_current_board_agenda(soup, page_url, meeting_date)
+    meeting = Meeting(
+        board_id=source.board_id,
+        board_name=source.board_name,
+        meeting_type="Board Meeting",
+        meeting_date=meeting_date,
+        start_time=parse_time(board_section),
+        timezone="America/Los_Angeles",
+        location=infer_location(board_section),
+        virtual_url=infer_virtual_url(board_section),
+        source_page_url=page_url,
+        agenda_url=agenda.url if agenda else "",
+        agenda_label=agenda.label if agenda else "",
+        confidence_notes=(
+            "Profiled Stanislaus extraction: uses only the Upcoming Board Meeting section and the full-board "
+            "current agenda link; committee sections and historical/cancelled PDFs are excluded."
+        ),
+    )
+    return [meeting]
 
 
 def infer_meeting_type(text: str) -> str:
@@ -211,6 +256,45 @@ def _agenda_context_label(anchor, label: str) -> str:
     if year_match:
         return f"{year_match.group(1)} Board Agendas - {normalized_label}"
     return f"Agenda - {normalized_label}"
+
+
+def _between_markers(text: str, start: str, end: str) -> str:
+    start_index = text.find(start)
+    if start_index == -1:
+        return ""
+    end_index = text.find(end, start_index + len(start))
+    if end_index == -1:
+        return text[start_index:]
+    return text[start_index:end_index]
+
+
+def _stanislaus_current_board_agenda(soup: BeautifulSoup, page_url: str, meeting_date: date) -> AgendaLink | None:
+    for anchor in soup.find_all("a", href=True):
+        label = anchor.get_text(" ", strip=True)
+        if "latest agenda" not in label.lower():
+            continue
+        href = anchor["href"].strip()
+        if "cancel" in href.lower():
+            continue
+        linked_date = _date_from_numeric_filename(href, meeting_date)
+        if linked_date and abs((linked_date - meeting_date).days) > 14:
+            return None
+        return AgendaLink(absolute_url(page_url, href), label, page_url)
+    return None
+
+
+def _date_from_numeric_filename(value: str, reference_date: date) -> date | None:
+    matches = re.findall(r"(?<!\d)(\d{1,2})[-_](\d{1,2})[-_](\d{2,4})(?!\d)", value)
+    if not matches:
+        return None
+    month, day, year = matches[-1]
+    full_year = int(year)
+    if full_year < 100:
+        full_year += 2000
+    try:
+        return date(full_year, int(month), int(day))
+    except ValueError:
+        return None
 
 
 def _month_number_or_none(value: str) -> int | None:
