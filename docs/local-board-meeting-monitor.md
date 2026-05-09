@@ -61,10 +61,10 @@ The published `calendar.ics` URL can be subscribed to from Apple Calendar, Googl
 
 ## Daily Scheduling
 
-For cron on a local machine, run the monitor, copy the generated files into `docs/`, and push:
+For cron on a local machine, run the refresh script:
 
 ```cron
-17 8 * * * cd "/Users/adampeck/Documents/New project" && /usr/bin/python3 -m etl.local_board_meetings.runner && cp data/local_board_meetings/public/index.html docs/index.html && cp data/local_board_meetings/public/calendar.ics docs/calendar.ics && git add docs/index.html docs/calendar.ics data/local_board_meetings/source_registry.csv data/local_board_meetings/progress_log.md && git commit -m "Refresh local board meeting calendar" && git push origin main >> data/local_board_meetings/cron.log 2>&1
+17 8 * * * "/Users/adampeck/Documents/New project/etl/local_board_meetings/refresh_and_publish.sh" >> "/Users/adampeck/Documents/New project/data/local_board_meetings/cron.log" 2>&1
 ```
 
 ## Operating Notes
