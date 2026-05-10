@@ -166,7 +166,31 @@ class LocalBoardMeetingTests(unittest.TestCase):
             180,
             extraction_strategy="south_bay_sectioned_agendas",
         )
-        self.assertEqual([m.meeting_type for m in meetings], ["Executive Committee", "Board Meeting", "Committee"])
+        self.assertEqual([m.meeting_type for m in meetings], ["Executive Committee", "Board Meeting"])
+
+    def test_tulare_profile_excludes_program_evaluation_committee(self) -> None:
+        source = BoardSource(
+            board_id="tulare-county-wib",
+            board_name="Tulare County WIB",
+            local_area="Tulare County",
+            main_website="https://www.tularewib.org/",
+            meeting_schedule_url="https://www.tularewib.org/wibboard",
+            agenda_minutes_url="https://www.tularewib.org/wibboard",
+            executive_committee_url="https://www.tularewib.org/pec",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        html = "<p>May 4, 2026</p><p>Program & Evaluation Committee</p>"
+        meetings = extract_meetings(
+            source,
+            html,
+            "https://www.tularewib.org/pec",
+            date(2026, 5, 1),
+            180,
+            extraction_strategy="tulare_wib_board_only",
+        )
+        self.assertEqual(meetings, [])
 
     def test_workforce_alliance_profile_scopes_board_sections(self) -> None:
         source = BoardSource(

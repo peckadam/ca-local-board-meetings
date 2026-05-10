@@ -152,6 +152,10 @@ def extract_meetings(
         return extract_santa_cruz_wfscc_meetings(source, html, page_url, today, lookahead_days)
     if extraction_strategy == "event_detail_title":
         return extract_event_detail_title_meeting(source, html, page_url, today, lookahead_days)
+    if extraction_strategy == "tulare_wib_board_only":
+        if "/pec" in page_url.lower():
+            return []
+        return extract_meetings(source, html, page_url, today, lookahead_days, extraction_strategy="generic")
     if extraction_strategy == "alameda_acwdb":
         return extract_alameda_acwdb_meetings(source, html, page_url, today, lookahead_days)
     if extraction_strategy == "humboldt_civicengage":
@@ -247,12 +251,12 @@ def extract_south_bay_sectioned_meetings(
     soup = BeautifulSoup(html, "html.parser")
     lines = [line.strip() for line in soup.get_text("\n", strip=True).splitlines() if line.strip()]
     section_types = {
-        "BUSINESS, TECHNOLOGY & ECONOMIC DEVELOPMENT COMMITTEE": "Committee",
+        "BUSINESS, TECHNOLOGY & ECONOMIC DEVELOPMENT COMMITTEE": "",
         "SBWIB EXECUTIVE COMMITTEE": "Executive Committee",
         "SOUTH BAY WORKFORCE INVESTMENT BOARD": "Board Meeting",
-        "PERFORMANCE & EVALUATION COMMITTEE": "Committee",
-        "YOUTH DEVELOPMENT COUNCIL COMMITTEE": "Committee",
-        "ONE-STOP POLICY COMMITTEE": "Committee",
+        "PERFORMANCE & EVALUATION COMMITTEE": "",
+        "YOUTH DEVELOPMENT COUNCIL COMMITTEE": "",
+        "ONE-STOP POLICY COMMITTEE": "",
     }
     current_type = ""
     meetings: dict[str, Meeting] = {}

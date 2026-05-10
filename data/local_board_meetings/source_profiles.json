@@ -76,13 +76,23 @@
       "extraction_strategy": "south_bay_sectioned_agendas",
       "agenda_rules": {
         "source": "https://www.sbwib.org/2026-meeting-agendas",
-        "section_heading_required": true
+        "section_heading_required": true,
+        "publish_sections": [
+          "SBWIB EXECUTIVE COMMITTEE",
+          "SOUTH BAY WORKFORCE INVESTMENT BOARD"
+        ],
+        "exclude_sections": [
+          "BUSINESS, TECHNOLOGY & ECONOMIC DEVELOPMENT COMMITTEE",
+          "PERFORMANCE & EVALUATION COMMITTEE",
+          "YOUTH DEVELOPMENT COUNCIL COMMITTEE",
+          "ONE-STOP POLICY COMMITTEE"
+        ]
       },
       "known_traps": [
         "Dates on the page are grouped under headings; a date under Youth Development Council is not a full board meeting.",
         "The page title and nav repeat 'South Bay Workforce Investment Board', so parser must start inside the 2026 Meeting Agendas content area."
       ],
-      "verification_notes": "Audited 2026-05-09. Added section-aware extraction strategy."
+      "verification_notes": "Audited 2026-05-10. Section-aware parser publishes only SBWIB Executive Committee and South Bay Workforce Investment Board sections; other committees are documented but excluded."
     },
     {
       "board_id": "stanislaus-county-wdb",
@@ -114,7 +124,7 @@
       "board_id": "tulare-county-wib",
       "status": "audited",
       "cadence": "Board page publishes annual board meeting dates and month-labeled annual agenda PDF links. Program & Evaluation Committee page publishes committee dates separately.",
-      "extraction_strategy": "generic",
+      "extraction_strategy": "tulare_wib_board_only",
       "agenda_rules": {
         "board_source": "https://www.tularewib.org/wibboard",
         "committee_source": "https://www.tularewib.org/pec",
@@ -122,9 +132,10 @@
       },
       "known_traps": [
         "Employment Connection homepage is not the agenda source.",
-        "Wix PDF links may be labeled only by month under a year-specific agenda heading."
+        "Wix PDF links may be labeled only by month under a year-specific agenda heading.",
+        "Program & Evaluation Committee meetings are not full-board or executive-committee meetings and should not be published on this calendar."
       ],
-      "verification_notes": "Audited 2026-05-09. May 13, 2026 board agenda is linked as the May PDF under 2026 Board Agendas."
+      "verification_notes": "Audited 2026-05-10. Board page publishes full WIB meetings and agendas. Program & Evaluation Committee page is tracked as source context but excluded from the public board/executive calendar."
     },
     {
       "board_id": "workforce-alliance-north-bay",

@@ -58,8 +58,8 @@ This file is the operating memory for the meeting monitor. The automation should
 - Official source: `https://www.sbwib.org/2026-meeting-agendas`
 - Current structure: Annual page grouped by body/committee, including Business/Technology/Economic Development Committee, SBWIB Executive Committee, South Bay Workforce Investment Board, Performance & Evaluation Committee, Youth Development Council Committee, and One-Stop Policy Committee.
 - Cadence observed on 2026-05-09: full-board dates visible on the 2026 page were January 15, 2026 and April 16, 2026; Executive Committee dates included January 8, February 12, March 12, and April 9; Youth Development Council had May 5.
-- Known traps: dates inherit meaning from the nearest section heading. A Youth Development Council date must not become a full board meeting.
-- Automation rule: use the `south_bay_sectioned_agendas` strategy.
+- Known traps: dates inherit meaning from the nearest section heading. Youth Development Council, One-Stop Policy, Performance & Evaluation, and Business/Technology/Economic Development dates must not become public calendar events.
+- Automation rule: use the `south_bay_sectioned_agendas` strategy and publish only `SBWIB EXECUTIVE COMMITTEE` and `SOUTH BAY WORKFORCE INVESTMENT BOARD`.
 
 ### Stanislaus County WDB
 
@@ -72,12 +72,12 @@ This file is the operating memory for the meeting monitor. The automation should
 ### Tulare County WIB
 
 - Official board source: `https://www.tularewib.org/wibboard`
-- Official committee source: `https://www.tularewib.org/pec`
+- Official committee context source: `https://www.tularewib.org/pec`
 - Do not use: `https://employmentconnection.org/` as the meeting source.
 - Current structure: the board page publishes annual meeting dates and year-specific agenda sections whose PDF links may be labeled only by month.
 - Cadence observed on 2026-05-09: May 13, 2026 board meeting has a May agenda PDF posted; June 10, 2026 is listed with agenda not yet posted.
-- Known traps: Wix PDF URLs do not necessarily contain the word `agenda`; agenda semantics come from the surrounding `2026 Board Agendas` heading.
-- Automation rule: allow month-labeled PDF links when they are inside a year-specific agenda section.
+- Known traps: Wix PDF URLs do not necessarily contain the word `agenda`; agenda semantics come from the surrounding `2026 Board Agendas` heading. Program & Evaluation Committee meetings on `/pec` are not full-board or executive-committee meetings.
+- Automation rule: use `tulare_wib_board_only`; allow month-labeled PDF links on the board page and exclude `/pec` from the public board/executive calendar.
 
 ### Workforce Alliance North Bay
 
