@@ -371,6 +371,120 @@ class LocalBoardMeetingTests(unittest.TestCase):
             (date(2026, 5, 28), "Executive Committee", time(13, 0)),
         ])
 
+    def test_long_beach_profile_reads_scheduled_meetings_block(self) -> None:
+        source = BoardSource(
+            board_id="long-beach-win",
+            board_name="Long Beach WIN",
+            local_area="Long Beach",
+            main_website="https://www.longbeach.gov/edo/talent-workforce/workforce-development-board/",
+            meeting_schedule_url="https://www.longbeach.gov/edo/talent-workforce/workforce-development-board/",
+            agenda_minutes_url="",
+            executive_committee_url="",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        html = """
+        <p>Board member served from 2018-2023 and chair since 2024.</p>
+        <h3>2026 Scheduled Meetings:</h3>
+        <p>Thursday, June 4</p>
+        <p>9 - 11 a.m.</p>
+        <p>Long Beach Workforce Innovation Network</p>
+        <p>Adult Career Services Center</p>
+        <p>4811 Airport Plaza Dr. Ste 120</p>
+        <p>Thursday, August 6</p>
+        <p>9 - 11 a.m.</p>
+        <p>Adult Career Services Center</p>
+        <h3>Useful Links</h3>
+        """
+        meetings = extract_meetings(
+            source,
+            html,
+            source.meeting_schedule_url,
+            date(2026, 5, 9),
+            180,
+            extraction_strategy="long_beach_lbwin_schedule",
+        )
+        self.assertEqual([(m.meeting_date, m.meeting_type, m.start_time) for m in meetings], [
+            (date(2026, 6, 4), "Board Meeting", time(9, 0)),
+            (date(2026, 8, 6), "Board Meeting", time(9, 0)),
+        ])
+
+    def test_merced_profile_scopes_wdb_and_executive_rows(self) -> None:
+        source = BoardSource(
+            board_id="merced-county-wdb",
+            board_name="Merced County WDB",
+            local_area="Merced County",
+            main_website="https://worknetmerced.com/workforce-development",
+            meeting_schedule_url="https://worknetmerced.com/workforce-development",
+            agenda_minutes_url="https://worknetmerced.com/workforce-development",
+            executive_committee_url="",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        html = """
+        <p>Monday, May 11, 2026 (Rescheduled to Monday, June 8th)</p>
+        <p>Executive Committee Meeting</p>
+        <p>7:30am-8:30am</p>
+        <a href="/may-agenda.pdf">View Agenda</a>
+        <p>Thursday, June 26, 2026</p>
+        <p>WDB Meeting</p>
+        <p>12:00-1:30pm</p>
+        <p>203 State Highway 59 Suite B</p>
+        <a href="/june-agenda.pdf">View Agenda</a>
+        <p>Monday, June 16, 2026</p>
+        <p>Executive Committee Meeting</p>
+        <p>9:00 am - 10:00 am</p>
+        <p>1900 Airdrome Entry, Atwater, CA 95301</p>
+        <p>Dates</p><p>September 25</p>
+        <p>Workforce Development Board (WDB) ROSTER</p>
+        <p>June 7</p><p>Workforce Development Board Meeting</p>
+        """
+        meetings = extract_meetings(
+            source,
+            html,
+            source.meeting_schedule_url,
+            date(2026, 5, 9),
+            180,
+            extraction_strategy="merced_worknet",
+        )
+        self.assertEqual([(m.meeting_date, m.meeting_type, m.start_time) for m in meetings], [
+            (date(2026, 6, 8), "Executive Committee", time(7, 30)),
+            (date(2026, 6, 16), "Executive Committee", time(9, 0)),
+            (date(2026, 6, 26), "Board Meeting", time(12, 0)),
+        ])
+
+    def test_la_county_profile_excludes_finance_and_news_items(self) -> None:
+        source = BoardSource(
+            board_id="los-angeles-county-wdb",
+            board_name="Los Angeles County WDB",
+            local_area="Los Angeles County",
+            main_website="https://www.ajcc.lacounty.gov/wdb",
+            meeting_schedule_url="https://www.ajcc.lacounty.gov/wdb",
+            agenda_minutes_url="https://www.ajcc.lacounty.gov/wdb",
+            executive_committee_url="",
+            notes="test",
+            last_checked_at="",
+            confidence="medium",
+        )
+        html = """
+        <p>Jun 02 All Day Los Angeles County Workforce Development Board Finance Committee</p>
+        <p>March 20, Los Angeles County Workforce Development Board recordings of the Regular Quarterly meeting</p>
+        <p>July 16, 2026 10:00 AM Los Angeles County Workforce Development Board Regular Quarterly Meeting</p>
+        """
+        meetings = extract_meetings(
+            source,
+            html,
+            source.meeting_schedule_url,
+            date(2026, 5, 9),
+            180,
+            extraction_strategy="la_county_wdb_calendar",
+        )
+        self.assertEqual([(m.meeting_date, m.meeting_type) for m in meetings], [
+            (date(2026, 7, 16), "Board Meeting"),
+        ])
+
     def test_prunes_unseen_future_meetings_for_checked_board(self) -> None:
         conn = connect(__import__("pathlib").Path(":memory:"))
         seen_at = datetime(2026, 5, 9, tzinfo=timezone.utc)

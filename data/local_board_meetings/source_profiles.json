@@ -396,6 +396,105 @@
         "Youth Council of the Workforce Investment Board is a separate historical category and should not be published as board/executive."
       ],
       "verification_notes": "Audited 2026-05-10. Official page and Agenda Center sections verified; custom sectioned parser added."
+    },
+    {
+      "board_id": "kern-inyo-mono-wdb",
+      "status": "partially_audited",
+      "cadence": "Official WDB archive pages live under Employers Training Resource. Kern County BCC page states WDB meets no less than four times a year with time/place announced by chair or ETR. Full WDB agenda archive showed 2025 dates including February 19, May 28, September 24, and December 17; Executive Committee archive showed 2025 dates including February 6, May 15, September 11, and December 2. No current 2026 future meeting dates were visible in fetched HTML.",
+      "extraction_strategy": "generic",
+      "agenda_rules": {
+        "board": "https://www.employerstrainingresource.com/wdb/full-wdb-board",
+        "executive_committee": "https://www.employerstrainingresource.com/wdb/executive-committee",
+        "county_bcc": "https://itsapps.kerncounty.com/Iframed/CMS/BCC-new/BCCdetail?BccID=67"
+      },
+      "known_traps": [
+        "Old kern-inyo-mono.org domain does not resolve.",
+        "Americas Job Center page is a descriptive overview, not an agenda schedule.",
+        "Agenda archives currently expose historical PDF links but not future schedule rows."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Correct official archive pages identified; needs current 2026 schedule confirmation."
+    },
+    {
+      "board_id": "kings-county-wdb",
+      "status": "partially_audited",
+      "cadence": "County Boards & Commissions page identifies the Workforce Development Board and links Meetings, Contact, Calendar, and Website, but fetched HTML did not expose current WDB meeting dates or agendas. County Board of Supervisors agenda page is not the WDB source.",
+      "extraction_strategy": "generic",
+      "agenda_rules": {
+        "board_page": "https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board"
+      },
+      "known_traps": [
+        "kingsworkforce.org returned 403 to the fetcher.",
+        "Kings County Board of Supervisors Calendar, Agenda and Action Summary is not the WDB meeting source."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Official county WDB page found; agenda/schedule endpoint still needs discovery."
+    },
+    {
+      "board_id": "long-beach-win",
+      "status": "audited",
+      "cadence": "Long Beach Workforce Innovation Network Board page has a 2026 Scheduled Meetings block. Observed meetings: April 2, June 4, August 6, October 1, and December 3 from 9:00 to 11:00 AM at LBWIN Adult Career Services Center, 4811 Airport Plaza Dr. Ste 120.",
+      "extraction_strategy": "long_beach_lbwin_schedule",
+      "agenda_rules": {
+        "source": "https://www.longbeach.gov/edo/talent-workforce/workforce-development-board/",
+        "agenda_links_visible": false
+      },
+      "known_traps": [
+        "Old economicdevelopment/workforce-development URL redirects badly for urllib.",
+        "Board member biographies include many years and date-like text; only the Scheduled Meetings block should be parsed."
+      ],
+      "verification_notes": "Audited 2026-05-10. Current official URL and scheduled meeting block verified."
+    },
+    {
+      "board_id": "los-angeles-city-wdb",
+      "status": "partially_audited",
+      "cadence": "Current City of Los Angeles WDB site is wiblacity.org. Meeting Calendar & Agendas page embeds a NovusAgenda iframe and states agendas/minutes/reports from the past six months are shown there; older documents through January 2019 are searchable, and older than January 2019 are in archive. Fetched HTML did not expose meeting rows without iframe handling.",
+      "extraction_strategy": "generic",
+      "agenda_rules": {
+        "main": "https://www.wiblacity.org/",
+        "calendar": "https://www.wiblacity.org/index.php/calendar",
+        "archive": "https://www.wiblacity.org/index.php/calendar/archive-calendar"
+      },
+      "known_traps": [
+        "Old ewddlacity.com/index.php/wdb returns 404.",
+        "Calendar page requires NovusAgenda iframe handling; landing page program dates and newsletters should not be parsed as meetings."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Correct official WDB site and calendar page identified; parser still needs iframe/NovusAgenda support."
+    },
+    {
+      "board_id": "los-angeles-county-wdb",
+      "status": "partially_audited",
+      "cadence": "Current LA County WDB page lives on the AJCC site. The visible calendar exposed a June 2, 2026 Finance Committee item and news about a March 20, 2026 Regular Quarterly meeting recording; no future full board or executive committee meeting row was confirmed in fetched HTML.",
+      "extraction_strategy": "la_county_wdb_calendar",
+      "agenda_rules": {
+        "source": "https://www.ajcc.lacounty.gov/wdb",
+        "exclude": [
+          "Finance Committee",
+          "orientation",
+          "news/recording items"
+        ]
+      },
+      "known_traps": [
+        "Old wdb.lacounty.gov domain does not resolve.",
+        "Calendar includes committee and news items; Finance Committee should not be published as full board/executive."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Official AJCC WDB page identified; full board/executive future rows still need confirmation."
+    },
+    {
+      "board_id": "merced-county-wdb",
+      "status": "audited",
+      "cadence": "Worknet Merced Workforce Development Board page lists WDB and Executive Committee meeting rows with date, time, location, and View Agenda links. Page text also states Full Board meetings are held on the last Thursday of every quarter with adjustments as needed from 11:45 AM to 1:30 PM, and Executive Committee meetings are held on odd-numbered months on Mondays from 9:00 to 10:00 AM.",
+      "extraction_strategy": "merced_worknet",
+      "agenda_rules": {
+        "source": "https://worknetmerced.com/workforce-development",
+        "publish": [
+          "WDB meeting",
+          "Executive Committee Meeting"
+        ]
+      },
+      "known_traps": [
+        "Old workforce-merced.com domain does not resolve.",
+        "Roster and cadence sections contain dates that should not be published unless tied to a meeting row."
+      ],
+      "verification_notes": "Audited 2026-05-10. Current Worknet Merced page and meeting row structure verified."
     }
   ]
 }

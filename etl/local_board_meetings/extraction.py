@@ -156,6 +156,12 @@ def extract_meetings(
         return extract_humboldt_civicengage_meetings(source, html, page_url, today, lookahead_days)
     if extraction_strategy == "foothill_events":
         return extract_foothill_events(source, html, page_url, today, lookahead_days)
+    if extraction_strategy == "long_beach_lbwin_schedule":
+        return extract_long_beach_lbwin_schedule(source, html, page_url, today, lookahead_days)
+    if extraction_strategy == "merced_worknet":
+        return extract_merced_worknet_meetings(source, html, page_url, today, lookahead_days)
+    if extraction_strategy == "la_county_wdb_calendar":
+        return extract_la_county_wdb_calendar(source, html, page_url, today, lookahead_days)
     soup = BeautifulSoup(html, "html.parser")
     agenda_links = extract_agenda_links(html, page_url)
     text_blocks = _candidate_text_blocks(soup)
@@ -441,6 +447,137 @@ def extract_foothill_events(
     return sorted(meetings.values(), key=lambda m: (m.meeting_date, m.meeting_type))
 
 
+def extract_long_beach_lbwin_schedule(
+    source: BoardSource,
+    html: str,
+    page_url: str,
+    today: date,
+    lookahead_days: int,
+) -> list[Meeting]:
+    soup = BeautifulSoup(html, "html.parser")
+    lines = [line.strip() for line in soup.get_text("\n", strip=True).splitlines() if line.strip()]
+    schedule_year = _year_after_marker(lines, "Scheduled Meetings") or today.year
+    meetings: dict[str, Meeting] = {}
+    max_date = today + timedelta(days=lookahead_days)
+    in_schedule = False
+    for index, line in enumerate(lines):
+        if "scheduled meetings" in line.lower():
+            in_schedule = True
+            continue
+        if in_schedule and ("useful links" in line.lower() or "contact economic" in line.lower()):
+            break
+        if not in_schedule:
+            continue
+        meeting_date = _weekday_month_day_date(line, schedule_year)
+        if not meeting_date or meeting_date < today - timedelta(days=14) or meeting_date > max_date:
+            continue
+        nearby = " ".join(lines[index : index + 5])
+        meeting = Meeting(
+            board_id=source.board_id,
+            board_name=source.board_name,
+            meeting_type="Board Meeting",
+            meeting_date=meeting_date,
+            start_time=parse_time(nearby),
+            timezone="America/Los_Angeles",
+            location=_long_beach_location(lines[index + 2 : index + 6]),
+            virtual_url="",
+            source_page_url=page_url,
+            agenda_url="",
+            agenda_label="",
+            confidence_notes="Profiled Long Beach extraction: dates come only from the LBWIN scheduled meetings block, not board member biography text.",
+        )
+        meetings[meeting.stable_id] = meeting
+    return sorted(meetings.values(), key=lambda m: (m.meeting_date, m.meeting_type))
+
+
+def extract_merced_worknet_meetings(
+    source: BoardSource,
+    html: str,
+    page_url: str,
+    today: date,
+    lookahead_days: int,
+) -> list[Meeting]:
+    soup = BeautifulSoup(html, "html.parser")
+    lines = [line.strip() for line in soup.get_text("\n", strip=True).splitlines() if line.strip()]
+    agenda_links = extract_agenda_links(html, page_url)
+    meetings: dict[str, Meeting] = {}
+    max_date = today + timedelta(days=lookahead_days)
+    for index, line in enumerate(lines):
+        original_date = parse_date(line, today, lookahead_days) if re.search(r"\b20\d{2}\b", line) else None
+        meeting_date = _rescheduled_date(line) or original_date
+        if not meeting_date or meeting_date < today - timedelta(days=14) or meeting_date > max_date:
+            continue
+        label_text = " ".join(lines[index + 1 : index + 3])
+        lowered_label = label_text.lower()
+        nearby = " ".join(lines[index : index + 5])
+        if "executive" in lowered_label:
+            meeting_type = "Executive Committee"
+        elif "wdb meeting" in lowered_label or "workforce development board" in lowered_label:
+            meeting_type = "Board Meeting"
+        else:
+            continue
+        if any(term in lowered_label for term in ("roster", "for more information", "board members")):
+            continue
+        linked_agenda = best_agenda_for_date(agenda_links, meeting_date)
+        if not linked_agenda and original_date and original_date != meeting_date:
+            linked_agenda = best_agenda_for_date(agenda_links, original_date)
+        meeting = Meeting(
+            board_id=source.board_id,
+            board_name=source.board_name,
+            meeting_type=meeting_type,
+            meeting_date=meeting_date,
+            start_time=parse_time(nearby),
+            timezone="America/Los_Angeles",
+            location=_first_address(lines[index + 2 : index + 7]),
+            virtual_url=infer_virtual_url(nearby),
+            source_page_url=page_url,
+            agenda_url=linked_agenda.url if linked_agenda else "",
+            agenda_label=linked_agenda.label if linked_agenda else "",
+            confidence_notes="Profiled Merced extraction: only rows labeled WDB meeting or Executive Committee Meeting are published; roster and cadence text are ignored unless date-labeled as a meeting row.",
+        )
+        meetings[meeting.stable_id] = meeting
+    return sorted(meetings.values(), key=lambda m: (m.meeting_date, m.meeting_type))
+
+
+def extract_la_county_wdb_calendar(
+    source: BoardSource,
+    html: str,
+    page_url: str,
+    today: date,
+    lookahead_days: int,
+) -> list[Meeting]:
+    soup = BeautifulSoup(html, "html.parser")
+    text = soup.get_text("\n", strip=True)
+    meetings: dict[str, Meeting] = {}
+    max_date = today + timedelta(days=lookahead_days)
+    for line in [line.strip() for line in text.splitlines() if line.strip()]:
+        lowered = line.lower()
+        if "los angeles county workforce development board" not in lowered:
+            continue
+        if any(term in lowered for term in ("finance", "orientation", "news", "recording", "youth")):
+            continue
+        meeting_date = parse_date(line, today, lookahead_days)
+        if not meeting_date or meeting_date < today - timedelta(days=14) or meeting_date > max_date:
+            continue
+        meeting_type = "Executive Committee" if "executive" in lowered else "Board Meeting"
+        meeting = Meeting(
+            board_id=source.board_id,
+            board_name=source.board_name,
+            meeting_type=meeting_type,
+            meeting_date=meeting_date,
+            start_time=parse_time(line),
+            timezone="America/Los_Angeles",
+            location="",
+            virtual_url="",
+            source_page_url=page_url,
+            agenda_url="",
+            agenda_label="",
+            confidence_notes="Profiled LA County extraction: only full Workforce Development Board or Executive Committee calendar entries are published; Finance, orientation, and news items are excluded.",
+        )
+        meetings[meeting.stable_id] = meeting
+    return sorted(meetings.values(), key=lambda m: (m.meeting_date, m.meeting_type))
+
+
 def infer_meeting_type(text: str) -> str:
     lowered = text.lower()
     if "executive" in lowered:
@@ -472,6 +609,46 @@ def _nearby_location(anchor) -> str:
         if line.lower().startswith("location:"):
             return line.split(":", 1)[1].strip()
     return ""
+
+
+def _year_after_marker(lines: list[str], marker: str) -> int | None:
+    marker_lower = marker.lower()
+    for line in lines:
+        if marker_lower not in line.lower():
+            continue
+        match = re.search(r"\b(20\d{2})\b", line)
+        if match:
+            return int(match.group(1))
+    return None
+
+
+def _weekday_month_day_date(text: str, year: int) -> date | None:
+    match = re.search(rf"\b(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday),?\s+({MONTH_NAMES})\.?\s+(\d{{1,2}})\b", text, re.I)
+    if not match:
+        return None
+    return date(year, _month_number(match.group(1)), int(match.group(2)))
+
+
+def _long_beach_location(lines: list[str]) -> str:
+    useful = [line for line in lines if not parse_time(line) and not _weekday_month_day_date(line, 2000)]
+    return ", ".join(useful[:3])
+
+
+def _first_address(lines: list[str]) -> str:
+    for line in lines:
+        if re.search(r"\b\d{2,6}\s+\w+", line):
+            return line
+    return ""
+
+
+def _rescheduled_date(text: str) -> date | None:
+    original_year = re.search(r"\b(20\d{2})\b", text)
+    if not original_year or "rescheduled to" not in text.lower():
+        return None
+    match = re.search(rf"rescheduled to\s+(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday),?\s+({MONTH_NAMES})\.?\s+(\d{{1,2}})(?:st|nd|rd|th)?", text, re.I)
+    if not match:
+        return None
+    return date(int(original_year.group(1)), _month_number(match.group(1)), int(match.group(2)))
 
 
 def best_agenda_for_date(links: Iterable[AgendaLink], meeting_date: date) -> Optional[AgendaLink]:

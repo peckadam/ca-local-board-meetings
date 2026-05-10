@@ -133,6 +133,47 @@ These sources have official endpoints and known traps documented, but still need
 - Known traps: old `fresno-ca-wdb.com` domain no longer resolves. Governance page content should not be treated as a schedule.
 - Automation rule: keep as medium confidence until the agenda/schedule endpoint is found.
 
+### Kern/Inyo/Mono WDB
+
+- Official board source: `https://www.employerstrainingresource.com/wdb/full-wdb-board`
+- Official executive source: `https://www.employerstrainingresource.com/wdb/executive-committee`
+- Current structure: Employers Training Resource hosts archive pages for Full WDB Board and Executive Committee agendas; county BCC page describes the board and says it meets at least four times per year.
+- Cadence observed on 2026-05-10: historical 2025 full-board dates included February 19, May 28, September 24, and December 17; executive dates included February 6, May 15, September 11, and December 2. No current 2026 future date row was visible in fetched HTML.
+- Known traps: old `kern-inyo-mono.org` domain no longer resolves. Americas Job Center overview is descriptive, not a schedule. The ETR pages returned 403 to the automation during validation.
+- Automation rule: keep as medium confidence and human-review blocked until the fetcher can reliably access the official archive pages or another official schedule source is found.
+
+### Kings County WDB
+
+- Official source: `https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board`
+- Current structure: county Boards & Commissions page identifies the WDB and links meetings/contact/calendar/website controls, but fetched HTML did not expose WDB dates or agenda files.
+- Cadence observed on 2026-05-10: no current meeting cadence was confirmed.
+- Known traps: `kingsworkforce.org` returned 403; Board of Supervisors agenda pages are not WDB meeting sources.
+- Automation rule: keep as medium confidence until a fetchable official agenda/schedule endpoint is found.
+
+### Los Angeles City WDB
+
+- Official source: `https://www.wiblacity.org/index.php/calendar`
+- Current structure: Meeting Calendar & Agendas page embeds a NovusAgenda iframe and says agendas/minutes/reports from the past six months are available there; older documents are split between searchable and archive pages.
+- Cadence observed on 2026-05-10: fetched HTML did not expose meeting rows without iframe/NovusAgenda handling.
+- Known traps: old `ewddlacity.com/index.php/wdb` URL returns 404. Landing pages and newsletter/program dates should not be parsed as board meetings.
+- Automation rule: needs iframe/NovusAgenda support before raising confidence.
+
+### Los Angeles County WDB
+
+- Official source: `https://www.ajcc.lacounty.gov/wdb`
+- Current structure: AJCC WDB page has visible calendar and news items; calendar can include committee-specific entries.
+- Cadence observed on 2026-05-10: visible item found for June 2, 2026 Finance Committee; news item referenced a March 20, 2026 Regular Quarterly meeting recording. No future full board or executive committee row was confirmed.
+- Known traps: old `wdb.lacounty.gov` domain does not resolve. Finance Committee, orientation, and recording/news rows must not be published as full board/executive meetings. The AJCC page returned 403 to the automation during validation.
+- Automation rule: use `la_county_wdb_calendar` and publish only full WDB or Executive Committee entries.
+
+### Merced County WDB
+
+- Official source: `https://worknetmerced.com/workforce-development`
+- Current structure: Worknet Merced page lists WDB and Executive Committee rows with dates, times, locations, and agenda links; a side card lists general cadence/dates.
+- Cadence observed on 2026-05-10: May 11, 2026 Executive Committee was marked rescheduled to June 8 with agenda link; side card says full board meets last Thursday of each quarter and Executive Committee meets odd-numbered months on Mondays.
+- Known traps: old `workforce-merced.com` domain does not resolve. Historical no-year rows such as `June 7` must not be projected into the current year.
+- Automation rule: use `merced_worknet`; require explicit-year meeting rows, except for same-row rescheduled dates.
+
 ### Imperial County WDB
 
 - Official source: `https://www.ivworkforce.com/about/meetings`
@@ -199,16 +240,18 @@ These sources have official endpoints and known traps documented, but still need
 - Known traps: stale 2024 Executive Committee PDFs remain findable and must not be treated as current meeting endpoints.
 - Automation rule: keep as medium confidence until current Board of Directors cadence and executive committee handling are confirmed.
 
+### Long Beach WIN
+
+- Official source: `https://www.longbeach.gov/edo/talent-workforce/workforce-development-board/`
+- Current structure: LBWIN Board page has a `2026 Scheduled Meetings` block.
+- Cadence observed on 2026-05-10: April 2, June 4, August 6, October 1, and December 3 from 9:00 to 11:00 AM at LBWIN Adult Career Services Center.
+- Known traps: old `economicdevelopment/workforce-development` URL redirects badly for urllib. Board member biographies include date-like text.
+- Automation rule: use `long_beach_lbwin_schedule`; parse only the scheduled meetings block.
+
 ## Remaining Audit Queue
 
 These sources are still `medium` until manually profiled. Each needs the same treatment: official endpoint, cadence, agenda source, committee handling, stale-PDF traps, and extraction strategy.
 
-- Kern/Inyo/Mono WDB
-- Kings County WDB
-- Long Beach WIN
-- Los Angeles City WDB
-- Los Angeles County WDB
-- Merced County WDB
 - Monterey County WDB
 - North Central Counties WDB
 - Oakland WDB

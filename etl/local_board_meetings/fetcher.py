@@ -10,7 +10,7 @@ from dataclasses import dataclass
 from functools import lru_cache
 
 LOGGER = logging.getLogger(__name__)
-USER_AGENT = "CWA-local-board-meeting-monitor/0.1 (+https://calworkforce.org)"
+USER_AGENT = "Mozilla/5.0 (compatible; CWA-local-board-meeting-monitor/0.1; +https://calworkforce.org)"
 
 
 @dataclass(frozen=True)

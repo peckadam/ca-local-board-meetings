@@ -159,3 +159,52 @@ Moved Permanently
 - Missing agendas within 72 hours: 0
 - Failures requiring human review: 0
 
+## 2026-05-10T02:10:20.176088+00:00 (dry-run)
+
+- Boards checked: 6
+- Meetings found: 5
+- Missing agendas within 72 hours: 0
+- Failures requiring human review: 5
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/full-wdb-board - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/executive-committee - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/about-the-board - HTTP Error 403: Forbidden
+- Review: Kings County WDB - https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Los Angeles County WDB - https://www.ajcc.lacounty.gov/wdb - HTTP Error 403: Forbidden
+
+## 2026-05-10T02:12:25.257401+00:00 (dry-run)
+
+- Boards checked: 6
+- Meetings found: 0
+- Missing agendas within 72 hours: 0
+- Failures requiring human review: 6
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/full-wdb-board - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/executive-committee - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/about-the-board - HTTP Error 403: Forbidden
+- Review: Kings County WDB - https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Los Angeles County WDB - https://www.ajcc.lacounty.gov/wdb - HTTP Error 403: Forbidden
+- Review: Merced County WDB - https://worknetmerced.com/assets/pdf/WDB-Executive-Mtg-Agenda 1-27-25.pdf - URL can't contain control characters. '/assets/pdf/WDB-Executive-Mtg-Agenda 1-27-25.pdf' (found at least ' ')
+
+## 2026-05-10T02:13:38.924376+00:00 (dry-run)
+
+- Boards checked: 6
+- Meetings found: 4
+- Missing agendas within 72 hours: 0
+- Failures requiring human review: 5
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/full-wdb-board - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/executive-committee - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/about-the-board - HTTP Error 403: Forbidden
+- Review: Kings County WDB - https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Los Angeles County WDB - https://www.ajcc.lacounty.gov/wdb - HTTP Error 403: Forbidden
+
+## 2026-05-10T02:14:09.068162+00:00 (dry-run)
+
+- Boards checked: 6
+- Meetings found: 4
+- Missing agendas within 72 hours: 0
+- Failures requiring human review: 5
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/full-wdb-board - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/executive-committee - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/about-the-board - HTTP Error 403: Forbidden
+- Review: Kings County WDB - https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Los Angeles County WDB - https://www.ajcc.lacounty.gov/wdb - HTTP Error 403: Forbidden
+

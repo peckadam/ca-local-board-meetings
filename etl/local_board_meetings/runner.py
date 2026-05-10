@@ -154,13 +154,14 @@ def check_source(source: BoardSource, lookahead_days: int, respect_robots: bool,
                         extraction_strategy=profile.extraction_strategy if profile else "generic",
                     )
                 )
-            candidates = find_candidate_pages(page.text, page.url)
-            if candidates["meeting"]:
-                candidate_updates["meeting_schedule_url"] = candidates["meeting"][0]
-            if candidates["agenda"]:
-                candidate_updates["agenda_minutes_url"] = candidates["agenda"][0]
-            if candidates["executive"]:
-                candidate_updates["executive_committee_url"] = candidates["executive"][0]
+            if not profile or profile.status == "unaudited":
+                candidates = find_candidate_pages(page.text, page.url)
+                if candidates["meeting"]:
+                    candidate_updates["meeting_schedule_url"] = candidates["meeting"][0]
+                if candidates["agenda"]:
+                    candidate_updates["agenda_minutes_url"] = candidates["agenda"][0]
+                if candidates["executive"]:
+                    candidate_updates["executive_committee_url"] = candidates["executive"][0]
         except Exception as exc:
             failures.append({"board_name": source.board_name, "url": url, "error": str(exc)})
     data = asdict(mark_checked(source, notes=notes, confidence=confidence))
