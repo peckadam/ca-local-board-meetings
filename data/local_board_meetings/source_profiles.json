@@ -180,6 +180,117 @@
         "Visible WDB page agenda notice was from June 18, 2025 and should not be published as current."
       ],
       "verification_notes": "Partially audited 2026-05-09. WDB page verified as official, but current meeting cadence requires manual follow-up or another source."
+    },
+    {
+      "board_id": "imperial-county-wdb",
+      "status": "partially_audited",
+      "cadence": "Meeting Calendar page links to individual event pages. Current known future detail page is May 27, 2026 Executive Committee Meeting at 11:00 AM. Full board cadence still needs confirmation from official event listing or future detail pages.",
+      "extraction_strategy": "event_detail_title",
+      "agenda_rules": {
+        "source": "https://www.ivworkforce.com/about/meetings",
+        "detail_pages_required": true
+      },
+      "known_traps": [
+        "Homepage event summaries can mention multiple meeting labels and should not be parsed as source meetings.",
+        "Event detail title must determine Board vs Executive Committee."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Detail page parser added; full board schedule still requires follow-up."
+    },
+    {
+      "board_id": "san-luis-obispo-county-wdb",
+      "status": "partially_audited",
+      "cadence": "Board page explains WDB and committees. Executive Committee page states it meets second Wednesday of non-WDB meeting months (January, March, April, June, July, September, October, December) at 8:30 AM. Individual meeting detail page observed for June 10, 2026 Executive Committee at 8:30 AM. Full WDB cadence still needs confirmation.",
+      "extraction_strategy": "event_detail_title",
+      "agenda_rules": {
+        "board_page": "https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/board",
+        "executive_committee_page": "https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/board/executive-committee",
+        "detail_pages_required": true
+      },
+      "known_traps": [
+        "Main Workforce Development Board landing page includes training/job-center announcements with dates that are not board meetings.",
+        "Executive Committee detail pages can be misclassified by generic text extraction unless title-scoped."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Registry points to board/committee/detail pages; main landing page should not be parsed for meetings."
+    },
+    {
+      "board_id": "selaco-wdb",
+      "status": "partially_audited",
+      "cadence": "Agendas page is grouped by Board of Directors, Policy Board, and Special Ad-Hoc Committees. 2026 visible links include Policy Board April 21, 2026 and Special Ad-Hoc Lease Committee February 10, 2026. Full Board of Directors upcoming cadence still needs confirmation.",
+      "extraction_strategy": "generic",
+      "agenda_rules": {
+        "source": "https://www.selacowdb.com/agendas/",
+        "section_heading_required": true
+      },
+      "known_traps": [
+        "Special Ad-Hoc Committee and historical Executive Committee PDFs appear on the same page as board agendas.",
+        "The registry previously pointed executive_committee_url directly at a 2024 PDF; do not use stale PDF as live endpoint."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Keep agenda page as source; avoid stale PDF endpoint."
+    },
+    {
+      "board_id": "santa-clara-county-work2future",
+      "status": "partially_audited",
+      "cadence": "Board + Committees page lists event cards for Board, Executive Committee, Youth Committee, and closed holiday events. Observed 2026 Board Meeting April 14 and Executive Committee April 2; no future post-May 9 board/executive meetings visible in fetched card list.",
+      "extraction_strategy": "event_detail_title",
+      "agenda_rules": {
+        "source": "https://www.work2future.org/board/",
+        "detail_pages_required": true,
+        "exclude": [
+          "closed holidays",
+          "youth committee unless explicitly desired"
+        ]
+      },
+      "known_traps": [
+        "Event cards include holidays and Youth Committee meetings alongside board and executive committee meetings.",
+        "Agenda links live on individual event detail pages, not reliably in the board landing page card list."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Detail event parser can handle individual Board and Executive Committee pages."
+    },
+    {
+      "board_id": "sacramento-seta",
+      "status": "partially_audited",
+      "cadence": "Board Operations page separates Governing Board, Community Action Board, Policy Council, Sacramento Works Inc., and committees. Agendas page has a Sacramento Works section but fetched HTML did not expose current dated meeting rows.",
+      "extraction_strategy": "generic",
+      "agenda_rules": {
+        "board_operations": "https://www.seta.net/resources/board-operations/",
+        "agendas": "https://www.seta.net/resources/agendas/"
+      },
+      "known_traps": [
+        "SETA has multiple boards; Sacramento Works Inc. is the relevant workforce board section, not Governing Board or Head Start boards.",
+        "Agenda links may be embedded or hidden in accordions/JS and require further parser work."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Correct relevant section identified; current cadence still needs extraction."
+    },
+    {
+      "board_id": "northern-rural-training-nortec",
+      "status": "partially_audited",
+      "cadence": "Agendas page is an annual archive with 2026 and historical accordion headings. Existing registry also has a 2025-2028 partner meeting notice PDF. Fetched HTML did not expose future dated meeting rows to generic extraction.",
+      "extraction_strategy": "generic",
+      "agenda_rules": {
+        "agendas": "https://www.ncen.org/index.php/meetings/agendas",
+        "meeting_notice_pdf": "https://www.ncen.org/images/documents/Mous/2025-2028/Notice%20of%20Partner%20Meetings.pdf"
+      },
+      "known_traps": [
+        "Historical agenda PDFs from many years are on the same page.",
+        "Old Executive Committee PDFs should not be used as current executive source."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Needs PDF schedule parsing or accordion-specific extraction."
+    },
+    {
+      "board_id": "mother-lode-workforce-development-board",
+      "status": "partially_audited",
+      "cadence": "Agendas & Minutes page is a Wix archive of agenda/minute PDFs. Existing registry includes a likely schedule PDF plus agenda archive, but fetched HTML did not expose current meeting dates to generic extraction.",
+      "extraction_strategy": "generic",
+      "agenda_rules": {
+        "main": "https://www.mljt.org/wdb",
+        "agendas": "https://www.mljt.org/agendas-and-minutes",
+        "schedule_pdf": "https://www.mljt.org/_files/ugd/754937_11c6509bdef5406d90073f4dac9d923c.pdf"
+      },
+      "known_traps": [
+        "Wix PDF links are often unlabeled beyond AGENDA/MINUTES and require surrounding context or PDF parsing.",
+        "Many historical agenda PDFs are present."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Needs PDF schedule extraction and Wix context handling."
     }
   ]
 }

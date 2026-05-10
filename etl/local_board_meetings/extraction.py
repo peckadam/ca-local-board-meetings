@@ -141,6 +141,8 @@ def extract_meetings(
         return extract_workforce_alliance_north_bay_meetings(source, html, page_url, today, lookahead_days)
     if extraction_strategy == "santa_cruz_wfscc":
         return extract_santa_cruz_wfscc_meetings(source, html, page_url, today, lookahead_days)
+    if extraction_strategy == "event_detail_title":
+        return extract_event_detail_title_meeting(source, html, page_url, today, lookahead_days)
     soup = BeautifulSoup(html, "html.parser")
     agenda_links = extract_agenda_links(html, page_url)
     text_blocks = _candidate_text_blocks(soup)
@@ -289,6 +291,40 @@ def extract_santa_cruz_wfscc_meetings(
     return _extract_sectioned_line_table_meetings(source, html, page_url, today, lookahead_days, sections)
 
 
+def extract_event_detail_title_meeting(
+    source: BoardSource,
+    html: str,
+    page_url: str,
+    today: date,
+    lookahead_days: int,
+) -> list[Meeting]:
+    soup = BeautifulSoup(html, "html.parser")
+    title_text = _page_title_or_heading(soup)
+    body_text = soup.get_text("\n", strip=True)
+    meeting_date = parse_date(body_text, today, lookahead_days)
+    if not meeting_date or meeting_date < today - timedelta(days=14) or meeting_date > today + timedelta(days=lookahead_days):
+        return []
+    if _looks_like_nonmeeting_event(title_text):
+        return []
+    meeting_type = infer_meeting_type(title_text)
+    agenda = best_agenda_for_date(extract_agenda_links(html, page_url), meeting_date)
+    meeting = Meeting(
+        board_id=source.board_id,
+        board_name=source.board_name,
+        meeting_type=meeting_type,
+        meeting_date=meeting_date,
+        start_time=parse_time(body_text),
+        timezone="America/Los_Angeles",
+        location=infer_location(body_text),
+        virtual_url=infer_virtual_url(body_text),
+        source_page_url=page_url,
+        agenda_url=agenda.url if agenda else "",
+        agenda_label=agenda.label if agenda else "",
+        confidence_notes="Profiled event-detail extraction: meeting type is inferred from the event title rather than surrounding page text.",
+    )
+    return [meeting]
+
+
 def infer_meeting_type(text: str) -> str:
     lowered = text.lower()
     if "executive" in lowered:
@@ -418,6 +454,46 @@ def _extract_sectioned_line_table_meetings(
             )
             meetings[meeting.stable_id] = meeting
     return sorted(meetings.values(), key=lambda m: (m.meeting_date, m.meeting_type))
+
+
+def _page_title_or_heading(soup: BeautifulSoup) -> str:
+    candidates: list[str] = []
+    for selector in ["h1", "h2", "h3", "title"]:
+        for node in soup.find_all(selector):
+            text = node.get_text(" ", strip=True)
+            if text:
+                candidates.append(text)
+    ranked = sorted(((_meeting_title_score(text), text) for text in candidates), reverse=True)
+    if ranked and ranked[0][0] > 0:
+        return ranked[0][1]
+    if candidates:
+        return candidates[0]
+    return ""
+
+
+def _meeting_title_score(text: str) -> int:
+    lowered = text.lower()
+    score = 0
+    if "executive" in lowered:
+        score += 6
+    if "committee meeting" in lowered:
+        score += 5
+    elif "committee" in lowered:
+        score += 3
+    if "board meeting" in lowered:
+        score += 5
+    elif "board" in lowered:
+        score += 2
+    if "meeting" in lowered:
+        score += 2
+    if "calendar" in lowered:
+        score -= 3
+    return score
+
+
+def _looks_like_nonmeeting_event(text: str) -> bool:
+    lowered = text.lower()
+    return any(term in lowered for term in ("closed", "holiday", "job fair", "workshop", "training"))
 
 
 def _lines_between_markers(lines: list[str], start: str, end: str) -> list[str]:

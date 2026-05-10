@@ -240,6 +240,38 @@ class LocalBoardMeetingTests(unittest.TestCase):
             (date(2026, 5, 20), "Board Meeting"),
         ])
 
+    def test_event_detail_title_sets_meeting_type(self) -> None:
+        source = BoardSource(
+            board_id="imperial-county-wdb",
+            board_name="Imperial County WDB",
+            local_area="Imperial County",
+            main_website="https://example.gov",
+            meeting_schedule_url="https://example.gov/event",
+            agenda_minutes_url="https://example.gov/event",
+            executive_committee_url="https://example.gov/event",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        html = """
+        <title>Executive Committee Meeting | Example</title>
+        <h1>Meeting Calendar</h1>
+        <h1>Executive Committee Meeting</h1>
+        <p>Date: May 27, 2026 11:00 AM</p>
+        <a href="/agenda-05-27-2026.pdf">Agenda</a>
+        """
+        meetings = extract_meetings(
+            source,
+            html,
+            "https://example.gov/event",
+            date(2026, 5, 9),
+            180,
+            extraction_strategy="event_detail_title",
+        )
+        self.assertEqual(len(meetings), 1)
+        self.assertEqual(meetings[0].meeting_type, "Executive Committee")
+        self.assertEqual(meetings[0].start_time, time(11, 0))
+
     def test_prunes_unseen_future_meetings_for_checked_board(self) -> None:
         conn = connect(__import__("pathlib").Path(":memory:"))
         seen_at = datetime(2026, 5, 9, tzinfo=timezone.utc)

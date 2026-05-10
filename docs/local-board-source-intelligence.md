@@ -87,6 +87,76 @@ This file is the operating memory for the meeting monitor. The automation should
 - Known traps: Governing Board meetings appear before the Regional WDB section and should not be published as local WDB meetings. Canceled rows are interspersed with active rows. Historical agenda links are numerous.
 - Automation rule: use the `workforce_alliance_north_bay` strategy and only publish Regional WDB and Regional WDB Executive Committee sections.
 
+## Partially Audited Sources
+
+These sources have official endpoints and known traps documented, but still need either future-date confirmation, a custom parser, or PDF/JavaScript handling before they should be promoted to `high`.
+
+### Imperial County WDB
+
+- Official source: `https://www.ivworkforce.com/about/meetings`
+- Current structure: Meeting Calendar lists event-detail pages; known detail page is `https://www.ivworkforce.com/about/meetings/may-27-2026-executive-committee-meeting`.
+- Cadence observed on 2026-05-09: May 27, 2026 Executive Committee meeting at 11:00 AM.
+- Known traps: the home page and general site summaries can contain workforce-program dates that are not board meetings. Meeting type is clearest from the event-detail page title.
+- Automation rule: use `event_detail_title` for event detail URLs and keep the calendar page as the official discovery surface.
+
+### Madera County WDB
+
+- Official source: `https://maderaworkforce.com/wdb`
+- Current structure: WDB page contains a Board Meetings area and agenda/minutes links.
+- Cadence observed on 2026-05-09: fetched HTML showed a stale June 18, 2025 special meeting agenda but no current 2026 schedule.
+- Known traps: homepage announcements and job-fair dates are not board meetings; stale agenda notices can remain visible.
+- Automation rule: keep as medium confidence until a current schedule or agenda page is located.
+
+### Mother Lode Workforce Development Board
+
+- Official source: `https://www.mljt.org/agendas-and-minutes`
+- Current structure: Wix agendas/minutes page exposes many PDF agenda links; separate schedule PDF candidate is present in the registry.
+- Cadence observed on 2026-05-09: no reliable future meeting row was extracted from fetched HTML.
+- Known traps: Wix page markup is noisy and PDF labels are not enough to infer current future meetings without schedule context.
+- Automation rule: needs PDF schedule extraction or a Wix-aware parser before publishing future meetings.
+
+### Northern Rural Training / NoRTEC
+
+- Official source: `https://www.ncen.org/index.php/meetings/agendas`
+- Current structure: agendas archive grouped by year; partner meeting notice PDF candidate is present in the registry.
+- Cadence observed on 2026-05-09: no current future meeting row was exposed by generic HTML extraction.
+- Known traps: old executive committee PDFs and partner-meeting notices can look relevant but may not be the current local board schedule.
+- Automation rule: needs archive/PDF parsing before raising confidence.
+
+### Sacramento SETA
+
+- Official source: `https://www.seta.net/resources/board-operations/`
+- Agenda source: `https://www.seta.net/resources/agendas/`
+- Current structure: Board Operations separates Governing Board, Community Action Board, Policy Council, Sacramento Works Inc., and committees; Sacramento Works Inc. is the workforce-board body.
+- Cadence observed on 2026-05-09: fetched agenda page showed a Sacramento Works section but no current dated meeting rows available to generic extraction.
+- Known traps: SETA hosts multiple boards; Governing Board and Head Start/Policy Council meetings are not local workforce board meetings.
+- Automation rule: scope to Sacramento Works Inc. only; needs section-specific parsing once dated rows are visible.
+
+### San Luis Obispo County WDB
+
+- Official board source: `https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/board`
+- Official executive source: `https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/board/executive-committee`
+- Current structure: board/committee pages describe bodies; individual meeting detail pages carry date, time, location, and agenda links.
+- Cadence observed on 2026-05-09: Executive Committee meets on the second Wednesday of non-WDB months (January, March, April, June, July, September, October, December) at 8:30 AM; detail page observed for June 10, 2026 at 8:30 AM.
+- Known traps: the WDB landing page has training and job-center announcements that can look like meeting dates.
+- Automation rule: do not parse the landing page; use event detail pages and infer meeting type from the detail title.
+
+### Santa Clara County work2future
+
+- Official source: `https://www.work2future.org/board/`
+- Current structure: Board + Committees page lists event cards for board, executive committee, youth committee, and closed holidays; agendas and packets are on event-detail pages.
+- Cadence observed on 2026-05-09: detail pages were visible for April 14, 2026 Board and April 2, 2026 Executive Committee; no future post-May 9 board or executive meeting was confirmed in fetched HTML.
+- Known traps: holiday closures and youth committee events share the same calendar surface. Agenda links may be placeholders on some detail pages.
+- Automation rule: exclude closed holidays and youth committee events; use event detail title only when the detail page is clearly a board or executive committee meeting.
+
+### SELACO WDB
+
+- Official source: `https://www.selacowdb.com/agendas/`
+- Current structure: agendas page is grouped by Board of Directors, Policy Board, and Special Ad-Hoc Committees.
+- Cadence observed on 2026-05-09: 2026 visible agenda links included April 21 Policy Board and February 10 Special Ad-Hoc Lease Committee; no future full-board or executive meeting was confirmed.
+- Known traps: stale 2024 Executive Committee PDFs remain findable and must not be treated as current meeting endpoints.
+- Automation rule: keep as medium confidence until current Board of Directors cadence and executive committee handling are confirmed.
+
 ## Remaining Audit Queue
 
 These sources are still `medium` until manually profiled. Each needs the same treatment: official endpoint, cadence, agenda source, committee handling, stale-PDF traps, and extraction strategy.
@@ -96,32 +166,24 @@ These sources are still `medium` until manually profiled. Each needs the same tr
 - Foothill WDB
 - Fresno Regional WDB
 - Humboldt County WDB
-- Imperial County WDB
 - Kern/Inyo/Mono WDB
 - Kings County WDB
 - Long Beach WIN
 - Los Angeles City WDB
 - Los Angeles County WDB
-- Madera County WDB (partially audited: WDB page verified, but no current 2026 schedule visible in fetched HTML)
 - Merced County WDB
 - Monterey County WDB
-- Mother Lode Workforce Development Board
 - North Central Counties WDB
-- Northern Rural Training / NoRTEC
 - Oakland WDB
 - Richmond WDB
 - Riverside County WDB
-- Sacramento SETA
 - San Benito County WDB
 - San Bernardino County WDB
 - San Diego Workforce Partnership
 - San Francisco OEWD
 - San Joaquin County WorkNet
-- San Luis Obispo County WDB
 - Santa Ana WDB
 - Santa Barbara County WDB
-- Santa Clara work2future
-- SELACO WDB
 - Solano County WDB
 - Sonoma County WDB
 - Ventura County WDB
