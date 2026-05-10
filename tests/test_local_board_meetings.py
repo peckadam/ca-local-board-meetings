@@ -485,6 +485,73 @@ class LocalBoardMeetingTests(unittest.TestCase):
             (date(2026, 7, 16), "Board Meeting"),
         ])
 
+    def test_nccc_profile_scopes_2026_wdb_section(self) -> None:
+        source = BoardSource(
+            board_id="north-central-counties-nccc",
+            board_name="North Central Counties (NCCC)",
+            local_area="North Central Counties",
+            main_website="https://www.northcentralcounties.com/",
+            meeting_schedule_url="https://www.northcentralcounties.com/nccc-workforce-development-board",
+            agenda_minutes_url="https://www.northcentralcounties.com/nccc-workforce-development-board",
+            executive_committee_url="",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        html = """
+        <h2>2026 Workforce Development Board Meetings</h2>
+        <p>February 19, 2026</p><a href="/feb-agenda.pdf">Special Meeting Agenda</a>
+        <p>May 21, 2026</p>
+        <p>August 20, 2026</p>
+        <h2>2025 Workforce Development Board Meetings</h2>
+        <p>November 6, 2025</p>
+        """
+        meetings = extract_meetings(
+            source,
+            html,
+            source.meeting_schedule_url,
+            date(2026, 5, 9),
+            180,
+            extraction_strategy="nccc_wdb_schedule",
+        )
+        self.assertEqual([(m.meeting_date, m.meeting_type) for m in meetings], [
+            (date(2026, 5, 21), "Board Meeting"),
+            (date(2026, 8, 20), "Board Meeting"),
+        ])
+
+    def test_riverside_profile_scopes_schedule_and_skips_canceled(self) -> None:
+        source = BoardSource(
+            board_id="riverside-county-wdb",
+            board_name="Riverside County WDB",
+            local_area="Riverside County",
+            main_website="https://rivcoworkforce.org/workforce-development-board",
+            meeting_schedule_url="https://rivcoworkforce.org/executive-committee",
+            agenda_minutes_url="https://rivcoworkforce.org/executive-committee",
+            executive_committee_url="https://rivcoworkforce.org/executive-committee",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        html = """
+        <h1>RCWDB Executive Committee</h1>
+        <h3>2026 Executive Committee Meeting Schedule</h3>
+        <p>April 15, 2026 Canceled</p><p>10:30 am - 11:00 am</p>
+        <p>June 17, 2026</p><p>11:00 am to 11:30 am</p><p>1325 Spruce Street, Riverside, CA 92507</p>
+        <h3>Agendas/Notes</h3>
+        <p>June 17, 2026 Agenda</p><a href="/june.pdf">WDB EC Meeting Agenda PACKET.pdf</a>
+        """
+        meetings = extract_meetings(
+            source,
+            html,
+            source.executive_committee_url,
+            date(2026, 5, 9),
+            180,
+            extraction_strategy="riverside_wdb_schedule",
+        )
+        self.assertEqual([(m.meeting_date, m.meeting_type, m.start_time) for m in meetings], [
+            (date(2026, 6, 17), "Executive Committee", time(11, 0)),
+        ])
+
     def test_prunes_unseen_future_meetings_for_checked_board(self) -> None:
         conn = connect(__import__("pathlib").Path(":memory:"))
         seen_at = datetime(2026, 5, 9, tzinfo=timezone.utc)

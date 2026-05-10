@@ -208,3 +208,12 @@ Moved Permanently
 - Review: Kings County WDB - https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board - HTTP Error 403: Forbidden
 - Review: Los Angeles County WDB - https://www.ajcc.lacounty.gov/wdb - HTTP Error 403: Forbidden
 
+## 2026-05-10T02:22:25.403836+00:00 (dry-run)
+
+- Boards checked: 6
+- Meetings found: 4
+- Missing agendas within 72 hours: 0
+- Failures requiring human review: 2
+- Review: Riverside County WDB - https://rivcoworkforce.org/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Riverside County WDB - https://rivcoworkforce.org/executive-committee - HTTP Error 403: Forbidden
+

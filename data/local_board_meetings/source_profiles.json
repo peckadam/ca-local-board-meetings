@@ -495,6 +495,95 @@
         "Roster and cadence sections contain dates that should not be published unless tied to a meeting row."
       ],
       "verification_notes": "Audited 2026-05-10. Current Worknet Merced page and meeting row structure verified."
+    },
+    {
+      "board_id": "monterey-county-wdb",
+      "status": "partially_audited",
+      "cadence": "Monterey County Works event-detail pages publish individual MCWDB meetings. Known future event found for June 25, 2026 from 9:00 AM to 11:00 AM at Monterey County Works Center.",
+      "extraction_strategy": "event_detail_title",
+      "agenda_rules": {
+        "detail_page": "https://montereycountyworks.com/events/mcwdb-meeting-jun-25-2026/"
+      },
+      "known_traps": [
+        "Old montereycountywdb.org timed out.",
+        "Events site may include non-board onsite events; use detail title/category before publishing."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Needs event listing pagination/discovery beyond known detail page."
+    },
+    {
+      "board_id": "north-central-counties-nccc",
+      "status": "audited",
+      "cadence": "2026 Workforce Development Board Meetings listed as February 19, May 21, August 20, and November 5; additional meetings may be scheduled as necessary.",
+      "extraction_strategy": "nccc_wdb_schedule",
+      "agenda_rules": {
+        "source": "https://www.northcentralcounties.com/nccc-workforce-development-board",
+        "section": "2026 Workforce Development Board Meetings"
+      },
+      "known_traps": [
+        "Old ncccwdb.org domain does not resolve.",
+        "NCCC Governing Board meetings are separate from Workforce Development Board meetings."
+      ],
+      "verification_notes": "Audited 2026-05-10. Official NCCC WDB page and 2026 date list verified."
+    },
+    {
+      "board_id": "oakland-wdb",
+      "status": "partially_audited",
+      "cadence": "City page states Oakland WDB regular meetings are held on the 1st Thursday of February, May, August, and November from 8:30 AM to 11:00 AM. Current documents list 2026 meetings for February 26 and March 20, but no future post-May 9 agenda row was confirmed.",
+      "extraction_strategy": "generic",
+      "agenda_rules": {
+        "source": "https://www.oaklandca.gov/Government/Boards-Commissions/Workforce-Development-Board"
+      },
+      "known_traps": [
+        "Old oaklandworkforce.org domain does not resolve.",
+        "Executive Committee rows are mixed with full board rows in document list. Do not infer future meetings from cadence until decision is made."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Correct city page found; future publication policy needs confirmation."
+    },
+    {
+      "board_id": "richmond-wdb",
+      "status": "partially_audited",
+      "cadence": "Official page states WDB meets at 11:30 AM on the second Thursday of every other month, commencing with January, at RichmondWORKS. The WDB-specific page mentions a 2026 meeting schedule and says March 12, 2026 was canceled.",
+      "extraction_strategy": "generic",
+      "agenda_rules": {
+        "source": "https://www.richmondca.gov/671/Richmond-WDB"
+      },
+      "known_traps": [
+        "City Council agenda documents page is not the WDB source.",
+        "There are multiple Richmond WDB pages; use WDB-specific page 671 or boards-and-commissions page 1173, not City Council."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Correct page found; schedule link or agenda archive needs parser."
+    },
+    {
+      "board_id": "riverside-county-wdb",
+      "status": "partially_audited",
+      "cadence": "Full board 2026 schedule lists Feb 25, canceled Apr 15, Aug 12, and Dec 9. Executive Committee 2026 schedule lists Feb 25, May 7, Jun 17, Aug 12, Oct 7, and Dec 9.",
+      "extraction_strategy": "riverside_wdb_schedule",
+      "agenda_rules": {
+        "full_board": "https://rivcoworkforce.org/workforce-development-board",
+        "executive_committee": "https://rivcoworkforce.org/executive-committee",
+        "exclude": "canceled rows"
+      },
+      "known_traps": [
+        "Old www.rivcoworkforce.com certificate does not match host.",
+        "Regional committees and Riverside County Works committee are separate from full board/executive committee.",
+        "Current official pages returned HTTP 403 to the automation during validation."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Current domain and schedule tables identified from official source/search, but pages returned HTTP 403 to the automation during runner validation."
+    },
+    {
+      "board_id": "san-benito-county-wdb",
+      "status": "partially_audited",
+      "cadence": "Current WDB site is sbcjobs.org. Board page describes WDB and meeting-packets page contains iframe-based agenda/minutes archives for 2025-2023 and visible old 2021 links. No current 2026 schedule confirmed.",
+      "extraction_strategy": "generic",
+      "agenda_rules": {
+        "board": "https://sbcjobs.org/about/",
+        "agendas": "https://sbcjobs.org/meeting-packets/"
+      },
+      "known_traps": [
+        "Old sbcworkforce.org domain does not resolve.",
+        "Agenda page iframe content may require embedded source parsing."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Official site found; current 2026 schedule still unresolved."
     }
   ]
 }

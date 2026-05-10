@@ -248,16 +248,60 @@ These sources have official endpoints and known traps documented, but still need
 - Known traps: old `economicdevelopment/workforce-development` URL redirects badly for urllib. Board member biographies include date-like text.
 - Automation rule: use `long_beach_lbwin_schedule`; parse only the scheduled meetings block.
 
+### Monterey County WDB
+
+- Official source: `https://montereycountyworks.com/events/mcwdb-meeting-jun-25-2026/`
+- Current structure: Monterey County Works publishes individual event-detail pages with date, time, location/category, and packet links when available.
+- Cadence observed on 2026-05-10: June 25, 2026 Board Meeting from 9:00 AM to 11:00 AM at Monterey County Works Center.
+- Known traps: old `montereycountywdb.org` timed out. Monterey County Works includes non-board events, so event detail title/category should be checked before publishing.
+- Automation rule: use `event_detail_title` for known detail pages; needs event listing pagination to discover more meetings automatically.
+
+### North Central Counties WDB
+
+- Official source: `https://www.northcentralcounties.com/nccc-workforce-development-board`
+- Current structure: NCCC WDB page has a dedicated `2026 Workforce Development Board Meetings` section.
+- Cadence observed on 2026-05-10: February 19, May 21, August 20, and November 5, 2026; additional meetings may be scheduled as necessary.
+- Known traps: old `ncccwdb.org` does not resolve. NCCC Governing Board meetings are separate from WDB meetings.
+- Automation rule: use `nccc_wdb_schedule`; parse only the 2026 WDB section.
+
+### Oakland WDB
+
+- Official source: `https://www.oaklandca.gov/Government/Boards-Commissions/Workforce-Development-Board`
+- Current structure: city page lists WDB agenda/minutes documents and states the regular-meeting cadence.
+- Cadence observed on 2026-05-10: regular meetings are 1st Thursday of February, May, August, and November from 8:30 AM to 11:00 AM. Document list had 2026 rows for February 26 and March 20 but no confirmed future post-May 9 agenda row.
+- Known traps: old `oaklandworkforce.org` does not resolve. Executive Committee and full-board rows are mixed in the documents list.
+- Automation rule: keep as medium confidence; do not infer future meetings from cadence until publication policy is confirmed.
+
+### Richmond WDB
+
+- Official source: `https://www.richmondca.gov/671/Richmond-WDB`
+- Current structure: WDB-specific page describes cadence and links agenda/minutes; separate boards-and-commissions page also describes the WDB.
+- Cadence observed on 2026-05-10: board meets at 11:30 AM on the second Thursday of every other month, commencing with January; March 12, 2026 was canceled.
+- Known traps: City Council agenda documents page is not a WDB source. Richmond has multiple WDB-related pages.
+- Automation rule: keep as medium confidence until the 2026 meeting schedule link or agenda archive can be parsed.
+
+### Riverside County WDB
+
+- Official full-board source: `https://rivcoworkforce.org/workforce-development-board`
+- Official executive source: `https://rivcoworkforce.org/executive-committee`
+- Current structure: full board and executive committee pages have separate 2026 schedule tables and agenda archives.
+- Cadence observed on 2026-05-10: full-board dates listed February 25, canceled April 15, August 12, and December 9; executive dates listed February 25, May 7, June 17, August 12, October 7, and December 9.
+- Known traps: old `www.rivcoworkforce.com` has a certificate mismatch. Riverside County Works and regional committees are separate. Current official pages returned HTTP 403 to the automation during validation.
+- Automation rule: `riverside_wdb_schedule` is implemented, but the source remains medium until the daily runner can fetch the official pages.
+
+### San Benito County WDB
+
+- Official board source: `https://sbcjobs.org/about/`
+- Official agenda source: `https://sbcjobs.org/meeting-packets/`
+- Current structure: WDB board page describes the board; agenda/minutes page uses iframes for 2025-2023 and visible older 2021 links.
+- Cadence observed on 2026-05-10: no current 2026 meeting schedule confirmed.
+- Known traps: old `sbcworkforce.org` does not resolve. iframe content needs embedded-source parsing.
+- Automation rule: keep as medium confidence until current schedule or iframe agenda content is parsed.
+
 ## Remaining Audit Queue
 
 These sources are still `medium` until manually profiled. Each needs the same treatment: official endpoint, cadence, agenda source, committee handling, stale-PDF traps, and extraction strategy.
 
-- Monterey County WDB
-- North Central Counties WDB
-- Oakland WDB
-- Richmond WDB
-- Riverside County WDB
-- San Benito County WDB
 - San Bernardino County WDB
 - San Diego Workforce Partnership
 - San Francisco OEWD
