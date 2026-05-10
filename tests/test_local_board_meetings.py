@@ -3,6 +3,7 @@ from __future__ import annotations
 import unittest
 from datetime import date, datetime, time, timezone
 
+from etl.local_board_meetings.agenda_content import extract_details_from_text
 from etl.local_board_meetings.extraction import extract_agenda_links, extract_meetings, parse_date, parse_time
 from etl.local_board_meetings.graph import meeting_to_event_payload
 from etl.local_board_meetings.models import BoardSource, Meeting
@@ -656,6 +657,20 @@ class LocalBoardMeetingTests(unittest.TestCase):
         self.assertIn("BEGIN:VCALENDAR", ics)
         self.assertIn("UID:sample-wdb:board-meeting:2026-05-14@cwa-local-board-meetings", ics)
         self.assertIn("SUMMARY:Sample WDB - Board Meeting", ics)
+
+    def test_agenda_text_extracts_location_and_virtual_link(self) -> None:
+        details = extract_details_from_text(
+            """
+            Workforce Development Board
+            ATTEND IN PERSON
+            San Jose Job Center
+            1608 Las Plumas Ave, San Jose, CA 95133
+            ATTEND VIA ZOOM
+            https://sanjoseca.zoom.us/j/123456789?pwd=test
+            """
+        )
+        self.assertIn("1608 Las Plumas Ave", details.location)
+        self.assertEqual(details.virtual_url, "https://sanjoseca.zoom.us/j/123456789?pwd=test")
 
 
 if __name__ == "__main__":

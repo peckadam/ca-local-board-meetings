@@ -2,11 +2,12 @@ from __future__ import annotations
 
 import argparse
 import logging
-from dataclasses import asdict
+from dataclasses import asdict, replace
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 from .agendas import agenda_folder, download_agenda
+from .agenda_content import extract_agenda_details
 from .extraction import extract_meetings, find_candidate_pages
 from .fetcher import fetch_url
 from .graph import CALENDAR_NAME, GraphClient, GraphConfigError
@@ -144,16 +145,19 @@ def check_source(source: BoardSource, lookahead_days: int, respect_robots: bool,
             if "pdf" in page.content_type.lower():
                 continue
             if url != source.main_website or not configured_content_urls:
-                meetings.extend(
-                    extract_meetings(
-                        source,
-                        page.text,
-                        page.url,
-                        date.today(),
-                        lookahead_days,
-                        extraction_strategy=profile.extraction_strategy if profile else "generic",
-                    )
+                extracted = extract_meetings(
+                    source,
+                    page.text,
+                    page.url,
+                    date.today(),
+                    lookahead_days,
+                    extraction_strategy=profile.extraction_strategy if profile else "generic",
                 )
+                for meeting in extracted:
+                    enriched, enrichment_failure = enrich_meeting_from_agenda(meeting, respect_robots)
+                    meetings.append(enriched)
+                    if enrichment_failure:
+                        failures.append({"board_name": source.board_name, "url": meeting.agenda_url, "error": enrichment_failure})
             if not profile or profile.status == "unaudited":
                 candidates = find_candidate_pages(page.text, page.url)
                 if candidates["meeting"]:
@@ -175,6 +179,28 @@ def check_source(source: BoardSource, lookahead_days: int, respect_robots: bool,
         data["notes"] = data["notes"] if note in data["notes"] else f"{data['notes']} {note}"
         data["confidence"] = "medium"
     return _dedupe_meetings(meetings), failures, BoardSource(**data)
+
+
+def enrich_meeting_from_agenda(meeting: Meeting, respect_robots: bool) -> tuple[Meeting, str]:
+    if not meeting.agenda_url or (meeting.location and meeting.virtual_url):
+        return meeting, ""
+    try:
+        page = fetch_url(meeting.agenda_url, timeout=15, retries=1, respect_robots=respect_robots)
+    except Exception as exc:
+        return meeting, f"Agenda location enrichment failed: {exc}"
+    details = extract_agenda_details(page.body, page.content_type, page.url)
+    updates = {}
+    notes: list[str] = []
+    if details.location and not meeting.location:
+        updates["location"] = details.location
+        notes.append("location")
+    if details.virtual_url and not meeting.virtual_url:
+        updates["virtual_url"] = details.virtual_url
+        notes.append("virtual link")
+    if not updates:
+        return meeting, ""
+    confidence_note = f"{meeting.confidence_notes} Agenda parsed for {' and '.join(notes)}.".strip()
+    return replace(meeting, **updates, confidence_notes=confidence_note), ""
 
 
 def should_check_agenda(meeting: Meeting, today: date) -> bool:

@@ -276,3 +276,37 @@ Moved Permanently
 - Review: Sonoma County WDB - https://sonomawdb.org/ - <urlopen error [Errno 8] nodename nor servname provided, or not known>
 - Review: Yolo County WDB - https://www.yoloworks.org/ - robots.txt disallows fetching https://www.yoloworks.org/
 
+## 2026-05-10T16:57:21.747899+00:00 (dry-run)
+
+- Boards checked: 45
+- Meetings found: 27
+- Missing agendas within 72 hours: 0
+- Failures requiring human review: 10
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/full-wdb-board - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/executive-committee - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/about-the-board - HTTP Error 403: Forbidden
+- Review: Kings County WDB - https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Los Angeles County WDB - https://www.ajcc.lacounty.gov/wdb - HTTP Error 403: Forbidden
+- Review: Riverside County WDB - https://rivcoworkforce.org/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Riverside County WDB - https://rivcoworkforce.org/executive-committee - HTTP Error 403: Forbidden
+- Review: San Diego Workforce Partnership - https://workforce.org/boards/workforce-development-board/agendas-minutes/ - HTTP Error 403: Forbidden
+- Review: Sonoma County WDB - https://sonomawdb.org/ - <urlopen error [Errno 8] nodename nor servname provided, or not known>
+- Review: Yolo County WDB - https://www.yoloworks.org/ - robots.txt disallows fetching https://www.yoloworks.org/
+
+## 2026-05-10T16:59:36.784477+00:00 (dry-run)
+
+- Boards checked: 45
+- Meetings found: 27
+- Missing agendas within 72 hours: 0
+- Failures requiring human review: 10
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/full-wdb-board - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/executive-committee - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/about-the-board - HTTP Error 403: Forbidden
+- Review: Kings County WDB - https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Los Angeles County WDB - https://www.ajcc.lacounty.gov/wdb - HTTP Error 403: Forbidden
+- Review: Riverside County WDB - https://rivcoworkforce.org/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Riverside County WDB - https://rivcoworkforce.org/executive-committee - HTTP Error 403: Forbidden
+- Review: San Diego Workforce Partnership - https://workforce.org/boards/workforce-development-board/agendas-minutes/ - HTTP Error 403: Forbidden
+- Review: Sonoma County WDB - https://sonomawdb.org/ - <urlopen error [Errno 8] nodename nor servname provided, or not known>
+- Review: Yolo County WDB - https://www.yoloworks.org/ - robots.txt disallows fetching https://www.yoloworks.org/
+
