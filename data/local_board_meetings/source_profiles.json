@@ -125,6 +125,61 @@
         "Wix PDF links may be labeled only by month under a year-specific agenda heading."
       ],
       "verification_notes": "Audited 2026-05-09. May 13, 2026 board agenda is linked as the May PDF under 2026 Board Agendas."
+    },
+    {
+      "board_id": "workforce-alliance-north-bay",
+      "status": "audited",
+      "cadence": "Board Meetings page is sectioned. Regional Workforce Development Board dates observed include June 11, 2026 from 10:00 AM to 12:00 PM. Regional Workforce Development Board Executive Committee dates observed include May 13, 2026 from 9:00 to 10:30 AM. Governing Board and other committee sections are separate and should not be published as local WDB meetings.",
+      "extraction_strategy": "workforce_alliance_north_bay",
+      "agenda_rules": {
+        "source": "https://www.workforcealliancenorthbay.org/board-meetings/",
+        "section_heading_required": true,
+        "exclude_sections": [
+          "Governing Board",
+          "Communications & Outreach Committee",
+          "Issues & Opportunities Committee"
+        ]
+      },
+      "known_traps": [
+        "The page includes Governing Board meetings and other committees before/after the Regional WDB sections.",
+        "Canceled rows are interspersed with active meeting rows.",
+        "Historical agenda links are numerous and must be date matched."
+      ],
+      "verification_notes": "Audited 2026-05-09. Use only Regional Workforce Development Board and Regional Workforce Development Board Executive Committee sections."
+    },
+    {
+      "board_id": "santa-cruz-county-wdb",
+      "status": "audited",
+      "cadence": "Workforce Santa Cruz County Board Meetings page is sectioned by FULL BOARD, EXECUTIVE COMMITTEE, and other committees. Full Board 2026 dates observed include March 4 and May 20 at 8:30 AM. Executive Committee 2026 dates observed include February 4 and April 29 at 8:30 AM.",
+      "extraction_strategy": "santa_cruz_wfscc",
+      "agenda_rules": {
+        "source": "https://workforcescc.com/board-meetings/",
+        "section_heading_required": true,
+        "exclude_sections": [
+          "CAREER SERVICES COMMITTEE",
+          "BUSINESS SERVICES / CEDS COMMITTEE"
+        ]
+      },
+      "known_traps": [
+        "The county Human Services Commission pages are not the Workforce Santa Cruz County board meeting source.",
+        "Board and committee archives span many years, so date and section scoping are required."
+      ],
+      "verification_notes": "Audited 2026-05-09. Correct source is workforcescc.com/board-meetings/ discovered from official WFSCC page."
+    },
+    {
+      "board_id": "madera-county-wdb",
+      "status": "partially_audited",
+      "cadence": "WDB page describes board meetings and public access, but fetched visible content only showed a stale June 18, 2025 special meeting agenda notice and no current 2026 meeting schedule.",
+      "extraction_strategy": "generic",
+      "agenda_rules": {
+        "source": "https://maderaworkforce.com/wdb",
+        "current_schedule_visible": false
+      },
+      "known_traps": [
+        "Homepage and What\u2019s New content includes job fair dates that are not board meetings.",
+        "Visible WDB page agenda notice was from June 18, 2025 and should not be published as current."
+      ],
+      "verification_notes": "Partially audited 2026-05-09. WDB page verified as official, but current meeting cadence requires manual follow-up or another source."
     }
   ]
 }

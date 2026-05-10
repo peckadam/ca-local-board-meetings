@@ -21,6 +21,7 @@ class LocalBoardMeetingTests(unittest.TestCase):
         self.assertEqual(parse_time("10:30 a.m."), time(10, 30))
         self.assertEqual(parse_time("1 PM"), time(13, 0))
         self.assertEqual(parse_time("Noon to 1:30 p.m."), time(12, 0))
+        self.assertEqual(parse_time("9:00 – 10:30AM"), time(9, 0))
 
     def test_agenda_link_detection(self) -> None:
         html = """
@@ -166,6 +167,78 @@ class LocalBoardMeetingTests(unittest.TestCase):
             extraction_strategy="south_bay_sectioned_agendas",
         )
         self.assertEqual([m.meeting_type for m in meetings], ["Executive Committee", "Board Meeting", "Committee"])
+
+    def test_workforce_alliance_profile_scopes_board_sections(self) -> None:
+        source = BoardSource(
+            board_id="workforce-alliance-north-bay",
+            board_name="Workforce Alliance North Bay",
+            local_area="North Bay",
+            main_website="https://www.workforcealliancenorthbay.org/",
+            meeting_schedule_url="https://www.workforcealliancenorthbay.org/board-meetings/",
+            agenda_minutes_url="https://www.workforcealliancenorthbay.org/board-meetings/",
+            executive_committee_url="",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        html = """
+        <h2>Governing Board</h2>
+        <p>June 20, 2026</p><p>3:00 - 5:00 PM</p>
+        <h2>Regional Workforce Development Board</h2>
+        <p>June 11, 2026</p><p>10:00 AM - 12:00 PM</p>
+        <h2>Regional Workforce Development Board Executive Committee</h2>
+        <p>May 13, 2026</p><p>9:00 – 10:30AM</p>
+        <p>April 8, 2026</p><p>cancelled</p>
+        <h2>Communications & Outreach Committee</h2>
+        <p>March 26, 2026</p>
+        """
+        meetings = extract_meetings(
+            source,
+            html,
+            "https://www.workforcealliancenorthbay.org/board-meetings/",
+            date(2026, 5, 9),
+            180,
+            extraction_strategy="workforce_alliance_north_bay",
+        )
+        self.assertEqual([(m.meeting_date, m.meeting_type, m.start_time) for m in meetings], [
+            (date(2026, 5, 13), "Executive Committee", time(9, 0)),
+            (date(2026, 6, 11), "Board Meeting", time(10, 0)),
+        ])
+
+    def test_santa_cruz_profile_scopes_full_board_and_executive(self) -> None:
+        source = BoardSource(
+            board_id="santa-cruz-county-wdb",
+            board_name="Santa Cruz County WDB",
+            local_area="Santa Cruz County",
+            main_website="https://workforcescc.com/",
+            meeting_schedule_url="https://workforcescc.com/board-meetings/",
+            agenda_minutes_url="https://workforcescc.com/board-meetings/",
+            executive_committee_url="",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        html = """
+        <h2>FULL BOARD</h2>
+        <p>March 04, 2026 (8:30 am)</p>
+        <p>May 20, 2026 (8:30 a.m)</p>
+        <h2>EXECUTIVE COMMITTEE</h2>
+        <p>April 29, 2026 (8:30 a.m)</p>
+        <h2>CAREER SERVICES COMMITTEE</h2>
+        <p>July 29, 2026 (3:00 p.m.)</p>
+        """
+        meetings = extract_meetings(
+            source,
+            html,
+            "https://workforcescc.com/board-meetings/",
+            date(2026, 5, 9),
+            180,
+            extraction_strategy="santa_cruz_wfscc",
+        )
+        self.assertEqual([(m.meeting_date, m.meeting_type) for m in meetings], [
+            (date(2026, 4, 29), "Executive Committee"),
+            (date(2026, 5, 20), "Board Meeting"),
+        ])
 
     def test_prunes_unseen_future_meetings_for_checked_board(self) -> None:
         conn = connect(__import__("pathlib").Path(":memory:"))

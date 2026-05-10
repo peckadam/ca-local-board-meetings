@@ -7,7 +7,7 @@ X-WR-CALNAME:California Local Workforce Board Meetings
 X-WR-TIMEZONE:America/Los_Angeles
 BEGIN:VEVENT
 UID:tulare-county-wib:board-meeting:2026-05-13@cwa-local-board-meetings
-DTSTAMP:20260509T232457Z
+DTSTAMP:20260510T000155Z
 DTSTART;TZID=America/Los_Angeles:20260513T090000
 DTEND;TZID=America/Los_Angeles:20260513T100000
 SUMMARY:Tulare County WIB - Board Meeting
@@ -21,9 +21,40 @@ URL:https://www.tularewib.org/_files/ugd/58cba3_b01b13eb83c24d9890073798700
  15448.pdf
 END:VEVENT
 BEGIN:VEVENT
+UID:workforce-alliance-north-bay:executive-committee:2026-05-13@cwa-local-b
+ oard-meetings
+DTSTAMP:20260510T000155Z
+DTSTART;TZID=America/Los_Angeles:20260513T090000
+DTEND;TZID=America/Los_Angeles:20260513T100000
+SUMMARY:Workforce Alliance North Bay - Executive Committee
+LOCATION:
+DESCRIPTION:Source page: https://www.workforcealliancenorthbay.org/board-me
+ etings/\nAgenda URL: https://www.workforcealliancenorthbay.org/wp-content/
+ uploads/2026/05/Workforce-Allliance-Executive-Committee-Meeting-Agenda-5-1
+ 3-2026.pdf\nLocation: Not published\nVirtual link: Not published\nConfiden
+ ce notes: Profiled sectioned extraction: dates are scoped to the official 
+ board or executive committee section and canceled rows are excluded.
+URL:https://www.workforcealliancenorthbay.org/wp-content/uploads/2026/05/Wo
+ rkforce-Allliance-Executive-Committee-Meeting-Agenda-5-13-2026.pdf
+END:VEVENT
+BEGIN:VEVENT
+UID:santa-cruz-county-wdb:board-meeting:2026-05-20@cwa-local-board-meetings
+DTSTAMP:20260510T000155Z
+DTSTART;TZID=America/Los_Angeles:20260520T083000
+DTEND;TZID=America/Los_Angeles:20260520T093000
+SUMMARY:Santa Cruz County WDB - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://workforcescc.com/board-meetings/\nAgenda U
+ RL: Not found yet\nLocation: Not published\nVirtual link: Not published\nC
+ onfidence notes: Profiled sectioned extraction: dates are scoped to the of
+ ficial board or executive committee section and canceled rows are excluded
+ .
+URL:https://workforcescc.com/board-meetings/
+END:VEVENT
+BEGIN:VEVENT
 UID:golden-sierra-workforce-board:executive-committee:2026-05-21@cwa-local-
  board-meetings
-DTSTAMP:20260509T232457Z
+DTSTAMP:20260510T000155Z
 DTSTART;TZID=America/Los_Angeles:20260521T120000
 DTEND;TZID=America/Los_Angeles:20260521T130000
 SUMMARY:Golden Sierra Workforce Board - Executive Committee
@@ -39,7 +70,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:golden-sierra-workforce-board:board-meeting:2026-05-21@cwa-local-board-
  meetings
-DTSTAMP:20260509T232457Z
+DTSTAMP:20260510T000155Z
 DTSTART;TZID=America/Los_Angeles:20260521T130000
 DTEND;TZID=America/Los_Angeles:20260521T140000
 SUMMARY:Golden Sierra Workforce Board - Board Meeting
@@ -54,7 +85,7 @@ URL:https://goldensierra.com/calendar/category/public-meeting/workforce-boa
 END:VEVENT
 BEGIN:VEVENT
 UID:imperial-county-wdb:board-meeting:2026-05-27@cwa-local-board-meetings
-DTSTAMP:20260509T232457Z
+DTSTAMP:20260510T000155Z
 DTSTART;TZID=America/Los_Angeles:20260527T090000
 DTEND;TZID=America/Los_Angeles:20260527T100000
 SUMMARY:Imperial County WDB - Board Meeting
@@ -70,7 +101,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:imperial-county-wdb:executive-committee:2026-05-27@cwa-local-board-meet
  ings
-DTSTAMP:20260509T232457Z
+DTSTAMP:20260510T000155Z
 DTSTART;TZID=America/Los_Angeles:20260527T110000
 DTEND;TZID=America/Los_Angeles:20260527T120000
 SUMMARY:Imperial County WDB - Executive Committee
@@ -86,7 +117,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:northern-rural-training-nortec:board-meeting:2026-05-28@cwa-local-board
  -meetings
-DTSTAMP:20260509T232457Z
+DTSTAMP:20260510T000155Z
 DTSTART;TZID=America/Los_Angeles:20260528T090000
 DTEND;TZID=America/Los_Angeles:20260528T100000
 SUMMARY:Northern Rural Training (NoRTEC) - Board Meeting
@@ -99,7 +130,7 @@ URL:https://www.ncen.org/
 END:VEVENT
 BEGIN:VEVENT
 UID:stanislaus-county-wdb:board-meeting:2026-06-01@cwa-local-board-meetings
-DTSTAMP:20260509T232457Z
+DTSTAMP:20260510T000155Z
 DTSTART;TZID=America/Los_Angeles:20260601T120000
 DTEND;TZID=America/Los_Angeles:20260601T130000
 SUMMARY:Stanislaus County WDB - Board Meeting
@@ -113,7 +144,7 @@ URL:https://www.stanworkforce.com/workforce-board/
 END:VEVENT
 BEGIN:VEVENT
 UID:tulare-county-wib:board-meeting:2026-06-10@cwa-local-board-meetings
-DTSTAMP:20260509T232457Z
+DTSTAMP:20260510T000155Z
 DTSTART;TZID=America/Los_Angeles:20260610T090000
 DTEND;TZID=America/Los_Angeles:20260610T100000
 SUMMARY:Tulare County WIB - Board Meeting
@@ -127,7 +158,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-luis-obispo-county-wdb:board-meeting:2026-06-10@cwa-local-board-mee
  tings
-DTSTAMP:20260509T232457Z
+DTSTAMP:20260510T000155Z
 DTSTART;TZID=America/Los_Angeles:20260610T083000
 DTEND;TZID=America/Los_Angeles:20260610T093000
 SUMMARY:San Luis Obispo County WDB - Board Meeting
@@ -143,7 +174,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-luis-obispo-county-wdb:executive-committee:2026-06-10@cwa-local-boa
  rd-meetings
-DTSTAMP:20260509T232457Z
+DTSTAMP:20260510T000155Z
 DTSTART;TZID=America/Los_Angeles:20260610T083000
 DTEND;TZID=America/Los_Angeles:20260610T093000
 SUMMARY:San Luis Obispo County WDB - Executive Committee
@@ -157,8 +188,23 @@ URL:https://www.slocounty.ca.gov/departments/social-services/workforce-deve
  lopment-board/meetings/executive-committee-meeting-06-10-2026
 END:VEVENT
 BEGIN:VEVENT
+UID:workforce-alliance-north-bay:board-meeting:2026-06-11@cwa-local-board-m
+ eetings
+DTSTAMP:20260510T000155Z
+DTSTART;TZID=America/Los_Angeles:20260611T100000
+DTEND;TZID=America/Los_Angeles:20260611T110000
+SUMMARY:Workforce Alliance North Bay - Board Meeting
+LOCATION:
+DESCRIPTION:Source page: https://www.workforcealliancenorthbay.org/board-me
+ etings/\nAgenda URL: Not found yet\nLocation: Not published\nVirtual link:
+  Not published\nConfidence notes: Profiled sectioned extraction: dates are
+  scoped to the official board or executive committee section and canceled 
+ rows are excluded.
+URL:https://www.workforcealliancenorthbay.org/board-meetings/
+END:VEVENT
+BEGIN:VEVENT
 UID:tulare-county-wib:board-meeting:2026-08-03@cwa-local-board-meetings
-DTSTAMP:20260509T232457Z
+DTSTAMP:20260510T000155Z
 DTSTART;TZID=America/Los_Angeles:20260803T090000
 DTEND;TZID=America/Los_Angeles:20260803T100000
 SUMMARY:Tulare County WIB - Board Meeting
@@ -170,24 +216,9 @@ DESCRIPTION:Source page: https://www.tularewib.org/pec\nAgenda URL: Not fou
 URL:https://www.tularewib.org/pec
 END:VEVENT
 BEGIN:VEVENT
-UID:santa-cruz-county-wdb:board-meeting:2026-08-10@cwa-local-board-meetings
-DTSTAMP:20260509T232457Z
-DTSTART;TZID=America/Los_Angeles:20260810T090000
-DTEND;TZID=America/Los_Angeles:20260810T100000
-SUMMARY:Santa Cruz County WDB - Board Meeting
-LOCATION:
-DESCRIPTION:Source page: https://www.santacruzhumanservices.org/FamilyChild
- ren/SystemImprovementPlan(SIP)/SIPSteeringCommittee\nAgenda URL: Not found
-  yet\nLocation: Not published\nVirtual link: Not published\nConfidence not
- es: Extracted from official source page text\; verify manually if the sour
- ce page uses embedded calendars or PDFs.
-URL:https://www.santacruzhumanservices.org/FamilyChildren/SystemImprovement
- Plan(SIP)/SIPSteeringCommittee
-END:VEVENT
-BEGIN:VEVENT
 UID:novaworks-workforce-board:board-meeting:2026-08-26@cwa-local-board-meet
  ings
-DTSTAMP:20260509T232457Z
+DTSTAMP:20260510T000155Z
 DTSTART;TZID=America/Los_Angeles:20260826T120000
 DTEND;TZID=America/Los_Angeles:20260826T130000
 SUMMARY:NOVAworks Workforce Board - Board Meeting
@@ -201,7 +232,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:northern-rural-training-nortec:board-meeting:2026-08-27@cwa-local-board
  -meetings
-DTSTAMP:20260509T232457Z
+DTSTAMP:20260510T000155Z
 DTSTART;TZID=America/Los_Angeles:20260827T090000
 DTEND;TZID=America/Los_Angeles:20260827T100000
 SUMMARY:Northern Rural Training (NoRTEC) - Board Meeting

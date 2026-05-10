@@ -44,6 +44,15 @@ This file is the operating memory for the meeting monitor. The automation should
 - Known traps: committee agenda packets are present on the same page as full-board packets; agenda links labeled `View Agenda` must be date/section matched.
 - Automation rule: use only the official Meeting Agendas and Minutes page; date matching required.
 
+### Santa Cruz County WDB
+
+- Official source: `https://workforcescc.com/board-meetings/`
+- Do not use: county SIP Steering Committee or Human Services Commission archive pages as WDB meeting sources.
+- Current structure: Workforce Santa Cruz County page is sectioned by `FULL BOARD`, `EXECUTIVE COMMITTEE`, `CAREER SERVICES COMMITTEE`, and `BUSINESS SERVICES / CEDS COMMITTEE`.
+- Cadence observed on 2026-05-09: Full Board 2026 dates include March 4 and May 20 at 8:30 AM; Executive Committee 2026 dates include February 4 and April 29 at 8:30 AM.
+- Known traps: the page contains many years of archives and several non-board committee sections.
+- Automation rule: use the `santa_cruz_wfscc` strategy and only publish Full Board and Executive Committee sections.
+
 ### South Bay WIB
 
 - Official source: `https://www.sbwib.org/2026-meeting-agendas`
@@ -70,6 +79,14 @@ This file is the operating memory for the meeting monitor. The automation should
 - Known traps: Wix PDF URLs do not necessarily contain the word `agenda`; agenda semantics come from the surrounding `2026 Board Agendas` heading.
 - Automation rule: allow month-labeled PDF links when they are inside a year-specific agenda section.
 
+### Workforce Alliance North Bay
+
+- Official source: `https://www.workforcealliancenorthbay.org/board-meetings/`
+- Current structure: Board Meetings page has separate sections for Governing Board, Regional Workforce Development Board, Regional Workforce Development Board Executive Committee, Communications & Outreach Committee, and Issues & Opportunities Committee.
+- Cadence observed on 2026-05-09: Regional WDB has June 11, 2026 from 10:00 AM to 12:00 PM; RWDB Executive Committee has May 13, 2026 from 9:00 AM to 10:30 AM.
+- Known traps: Governing Board meetings appear before the Regional WDB section and should not be published as local WDB meetings. Canceled rows are interspersed with active rows. Historical agenda links are numerous.
+- Automation rule: use the `workforce_alliance_north_bay` strategy and only publish Regional WDB and Regional WDB Executive Committee sections.
+
 ## Remaining Audit Queue
 
 These sources are still `medium` until manually profiled. Each needs the same treatment: official endpoint, cadence, agenda source, committee handling, stale-PDF traps, and extraction strategy.
@@ -85,7 +102,7 @@ These sources are still `medium` until manually profiled. Each needs the same tr
 - Long Beach WIN
 - Los Angeles City WDB
 - Los Angeles County WDB
-- Madera County WDB
+- Madera County WDB (partially audited: WDB page verified, but no current 2026 schedule visible in fetched HTML)
 - Merced County WDB
 - Monterey County WDB
 - Mother Lode Workforce Development Board
@@ -104,11 +121,9 @@ These sources are still `medium` until manually profiled. Each needs the same tr
 - Santa Ana WDB
 - Santa Barbara County WDB
 - Santa Clara work2future
-- Santa Cruz County WDB
 - SELACO WDB
 - Solano County WDB
 - Sonoma County WDB
 - Ventura County WDB
 - Verdugo WDB
-- Workforce Alliance North Bay
 - Yolo County WDB

@@ -53,6 +53,16 @@ def parse_time(text: str) -> Optional[time]:
     meridian_match = TIME_RE.search(text)
     if noon_match and (not meridian_match or noon_match.start() < meridian_match.start()):
         return time(12, 0)
+    range_match = re.search(r"\b(\d{1,2})(?::(\d{2}))?\s*[–-]\s*\d{1,2}(?::\d{2})?\s*([ap])\.?m\.?", text, re.I)
+    if range_match:
+        hour = int(range_match.group(1))
+        minute = int(range_match.group(2) or "0")
+        meridian = range_match.group(3).lower()
+        if meridian == "p" and hour != 12:
+            hour += 12
+        if meridian == "a" and hour == 12:
+            hour = 0
+        return time(hour, minute)
     match = TIME_RE.search(text)
     if not match:
         return None
@@ -127,6 +137,10 @@ def extract_meetings(
         return extract_stanislaus_workforce_board_meetings(source, html, page_url, today, lookahead_days)
     if extraction_strategy == "south_bay_sectioned_agendas":
         return extract_south_bay_sectioned_meetings(source, html, page_url, today, lookahead_days)
+    if extraction_strategy == "workforce_alliance_north_bay":
+        return extract_workforce_alliance_north_bay_meetings(source, html, page_url, today, lookahead_days)
+    if extraction_strategy == "santa_cruz_wfscc":
+        return extract_santa_cruz_wfscc_meetings(source, html, page_url, today, lookahead_days)
     soup = BeautifulSoup(html, "html.parser")
     agenda_links = extract_agenda_links(html, page_url)
     text_blocks = _candidate_text_blocks(soup)
@@ -247,6 +261,34 @@ def extract_south_bay_sectioned_meetings(
     return sorted(meetings.values(), key=lambda m: (m.meeting_date, m.meeting_type))
 
 
+def extract_workforce_alliance_north_bay_meetings(
+    source: BoardSource,
+    html: str,
+    page_url: str,
+    today: date,
+    lookahead_days: int,
+) -> List[Meeting]:
+    sections = [
+        ("Regional Workforce Development Board", "Regional Workforce Development Board Executive Committee", "Board Meeting"),
+        ("Regional Workforce Development Board Executive Committee", "Communications & Outreach Committee", "Executive Committee"),
+    ]
+    return _extract_sectioned_line_table_meetings(source, html, page_url, today, lookahead_days, sections)
+
+
+def extract_santa_cruz_wfscc_meetings(
+    source: BoardSource,
+    html: str,
+    page_url: str,
+    today: date,
+    lookahead_days: int,
+) -> List[Meeting]:
+    sections = [
+        ("FULL BOARD", "EXECUTIVE COMMITTEE", "Board Meeting"),
+        ("EXECUTIVE COMMITTEE", "CAREER SERVICES COMMITTEE", "Executive Committee"),
+    ]
+    return _extract_sectioned_line_table_meetings(source, html, page_url, today, lookahead_days, sections)
+
+
 def infer_meeting_type(text: str) -> str:
     lowered = text.lower()
     if "executive" in lowered:
@@ -291,6 +333,11 @@ def best_agenda_for_date(links: Iterable[AgendaLink], meeting_date: date) -> Opt
     }
     for link in links:
         haystack = f"{link.label} {link.url}".lower()
+        linked_date = _date_from_numeric_filename(haystack, meeting_date)
+        if linked_date == meeting_date:
+            return link
+        if linked_date and linked_date != meeting_date:
+            continue
         if any(token and token.lower() in haystack for token in tokens):
             return link
         if str(meeting_date.year) in haystack and meeting_date.strftime("%B").lower() in haystack:
@@ -329,6 +376,58 @@ def _between_markers(text: str, start: str, end: str) -> str:
     return text[start_index:end_index]
 
 
+def _extract_sectioned_line_table_meetings(
+    source: BoardSource,
+    html: str,
+    page_url: str,
+    today: date,
+    lookahead_days: int,
+    sections: list[tuple[str, str, str]],
+) -> list[Meeting]:
+    soup = BeautifulSoup(html, "html.parser")
+    text = soup.get_text("\n", strip=True)
+    all_lines = [line.strip() for line in text.splitlines() if line.strip()]
+    agenda_links = extract_agenda_links(html, page_url)
+    meetings: dict[str, Meeting] = {}
+    max_date = today + timedelta(days=lookahead_days)
+    for start_marker, end_marker, meeting_type in sections:
+        lines = _lines_between_markers(all_lines, start_marker, end_marker)
+        if not lines:
+            continue
+        for index, line in enumerate(lines):
+            meeting_date = parse_date(line, today, lookahead_days)
+            if not meeting_date or meeting_date < today - timedelta(days=14) or meeting_date > max_date:
+                continue
+            nearby = " ".join(lines[index : index + 2])
+            if "cancel" in nearby.lower():
+                continue
+            linked_agenda = best_agenda_for_date(agenda_links, meeting_date)
+            meeting = Meeting(
+                board_id=source.board_id,
+                board_name=source.board_name,
+                meeting_type=meeting_type,
+                meeting_date=meeting_date,
+                start_time=parse_time(nearby),
+                timezone="America/Los_Angeles",
+                location="",
+                virtual_url=infer_virtual_url(nearby),
+                source_page_url=page_url,
+                agenda_url=linked_agenda.url if linked_agenda else "",
+                agenda_label=linked_agenda.label if linked_agenda else "",
+                confidence_notes="Profiled sectioned extraction: dates are scoped to the official board or executive committee section and canceled rows are excluded.",
+            )
+            meetings[meeting.stable_id] = meeting
+    return sorted(meetings.values(), key=lambda m: (m.meeting_date, m.meeting_type))
+
+
+def _lines_between_markers(lines: list[str], start: str, end: str) -> list[str]:
+    start_index = next((idx for idx, line in enumerate(lines) if line == start), -1)
+    if start_index == -1:
+        return []
+    end_index = next((idx for idx in range(start_index + 1, len(lines)) if lines[idx] == end), len(lines))
+    return lines[start_index:end_index]
+
+
 def _stanislaus_current_board_agenda(soup: BeautifulSoup, page_url: str, meeting_date: date) -> AgendaLink | None:
     for anchor in soup.find_all("a", href=True):
         label = anchor.get_text(" ", strip=True)
@@ -345,7 +444,14 @@ def _stanislaus_current_board_agenda(soup: BeautifulSoup, page_url: str, meeting
 
 
 def _date_from_numeric_filename(value: str, reference_date: date) -> date | None:
-    matches = re.findall(r"(?<!\d)(\d{1,2})[-_](\d{1,2})[-_](\d{2,4})(?!\d)", value)
+    year_first_matches = re.findall(r"(?<!\d)(20\d{2})[-_.](\d{1,2})[-_.](\d{1,2})(?!\d)", value)
+    if year_first_matches:
+        year, month, day = year_first_matches[-1]
+        try:
+            return date(int(year), int(month), int(day))
+        except ValueError:
+            return None
+    matches = re.findall(r"(?<!\d)(\d{1,2})[-_.](\d{1,2})[-_.](\d{2,4})(?!\d)", value)
     if not matches:
         return None
     month, day, year = matches[-1]
