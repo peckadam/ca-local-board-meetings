@@ -233,3 +233,12 @@ Moved Permanently
 - Failures requiring human review: 1
 - Review: San Diego Workforce Partnership - https://workforce.org/boards/workforce-development-board/agendas-minutes/ - HTTP Error 403: Forbidden
 
+## 2026-05-10T02:55:47.192152+00:00 (dry-run)
+
+- Boards checked: 5
+- Meetings found: 0
+- Missing agendas within 72 hours: 0
+- Failures requiring human review: 2
+- Review: Sonoma County WDB - https://sonomawdb.org/ - <urlopen error [Errno 8] nodename nor servname provided, or not known>
+- Review: Yolo County WDB - https://www.yoloworks.org/ - robots.txt disallows fetching https://www.yoloworks.org/
+

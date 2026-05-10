@@ -347,12 +347,47 @@ These sources have official endpoints and known traps documented, but still need
 - Known traps: old `/wdb` shortcut returns Page Not Found. BSCC Santa Barbara board agenda is unrelated.
 - Automation rule: `no_publish` until current WDB event/meeting widgets are parsed.
 
+### Solano County WDB
+
+- Official source: `https://www.solanocounty.gov/government/clerk-board/advisory-boards-committees-commissions/about-workforce-development-board`
+- Current structure: county advisory body page describes WDB membership and meeting cadence.
+- Cadence observed on 2026-05-10: 3rd Friday of every other month starting in January, 8:30 AM to 10:30 AM, at 500 Chadbourne Road, Suite A, Fairfield.
+- Known traps: old `www.solanowdb.org` has an SSL hostname mismatch. Cadence alone is not being published until agenda source is confirmed.
+- Automation rule: `no_publish` until agenda archive/current meeting rows are confirmed.
+
+### Sonoma County WDB
+
+- Official source: unresolved.
+- Current structure: old `sonomawdb.org` did not resolve during audit.
+- Cadence observed on 2026-05-10: no current WDB-specific agenda/schedule endpoint confirmed.
+- Known traps: Sonoma County Board of Supervisors pages are false positives unless explicitly tied to WDB.
+- Automation rule: `no_publish` until official endpoint discovery is complete.
+
+### Ventura County WDB
+
+- Official source: `https://workforce.venturacounty.gov/`
+- Agenda/packet source: `https://workforce.venturacounty.gov/resources/meeting-packets/`
+- Current structure: current county workforce site describes WDB committees and meeting packets, but no safe current future date row was extracted in this pass.
+- Cadence observed on 2026-05-10: no current future schedule confirmed.
+- Known traps: old `vcwdb.org` does not resolve. Legacy `workforceventuracounty.org` pages exist; prefer `workforce.venturacounty.gov`.
+- Automation rule: `no_publish` until meeting packet/date extraction is implemented.
+
+### Verdugo WDB
+
+- Official source: `https://verdugoworks.com/board/`
+- Current structure: Verdugo Works board page has Board Meeting Packets.
+- Cadence observed on 2026-05-10: visible packet dates include February 14, 2025; April 9, 2025; May 21/June 25, 2025; and March 11, 2026. No future post-May 9 2026 meeting confirmed.
+- Known traps: old `verdugowdb.org` does not resolve. Sparse packet dates should not be projected forward.
+- Automation rule: `no_publish` until future schedule is confirmed.
+
+### Yolo County WDB
+
+- Official source: `https://www.yoloworks.org/`
+- Current structure: current registry source is blocked by robots.txt for the automation.
+- Cadence observed on 2026-05-10: no alternate official agenda/schedule endpoint confirmed.
+- Known traps: robots.txt disallows fetching the current source.
+- Automation rule: `no_publish` until a robots-compliant alternate source is found.
+
 ## Remaining Audit Queue
 
-These sources are still `medium` until manually profiled. Each needs the same treatment: official endpoint, cadence, agenda source, committee handling, stale-PDF traps, and extraction strategy.
-
-- Solano County WDB
-- Sonoma County WDB
-- Ventura County WDB
-- Verdugo WDB
-- Yolo County WDB
+All source-registry boards now have at least a first-pass profile. Continue promoting medium-confidence sources to high only after the daily runner can fetch and parse their official schedule/agenda source without false positives.

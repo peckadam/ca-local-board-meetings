@@ -676,6 +676,74 @@
         "BSCC Santa Barbara board agenda is unrelated."
       ],
       "verification_notes": "Partially audited 2026-05-10. Correct county WDB pages found; needs parser for event/meeting widgets."
+    },
+    {
+      "board_id": "solano-county-wdb",
+      "status": "partially_audited",
+      "cadence": "Solano County advisory body page says WDB meets the 3rd Friday of every other month starting in January, 8:30 AM to 10:30 AM, at 500 Chadbourne Road, Suite A, Fairfield. No agenda archive/current dated agenda row confirmed.",
+      "extraction_strategy": "no_publish",
+      "agenda_rules": {
+        "source": "https://www.solanocounty.gov/government/clerk-board/advisory-boards-committees-commissions/about-workforce-development-board"
+      },
+      "known_traps": [
+        "Old www.solanowdb.org host has SSL certificate mismatch.",
+        "Cadence alone is not being published until agenda source is confirmed."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Official county advisory body page found; agenda source unresolved."
+    },
+    {
+      "board_id": "sonoma-county-wdb",
+      "status": "partially_audited",
+      "cadence": "Old sonomawdb.org domain did not resolve. Search did not surface a current WDB-specific agenda/schedule page during this pass.",
+      "extraction_strategy": "no_publish",
+      "agenda_rules": {},
+      "known_traps": [
+        "Sonoma County Board of Supervisors pages are false positives unless explicitly tied to WDB."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Needs manual official endpoint discovery."
+    },
+    {
+      "board_id": "ventura-county-wdb",
+      "status": "partially_audited",
+      "cadence": "Current domain is workforce.venturacounty.gov. Meeting calendar/packet pages describe board meeting packet availability and committee structure, but fetched/search snippets did not expose current future date rows.",
+      "extraction_strategy": "no_publish",
+      "agenda_rules": {
+        "main": "https://workforce.venturacounty.gov/",
+        "meetings": "https://workforce.venturacounty.gov/about-us/wdb-committees/",
+        "packets": "https://workforce.venturacounty.gov/resources/meeting-packets/"
+      },
+      "known_traps": [
+        "Old vcwdb.org domain does not resolve.",
+        "Legacy workforceventuracounty.org pages exist; prefer workforce.venturacounty.gov."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Correct current domain found; meeting date extraction unresolved."
+    },
+    {
+      "board_id": "verdugo-wdb",
+      "status": "partially_audited",
+      "cadence": "Current Verdugo Works board page has Board Meeting Packets with visible packet dates including February 14, 2025; April 9, 2025; May 21/June 25, 2025; and March 11, 2026. No future post-May 9 2026 meeting confirmed.",
+      "extraction_strategy": "no_publish",
+      "agenda_rules": {
+        "source": "https://verdugoworks.com/board/"
+      },
+      "known_traps": [
+        "Old verdugowdb.org domain does not resolve.",
+        "Board packet dates are sparse and should not be projected forward."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Correct current page found; future schedule unresolved."
+    },
+    {
+      "board_id": "yolo-county-wdb",
+      "status": "partially_audited",
+      "cadence": "Registry source yoloworks.org was blocked by robots.txt for the automation. No alternate official agenda/schedule endpoint was confirmed in this pass.",
+      "extraction_strategy": "no_publish",
+      "agenda_rules": {
+        "blocked_source": "https://www.yoloworks.org/"
+      },
+      "known_traps": [
+        "Robots.txt disallows fetching current registry source."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Needs manual source discovery or robots-compliant alternate endpoint."
     }
   ]
 }
