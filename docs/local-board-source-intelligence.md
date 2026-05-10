@@ -298,16 +298,59 @@ These sources have official endpoints and known traps documented, but still need
 - Known traps: old `sbcworkforce.org` does not resolve. iframe content needs embedded-source parsing.
 - Automation rule: keep as medium confidence until current schedule or iframe agenda content is parsed.
 
+### San Bernardino County WDB
+
+- Official source: `https://workforce.sbcounty.gov/about/board-agenda/`
+- Current structure: Board Agenda page shows current agenda information and links PDF agendas.
+- Cadence observed on 2026-05-10: February 18, 2026 Finance Committee at 8:30 AM and General Board Meeting at 9:30 AM were visible; no future post-May 9 row was visible.
+- Known traps: old `wp.sbcounty.gov/workforce` URL returns 410 Gone. Finance Committee appears on the same page as General Board Meeting.
+- Automation rule: `no_publish` until a future full-board/executive source is visible.
+
+### San Diego Workforce Partnership
+
+- Official source: `https://workforce.org/boards/workforce-development-board/agendas-minutes/`
+- Current structure: WDB Agendas & Minutes page has an `Upcoming Meetings` section for 2026 with alternating Executive Committee and Board Meeting rows.
+- Cadence observed on 2026-05-10: future rows after May 9 include May 14 Board; June 1 Executive; June 11 Board; August 31 Executive; September 10 Board; September 28 Executive; October 8 Board; November 2 Executive; November 12 Board; November 30 Executive; December 10 Board.
+- Known traps: main `workforce.org` and the WDB agendas page returned HTTP 403 to the automation during runner validation. San Diego Consortium Policy Board and Audit Committee are separate.
+- Automation rule: `san_diego_wdb` is implemented, but source remains medium until the daily runner can fetch it.
+
+### San Francisco OEWD / WISF
+
+- Official source: `https://www.sf.gov/departments--workforce-investment-san-francisco-wisf-board`
+- Current structure: SF.gov WISF page has a calendar widget and detail pages for meetings.
+- Cadence observed on 2026-05-10: page says board and executive committee meetings occur quarterly; visible calendar items were 2025 meetings.
+- Known traps: old `oewd.org` redirects with 308. Generic parsing produced false future rows from SF.gov calendar fragments.
+- Automation rule: `no_publish` until current 2026 WISF meeting detail pages are confirmed.
+
+### San Joaquin County WorkNet
+
+- Official source: `https://www.sjcworknet.org/wdb.asp`
+- Current structure: WDB page has a `Workforce Development Board Meeting Schedule` table.
+- Cadence observed on 2026-05-10: February 25, canceled March 25, May 27, July 22, August 26, October 28, and combined November/December meeting on December 16, 2026.
+- Known traps: WorkNet homepage and STEP application packet are not WDB meeting sources.
+- Automation rule: use `san_joaquin_worknet`; parse only the official schedule section and skip canceled rows.
+
+### Santa Ana WDB
+
+- Official candidate source: `https://www.santa-ana.org/agendas-and-minutes/`
+- Current structure: agenda notifications page links citywide agendas/minutes but is not itself a WDB schedule.
+- Cadence observed on 2026-05-10: no WDB-specific current schedule confirmed.
+- Known traps: Travel Santa Ana and Santa Ana Regional Water Quality Control Board are unrelated false positives.
+- Automation rule: `no_publish` until a WDB-specific official endpoint is found.
+
+### Santa Barbara County WDB
+
+- Official board source: `https://www.countyofsb.org/611/Workforce-Development-Board`
+- Official agenda archive: `https://www.countyofsb.org/3033/Board-Agendas`
+- Current structure: county WDB page has Events/Meetings widgets; Board Agendas page archives historical agendas.
+- Cadence observed on 2026-05-10: no current future 2026 meeting dates confirmed.
+- Known traps: old `/wdb` shortcut returns Page Not Found. BSCC Santa Barbara board agenda is unrelated.
+- Automation rule: `no_publish` until current WDB event/meeting widgets are parsed.
+
 ## Remaining Audit Queue
 
 These sources are still `medium` until manually profiled. Each needs the same treatment: official endpoint, cadence, agenda source, committee handling, stale-PDF traps, and extraction strategy.
 
-- San Bernardino County WDB
-- San Diego Workforce Partnership
-- San Francisco OEWD
-- San Joaquin County WorkNet
-- Santa Ana WDB
-- Santa Barbara County WDB
 - Solano County WDB
 - Sonoma County WDB
 - Ventura County WDB

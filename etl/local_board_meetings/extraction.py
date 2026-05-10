@@ -140,6 +140,8 @@ def extract_meetings(
     lookahead_days: int,
     extraction_strategy: str = "generic",
 ) -> List[Meeting]:
+    if extraction_strategy == "no_publish":
+        return []
     if extraction_strategy == "stanislaus_workforce_board":
         return extract_stanislaus_workforce_board_meetings(source, html, page_url, today, lookahead_days)
     if extraction_strategy == "south_bay_sectioned_agendas":
@@ -166,6 +168,10 @@ def extract_meetings(
         return extract_nccc_wdb_schedule(source, html, page_url, today, lookahead_days)
     if extraction_strategy == "riverside_wdb_schedule":
         return extract_riverside_wdb_schedule(source, html, page_url, today, lookahead_days)
+    if extraction_strategy == "san_diego_wdb":
+        return extract_san_diego_wdb_meetings(source, html, page_url, today, lookahead_days)
+    if extraction_strategy == "san_joaquin_worknet":
+        return extract_san_joaquin_worknet_meetings(source, html, page_url, today, lookahead_days)
     soup = BeautifulSoup(html, "html.parser")
     agenda_links = extract_agenda_links(html, page_url)
     text_blocks = _candidate_text_blocks(soup)
@@ -673,6 +679,101 @@ def extract_riverside_wdb_schedule(
             agenda_url=linked_agenda.url if linked_agenda else "",
             agenda_label=linked_agenda.label if linked_agenda else "",
             confidence_notes="Profiled Riverside extraction: dates are scoped to the 2026 full board or executive committee meeting schedule tables and canceled rows are excluded.",
+        )
+        meetings[meeting.stable_id] = meeting
+    return sorted(meetings.values(), key=lambda m: (m.meeting_date, m.meeting_type))
+
+
+def extract_san_diego_wdb_meetings(
+    source: BoardSource,
+    html: str,
+    page_url: str,
+    today: date,
+    lookahead_days: int,
+) -> list[Meeting]:
+    soup = BeautifulSoup(html, "html.parser")
+    lines = [line.strip() for line in soup.get_text("\n", strip=True).splitlines() if line.strip()]
+    meetings: dict[str, Meeting] = {}
+    max_date = today + timedelta(days=lookahead_days)
+    in_upcoming = False
+    current_type = ""
+    for index, line in enumerate(lines):
+        lowered = line.lower()
+        if lowered == "upcoming meetings":
+            in_upcoming = True
+            continue
+        if in_upcoming and lowered == "past meetings":
+            break
+        if not in_upcoming:
+            continue
+        if lowered in {"executive committee", "board meeting"}:
+            current_type = "Executive Committee" if "executive" in lowered else "Board Meeting"
+            continue
+        meeting_date = parse_date(line, today, lookahead_days)
+        if not current_type or not meeting_date or meeting_date < today - timedelta(days=14) or meeting_date > max_date:
+            continue
+        nearby = " ".join(lines[index : index + 3])
+        meeting = Meeting(
+            board_id=source.board_id,
+            board_name=source.board_name,
+            meeting_type=current_type,
+            meeting_date=meeting_date,
+            start_time=parse_time(nearby),
+            timezone="America/Los_Angeles",
+            location="",
+            virtual_url="",
+            source_page_url=page_url,
+            agenda_url="",
+            agenda_label="",
+            confidence_notes="Profiled San Diego extraction: only the Upcoming Meetings section for the WDB Board and Executive Committee is published; audit/policy board rows are excluded.",
+        )
+        meetings[meeting.stable_id] = meeting
+        current_type = ""
+    return sorted(meetings.values(), key=lambda m: (m.meeting_date, m.meeting_type))
+
+
+def extract_san_joaquin_worknet_meetings(
+    source: BoardSource,
+    html: str,
+    page_url: str,
+    today: date,
+    lookahead_days: int,
+) -> list[Meeting]:
+    soup = BeautifulSoup(html, "html.parser")
+    lines = [line.strip() for line in soup.get_text("\n", strip=True).splitlines() if line.strip()]
+    agenda_links = extract_agenda_links(html, page_url)
+    meetings: dict[str, Meeting] = {}
+    max_date = today + timedelta(days=lookahead_days)
+    in_schedule = False
+    for index, line in enumerate(lines):
+        lowered = line.lower()
+        if "workforce development board meeting schedule" in lowered:
+            in_schedule = True
+            continue
+        if in_schedule and "workforce development board links" in lowered:
+            break
+        if not in_schedule:
+            continue
+        meeting_date = parse_date(line, today, lookahead_days)
+        if not meeting_date or meeting_date < today - timedelta(days=14) or meeting_date > max_date:
+            continue
+        nearby = " ".join(lines[index : index + 3])
+        if "cancel" in nearby.lower():
+            continue
+        linked_agenda = best_agenda_for_date(agenda_links, meeting_date)
+        meeting = Meeting(
+            board_id=source.board_id,
+            board_name=source.board_name,
+            meeting_type="Board Meeting",
+            meeting_date=meeting_date,
+            start_time=parse_time(nearby),
+            timezone="America/Los_Angeles",
+            location="",
+            virtual_url="",
+            source_page_url=page_url,
+            agenda_url=linked_agenda.url if linked_agenda else "",
+            agenda_label=linked_agenda.label if linked_agenda else "",
+            confidence_notes="Profiled San Joaquin extraction: only dates from the official Workforce Development Board Meeting Schedule are published; canceled rows are excluded.",
         )
         meetings[meeting.stable_id] = meeting
     return sorted(meetings.values(), key=lambda m: (m.meeting_date, m.meeting_type))

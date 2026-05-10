@@ -217,3 +217,19 @@ Moved Permanently
 - Review: Riverside County WDB - https://rivcoworkforce.org/workforce-development-board - HTTP Error 403: Forbidden
 - Review: Riverside County WDB - https://rivcoworkforce.org/executive-committee - HTTP Error 403: Forbidden
 
+## 2026-05-10T02:33:03.743618+00:00 (dry-run)
+
+- Boards checked: 6
+- Meetings found: 11
+- Missing agendas within 72 hours: 0
+- Failures requiring human review: 1
+- Review: San Diego Workforce Partnership - https://workforce.org/boards/workforce-development-board/agendas-minutes/ - HTTP Error 403: Forbidden
+
+## 2026-05-10T02:41:42.564068+00:00 (dry-run)
+
+- Boards checked: 6
+- Meetings found: 4
+- Missing agendas within 72 hours: 0
+- Failures requiring human review: 1
+- Review: San Diego Workforce Partnership - https://workforce.org/boards/workforce-development-board/agendas-minutes/ - HTTP Error 403: Forbidden
+
