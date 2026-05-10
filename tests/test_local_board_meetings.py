@@ -272,6 +272,105 @@ class LocalBoardMeetingTests(unittest.TestCase):
         self.assertEqual(meetings[0].meeting_type, "Executive Committee")
         self.assertEqual(meetings[0].start_time, time(11, 0))
 
+    def test_alameda_profile_scopes_board_and_executive_links(self) -> None:
+        source = BoardSource(
+            board_id="alameda-county-wdb",
+            board_name="Alameda County WDB",
+            local_area="Alameda County",
+            main_website="https://acwdb.org/",
+            meeting_schedule_url="https://acwdb.org/boards/",
+            agenda_minutes_url="https://acwdb.org/boards/",
+            executive_committee_url="",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        html = """
+        <p>5/14/26 - <a href="/board-packet.pdf">9:00 - Noon - Quarterly Board Meeting</a></p>
+        <p><a href="/joint.pdf">4/15/26 - Joint Committee Meeting</a></p>
+        <p><a href="/exec.pdf">4/22/26 - Executive Committee Meeting</a></p>
+        <p><a href="/youth.pdf">6/8/26 - Youth Committee</a></p>
+        """
+        meetings = extract_meetings(
+            source,
+            html,
+            "https://acwdb.org/boards/",
+            date(2026, 5, 9),
+            180,
+            extraction_strategy="alameda_acwdb",
+        )
+        self.assertEqual([(m.meeting_date, m.meeting_type, m.start_time) for m in meetings], [
+            (date(2026, 5, 14), "Board Meeting", time(9, 0)),
+        ])
+
+    def test_humboldt_profile_scopes_agenda_center_categories(self) -> None:
+        source = BoardSource(
+            board_id="humboldt-county-wdb",
+            board_name="Humboldt County WDB",
+            local_area="Humboldt County",
+            main_website="https://humboldtgov.org/3803/Humboldt-County-Workforce-Development-Bo",
+            meeting_schedule_url="https://humboldtgov.org/agendacenter",
+            agenda_minutes_url="https://humboldtgov.org/agendacenter",
+            executive_committee_url="",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        html = """
+        <h2>Behavioral Health Board - Executive Committee</h2>
+        <p>May 6, 2026</p>
+        <h2>Workforce Development Board</h2>
+        <p>June 26, 2026</p><p>Humboldt County Workforce Development Board Meeting</p>
+        <h2>Workforce Development Board Executive Committee</h2>
+        <p>May 29, 2026</p><p>Humboldt County Workforce Development Board Executive Committee</p>
+        <h2>Youth Council of the Workforce Investment Board</h2>
+        <p>June 10, 2026</p>
+        """
+        meetings = extract_meetings(
+            source,
+            html,
+            "https://humboldtgov.org/agendacenter",
+            date(2026, 5, 9),
+            180,
+            extraction_strategy="humboldt_civicengage",
+        )
+        self.assertEqual([(m.meeting_date, m.meeting_type) for m in meetings], [
+            (date(2026, 5, 29), "Executive Committee"),
+            (date(2026, 6, 26), "Board Meeting"),
+        ])
+
+    def test_foothill_profile_uses_event_titles_only(self) -> None:
+        source = BoardSource(
+            board_id="foothill-wdb",
+            board_name="Foothill WDB",
+            local_area="Foothill",
+            main_website="https://fwdbworks.org/wp/",
+            meeting_schedule_url="https://fwdbworks.org/events/",
+            agenda_minutes_url="https://fwdbworks.org/events/",
+            executive_committee_url="",
+            notes="test",
+            last_checked_at="",
+            confidence="medium",
+        )
+        html = """
+        <div><time>May 14, 2026 9:00 AM</time><a href="/event/fwdb-meeting/">FWDB Meeting</a></div>
+        <div><time>May 21, 2026 10:00 AM</time><a href="/event/orientation/">FWDB Orientation</a></div>
+        <div><time>May 28, 2026 1:00 PM</time><a href="/event/exec/">FWDB Executive Committee Meeting</a></div>
+        <div><span>May 29, 2026</span><a href="/event/other/">Community Workshop</a></div>
+        """
+        meetings = extract_meetings(
+            source,
+            html,
+            "https://fwdbworks.org/events/",
+            date(2026, 5, 9),
+            180,
+            extraction_strategy="foothill_events",
+        )
+        self.assertEqual([(m.meeting_date, m.meeting_type, m.start_time) for m in meetings], [
+            (date(2026, 5, 14), "Board Meeting", time(9, 0)),
+            (date(2026, 5, 28), "Executive Committee", time(13, 0)),
+        ])
+
     def test_prunes_unseen_future_meetings_for_checked_board(self) -> None:
         conn = connect(__import__("pathlib").Path(":memory:"))
         seen_at = datetime(2026, 5, 9, tzinfo=timezone.utc)

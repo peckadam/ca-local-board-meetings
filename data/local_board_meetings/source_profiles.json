@@ -291,6 +291,111 @@
         "Many historical agenda PDFs are present."
       ],
       "verification_notes": "Partially audited 2026-05-10. Needs PDF schedule extraction and Wix context handling."
+    },
+    {
+      "board_id": "alameda-county-wdb",
+      "status": "audited",
+      "cadence": "Board and Committees page publishes current board and committee meetings. Quarterly Board meetings observed March 12 and May 14, 2026 from 9:00 AM to Noon. Executive Committee meetings observed February 25 and April 22, 2026 from 9:00 AM or 9:30 AM to 11:30 AM.",
+      "extraction_strategy": "alameda_acwdb",
+      "agenda_rules": {
+        "source": "https://acwdb.org/boards/",
+        "annual_calendar_link_present": true,
+        "publish": [
+          "Quarterly Board Meeting",
+          "Executive Committee Meeting"
+        ],
+        "exclude": [
+          "Youth Committee",
+          "Systems and Strategies Committee",
+          "Organizational Effectiveness Committee",
+          "Joint Committee"
+        ]
+      },
+      "known_traps": [
+        "Board and committee entries share one page; Youth, Systems and Strategies, Organizational Effectiveness, and Joint Committee entries must not be published as board/executive meetings.",
+        "The homepage has no meeting schedule and should not be parsed for dates."
+      ],
+      "verification_notes": "Audited 2026-05-10. Official Board and Committees page has current May 14, 2026 Quarterly Board Meeting with meeting link/packet."
+    },
+    {
+      "board_id": "anaheim-wdb",
+      "status": "partially_audited",
+      "cadence": "Boards and Commissions page states Workforce Development Board meets 3rd Wednesday every other month at 9:00 AM at Anaheim West Tower, Gordon Hoyt Conference Room. Agenda Center category has 2026 entries for February 18 and April 15, with April 15 canceled; no future post-May 9 dated agenda was visible.",
+      "extraction_strategy": "generic",
+      "agenda_rules": {
+        "board_page": "https://www.anaheim.net/176/Boards-Commissions",
+        "agenda_center": "https://www.anaheim.net/AgendaCenter/Workforce-Development-Board-24",
+        "exclude": [
+          "canceled meetings",
+          "City Council agendas",
+          "Visit Anaheim subcontractor pages"
+        ]
+      },
+      "known_traps": [
+        "Anaheim has many boards in the same Boards and Commissions page; use only the Workforce Development Board section and AgendaCenter category 24.",
+        "The previous registry pointed to City Council agendas and a Visit Anaheim subcontractor page; both are false sources."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Official endpoints corrected; future agenda cadence should be confirmed when the next AgendaCenter item appears."
+    },
+    {
+      "board_id": "foothill-wdb",
+      "status": "partially_audited",
+      "cadence": "Current official domain is fwdbworks.org. Board page points users to Meetings and Events calendar for upcoming FWDB meetings. Events page observed April 30, 2026 Special Board Meeting and FWDB Executive Committee Meeting; no post-May 9 future board/executive meeting was visible in the fetched month view.",
+      "extraction_strategy": "foothill_events",
+      "agenda_rules": {
+        "main": "https://fwdbworks.org/wp/",
+        "board": "https://fwdbworks.org/wp/board/",
+        "events": "https://fwdbworks.org/events/",
+        "exclude": [
+          "FWDB Orientation",
+          "workshops",
+          "non-board events"
+        ]
+      },
+      "known_traps": [
+        "Old foothillwdb.org domain no longer resolves.",
+        "Events calendar includes orientations and other non-board items alongside meetings."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Correct domain and calendar located; custom event-title parser added to avoid calendar-day false positives. Needs future month pagination validation before high confidence."
+    },
+    {
+      "board_id": "fresno-regional-wdb",
+      "status": "partially_audited",
+      "cadence": "Current official domain is frwdb.net. Board & Committees page describes Executive Committee, Adult Council, Youth Council, and Skills Development Council but fetched HTML did not expose meeting dates or agenda links.",
+      "extraction_strategy": "generic",
+      "agenda_rules": {
+        "main": "https://frwdb.net/",
+        "board": "https://frwdb.net/board-of-directors/"
+      },
+      "known_traps": [
+        "Old fresno-ca-wdb.com domain no longer resolves.",
+        "The Board & Committees page is structural/governance content, not a schedule source by itself."
+      ],
+      "verification_notes": "Partially audited 2026-05-10. Correct current domain found; agenda/schedule endpoint still needs discovery."
+    },
+    {
+      "board_id": "humboldt-county-wdb",
+      "status": "audited",
+      "cadence": "County WDB page states meetings are held quarterly at Humboldt County Office of Education Annex. CivicEngage Agenda Center has separate Workforce Development Board and Workforce Development Board Executive Committee categories. 2026 visible entries include February 27 Board and January 30/April 24 Executive Committee.",
+      "extraction_strategy": "humboldt_civicengage",
+      "agenda_rules": {
+        "board_page": "https://humboldtgov.org/3803/Humboldt-County-Workforce-Development-Bo",
+        "agenda_center": "https://humboldtgov.org/agendacenter",
+        "publish_sections": [
+          "Workforce Development Board",
+          "Workforce Development Board Executive Committee"
+        ],
+        "exclude": [
+          "Behavioral Health Board",
+          "Youth Council of the Workforce Investment Board"
+        ]
+      },
+      "known_traps": [
+        "Agenda Center contains many unrelated county boards before the WDB sections.",
+        "Old registry URL /1709/Workforce-Development-Board returns 404.",
+        "Youth Council of the Workforce Investment Board is a separate historical category and should not be published as board/executive."
+      ],
+      "verification_notes": "Audited 2026-05-10. Official page and Agenda Center sections verified; custom sectioned parser added."
     }
   ]
 }

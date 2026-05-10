@@ -15,6 +15,7 @@ DATE_PATTERNS = [
     re.compile(rf"\b({MONTH_NAMES})\.?\s+(\d{{1,2}})(?:st|nd|rd|th)?(?:,)?\s+(20\d{{2}})\b", re.I),
     re.compile(r"\b(20\d{2})[-/](\d{1,2})[-/](\d{1,2})\b"),
     re.compile(r"\b(\d{1,2})/(\d{1,2})/(20\d{2})\b"),
+    re.compile(r"\b(\d{1,2})/(\d{1,2})/(\d{2})\b"),
     re.compile(rf"\b({MONTH_NAMES})\.?\s+(\d{{1,2}})(?:st|nd|rd|th)?\b", re.I),
 ]
 TIME_RE = re.compile(r"\b(\d{1,2})(?::(\d{2}))?\s*([ap]\.?m\.?)\b", re.I)
@@ -37,6 +38,9 @@ def parse_date(text: str, reference_date: date | None = None, lookahead_days: in
     if match:
         return date(int(match.group(3)), int(match.group(1)), int(match.group(2)))
     match = DATE_PATTERNS[3].search(text)
+    if match:
+        return date(2000 + int(match.group(3)), int(match.group(1)), int(match.group(2)))
+    match = DATE_PATTERNS[4].search(text)
     if match and reference_date:
         month = _month_number(match.group(1))
         day = int(match.group(2))
@@ -51,6 +55,9 @@ def parse_date(text: str, reference_date: date | None = None, lookahead_days: in
 def parse_time(text: str) -> Optional[time]:
     noon_match = re.search(r"\bnoon\b", text, re.I)
     meridian_match = TIME_RE.search(text)
+    noon_range_match = re.search(r"\b(\d{1,2})(?::(\d{2}))?\s*[–-]\s*noon\b", text, re.I)
+    if noon_range_match:
+        return time(int(noon_range_match.group(1)), int(noon_range_match.group(2) or "0"))
     if noon_match and (not meridian_match or noon_match.start() < meridian_match.start()):
         return time(12, 0)
     range_match = re.search(r"\b(\d{1,2})(?::(\d{2}))?\s*[–-]\s*\d{1,2}(?::\d{2})?\s*([ap])\.?m\.?", text, re.I)
@@ -143,6 +150,12 @@ def extract_meetings(
         return extract_santa_cruz_wfscc_meetings(source, html, page_url, today, lookahead_days)
     if extraction_strategy == "event_detail_title":
         return extract_event_detail_title_meeting(source, html, page_url, today, lookahead_days)
+    if extraction_strategy == "alameda_acwdb":
+        return extract_alameda_acwdb_meetings(source, html, page_url, today, lookahead_days)
+    if extraction_strategy == "humboldt_civicengage":
+        return extract_humboldt_civicengage_meetings(source, html, page_url, today, lookahead_days)
+    if extraction_strategy == "foothill_events":
+        return extract_foothill_events(source, html, page_url, today, lookahead_days)
     soup = BeautifulSoup(html, "html.parser")
     agenda_links = extract_agenda_links(html, page_url)
     text_blocks = _candidate_text_blocks(soup)
@@ -325,6 +338,109 @@ def extract_event_detail_title_meeting(
     return [meeting]
 
 
+def extract_alameda_acwdb_meetings(
+    source: BoardSource,
+    html: str,
+    page_url: str,
+    today: date,
+    lookahead_days: int,
+) -> list[Meeting]:
+    soup = BeautifulSoup(html, "html.parser")
+    meetings: dict[str, Meeting] = {}
+    max_date = today + timedelta(days=lookahead_days)
+    for anchor in soup.find_all("a", href=True):
+        label = anchor.get_text(" ", strip=True)
+        lowered = label.lower()
+        if "quarterly board meeting" not in lowered and "executive committee" not in lowered:
+            continue
+        if "joint" in lowered or "organizational" in lowered or "systems" in lowered or "youth" in lowered:
+            continue
+        if "cancel" in lowered:
+            continue
+        context = anchor.parent.get_text(" ", strip=True) if anchor.parent else label
+        meeting_date = parse_date(context, today, lookahead_days)
+        if not meeting_date or meeting_date < today - timedelta(days=14) or meeting_date > max_date:
+            continue
+        meeting_type = "Executive Committee" if "executive" in lowered else "Board Meeting"
+        agenda = AgendaLink(absolute_url(page_url, anchor["href"].strip()), context, page_url)
+        meeting = Meeting(
+            board_id=source.board_id,
+            board_name=source.board_name,
+            meeting_type=meeting_type,
+            meeting_date=meeting_date,
+            start_time=parse_time(label),
+            timezone="America/Los_Angeles",
+            location=_nearby_location(anchor),
+            virtual_url=infer_virtual_url(anchor.parent.get_text(" ", strip=True) if anchor.parent else label),
+            source_page_url=page_url,
+            agenda_url=agenda.url,
+            agenda_label=agenda.label,
+            confidence_notes="Profiled Alameda extraction: only Quarterly Board Meeting and Executive Committee links on the official Board and Committees page are published.",
+        )
+        meetings[meeting.stable_id] = meeting
+    return sorted(meetings.values(), key=lambda m: (m.meeting_date, m.meeting_type))
+
+
+def extract_humboldt_civicengage_meetings(
+    source: BoardSource,
+    html: str,
+    page_url: str,
+    today: date,
+    lookahead_days: int,
+) -> list[Meeting]:
+    sections = [
+        ("Workforce Development Board", "Workforce Development Board Executive Committee", "Board Meeting"),
+        ("Workforce Development Board Executive Committee", "Youth Council of the Workforce Investment Board", "Executive Committee"),
+    ]
+    return _extract_sectioned_line_table_meetings(source, html, page_url, today, lookahead_days, sections)
+
+
+def extract_foothill_events(
+    source: BoardSource,
+    html: str,
+    page_url: str,
+    today: date,
+    lookahead_days: int,
+) -> list[Meeting]:
+    soup = BeautifulSoup(html, "html.parser")
+    meetings: dict[str, Meeting] = {}
+    max_date = today + timedelta(days=lookahead_days)
+    for anchor in soup.find_all("a", href=True):
+        title = anchor.get_text(" ", strip=True)
+        lowered = title.lower()
+        if "fwdb" not in lowered or "meeting" not in lowered:
+            continue
+        if any(term in lowered for term in ("orientation", "workshop", "training")):
+            continue
+        container = anchor.find_parent(["article", "li", "div"])
+        context = container.get_text(" ", strip=True) if container else title
+        meeting_date = parse_date(context, today, lookahead_days)
+        if not meeting_date or meeting_date < today - timedelta(days=14) or meeting_date > max_date:
+            continue
+        if "executive" in lowered:
+            meeting_type = "Executive Committee"
+        elif "special" in lowered:
+            meeting_type = "Special Board Meeting"
+        else:
+            meeting_type = "Board Meeting"
+        meeting = Meeting(
+            board_id=source.board_id,
+            board_name=source.board_name,
+            meeting_type=meeting_type,
+            meeting_date=meeting_date,
+            start_time=parse_time(context),
+            timezone="America/Los_Angeles",
+            location=infer_location(context),
+            virtual_url=infer_virtual_url(context),
+            source_page_url=absolute_url(page_url, anchor["href"].strip()),
+            agenda_url="",
+            agenda_label="",
+            confidence_notes="Profiled Foothill extraction: only FWDB meeting event titles from the official events calendar are published; calendar day cells and orientation/workshop events are excluded.",
+        )
+        meetings[meeting.stable_id] = meeting
+    return sorted(meetings.values(), key=lambda m: (m.meeting_date, m.meeting_type))
+
+
 def infer_meeting_type(text: str) -> str:
     lowered = text.lower()
     if "executive" in lowered:
@@ -348,6 +464,14 @@ def infer_location(text: str) -> str:
 def infer_virtual_url(text: str) -> str:
     match = re.search(r"https?://\S+", text)
     return match.group(0).rstrip(").,") if match else ""
+
+
+def _nearby_location(anchor) -> str:
+    text = anchor.parent.get_text("\n", strip=True) if anchor.parent else ""
+    for line in text.splitlines():
+        if line.lower().startswith("location:"):
+            return line.split(":", 1)[1].strip()
+    return ""
 
 
 def best_agenda_for_date(links: Iterable[AgendaLink], meeting_date: date) -> Optional[AgendaLink]:

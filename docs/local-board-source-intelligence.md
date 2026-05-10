@@ -87,9 +87,51 @@ This file is the operating memory for the meeting monitor. The automation should
 - Known traps: Governing Board meetings appear before the Regional WDB section and should not be published as local WDB meetings. Canceled rows are interspersed with active rows. Historical agenda links are numerous.
 - Automation rule: use the `workforce_alliance_north_bay` strategy and only publish Regional WDB and Regional WDB Executive Committee sections.
 
+### Alameda County WDB
+
+- Official source: `https://acwdb.org/boards/`
+- Current structure: Board and Committees page publishes meeting links for the board and several committees.
+- Cadence observed on 2026-05-10: Quarterly Board meetings observed March 12 and May 14, 2026 from 9:00 AM to Noon; Executive Committee meetings observed February 25 and April 22, 2026.
+- Known traps: Youth Committee, Systems and Strategies Committee, Organizational Effectiveness Committee, and Joint Committee entries share the page and should not be published as board/executive meetings.
+- Automation rule: use the `alameda_acwdb` strategy and only publish Quarterly Board Meeting and Executive Committee links.
+
+### Humboldt County WDB
+
+- Official board source: `https://humboldtgov.org/3803/Humboldt-County-Workforce-Development-Bo`
+- Official agenda source: `https://humboldtgov.org/agendacenter`
+- Current structure: CivicEngage Agenda Center contains separate sections for Workforce Development Board and Workforce Development Board Executive Committee.
+- Cadence observed on 2026-05-10: county page states quarterly board meetings; 2026 agenda entries observed include February 27 Board and January 30/April 24 Executive Committee.
+- Known traps: Agenda Center includes many unrelated county boards before the WDB sections. The old `/1709/Workforce-Development-Board` URL returns 404. Youth Council is a separate category.
+- Automation rule: use the `humboldt_civicengage` strategy and publish only Workforce Development Board and Workforce Development Board Executive Committee sections.
+
 ## Partially Audited Sources
 
 These sources have official endpoints and known traps documented, but still need either future-date confirmation, a custom parser, or PDF/JavaScript handling before they should be promoted to `high`.
+
+### Anaheim WDB
+
+- Official board source: `https://www.anaheim.net/176/Boards-Commissions`
+- Official agenda source: `https://www.anaheim.net/AgendaCenter/Workforce-Development-Board-24`
+- Current structure: Boards and Commissions page lists the WDB cadence; AgendaCenter category 24 lists agenda/minute items.
+- Cadence observed on 2026-05-10: WDB meets 3rd Wednesday every other month at 9:00 AM at Anaheim West Tower, Gordon Hoyt Conference Room. AgendaCenter showed 2026 entries for February 18 and canceled April 15; no future post-May 9 agenda item was visible.
+- Known traps: City Council agenda pages and Visit Anaheim subcontractor pages are false sources.
+- Automation rule: use only AgendaCenter category 24; do not infer future meetings from cadence until agenda entries are published.
+
+### Foothill WDB
+
+- Official source: `https://fwdbworks.org/events/`
+- Current structure: WordPress Events Calendar month view lists FWDB meetings and non-board events; board page points users to the Meetings and Events calendar.
+- Cadence observed on 2026-05-10: April 30, 2026 Special Board Meeting and FWDB Executive Committee Meeting were visible; no future post-May 9 board/executive meeting appeared in the fetched May view.
+- Known traps: old `foothillwdb.org` domain no longer resolves. The month grid exposes day numbers and orientation/workshop events that must not become meetings.
+- Automation rule: use `foothill_events`; parse only event titles containing FWDB meeting language and exclude orientation/workshop/training titles.
+
+### Fresno Regional WDB
+
+- Official source: `https://frwdb.net/board-of-directors/`
+- Current structure: Board & Committees page describes the board, Executive Committee, Adult Council, Youth Council, and Skills Development Council.
+- Cadence observed on 2026-05-10: no current meeting schedule or agenda links were visible in fetched HTML.
+- Known traps: old `fresno-ca-wdb.com` domain no longer resolves. Governance page content should not be treated as a schedule.
+- Automation rule: keep as medium confidence until the agenda/schedule endpoint is found.
 
 ### Imperial County WDB
 
@@ -161,11 +203,6 @@ These sources have official endpoints and known traps documented, but still need
 
 These sources are still `medium` until manually profiled. Each needs the same treatment: official endpoint, cadence, agenda source, committee handling, stale-PDF traps, and extraction strategy.
 
-- Alameda County WDB
-- Anaheim WDB
-- Foothill WDB
-- Fresno Regional WDB
-- Humboldt County WDB
 - Kern/Inyo/Mono WDB
 - Kings County WDB
 - Long Beach WIN
