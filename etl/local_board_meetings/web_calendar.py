@@ -7,6 +7,9 @@ from pathlib import Path
 from .models import Meeting
 
 CALENDAR_TITLE = "California Local Workforce Board Meetings"
+CALENDAR_FEED_NAME = "Local Board Meetings"
+PUBLIC_CALENDAR_URL = "https://peckadam.github.io/ca-local-board-meetings/calendar.ics"
+WEBCAL_URL = "webcal://peckadam.github.io/ca-local-board-meetings/calendar.ics"
 
 
 def write_web_calendar(output_dir: Path, meetings: list[Meeting], generated_at: datetime) -> tuple[Path, Path]:
@@ -29,8 +32,12 @@ def render_ics(meetings: list[Meeting], generated_at: datetime) -> str:
         "PRODID:-//CWA//Local Board Meeting Monitor//EN",
         "CALSCALE:GREGORIAN",
         "METHOD:PUBLISH",
-        f"X-WR-CALNAME:{_ics_text(CALENDAR_TITLE)}",
+        f"NAME:{_ics_text(CALENDAR_FEED_NAME)}",
+        f"X-WR-CALNAME:{_ics_text(CALENDAR_FEED_NAME)}",
+        "X-WR-CALDESC:California local workforce board meeting feed",
         "X-WR-TIMEZONE:America/Los_Angeles",
+        "REFRESH-INTERVAL;VALUE=DURATION:PT12H",
+        "X-PUBLISHED-TTL:PT12H",
     ]
     stamp = _utc_stamp(generated_at)
     for meeting in meetings:
@@ -175,7 +182,8 @@ def render_html(meetings: list[Meeting], generated_at: datetime) -> str:
   </header>
   <main>
     <div class="actions">
-      <a href="calendar.ics">Subscribe / download ICS</a>
+      <a href="{html.escape(WEBCAL_URL)}">Subscribe feed</a>
+      <a href="{html.escape(PUBLIC_CALENDAR_URL)}">Download ICS file</a>
     </div>
     <table>
       <thead>

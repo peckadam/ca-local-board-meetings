@@ -8,7 +8,7 @@ from etl.local_board_meetings.extraction import extract_agenda_links, extract_me
 from etl.local_board_meetings.graph import meeting_to_event_payload
 from etl.local_board_meetings.models import BoardSource, Meeting
 from etl.local_board_meetings.storage import agenda_hash, connect, future_meetings, prune_unseen_future_meetings, upsert_meetings
-from etl.local_board_meetings.web_calendar import render_ics
+from etl.local_board_meetings.web_calendar import render_html, render_ics
 
 
 class LocalBoardMeetingTests(unittest.TestCase):
@@ -655,8 +655,29 @@ class LocalBoardMeetingTests(unittest.TestCase):
         )
         ics = render_ics([meeting], __import__("datetime").datetime(2026, 5, 1, tzinfo=__import__("datetime").timezone.utc))
         self.assertIn("BEGIN:VCALENDAR", ics)
+        self.assertIn("NAME:Local Board Meetings", ics)
+        self.assertIn("X-WR-CALNAME:Local Board Meetings", ics)
         self.assertIn("UID:sample-wdb:board-meeting:2026-05-14@cwa-local-board-meetings", ics)
         self.assertIn("SUMMARY:Sample WDB - Board Meeting", ics)
+
+    def test_html_exposes_subscription_and_download_links(self) -> None:
+        meeting = Meeting(
+            board_id="sample-wdb",
+            board_name="Sample WDB",
+            meeting_type="Board Meeting",
+            meeting_date=date(2026, 5, 14),
+            start_time=time(9, 0),
+            timezone="America/Los_Angeles",
+            location="Room 1",
+            virtual_url="",
+            source_page_url="https://example.gov/meetings",
+            agenda_url="https://example.gov/agenda.pdf",
+            agenda_label="Agenda",
+            confidence_notes="test",
+        )
+        html = render_html([meeting], datetime(2026, 5, 1, tzinfo=timezone.utc))
+        self.assertIn("webcal://peckadam.github.io/ca-local-board-meetings/calendar.ics", html)
+        self.assertIn("https://peckadam.github.io/ca-local-board-meetings/calendar.ics", html)
 
     def test_agenda_text_extracts_location_and_virtual_link(self) -> None:
         details = extract_details_from_text(
