@@ -1,0 +1,60 @@
+name: Refresh Local Board Meetings
+
+on:
+  schedule:
+    # Daily morning refresh. GitHub cron is UTC, so this is 8:17 AM Pacific
+    # during daylight saving time and 7:17 AM during standard time.
+    - cron: "17 15 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: local-board-meeting-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    name: Refresh calendar and agenda feed
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install monitor dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-local-board-meetings.txt
+
+      - name: Run monitor unit tests
+        run: python -m unittest tests.test_local_board_meetings
+
+      - name: Refresh meeting data
+        run: python -m etl.local_board_meetings.runner --log-level WARNING
+
+      - name: Publish generated Pages files
+        run: |
+          cp data/local_board_meetings/public/index.html docs/index.html
+          cp data/local_board_meetings/public/calendar.ics docs/calendar.ics
+
+      - name: Commit calendar changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/index.html docs/calendar.ics \
+            data/local_board_meetings/source_registry.csv \
+            data/local_board_meetings/progress_log.md
+          if git diff --cached --quiet; then
+            echo "No calendar changes to publish."
+          else
+            git commit -m "Refresh local board meeting calendar"
+            git push
+          fi
