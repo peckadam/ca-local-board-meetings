@@ -61,7 +61,15 @@ The published `calendar.ics` URL can be subscribed to from Apple Calendar, Googl
 
 ## Daily Scheduling
 
-For cron on a local machine, run the refresh script:
+The preferred production scheduler is GitHub Actions:
+
+- Workflow: `.github/workflows/refresh-local-board-meetings.yml`
+- Schedule: daily at `15:17 UTC`, which is morning Pacific time.
+- Manual run: GitHub repository -> Actions -> Refresh Local Board Meetings -> Run workflow.
+
+The workflow checks official source pages, regenerates `docs/index.html` and `docs/calendar.ics`, and commits/pushes changes only when the published calendar content changes.
+
+For cron on a local machine, the refresh script remains available as a fallback:
 
 ```cron
 17 8 * * * "/Users/adampeck/Documents/New project/etl/local_board_meetings/refresh_and_publish.sh" >> "/Users/adampeck/Documents/New project/data/local_board_meetings/cron.log" 2>&1
