@@ -10,26 +10,9 @@ X-WR-TIMEZONE:America/Los_Angeles
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:long-beach-win:board-meeting:2026-06-04@cwa-local-board-meetings
-DTSTAMP:20260604T175023Z
-DTSTART;TZID=America/Los_Angeles:20260604T090000
-DTEND;TZID=America/Los_Angeles:20260604T100000
-SUMMARY:Long Beach WIN - Board Meeting
-LOCATION:Long Beach Workforce Innovation Network\, Adult Career Services Ce
- nter\, 4811 Airport Plaza Dr. Ste 120
-DESCRIPTION:Source page: https://www.longbeach.gov/edo/talent-workforce/wor
- kforce-development-board/\nAgenda URL: Not found yet\nLocation: Long Beach
-  Workforce Innovation Network\, Adult Career Services Center\, 4811 Airpor
- t Plaza Dr. Ste 120\nVirtual link: Not published\nConfidence notes: Profil
- ed Long Beach extraction: dates come only from the LBWIN scheduled meeting
- s block\, not board member biography text.
-URL:https://www.longbeach.gov/edo/talent-workforce/workforce-development-bo
- ard/
-END:VEVENT
-BEGIN:VEVENT
 UID:merced-county-wdb:executive-committee:2026-06-08@cwa-local-board-meetin
  gs
-DTSTAMP:20260604T175023Z
+DTSTAMP:20260605T172358Z
 DTSTART;TZID=America/Los_Angeles:20260608T073000
 DTEND;TZID=America/Los_Angeles:20260608T083000
 SUMMARY:Merced County WDB - Executive Committee
@@ -45,7 +28,7 @@ URL:https://worknetmerced.com/assets/pdf/WDB-Executive-Mtg-Agenda-05-11-26.
 END:VEVENT
 BEGIN:VEVENT
 UID:tulare-county-wib:board-meeting:2026-06-10@cwa-local-board-meetings
-DTSTAMP:20260604T175023Z
+DTSTAMP:20260605T172358Z
 DTSTART;TZID=America/Los_Angeles:20260610T090000
 DTEND;TZID=America/Los_Angeles:20260610T100000
 SUMMARY:Tulare County WIB - Board Meeting
@@ -59,7 +42,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-luis-obispo-county-wdb:executive-committee:2026-06-10@cwa-local-boa
  rd-meetings
-DTSTAMP:20260604T175023Z
+DTSTAMP:20260605T172358Z
 DTSTART;TZID=America/Los_Angeles:20260610T083000
 DTEND;TZID=America/Los_Angeles:20260610T093000
 SUMMARY:San Luis Obispo County WDB - Executive Committee
@@ -74,9 +57,26 @@ URL:https://www.slocounty.ca.gov/departments/social-services/workforce-deve
  lopment-board/meetings/executive-committee-meeting-06-10-2026
 END:VEVENT
 BEGIN:VEVENT
+UID:long-beach-win:board-meeting:2026-06-11@cwa-local-board-meetings
+DTSTAMP:20260605T172358Z
+DTSTART;TZID=America/Los_Angeles:20260611T090000
+DTEND;TZID=America/Los_Angeles:20260611T100000
+SUMMARY:Long Beach WIN - Board Meeting
+LOCATION:Port of Long Beach (POLB)\, Administration Building – Multipurpose
+  Room\, 415 W. Ocean Blvd.
+DESCRIPTION:Source page: https://www.longbeach.gov/edo/talent-workforce/wor
+ kforce-development-board/\nAgenda URL: Not found yet\nLocation: Port of Lo
+ ng Beach (POLB)\, Administration Building – Multipurpose Room\, 415 W. Oce
+ an Blvd.\nVirtual link: Not published\nConfidence notes: Profiled Long Bea
+ ch extraction: dates come only from the LBWIN scheduled meetings block\, n
+ ot board member biography text.
+URL:https://www.longbeach.gov/edo/talent-workforce/workforce-development-bo
+ ard/
+END:VEVENT
+BEGIN:VEVENT
 UID:workforce-alliance-north-bay:board-meeting:2026-06-11@cwa-local-board-m
  eetings
-DTSTAMP:20260604T175023Z
+DTSTAMP:20260605T172358Z
 DTSTART;TZID=America/Los_Angeles:20260611T100000
 DTEND;TZID=America/Los_Angeles:20260611T110000
 SUMMARY:Workforce Alliance North Bay - Board Meeting
@@ -89,24 +89,8 @@ DESCRIPTION:Source page: https://www.workforcealliancenorthbay.org/board-me
 URL:https://www.workforcealliancenorthbay.org/board-meetings/
 END:VEVENT
 BEGIN:VEVENT
-UID:san-diego-workforce-partnership:board-meeting:2026-06-11@cwa-local-boar
- d-meetings
-DTSTAMP:20260604T175023Z
-DTSTART;TZID=America/Los_Angeles:20260611T120000
-DTEND;TZID=America/Los_Angeles:20260611T130000
-SUMMARY:San Diego Workforce Partnership - Board Meeting
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
-END:VEVENT
-BEGIN:VEVENT
 UID:monterey-county-wdb:board-meeting:2026-06-25@cwa-local-board-meetings
-DTSTAMP:20260604T175023Z
+DTSTAMP:20260605T172358Z
 DTSTART;TZID=America/Los_Angeles:20260625T090000
 DTEND;TZID=America/Los_Angeles:20260625T100000
 SUMMARY:Monterey County WDB - Board Meeting
@@ -121,7 +105,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-joaquin-county-worknet:board-meeting:2026-07-22@cwa-local-board-mee
  tings
-DTSTAMP:20260604T175023Z
+DTSTAMP:20260605T172358Z
 DTSTART;TZID=America/Los_Angeles:20260722T090000
 DTEND;TZID=America/Los_Angeles:20260722T100000
 SUMMARY:San Joaquin County WorkNet - Board Meeting
@@ -135,7 +119,7 @@ URL:https://www.sjcworknet.org/wdb.asp
 END:VEVENT
 BEGIN:VEVENT
 UID:long-beach-win:board-meeting:2026-08-06@cwa-local-board-meetings
-DTSTAMP:20260604T175023Z
+DTSTAMP:20260605T172358Z
 DTSTART;TZID=America/Los_Angeles:20260806T090000
 DTEND;TZID=America/Los_Angeles:20260806T100000
 SUMMARY:Long Beach WIN - Board Meeting
@@ -153,7 +137,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:north-central-counties-nccc:board-meeting:2026-08-20@cwa-local-board-me
  etings
-DTSTAMP:20260604T175023Z
+DTSTAMP:20260605T172358Z
 DTSTART;TZID=America/Los_Angeles:20260820T090000
 DTEND;TZID=America/Los_Angeles:20260820T100000
 SUMMARY:North Central Counties (NCCC) - Board Meeting
@@ -168,7 +152,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-joaquin-county-worknet:board-meeting:2026-08-26@cwa-local-board-mee
  tings
-DTSTAMP:20260604T175023Z
+DTSTAMP:20260605T172358Z
 DTSTART;TZID=America/Los_Angeles:20260826T090000
 DTEND;TZID=America/Los_Angeles:20260826T100000
 SUMMARY:San Joaquin County WorkNet - Board Meeting
@@ -183,7 +167,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:novaworks-workforce-board:board-meeting:2026-08-26@cwa-local-board-meet
  ings
-DTSTAMP:20260604T175023Z
+DTSTAMP:20260605T172358Z
 DTSTART;TZID=America/Los_Angeles:20260826T120000
 DTEND;TZID=America/Los_Angeles:20260826T130000
 SUMMARY:NOVAworks Workforce Board - Board Meeting
@@ -195,56 +179,8 @@ DESCRIPTION:Source page: https://novaworks.org/about-us/board/\nAgenda URL:
 URL:https://novaworks.org/about-us/board/
 END:VEVENT
 BEGIN:VEVENT
-UID:san-diego-workforce-partnership:executive-committee:2026-08-31@cwa-loca
- l-board-meetings
-DTSTAMP:20260604T175023Z
-DTSTART;TZID=America/Los_Angeles:20260831T110000
-DTEND;TZID=America/Los_Angeles:20260831T120000
-SUMMARY:San Diego Workforce Partnership - Executive Committee
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
-END:VEVENT
-BEGIN:VEVENT
-UID:san-diego-workforce-partnership:board-meeting:2026-09-10@cwa-local-boar
- d-meetings
-DTSTAMP:20260604T175023Z
-DTSTART;TZID=America/Los_Angeles:20260910T120000
-DTEND;TZID=America/Los_Angeles:20260910T130000
-SUMMARY:San Diego Workforce Partnership - Board Meeting
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
-END:VEVENT
-BEGIN:VEVENT
-UID:san-diego-workforce-partnership:executive-committee:2026-09-28@cwa-loca
- l-board-meetings
-DTSTAMP:20260604T175023Z
-DTSTART;TZID=America/Los_Angeles:20260928T110000
-DTEND;TZID=America/Los_Angeles:20260928T120000
-SUMMARY:San Diego Workforce Partnership - Executive Committee
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
-END:VEVENT
-BEGIN:VEVENT
 UID:long-beach-win:board-meeting:2026-10-01@cwa-local-board-meetings
-DTSTAMP:20260604T175023Z
+DTSTAMP:20260605T172358Z
 DTSTART;TZID=America/Los_Angeles:20261001T090000
 DTEND;TZID=America/Los_Angeles:20261001T100000
 SUMMARY:Long Beach WIN - Board Meeting
@@ -260,25 +196,9 @@ URL:https://www.longbeach.gov/edo/talent-workforce/workforce-development-bo
  ard/
 END:VEVENT
 BEGIN:VEVENT
-UID:san-diego-workforce-partnership:board-meeting:2026-10-08@cwa-local-boar
- d-meetings
-DTSTAMP:20260604T175023Z
-DTSTART;TZID=America/Los_Angeles:20261008T120000
-DTEND;TZID=America/Los_Angeles:20261008T130000
-SUMMARY:San Diego Workforce Partnership - Board Meeting
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
-END:VEVENT
-BEGIN:VEVENT
 UID:san-joaquin-county-worknet:board-meeting:2026-10-28@cwa-local-board-mee
  tings
-DTSTAMP:20260604T175023Z
+DTSTAMP:20260605T172358Z
 DTSTART;TZID=America/Los_Angeles:20261028T090000
 DTEND;TZID=America/Los_Angeles:20261028T100000
 SUMMARY:San Joaquin County WorkNet - Board Meeting
@@ -291,25 +211,9 @@ DESCRIPTION:Source page: https://www.sjcworknet.org/wdb.asp\nAgenda URL: No
 URL:https://www.sjcworknet.org/wdb.asp
 END:VEVENT
 BEGIN:VEVENT
-UID:san-diego-workforce-partnership:executive-committee:2026-11-02@cwa-loca
- l-board-meetings
-DTSTAMP:20260604T175023Z
-DTSTART;TZID=America/Los_Angeles:20261102T110000
-DTEND;TZID=America/Los_Angeles:20261102T120000
-SUMMARY:San Diego Workforce Partnership - Executive Committee
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
-END:VEVENT
-BEGIN:VEVENT
 UID:north-central-counties-nccc:board-meeting:2026-11-05@cwa-local-board-me
  etings
-DTSTAMP:20260604T175023Z
+DTSTAMP:20260605T172358Z
 DTSTART;TZID=America/Los_Angeles:20261105T090000
 DTEND;TZID=America/Los_Angeles:20261105T100000
 SUMMARY:North Central Counties (NCCC) - Board Meeting
@@ -322,35 +226,17 @@ DESCRIPTION:Source page: https://www.northcentralcounties.com/nccc-workforc
 URL:https://www.northcentralcounties.com/nccc-workforce-development-board
 END:VEVENT
 BEGIN:VEVENT
-UID:san-diego-workforce-partnership:board-meeting:2026-11-09@cwa-local-boar
- d-meetings
-DTSTAMP:20260604T175023Z
-DTSTART;TZID=America/Los_Angeles:20261109T120000
-DTEND;TZID=America/Los_Angeles:20261109T130000
-SUMMARY:San Diego Workforce Partnership - Board Meeting
+UID:novaworks-workforce-board:board-meeting:2026-12-02@cwa-local-board-meet
+ ings
+DTSTAMP:20260605T172358Z
+DTSTART;TZID=America/Los_Angeles:20261202T120000
+DTEND;TZID=America/Los_Angeles:20261202T130000
+SUMMARY:NOVAworks Workforce Board - Board Meeting
 LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
-END:VEVENT
-BEGIN:VEVENT
-UID:san-diego-workforce-partnership:executive-committee:2026-11-30@cwa-loca
- l-board-meetings
-DTSTAMP:20260604T175023Z
-DTSTART;TZID=America/Los_Angeles:20261130T110000
-DTEND;TZID=America/Los_Angeles:20261130T120000
-SUMMARY:San Diego Workforce Partnership - Executive Committee
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
+DESCRIPTION:Source page: https://novaworks.org/about-us/board/\nAgenda URL:
+  Not found yet\nLocation: Not published\nVirtual link: Not published\nConf
+ idence notes: Extracted from official source page text\; verify manually i
+ f the source page uses embedded calendars or PDFs.
+URL:https://novaworks.org/about-us/board/
 END:VEVENT
 END:VCALENDAR
