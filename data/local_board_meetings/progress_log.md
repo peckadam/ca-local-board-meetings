@@ -691,3 +691,22 @@ Moved Permanently
 - Review: Sonoma County WDB - https://sonomawdb.org/ - <urlopen error [Errno -2] Name or service not known>
 - Review: Yolo County WDB - https://www.yoloworks.org/ - robots.txt disallows fetching https://www.yoloworks.org/
 
+## 2026-06-10T18:08:55.063388+00:00 (dry-run)
+
+- Boards checked: 45
+- Meetings found: 22
+- Missing agendas within 72 hours: 2
+- Failures requiring human review: 12
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/full-wdb-board - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/executive-committee - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/about-the-board - HTTP Error 403: Forbidden
+- Review: Kings County WDB - https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Los Angeles County WDB - https://www.ajcc.lacounty.gov/wdb - HTTP Error 403: Forbidden
+- Review: Riverside County WDB - https://rivcoworkforce.org/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Riverside County WDB - https://rivcoworkforce.org/executive-committee - HTTP Error 403: Forbidden
+- Review: Sonoma County WDB - https://sonomawdb.org/ - <urlopen error [Errno -2] Name or service not known>
+- Review: Ventura County WDB - https://workforce.venturacounty.gov/about-us/wdb-committees/ - HTTP Error 403: Forbidden
+- Review: Ventura County WDB - https://workforce.venturacounty.gov/resources/meeting-packets/ - HTTP Error 403: Forbidden
+- Review: Ventura County WDB - https://workforce.venturacounty.gov/ - HTTP Error 403: Forbidden
+- Review: Yolo County WDB - https://www.yoloworks.org/ - robots.txt disallows fetching https://www.yoloworks.org/
+
