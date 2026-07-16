@@ -12,7 +12,7 @@ X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:golden-sierra-workforce-board:executive-committee:2026-07-16@cwa-local-
  board-meetings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20260716T120000
 DTEND;TZID=America/Los_Angeles:20260716T130000
 SUMMARY:Golden Sierra Workforce Board - Executive Committee
@@ -28,7 +28,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:golden-sierra-workforce-board:board-meeting:2026-07-16@cwa-local-board-
  meetings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20260716T130000
 DTEND;TZID=America/Los_Angeles:20260716T140000
 SUMMARY:Golden Sierra Workforce Board - Board Meeting
@@ -44,7 +44,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:golden-sierra-workforce-board:board-meeting:2026-07-23@cwa-local-board-
  meetings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20260723T100000
 DTEND;TZID=America/Los_Angeles:20260723T110000
 SUMMARY:Golden Sierra Workforce Board - Board Meeting
@@ -60,7 +60,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:golden-sierra-workforce-board:executive-committee:2026-07-23@cwa-local-
  board-meetings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20260723T100000
 DTEND;TZID=America/Los_Angeles:20260723T110000
 SUMMARY:Golden Sierra Workforce Board - Executive Committee
@@ -75,7 +75,7 @@ URL:https://goldensierra.com/calendar/category/public-meeting/workforce-boa
 END:VEVENT
 BEGIN:VEVENT
 UID:long-beach-win:board-meeting:2026-08-06@cwa-local-board-meetings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20260806T090000
 DTEND;TZID=America/Los_Angeles:20260806T100000
 SUMMARY:Long Beach WIN - Board Meeting
@@ -93,7 +93,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:north-central-counties-nccc:board-meeting:2026-08-20@cwa-local-board-me
  etings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20260820T090000
 DTEND;TZID=America/Los_Angeles:20260820T100000
 SUMMARY:North Central Counties (NCCC) - Board Meeting
@@ -106,24 +106,9 @@ DESCRIPTION:Source page: https://www.northcentralcounties.com/nccc-workforc
 URL:https://www.northcentralcounties.com/nccc-workforce-development-board
 END:VEVENT
 BEGIN:VEVENT
-UID:san-joaquin-county-worknet:board-meeting:2026-08-26@cwa-local-board-mee
- tings
-DTSTAMP:20260715T164329Z
-DTSTART;TZID=America/Los_Angeles:20260826T090000
-DTEND;TZID=America/Los_Angeles:20260826T100000
-SUMMARY:San Joaquin County WorkNet - Board Meeting
-LOCATION:
-DESCRIPTION:Source page: https://www.sjcworknet.org/wdb.asp\nAgenda URL: No
- t found yet\nLocation: Not published\nVirtual link: Not published\nConfide
- nce notes: Profiled San Joaquin extraction: only dates from the official W
- orkforce Development Board Meeting Schedule are published\; canceled rows 
- are excluded.
-URL:https://www.sjcworknet.org/wdb.asp
-END:VEVENT
-BEGIN:VEVENT
 UID:novaworks-workforce-board:board-meeting:2026-08-26@cwa-local-board-meet
  ings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20260826T120000
 DTEND;TZID=America/Los_Angeles:20260826T130000
 SUMMARY:NOVAworks Workforce Board - Board Meeting
@@ -137,7 +122,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-diego-workforce-partnership:executive-committee:2026-08-31@cwa-loca
  l-board-meetings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20260831T110000
 DTEND;TZID=America/Los_Angeles:20260831T120000
 SUMMARY:San Diego Workforce Partnership - Executive Committee
@@ -153,7 +138,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-diego-workforce-partnership:board-meeting:2026-09-10@cwa-local-boar
  d-meetings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20260910T120000
 DTEND;TZID=America/Los_Angeles:20260910T130000
 SUMMARY:San Diego Workforce Partnership - Board Meeting
@@ -168,7 +153,7 @@ URL:https://workforce.org/boards/workforce-development-board/agendas-minute
 END:VEVENT
 BEGIN:VEVENT
 UID:stanislaus-county-wdb:board-meeting:2026-09-14@cwa-local-board-meetings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20260914T120000
 DTEND;TZID=America/Los_Angeles:20260914T130000
 SUMMARY:Stanislaus County WDB - Board Meeting
@@ -183,7 +168,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-diego-workforce-partnership:executive-committee:2026-09-28@cwa-loca
  l-board-meetings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20260928T110000
 DTEND;TZID=America/Los_Angeles:20260928T120000
 SUMMARY:San Diego Workforce Partnership - Executive Committee
@@ -198,7 +183,7 @@ URL:https://workforce.org/boards/workforce-development-board/agendas-minute
 END:VEVENT
 BEGIN:VEVENT
 UID:long-beach-win:board-meeting:2026-10-01@cwa-local-board-meetings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20261001T090000
 DTEND;TZID=America/Los_Angeles:20261001T100000
 SUMMARY:Long Beach WIN - Board Meeting
@@ -216,7 +201,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-diego-workforce-partnership:board-meeting:2026-10-08@cwa-local-boar
  d-meetings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20261008T120000
 DTEND;TZID=America/Los_Angeles:20261008T130000
 SUMMARY:San Diego Workforce Partnership - Board Meeting
@@ -230,24 +215,9 @@ URL:https://workforce.org/boards/workforce-development-board/agendas-minute
  s/
 END:VEVENT
 BEGIN:VEVENT
-UID:san-joaquin-county-worknet:board-meeting:2026-10-28@cwa-local-board-mee
- tings
-DTSTAMP:20260715T164329Z
-DTSTART;TZID=America/Los_Angeles:20261028T090000
-DTEND;TZID=America/Los_Angeles:20261028T100000
-SUMMARY:San Joaquin County WorkNet - Board Meeting
-LOCATION:
-DESCRIPTION:Source page: https://www.sjcworknet.org/wdb.asp\nAgenda URL: No
- t found yet\nLocation: Not published\nVirtual link: Not published\nConfide
- nce notes: Profiled San Joaquin extraction: only dates from the official W
- orkforce Development Board Meeting Schedule are published\; canceled rows 
- are excluded.
-URL:https://www.sjcworknet.org/wdb.asp
-END:VEVENT
-BEGIN:VEVENT
 UID:san-diego-workforce-partnership:executive-committee:2026-11-02@cwa-loca
  l-board-meetings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20261102T110000
 DTEND;TZID=America/Los_Angeles:20261102T120000
 SUMMARY:San Diego Workforce Partnership - Executive Committee
@@ -263,7 +233,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:north-central-counties-nccc:board-meeting:2026-11-05@cwa-local-board-me
  etings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20261105T090000
 DTEND;TZID=America/Los_Angeles:20261105T100000
 SUMMARY:North Central Counties (NCCC) - Board Meeting
@@ -278,7 +248,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-diego-workforce-partnership:board-meeting:2026-11-12@cwa-local-boar
  d-meetings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20261112T120000
 DTEND;TZID=America/Los_Angeles:20261112T130000
 SUMMARY:San Diego Workforce Partnership - Board Meeting
@@ -294,7 +264,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-diego-workforce-partnership:executive-committee:2026-11-30@cwa-loca
  l-board-meetings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20261130T110000
 DTEND;TZID=America/Los_Angeles:20261130T120000
 SUMMARY:San Diego Workforce Partnership - Executive Committee
@@ -310,7 +280,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:novaworks-workforce-board:board-meeting:2026-12-02@cwa-local-board-meet
  ings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20261202T120000
 DTEND;TZID=America/Los_Angeles:20261202T130000
 SUMMARY:NOVAworks Workforce Board - Board Meeting
@@ -323,7 +293,7 @@ URL:https://novaworks.org/about-us/board/
 END:VEVENT
 BEGIN:VEVENT
 UID:long-beach-win:board-meeting:2026-12-03@cwa-local-board-meetings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20261203T090000
 DTEND;TZID=America/Los_Angeles:20261203T100000
 SUMMARY:Long Beach WIN - Board Meeting
@@ -341,7 +311,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-diego-workforce-partnership:board-meeting:2026-12-10@cwa-local-boar
  d-meetings
-DTSTAMP:20260715T164329Z
+DTSTAMP:20260716T163936Z
 DTSTART;TZID=America/Los_Angeles:20261210T120000
 DTEND;TZID=America/Los_Angeles:20261210T130000
 SUMMARY:San Diego Workforce Partnership - Board Meeting
@@ -353,20 +323,5 @@ DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
  Committee is published\; audit/policy board rows are excluded.
 URL:https://workforce.org/boards/workforce-development-board/agendas-minute
  s/
-END:VEVENT
-BEGIN:VEVENT
-UID:san-joaquin-county-worknet:board-meeting:2026-12-16@cwa-local-board-mee
- tings
-DTSTAMP:20260715T164329Z
-DTSTART;TZID=America/Los_Angeles:20261216T090000
-DTEND;TZID=America/Los_Angeles:20261216T100000
-SUMMARY:San Joaquin County WorkNet - Board Meeting
-LOCATION:
-DESCRIPTION:Source page: https://www.sjcworknet.org/wdb.asp\nAgenda URL: No
- t found yet\nLocation: Not published\nVirtual link: Not published\nConfide
- nce notes: Profiled San Joaquin extraction: only dates from the official W
- orkforce Development Board Meeting Schedule are published\; canceled rows 
- are excluded.
-URL:https://www.sjcworknet.org/wdb.asp
 END:VEVENT
 END:VCALENDAR
