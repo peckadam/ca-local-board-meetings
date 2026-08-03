@@ -1720,3 +1720,30 @@ Moved Permanently
 - Review: Tulare County WIB - https://www.tularewib.org/ - HTTP Error 429: Too Many Requests
 - Review: Yolo County WDB - https://www.yoloworks.org/ - robots.txt disallows fetching https://www.yoloworks.org/
 
+## 2026-08-03T17:17:42.101316+00:00 (dry-run)
+
+- Boards checked: 45
+- Meetings found: 19
+- Missing agendas within 72 hours: 2
+- Failures requiring human review: 20
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/full-wdb-board - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/executive-committee - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/about-the-board - HTTP Error 403: Forbidden
+- Review: Kings County WDB - https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Los Angeles County WDB - https://www.ajcc.lacounty.gov/wdb - HTTP Error 403: Forbidden
+- Review: Mother Lode Workforce Development Board - https://www.mljt.org/agendas-and-minutes - HTTP Error 429: Too Many Requests
+- Review: Mother Lode Workforce Development Board - https://www.mljt.org/wdb - HTTP Error 429: Too Many Requests
+- Review: Riverside County WDB - https://rivcoworkforce.org/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Riverside County WDB - https://rivcoworkforce.org/executive-committee - HTTP Error 403: Forbidden
+- Review: Sacramento (SETA) - https://www.seta.net/resources/board-operations/ - <urlopen error _ssl.c:993: The handshake operation timed out>
+- Review: Sacramento (SETA) - https://www.seta.net/resources/agendas/ - <urlopen error _ssl.c:993: The handshake operation timed out>
+- Review: Sacramento (SETA) - https://www.seta.net/ - <urlopen error _ssl.c:993: The handshake operation timed out>
+- Review: San Joaquin County WorkNet - https://www.sjcworknet.org/wdb.asp - HTTP Error 404: Not Found
+- Review: Sonoma County WDB - https://sonomawdb.org/ - <urlopen error [Errno -2] Name or service not known>
+- Review: South Bay WIB - https://www.sbwib.org/2026-meeting-agendas - HTTP Error 429: Too Many Requests
+- Review: South Bay WIB - https://www.sbwib.org/ - HTTP Error 429: Too Many Requests
+- Review: Tulare County WIB - https://www.tularewib.org/wibboard - HTTP Error 429: Too Many Requests
+- Review: Tulare County WIB - https://www.tularewib.org/pec - HTTP Error 429: Too Many Requests
+- Review: Tulare County WIB - https://www.tularewib.org/ - HTTP Error 429: Too Many Requests
+- Review: Yolo County WDB - https://www.yoloworks.org/ - robots.txt disallows fetching https://www.yoloworks.org/
+
