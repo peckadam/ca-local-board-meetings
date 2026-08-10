@@ -37,24 +37,43 @@ jobs:
       - name: Run monitor unit tests
         run: python -m unittest tests.test_local_board_meetings
 
-      - name: Refresh meeting data
-        run: python -m etl.local_board_meetings.runner --log-level WARNING
-
-      - name: Publish generated Pages files
+      - name: Refresh meeting data and publish
+        env:
+          TARGET_BRANCH: ${{ github.ref_name }}
         run: |
-          cp data/local_board_meetings/public/index.html docs/index.html
-          cp data/local_board_meetings/public/calendar.ics docs/calendar.ics
+          set -euo pipefail
 
-      - name: Commit calendar changes
-        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/index.html docs/calendar.ics \
-            data/local_board_meetings/source_registry.csv \
-            data/local_board_meetings/progress_log.md
-          if git diff --cached --quiet; then
-            echo "No calendar changes to publish."
-          else
+
+          for attempt in 1 2 3; do
+            if [ "$attempt" -gt 1 ]; then
+              echo "Push was rejected. Refreshing from origin/${TARGET_BRANCH} and regenerating."
+              git fetch origin "${TARGET_BRANCH}"
+              git reset --hard "origin/${TARGET_BRANCH}"
+            fi
+
+            python -m etl.local_board_meetings.runner --log-level WARNING
+            cp data/local_board_meetings/public/index.html docs/index.html
+            cp data/local_board_meetings/public/calendar.ics docs/calendar.ics
+
+            git add docs/index.html docs/calendar.ics \
+              data/local_board_meetings/source_registry.csv \
+              data/local_board_meetings/progress_log.md
+
+            if git diff --cached --quiet; then
+              echo "No calendar changes to publish."
+              exit 0
+            fi
+
             git commit -m "Refresh local board meeting calendar"
-            git push
-          fi
+            if git push origin "HEAD:${TARGET_BRANCH}"; then
+              exit 0
+            fi
+
+            echo "Push attempt ${attempt} failed."
+            sleep $((attempt * 5))
+          done
+
+          echo "Failed to publish calendar changes after 3 attempts." >&2
+          exit 1
