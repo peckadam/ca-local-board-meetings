@@ -11,6 +11,8 @@ from functools import lru_cache
 
 LOGGER = logging.getLogger(__name__)
 USER_AGENT = "Mozilla/5.0 (compatible; CWA-local-board-meeting-monitor/0.1; +https://calworkforce.org)"
+ROBOTS_TIMEOUT_SECONDS = 5
+ROBOTS_MAX_BYTES = 256 * 1024
 
 
 @dataclass(frozen=True)
@@ -32,7 +34,10 @@ def _robots_for(base_url: str) -> urllib.robotparser.RobotFileParser:
     rp = urllib.robotparser.RobotFileParser()
     rp.set_url(robots_url)
     try:
-        rp.read()
+        req = urllib.request.Request(robots_url, headers={"User-Agent": USER_AGENT, "Accept": "text/plain,*/*;q=0.8"})
+        with urllib.request.urlopen(req, timeout=ROBOTS_TIMEOUT_SECONDS) as resp:
+            body = resp.read(ROBOTS_MAX_BYTES)
+        rp.parse(body.decode("utf-8", errors="replace").splitlines())
     except Exception as exc:  # robots.txt fetch failures should not halt official public pages.
         LOGGER.debug("Could not read robots.txt %s: %s", robots_url, exc)
     return rp
