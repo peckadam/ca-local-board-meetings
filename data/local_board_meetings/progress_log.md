@@ -2158,3 +2158,30 @@ Moved Permanently
 - Review: Tulare County WIB - https://www.tularewib.org/ - HTTP Error 429: Too Many Requests
 - Review: Yolo County WDB - https://www.yoloworks.org/ - robots.txt disallows fetching https://www.yoloworks.org/
 
+## 2026-08-22T15:33:26.900366+00:00 (dry-run)
+
+- Boards checked: 45
+- Meetings found: 21
+- Missing agendas within 72 hours: 0
+- Failures requiring human review: 21
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/full-wdb-board - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/executive-committee - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/about-the-board - HTTP Error 403: Forbidden
+- Review: Kings County WDB - https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Los Angeles County WDB - https://www.ajcc.lacounty.gov/wdb - HTTP Error 403: Forbidden
+- Review: Mother Lode Workforce Development Board - https://www.mljt.org/agendas-and-minutes - HTTP Error 429: Too Many Requests
+- Review: Mother Lode Workforce Development Board - https://www.mljt.org/wdb - HTTP Error 429: Too Many Requests
+- Review: Northern Rural Training (NoRTEC) - https://www.ncen.org/images/documents/Mous/2025-2028/Notice%20of%20Partner%20Meetings.pdf - <urlopen error timed out>
+- Review: Northern Rural Training (NoRTEC) - https://www.ncen.org/index.php/meetings/agendas - <urlopen error timed out>
+- Review: Northern Rural Training (NoRTEC) - https://www.ncen.org/images/documents/meetings/2012_2013/eca_0413.pdf - <urlopen error timed out>
+- Review: Northern Rural Training (NoRTEC) - https://www.ncen.org/ - <urlopen error timed out>
+- Review: Riverside County WDB - https://rivcoworkforce.org/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Riverside County WDB - https://rivcoworkforce.org/executive-committee - HTTP Error 403: Forbidden
+- Review: San Joaquin County WorkNet - https://www.sjcworknet.org/wdb.asp - HTTP Error 404: Not Found
+- Review: Sonoma County WDB - https://sonomawdb.org/ - <urlopen error [Errno -2] Name or service not known>
+- Review: South Bay WIB - https://www.sbwib.org/2026-meeting-agendas - HTTP Error 429: Too Many Requests
+- Review: South Bay WIB - https://www.sbwib.org/ - HTTP Error 429: Too Many Requests
+- Review: Tulare County WIB - https://www.tularewib.org/wibboard - HTTP Error 429: Too Many Requests
+- Review: Tulare County WIB - https://www.tularewib.org/pec - HTTP Error 429: Too Many Requests
+- Review: Tulare County WIB - https://www.tularewib.org/ - HTTP Error 429: Too Many Requests
+
