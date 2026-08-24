@@ -2212,3 +2212,30 @@ Moved Permanently
 - Review: Tulare County WIB - https://www.tularewib.org/wibboard - HTTP Error 429: Too Many Requests
 - Review: Tulare County WIB - https://www.tularewib.org/pec - HTTP Error 429: Too Many Requests
 
+## 2026-08-24T15:53:25.200175+00:00 (dry-run)
+
+- Boards checked: 45
+- Meetings found: 21
+- Missing agendas within 72 hours: 2
+- Failures requiring human review: 20
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/full-wdb-board - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/executive-committee - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/about-the-board - HTTP Error 403: Forbidden
+- Review: Kings County WDB - https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Los Angeles County WDB - https://www.ajcc.lacounty.gov/wdb - HTTP Error 403: Forbidden
+- Review: Mother Lode Workforce Development Board - https://www.mljt.org/agendas-and-minutes - HTTP Error 429: Too Many Requests
+- Review: Mother Lode Workforce Development Board - https://www.mljt.org/wdb - HTTP Error 429: Too Many Requests
+- Review: Riverside County WDB - https://rivcoworkforce.org/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Riverside County WDB - https://rivcoworkforce.org/executive-committee - HTTP Error 403: Forbidden
+- Review: Sacramento (SETA) - https://www.seta.net/resources/agendas/ - The read operation timed out
+- Review: San Joaquin County WorkNet - https://www.sjcworknet.org/wdb.asp - HTTP Error 404: Not Found
+- Review: Sonoma County WDB - https://sonomawdb.org/ - <urlopen error [Errno -2] Name or service not known>
+- Review: South Bay WIB - https://www.sbwib.org/2026-meeting-agendas - HTTP Error 429: Too Many Requests
+- Review: South Bay WIB - https://www.sbwib.org/ - HTTP Error 429: Too Many Requests
+- Review: Stanislaus County WDB - https://www.stanworkforce.com/workforce-board/ - <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1010)>
+- Review: Stanislaus County WDB - https://www.stanworkforce.com/ - <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1010)>
+- Review: Tulare County WIB - https://www.tularewib.org/wibboard - HTTP Error 429: Too Many Requests
+- Review: Tulare County WIB - https://www.tularewib.org/pec - HTTP Error 429: Too Many Requests
+- Review: Tulare County WIB - https://www.tularewib.org/ - HTTP Error 429: Too Many Requests
+- Review: Yolo County WDB - https://www.yoloworks.org/ - robots.txt disallows fetching https://www.yoloworks.org/
+
