@@ -12,7 +12,7 @@ X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:san-luis-obispo-county-wdb:committee:2026-09-07@cwa-local-board-meeting
  s
-DTSTAMP:20260905T171920Z
+DTSTAMP:20260906T173600Z
 DTSTART;TZID=America/Los_Angeles:20260907T083000
 DTEND;TZID=America/Los_Angeles:20260907T093000
 SUMMARY:San Luis Obispo County WDB - Committee
@@ -27,7 +27,7 @@ URL:https://www.slocounty.ca.gov/departments/social-services/workforce-deve
 END:VEVENT
 BEGIN:VEVENT
 UID:orange-county-wdb:board-meeting:2026-09-09@cwa-local-board-meetings
-DTSTAMP:20260905T171920Z
+DTSTAMP:20260906T173600Z
 DTSTART;TZID=America/Los_Angeles:20260909T090000
 DTEND;TZID=America/Los_Angeles:20260909T100000
 SUMMARY:Orange County WDB - Board Meeting
@@ -42,7 +42,7 @@ URL:https://workforce.oc.gov/oc-workforce-development-board/board-members/m
 END:VEVENT
 BEGIN:VEVENT
 UID:richmond-wdb:board-meeting:2026-09-10@cwa-local-board-meetings
-DTSTAMP:20260905T171920Z
+DTSTAMP:20260906T173600Z
 DTSTART;TZID=America/Los_Angeles:20260910T090000
 DTEND;TZID=America/Los_Angeles:20260910T100000
 SUMMARY:Richmond WDB - Board Meeting
@@ -56,21 +56,24 @@ END:VEVENT
 BEGIN:VEVENT
 UID:workforce-alliance-north-bay:board-meeting:2026-09-10@cwa-local-board-m
  eetings
-DTSTAMP:20260905T171920Z
+DTSTAMP:20260906T173600Z
 DTSTART;TZID=America/Los_Angeles:20260910T100000
 DTEND;TZID=America/Los_Angeles:20260910T110000
 SUMMARY:Workforce Alliance North Bay - Board Meeting
-LOCATION:
+LOCATION:Saw Shop Public House - 3825 Main St\, Kelseyville\, CA
 DESCRIPTION:Source page: https://www.workforcealliancenorthbay.org/board-me
- etings/\nAgenda URL: Not found yet\nLocation: Not published\nVirtual link:
-  Not published\nConfidence notes: Profiled sectioned extraction: dates are
-  scoped to the official board or executive committee section and canceled 
- rows are excluded.
-URL:https://www.workforcealliancenorthbay.org/board-meetings/
+ etings/\nAgenda URL: https://www.workforcealliancenorthbay.org/wp-content/
+ uploads/2026/09/Workforce-Alliance-Regional-Board_AGENDA-9-10-2026.pdf\nLo
+ cation: Saw Shop Public House - 3825 Main St\, Kelseyville\, CA\nVirtual l
+ ink: Not published\nConfidence notes: Profiled sectioned extraction: dates
+  are scoped to the official board or executive committee section and cance
+ led rows are excluded. Agenda parsed for location.
+URL:https://www.workforcealliancenorthbay.org/wp-content/uploads/2026/09/Wo
+ rkforce-Alliance-Regional-Board_AGENDA-9-10-2026.pdf
 END:VEVENT
 BEGIN:VEVENT
 UID:stanislaus-county-wdb:board-meeting:2026-09-14@cwa-local-board-meetings
-DTSTAMP:20260905T171920Z
+DTSTAMP:20260906T173600Z
 DTSTART;TZID=America/Los_Angeles:20260914T120000
 DTEND;TZID=America/Los_Angeles:20260914T130000
 SUMMARY:Stanislaus County WDB - Board Meeting
@@ -83,24 +86,8 @@ DESCRIPTION:Source page: https://www.stanworkforce.com/workforce-board/\nAg
 URL:https://www.stanworkforce.com/workforce-board/
 END:VEVENT
 BEGIN:VEVENT
-UID:san-diego-workforce-partnership:board-meeting:2026-09-15@cwa-local-boar
- d-meetings
-DTSTAMP:20260905T171920Z
-DTSTART;TZID=America/Los_Angeles:20260915T120000
-DTEND;TZID=America/Los_Angeles:20260915T130000
-SUMMARY:San Diego Workforce Partnership - Board Meeting
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
-END:VEVENT
-BEGIN:VEVENT
 UID:santa-cruz-county-wdb:board-meeting:2026-09-16@cwa-local-board-meetings
-DTSTAMP:20260905T171920Z
+DTSTAMP:20260906T173600Z
 DTSTART;TZID=America/Los_Angeles:20260916T083000
 DTEND;TZID=America/Los_Angeles:20260916T093000
 SUMMARY:Santa Cruz County WDB - Board Meeting
@@ -115,7 +102,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:golden-sierra-workforce-board:executive-committee:2026-09-17@cwa-local-
  board-meetings
-DTSTAMP:20260905T171920Z
+DTSTAMP:20260906T173600Z
 DTSTART;TZID=America/Los_Angeles:20260917T120000
 DTEND;TZID=America/Los_Angeles:20260917T130000
 SUMMARY:Golden Sierra Workforce Board - Executive Committee
@@ -131,7 +118,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:golden-sierra-workforce-board:board-meeting:2026-09-17@cwa-local-board-
  meetings
-DTSTAMP:20260905T171920Z
+DTSTAMP:20260906T173600Z
 DTSTART;TZID=America/Los_Angeles:20260917T130000
 DTEND;TZID=America/Los_Angeles:20260917T140000
 SUMMARY:Golden Sierra Workforce Board - Board Meeting
@@ -145,57 +132,9 @@ URL:https://goldensierra.com/calendar/category/public-meeting/workforce-boa
  rd
 END:VEVENT
 BEGIN:VEVENT
-UID:san-diego-workforce-partnership:executive-committee:2026-09-28@cwa-loca
- l-board-meetings
-DTSTAMP:20260905T171920Z
-DTSTART;TZID=America/Los_Angeles:20260928T110000
-DTEND;TZID=America/Los_Angeles:20260928T120000
-SUMMARY:San Diego Workforce Partnership - Executive Committee
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
-END:VEVENT
-BEGIN:VEVENT
-UID:san-diego-workforce-partnership:board-meeting:2026-10-08@cwa-local-boar
- d-meetings
-DTSTAMP:20260905T171920Z
-DTSTART;TZID=America/Los_Angeles:20261008T120000
-DTEND;TZID=America/Los_Angeles:20261008T130000
-SUMMARY:San Diego Workforce Partnership - Board Meeting
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
-END:VEVENT
-BEGIN:VEVENT
-UID:san-diego-workforce-partnership:executive-committee:2026-11-02@cwa-loca
- l-board-meetings
-DTSTAMP:20260905T171920Z
-DTSTART;TZID=America/Los_Angeles:20261102T110000
-DTEND;TZID=America/Los_Angeles:20261102T120000
-SUMMARY:San Diego Workforce Partnership - Executive Committee
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
-END:VEVENT
-BEGIN:VEVENT
 UID:north-central-counties-nccc:board-meeting:2026-11-05@cwa-local-board-me
  etings
-DTSTAMP:20260905T171920Z
+DTSTAMP:20260906T173600Z
 DTSTART;TZID=America/Los_Angeles:20261105T090000
 DTEND;TZID=America/Los_Angeles:20261105T100000
 SUMMARY:North Central Counties (NCCC) - Board Meeting
@@ -208,41 +147,9 @@ DESCRIPTION:Source page: https://www.northcentralcounties.com/nccc-workforc
 URL:https://www.northcentralcounties.com/nccc-workforce-development-board
 END:VEVENT
 BEGIN:VEVENT
-UID:san-diego-workforce-partnership:board-meeting:2026-11-12@cwa-local-boar
- d-meetings
-DTSTAMP:20260905T171920Z
-DTSTART;TZID=America/Los_Angeles:20261112T120000
-DTEND;TZID=America/Los_Angeles:20261112T130000
-SUMMARY:San Diego Workforce Partnership - Board Meeting
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
-END:VEVENT
-BEGIN:VEVENT
-UID:san-diego-workforce-partnership:executive-committee:2026-11-30@cwa-loca
- l-board-meetings
-DTSTAMP:20260905T171920Z
-DTSTART;TZID=America/Los_Angeles:20261130T110000
-DTEND;TZID=America/Los_Angeles:20261130T120000
-SUMMARY:San Diego Workforce Partnership - Executive Committee
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
-END:VEVENT
-BEGIN:VEVENT
 UID:novaworks-workforce-board:board-meeting:2026-12-02@cwa-local-board-meet
  ings
-DTSTAMP:20260905T171920Z
+DTSTAMP:20260906T173600Z
 DTSTART;TZID=America/Los_Angeles:20261202T120000
 DTEND;TZID=America/Los_Angeles:20261202T130000
 SUMMARY:NOVAworks Workforce Board - Board Meeting
@@ -255,7 +162,7 @@ URL:https://novaworks.org/about-us/board/
 END:VEVENT
 BEGIN:VEVENT
 UID:long-beach-win:board-meeting:2026-12-03@cwa-local-board-meetings
-DTSTAMP:20260905T171920Z
+DTSTAMP:20260906T173600Z
 DTSTART;TZID=America/Los_Angeles:20261203T090000
 DTEND;TZID=America/Los_Angeles:20261203T100000
 SUMMARY:Long Beach WIN - Board Meeting
@@ -271,73 +178,9 @@ URL:https://www.longbeach.gov/edo/talent-workforce/workforce-development-bo
  ard/
 END:VEVENT
 BEGIN:VEVENT
-UID:san-diego-workforce-partnership:board-meeting:2026-12-10@cwa-local-boar
- d-meetings
-DTSTAMP:20260905T171920Z
-DTSTART;TZID=America/Los_Angeles:20261210T120000
-DTEND;TZID=America/Los_Angeles:20261210T130000
-SUMMARY:San Diego Workforce Partnership - Board Meeting
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
-END:VEVENT
-BEGIN:VEVENT
-UID:san-diego-workforce-partnership:executive-committee:2027-01-04@cwa-loca
- l-board-meetings
-DTSTAMP:20260905T171920Z
-DTSTART;TZID=America/Los_Angeles:20270104T110000
-DTEND;TZID=America/Los_Angeles:20270104T120000
-SUMMARY:San Diego Workforce Partnership - Executive Committee
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
-END:VEVENT
-BEGIN:VEVENT
-UID:san-diego-workforce-partnership:board-meeting:2027-01-14@cwa-local-boar
- d-meetings
-DTSTAMP:20260905T171920Z
-DTSTART;TZID=America/Los_Angeles:20270114T120000
-DTEND;TZID=America/Los_Angeles:20270114T130000
-SUMMARY:San Diego Workforce Partnership - Board Meeting
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
-END:VEVENT
-BEGIN:VEVENT
-UID:san-diego-workforce-partnership:executive-committee:2027-02-01@cwa-loca
- l-board-meetings
-DTSTAMP:20260905T171920Z
-DTSTART;TZID=America/Los_Angeles:20270201T110000
-DTEND;TZID=America/Los_Angeles:20270201T120000
-SUMMARY:San Diego Workforce Partnership - Executive Committee
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
-END:VEVENT
-BEGIN:VEVENT
 UID:workforce-alliance-north-bay:executive-committee:2027-02-10@cwa-local-b
  oard-meetings
-DTSTAMP:20260905T171920Z
+DTSTAMP:20260906T173600Z
 DTSTART;TZID=America/Los_Angeles:20270210T090000
 DTEND;TZID=America/Los_Angeles:20270210T100000
 SUMMARY:Workforce Alliance North Bay - Executive Committee
@@ -348,37 +191,5 @@ DESCRIPTION:Source page: https://www.workforcealliancenorthbay.org/board-me
   scoped to the official board or executive committee section and canceled 
  rows are excluded.
 URL:https://www.workforcealliancenorthbay.org/board-meetings/
-END:VEVENT
-BEGIN:VEVENT
-UID:san-diego-workforce-partnership:board-meeting:2027-02-11@cwa-local-boar
- d-meetings
-DTSTAMP:20260905T171920Z
-DTSTART;TZID=America/Los_Angeles:20270211T120000
-DTEND;TZID=America/Los_Angeles:20270211T130000
-SUMMARY:San Diego Workforce Partnership - Board Meeting
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
-END:VEVENT
-BEGIN:VEVENT
-UID:san-diego-workforce-partnership:executive-committee:2027-03-01@cwa-loca
- l-board-meetings
-DTSTAMP:20260905T171920Z
-DTSTART;TZID=America/Los_Angeles:20270301T110000
-DTEND;TZID=America/Los_Angeles:20270301T120000
-SUMMARY:San Diego Workforce Partnership - Executive Committee
-LOCATION:
-DESCRIPTION:Source page: https://workforce.org/boards/workforce-development
- -board/agendas-minutes/\nAgenda URL: Not found yet\nLocation: Not publishe
- d\nVirtual link: Not published\nConfidence notes: Profiled San Diego extra
- ction: only the Upcoming Meetings section for the WDB Board and Executive 
- Committee is published\; audit/policy board rows are excluded.
-URL:https://workforce.org/boards/workforce-development-board/agendas-minute
- s/
 END:VEVENT
 END:VCALENDAR
