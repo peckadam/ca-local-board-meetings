@@ -1,6 +1,6 @@
 # Local Board Coverage Matrix
 
-- Updated: 2026-09-24T14:58:13.832409-07:00
+- Updated: 2026-09-24T16:16:48.167341-07:00
 - Boards with at least one confirmed meeting date: 43 of 45
 - Boards with at least one agenda matched to a meeting: 21 of 45
 - Cadence documented with audited source context: 29 of 45
@@ -23,7 +23,7 @@
 | Contra Costa County WDB / Contra Costa County | yes | 2026-09-16 | yes | 1 / 1 | documented | ok |
 | Foothill WDB / Pasadena, Arcadia, Duarte, Monrovia, Sierra Madre, South Pasadena | yes | 2026-05-07 | NO | 0 / 0 | partial | ok |
 | Fresno Regional WDB / Fresno County | yes | 2026-12-02 | yes | 3 / 1 | documented | ok |
-| Golden Sierra Workforce Board / Alpine, El Dorado, and Placer Counties | yes | 2026-09-17 | yes | 2 / 2 | documented | ok |
+| Golden Sierra Workforce Board / Alpine, El Dorado, and Placer Counties | yes | 2026-09-17 | yes | 2 / 0 | documented | ok |
 | Humboldt County WDB / Humboldt County | yes | 2026-04-24 | NO | 0 / 0 | documented | ok |
 | Imperial County WDB / Imperial County | yes | 2026-05-27 | yes | 0 / 0 | partial | ok |
 | Kern/Inyo/Mono WDB / Kern, Inyo, and Mono Counties | yes | 2025-12-17 | NO | 0 / 0 | partial | review |
