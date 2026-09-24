@@ -172,7 +172,7 @@ def extract_meetings(
     if extraction_strategy == "tulare_wib_board_only":
         if "/pec" in page_url.lower():
             return []
-        return extract_meetings(source, html, page_url, today, lookahead_days, extraction_strategy="generic")
+        return extract_tulare_wib_board_meetings(source, html, page_url, today, lookahead_days)
     if extraction_strategy == "alameda_acwdb":
         return extract_alameda_acwdb_meetings(source, html, page_url, today, lookahead_days)
     if extraction_strategy == "humboldt_civicengage":
@@ -252,6 +252,73 @@ def extract_meetings(
         )
         meetings[meeting.stable_id] = meeting
     return sorted(meetings.values(), key=lambda m: (m.meeting_date, m.board_name, m.meeting_type))
+
+
+def extract_tulare_wib_board_meetings(
+    source: BoardSource,
+    html: str,
+    page_url: str,
+    today: date,
+    lookahead_days: int,
+) -> List[Meeting]:
+    """Extract every date from Tulare's two-column annual board schedule."""
+    soup = BeautifulSoup(html, "html.parser")
+    page_text = " ".join(soup.stripped_strings)
+    schedule_text = _between_markers(page_text, "Board Meeting Schedule", "Board Agendas")
+    if not schedule_text:
+        return []
+
+    agenda_links = extract_agenda_links(html, page_url)
+    matches = list(DATE_PATTERNS[0].finditer(schedule_text))
+    max_date = today + timedelta(days=lookahead_days)
+    default_location_match = re.search(
+        r"(309\s+W\.\s+Main\s+St\.\s+Suite\s+130,\s*Visalia,\s*CA)",
+        schedule_text,
+        re.I,
+    )
+    october_location_match = re.search(
+        r"(303\s+E\.\s+Acequia\s+Ave\.,\s*Visalia,\s*CA)",
+        schedule_text,
+        re.I,
+    )
+    default_location = default_location_match.group(1) if default_location_match else ""
+    october_location = (
+        f"Visalia Convention Center, {october_location_match.group(1)}"
+        if october_location_match
+        else default_location
+    )
+    start_time = parse_time(schedule_text)
+    meetings: dict[str, Meeting] = {}
+
+    for index, match in enumerate(matches):
+        meeting_date = date(int(match.group(3)), _month_number(match.group(1)), int(match.group(2)))
+        if meeting_date < today - timedelta(days=14) or meeting_date > max_date:
+            continue
+        next_start = matches[index + 1].start() if index + 1 < len(matches) else len(schedule_text)
+        date_context = schedule_text[match.end() : next_start]
+        if re.search(r"\bcancel(?:ed|led)\b", date_context, re.I):
+            continue
+
+        agenda = best_agenda_for_date(agenda_links, meeting_date)
+        meeting = Meeting(
+            board_id=source.board_id,
+            board_name=source.board_name,
+            meeting_type="Board Meeting",
+            meeting_date=meeting_date,
+            start_time=start_time,
+            timezone="America/Los_Angeles",
+            location=october_location if meeting_date.month == 10 else default_location,
+            virtual_url="",
+            source_page_url=page_url,
+            agenda_url=agenda.url if agenda else "",
+            agenda_label=agenda.label if agenda else "",
+            confidence_notes=(
+                "Profiled Tulare extraction: date read from the official annual WIB schedule; "
+                "the two-column layout is parsed one date at a time and canceled meetings are excluded."
+            ),
+        )
+        meetings[meeting.stable_id] = meeting
+    return sorted(meetings.values(), key=lambda meeting: meeting.meeting_date)
 
 
 def extract_ventura_google_calendar_ics(
@@ -2206,9 +2273,10 @@ def best_agenda_for_date(links: Iterable[AgendaLink], meeting_date: date) -> Opt
             continue
         if any(token and token.lower() in haystack for token in tokens):
             return link
-        if str(meeting_date.year) in haystack and meeting_date.strftime("%B").lower() in haystack:
+        label = link.label.lower()
+        if str(meeting_date.year) in label and meeting_date.strftime("%B").lower() in label:
             return link
-        if str(meeting_date.year) in haystack and meeting_date.strftime("%b").lower() in haystack:
+        if str(meeting_date.year) in label and meeting_date.strftime("%b").lower() in label:
             return link
     return None
 
@@ -2269,8 +2337,9 @@ def _agenda_context_label(anchor, label: str) -> str:
     parent = anchor.parent
     if parent:
         nearby_text.append(parent.get_text(" ", strip=True))
-    for previous in anchor.find_all_previous(["h1", "h2", "h3", "h4", "h5", "strong"], limit=4):
-        nearby_text.append(previous.get_text(" ", strip=True))
+    previous_heading = anchor.find_previous(["h1", "h2", "h3", "h4", "h5", "h6"])
+    if previous_heading:
+        nearby_text.append(previous_heading.get_text(" ", strip=True))
     context = " ".join(nearby_text)
     if "agenda" not in context.lower():
         return ""
