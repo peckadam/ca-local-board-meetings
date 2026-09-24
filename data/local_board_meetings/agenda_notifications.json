@@ -1,0 +1,32 @@
+{
+  "notifications": {
+    "fresno-regional-wdb:board-meeting:2026-09-24": {
+      "agenda_url": "https://frwdb.net/wp-content/uploads/2026/09/9-24-26-FRWDB-Packet.pdf",
+      "board_name": "Fresno Regional WDB",
+      "delivery": "bootstrapped",
+      "meeting_date": "2026-09-24",
+      "meeting_type": "Board Meeting",
+      "recorded_at": "2026-09-24T14:13:44.905229+00:00",
+      "sha256": "e4afffc57c26305574f92be1ad9bd99802fb0e22694b43b8ffbf0e621c88bf3c"
+    },
+    "los-angeles-city-wdb:executive-committee:2026-09-24": {
+      "agenda_url": "https://wiblacity.novusagenda.com/agendapublic/DisplayAgendaPDF.ashx?MeetingID=412",
+      "board_name": "Los Angeles City WDB",
+      "delivery": "bootstrapped",
+      "meeting_date": "2026-09-24",
+      "meeting_type": "Executive Committee",
+      "recorded_at": "2026-09-24T14:13:45.824646+00:00",
+      "sha256": "6603495bbbedc528d536aa07cbb0bf878e1a414f7718069fad6ba02fab5719a2"
+    },
+    "san-diego-workforce-partnership:executive-committee:2026-09-28": {
+      "agenda_url": "https://workforce.org/wp-content/uploads/2026/09/2026-09-28-Exec-Cmte-Agenda.pdf",
+      "board_name": "San Diego Workforce Partnership",
+      "delivery": "bootstrapped",
+      "meeting_date": "2026-09-28",
+      "meeting_type": "Executive Committee",
+      "recorded_at": "2026-09-24T14:13:45.966396+00:00",
+      "sha256": "5b1d4e2e8ca6bddcec4ebd68d9c3e4a1fee64ed146335883f49f9ab44796011f"
+    }
+  },
+  "version": 1
+}

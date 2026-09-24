@@ -1,0 +1,703 @@
+{
+  "meetings": {
+    "fresno-regional-wdb:board-meeting:2026-09-24": {
+      "last_seen_at": "2026-09-24T12:59:45.343211-07:00",
+      "meeting": {
+        "agenda_label": "9 24 26 FRWDB Packet",
+        "agenda_url": "https://frwdb.net/wp-content/uploads/2026/09/9-24-26-FRWDB-Packet.pdf",
+        "board_id": "fresno-regional-wdb",
+        "board_name": "Fresno Regional WDB",
+        "confidence_notes": "Profiled Tribe Events API extraction: REST event rows are filtered to full board and executive committee titles/categories, with workshops and other committees excluded.",
+        "location": "AJCC Comprehensive",
+        "meeting_date": "2026-09-24",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://frwdb.net/event/special-frwdb-meeting-2/",
+        "start_time": "16:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "fresno-regional-wdb:board-meeting:2026-12-02": {
+      "last_seen_at": "2026-09-24T12:59:45.343211-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "fresno-regional-wdb",
+        "board_name": "Fresno Regional WDB",
+        "confidence_notes": "Profiled Tribe Events API extraction: REST event rows are filtered to full board and executive committee titles/categories, with workshops and other committees excluded.",
+        "location": "AJCC Comprehensive",
+        "meeting_date": "2026-12-02",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://frwdb.net/event/frwdb-meeting-30/",
+        "start_time": "16:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "fresno-regional-wdb:executive-committee:2026-10-21": {
+      "last_seen_at": "2026-09-24T12:59:45.343211-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "fresno-regional-wdb",
+        "board_name": "Fresno Regional WDB",
+        "confidence_notes": "Profiled Tribe Events API extraction: REST event rows are filtered to full board and executive committee titles/categories, with workshops and other committees excluded.",
+        "location": "AJCC Comprehensive",
+        "meeting_date": "2026-10-21",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://frwdb.net/event/executive-committee-meeting-35/",
+        "start_time": "15:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "long-beach-win:board-meeting:2026-10-01": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "long-beach-win",
+        "board_name": "Long Beach WIN",
+        "confidence_notes": "Confirmed official schedule fallback. Date, time, and location were verified from the official 2026 Scheduled Meetings block.",
+        "location": "LBWIN Adult Career Services Center, 4811 Airport Plaza Dr. Ste 120, Long Beach, CA",
+        "meeting_date": "2026-10-01",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://www.longbeach.gov/edo/talent-workforce/workforce-development-board/",
+        "start_time": "09:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "long-beach-win:board-meeting:2026-12-03": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "long-beach-win",
+        "board_name": "Long Beach WIN",
+        "confidence_notes": "Confirmed official schedule fallback. Date, time, and location were verified from the official 2026 Scheduled Meetings block.",
+        "location": "LBWIN Adult Career Services Center, 4811 Airport Plaza Dr. Ste 120, Long Beach, CA",
+        "meeting_date": "2026-12-03",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://www.longbeach.gov/edo/talent-workforce/workforce-development-board/",
+        "start_time": "09:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "los-angeles-city-wdb:executive-committee:2026-09-24": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "Agenda PDF",
+        "agenda_url": "https://wiblacity.novusagenda.com/agendapublic/DisplayAgendaPDF.ashx?MeetingID=412",
+        "board_id": "los-angeles-city-wdb",
+        "board_name": "Los Angeles City WDB",
+        "confidence_notes": "Profiled LA City Novus extraction: only WDB quarterly/full WDB and executive committee rows from the official NovusAgenda iframe are published; Youth Council and other committees are excluded. Detail page parsed for time.",
+        "location": "Goodwill So CA - Auditorium 342 North Sa",
+        "meeting_date": "2026-09-24",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://wiblacity.novusagenda.com/agendapublic/MeetingView.aspx?MeetingID=412&MinutesMeetingID=-1&doctype=Agenda",
+        "start_time": "10:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "north-central-counties-nccc:board-meeting:2026-11-05": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "north-central-counties-nccc",
+        "board_name": "North Central Counties (NCCC)",
+        "confidence_notes": "Profiled NCCC extraction: only dates under the 2026 Workforce Development Board Meetings heading are published.",
+        "location": "",
+        "meeting_date": "2026-11-05",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://www.northcentralcounties.com/nccc-workforce-development-board",
+        "start_time": "",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "novaworks-workforce-board:board-meeting:2026-12-02": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "novaworks-workforce-board",
+        "board_name": "NOVAworks Workforce Board",
+        "confidence_notes": "Extracted from official source page text; verify manually if the source page uses embedded calendars or PDFs.",
+        "location": "",
+        "meeting_date": "2026-12-02",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://novaworks.org/about-us/board/",
+        "start_time": "12:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "richmond-wdb:board-meeting:2026-11-12": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "richmond-wdb",
+        "board_name": "Richmond WDB",
+        "confidence_notes": "Confirmed official schedule fallback. Exact date, time, and location verified in the official 2026 meeting calendar.",
+        "location": "RichmondWORKS, 330 25th Street, Richmond, CA",
+        "meeting_date": "2026-11-12",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://www.richmondca.gov/DocumentCenter/View/78244/RWDB-Calendar-2026",
+        "start_time": "11:30:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "riverside-county-wdb:board-meeting:2026-12-09": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "riverside-county-wdb",
+        "board_name": "Riverside County WDB",
+        "confidence_notes": "Confirmed official schedule fallback. Date was verified in the official 2026 full-board schedule; the current page blocks unattended requests.",
+        "location": "",
+        "meeting_date": "2026-12-09",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://rivcoworkforce.org/workforce-development-board",
+        "start_time": "",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "riverside-county-wdb:executive-committee:2026-12-09": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "riverside-county-wdb",
+        "board_name": "Riverside County WDB",
+        "confidence_notes": "Confirmed official schedule fallback. Date was verified in the official 2026 executive schedule; the current page blocks unattended requests.",
+        "location": "",
+        "meeting_date": "2026-12-09",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://rivcoworkforce.org/executive-committee",
+        "start_time": "",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "sacramento-seta:board-meeting:2026-11-25": {
+      "last_seen_at": "2026-09-24T07:32:49.240000-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "sacramento-seta",
+        "board_name": "Sacramento (SETA)",
+        "confidence_notes": "Profiled Tribe Events API extraction: REST event rows are filtered to full board and executive committee titles/categories, with workshops and other committees excluded.",
+        "location": "SETA Board Room, 925 Del Paso Blvd., Suite 100, Sacramento, CA 95815",
+        "meeting_date": "2026-11-25",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://www.seta.net/event/sacramento-works-inc-board-4/2026-11-25/",
+        "start_time": "09:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "sacramento-seta:executive-committee:2026-11-12": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "sacramento-seta",
+        "board_name": "Sacramento (SETA)",
+        "confidence_notes": "Profiled Tribe Events API extraction: REST event rows are filtered to full board and executive committee titles/categories, with workshops and other committees excluded.",
+        "location": "SETA Board Room, 925 Del Paso Blvd., Suite 100, Sacramento, CA 95815",
+        "meeting_date": "2026-11-12",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://www.seta.net/event/sacramento-works-executive-committee-6/2026-11-12/",
+        "start_time": "16:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "san-diego-workforce-partnership:board-meeting:2026-10-08": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "san-diego-workforce-partnership",
+        "board_name": "San Diego Workforce Partnership",
+        "confidence_notes": "Profiled San Diego extraction: only the Upcoming Meetings section for the WDB Board and Executive Committee is published; audit/policy board rows are excluded and date-matched agenda links are attached.",
+        "location": "",
+        "meeting_date": "2026-10-08",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://workforce.org/boards/workforce-development-board/agendas-minutes/",
+        "start_time": "12:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "san-diego-workforce-partnership:board-meeting:2026-11-12": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "san-diego-workforce-partnership",
+        "board_name": "San Diego Workforce Partnership",
+        "confidence_notes": "Profiled San Diego extraction: only the Upcoming Meetings section for the WDB Board and Executive Committee is published; audit/policy board rows are excluded and date-matched agenda links are attached.",
+        "location": "",
+        "meeting_date": "2026-11-12",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://workforce.org/boards/workforce-development-board/agendas-minutes/",
+        "start_time": "12:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "san-diego-workforce-partnership:board-meeting:2026-12-10": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "san-diego-workforce-partnership",
+        "board_name": "San Diego Workforce Partnership",
+        "confidence_notes": "Profiled San Diego extraction: only the Upcoming Meetings section for the WDB Board and Executive Committee is published; audit/policy board rows are excluded and date-matched agenda links are attached.",
+        "location": "",
+        "meeting_date": "2026-12-10",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://workforce.org/boards/workforce-development-board/agendas-minutes/",
+        "start_time": "12:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "san-diego-workforce-partnership:board-meeting:2027-01-14": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "san-diego-workforce-partnership",
+        "board_name": "San Diego Workforce Partnership",
+        "confidence_notes": "Profiled San Diego extraction: only the Upcoming Meetings section for the WDB Board and Executive Committee is published; audit/policy board rows are excluded and date-matched agenda links are attached.",
+        "location": "",
+        "meeting_date": "2027-01-14",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://workforce.org/boards/workforce-development-board/agendas-minutes/",
+        "start_time": "12:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "san-diego-workforce-partnership:board-meeting:2027-02-11": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "san-diego-workforce-partnership",
+        "board_name": "San Diego Workforce Partnership",
+        "confidence_notes": "Profiled San Diego extraction: only the Upcoming Meetings section for the WDB Board and Executive Committee is published; audit/policy board rows are excluded and date-matched agenda links are attached.",
+        "location": "",
+        "meeting_date": "2027-02-11",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://workforce.org/boards/workforce-development-board/agendas-minutes/",
+        "start_time": "12:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "san-diego-workforce-partnership:board-meeting:2027-03-11": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "san-diego-workforce-partnership",
+        "board_name": "San Diego Workforce Partnership",
+        "confidence_notes": "Profiled San Diego extraction: only the Upcoming Meetings section for the WDB Board and Executive Committee is published; audit/policy board rows are excluded and date-matched agenda links are attached.",
+        "location": "",
+        "meeting_date": "2027-03-11",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://workforce.org/boards/workforce-development-board/agendas-minutes/",
+        "start_time": "12:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "san-diego-workforce-partnership:executive-committee:2026-09-28": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "Download Agenda",
+        "agenda_url": "https://workforce.org/wp-content/uploads/2026/09/2026-09-28-Exec-Cmte-Agenda.pdf",
+        "board_id": "san-diego-workforce-partnership",
+        "board_name": "San Diego Workforce Partnership",
+        "confidence_notes": "Profiled San Diego extraction: only the Upcoming Meetings section for the WDB Board and Executive Committee is published; audit/policy board rows are excluded and date-matched agenda links are attached.",
+        "location": "",
+        "meeting_date": "2026-09-28",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://workforce.org/boards/workforce-development-board/agendas-minutes/",
+        "start_time": "11:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "san-diego-workforce-partnership:executive-committee:2026-11-02": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "san-diego-workforce-partnership",
+        "board_name": "San Diego Workforce Partnership",
+        "confidence_notes": "Profiled San Diego extraction: only the Upcoming Meetings section for the WDB Board and Executive Committee is published; audit/policy board rows are excluded and date-matched agenda links are attached.",
+        "location": "",
+        "meeting_date": "2026-11-02",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://workforce.org/boards/workforce-development-board/agendas-minutes/",
+        "start_time": "11:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "san-diego-workforce-partnership:executive-committee:2026-11-30": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "san-diego-workforce-partnership",
+        "board_name": "San Diego Workforce Partnership",
+        "confidence_notes": "Profiled San Diego extraction: only the Upcoming Meetings section for the WDB Board and Executive Committee is published; audit/policy board rows are excluded and date-matched agenda links are attached.",
+        "location": "",
+        "meeting_date": "2026-11-30",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://workforce.org/boards/workforce-development-board/agendas-minutes/",
+        "start_time": "11:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "san-diego-workforce-partnership:executive-committee:2027-01-04": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "san-diego-workforce-partnership",
+        "board_name": "San Diego Workforce Partnership",
+        "confidence_notes": "Profiled San Diego extraction: only the Upcoming Meetings section for the WDB Board and Executive Committee is published; audit/policy board rows are excluded and date-matched agenda links are attached.",
+        "location": "",
+        "meeting_date": "2027-01-04",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://workforce.org/boards/workforce-development-board/agendas-minutes/",
+        "start_time": "11:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "san-diego-workforce-partnership:executive-committee:2027-02-01": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "san-diego-workforce-partnership",
+        "board_name": "San Diego Workforce Partnership",
+        "confidence_notes": "Profiled San Diego extraction: only the Upcoming Meetings section for the WDB Board and Executive Committee is published; audit/policy board rows are excluded and date-matched agenda links are attached.",
+        "location": "",
+        "meeting_date": "2027-02-01",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://workforce.org/boards/workforce-development-board/agendas-minutes/",
+        "start_time": "11:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "san-diego-workforce-partnership:executive-committee:2027-03-01": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "san-diego-workforce-partnership",
+        "board_name": "San Diego Workforce Partnership",
+        "confidence_notes": "Profiled San Diego extraction: only the Upcoming Meetings section for the WDB Board and Executive Committee is published; audit/policy board rows are excluded and date-matched agenda links are attached.",
+        "location": "",
+        "meeting_date": "2027-03-01",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://workforce.org/boards/workforce-development-board/agendas-minutes/",
+        "start_time": "11:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "san-joaquin-county-worknet:board-meeting:2026-10-28": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "san-joaquin-county-worknet",
+        "board_name": "San Joaquin County WorkNet",
+        "confidence_notes": "Confirmed official schedule fallback. Date was verified from the official 2026 WDB schedule before the old URL was retired.",
+        "location": "",
+        "meeting_date": "2026-10-28",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://sjcworknet.org/boards/wdb",
+        "start_time": "",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "san-joaquin-county-worknet:board-meeting:2026-12-16": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "san-joaquin-county-worknet",
+        "board_name": "San Joaquin County WorkNet",
+        "confidence_notes": "Confirmed official schedule fallback. Combined November/December meeting verified from the official 2026 WDB schedule before the old URL was retired.",
+        "location": "",
+        "meeting_date": "2026-12-16",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://sjcworknet.org/boards/wdb",
+        "start_time": "",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "san-luis-obispo-county-wdb:board-meeting:2026-11-05": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "san-luis-obispo-county-wdb",
+        "board_name": "San Luis Obispo County WDB",
+        "confidence_notes": "Profiled San Luis Obispo County meeting table; canceled rows and non-WDB events are excluded, and detail pages are followed for agenda documents. Detail page parsed for time.",
+        "location": "Cannon, 1050 Southwood Dr, San Luis Obispo, CA 93401",
+        "meeting_date": "2026-11-05",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/meetings/workforce-development-board-meeting-11-05-2026",
+        "start_time": "08:30:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "san-luis-obispo-county-wdb:executive-committee:2026-10-14": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "san-luis-obispo-county-wdb",
+        "board_name": "San Luis Obispo County WDB",
+        "confidence_notes": "Profiled San Luis Obispo County meeting table; canceled rows and non-WDB events are excluded, and detail pages are followed for agenda documents. Detail page parsed for time.",
+        "location": "Department of Social Services, 3433 S Higuera St, San Luis Obispo, CA 93401 - Room 101",
+        "meeting_date": "2026-10-14",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/meetings/executive-committee-meeting-10-14-2026",
+        "start_time": "08:30:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "san-luis-obispo-county-wdb:executive-committee:2026-12-09": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "san-luis-obispo-county-wdb",
+        "board_name": "San Luis Obispo County WDB",
+        "confidence_notes": "Profiled San Luis Obispo County meeting table; canceled rows and non-WDB events are excluded, and detail pages are followed for agenda documents. Detail page parsed for time.",
+        "location": "Department of Social Services, 3433 S Higuera St, San Luis Obispo, CA 93401 - Room 101",
+        "meeting_date": "2026-12-09",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/meetings/executive-committee-meeting-12-09-2026",
+        "start_time": "08:30:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "santa-ana-wdb:board-meeting:2026-11-19": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "santa-ana-wdb",
+        "board_name": "Santa Ana WDB",
+        "confidence_notes": "Profiled Santa Ana extraction: Public Meetings category pages are filtered to Workforce Development Board event links only; unrelated city public meetings and WORK Center events are excluded. Detail page parsed for location.",
+        "location": "WORK Center, 801 W Civic Center Dr, Suite 200, Santa Ana, CA 92701",
+        "meeting_date": "2026-11-19",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://santa-ana.gov/event/workforce-development-board-11-19-26/",
+        "start_time": "08:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "sonoma-county-wdb:board-meeting:2026-11-18": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "sonoma-county-wdb",
+        "board_name": "Sonoma County WDB",
+        "confidence_notes": "Profiled Sonoma extraction: only Job Link Sonoma WIB Executive Committee and Workforce Investment Board event rows are published; labor, youth, membership, and ad hoc committee rows are excluded.",
+        "location": "Job Link Office, 2227 Capricorn Way, Santa Rosa, CA",
+        "meeting_date": "2026-11-18",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://joblinksonoma.org/board-meetings/",
+        "start_time": "15:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "sonoma-county-wdb:executive-committee:2026-10-14": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "sonoma-county-wdb",
+        "board_name": "Sonoma County WDB",
+        "confidence_notes": "Profiled Sonoma extraction: only Job Link Sonoma WIB Executive Committee and Workforce Investment Board event rows are published; labor, youth, membership, and ad hoc committee rows are excluded.",
+        "location": "Job Link Office, 2227 Capricorn Way, Santa Rosa, CA",
+        "meeting_date": "2026-10-14",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://joblinksonoma.org/board-meetings/",
+        "start_time": "16:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "sonoma-county-wdb:executive-committee:2026-11-18": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "sonoma-county-wdb",
+        "board_name": "Sonoma County WDB",
+        "confidence_notes": "Profiled Sonoma extraction: only Job Link Sonoma WIB Executive Committee and Workforce Investment Board event rows are published; labor, youth, membership, and ad hoc committee rows are excluded.",
+        "location": "Job Link Office, 2227 Capricorn Way, Santa Rosa, CA",
+        "meeting_date": "2026-11-18",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://joblinksonoma.org/board-meetings/",
+        "start_time": "14:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "sonoma-county-wdb:executive-committee:2026-12-09": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "sonoma-county-wdb",
+        "board_name": "Sonoma County WDB",
+        "confidence_notes": "Profiled Sonoma extraction: only Job Link Sonoma WIB Executive Committee and Workforce Investment Board event rows are published; labor, youth, membership, and ad hoc committee rows are excluded.",
+        "location": "Job Link Office, 2227 Capricorn Way, Santa Rosa, CA",
+        "meeting_date": "2026-12-09",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://joblinksonoma.org/board-meetings/",
+        "start_time": "16:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "stanislaus-county-wdb:board-meeting:2026-12-07": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "stanislaus-county-wdb",
+        "board_name": "Stanislaus County WDB",
+        "confidence_notes": "Profiled Stanislaus extraction: uses only the Upcoming Board Meeting section and the full-board current agenda link; committee sections and historical/cancelled PDFs are excluded.",
+        "location": "",
+        "meeting_date": "2026-12-07",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://www.stanworkforce.com/workforce-board/",
+        "start_time": "12:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "ventura-county-wdb:board-meeting:2026-10-08": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "ventura-county-wdb",
+        "board_name": "Ventura County WDB",
+        "confidence_notes": "Profiled Ventura extraction: uses the official public Google Calendar ICS embedded on the WDB meeting page; only full-board and executive committee events are published and canceled events are excluded.",
+        "location": "Ventura County Office Of Education, 5100 Adolfo Rd, Camarillo, CA 93012, USA",
+        "meeting_date": "2026-10-08",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://workforce.venturacounty.gov/resources/meeting-packets/",
+        "start_time": "09:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "ventura-county-wdb:board-meeting:2026-12-03": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "ventura-county-wdb",
+        "board_name": "Ventura County WDB",
+        "confidence_notes": "Profiled Ventura extraction: uses the official public Google Calendar ICS embedded on the WDB meeting page; only full-board and executive committee events are published and canceled events are excluded.",
+        "location": "Ventura County Office Of Education, 5100 Adolfo Rd, Camarillo, CA 93012, USA",
+        "meeting_date": "2026-12-03",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://workforce.venturacounty.gov/resources/meeting-packets/",
+        "start_time": "09:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "ventura-county-wdb:board-meeting:2027-02-18": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "ventura-county-wdb",
+        "board_name": "Ventura County WDB",
+        "confidence_notes": "Profiled Ventura extraction: uses the official public Google Calendar ICS embedded on the WDB meeting page; only full-board and executive committee events are published and canceled events are excluded.",
+        "location": "Ventura County Office Of Education, 5100 Adolfo Rd, Camarillo, CA 93012, USA",
+        "meeting_date": "2027-02-18",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://workforce.venturacounty.gov/resources/meeting-packets/",
+        "start_time": "09:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "ventura-county-wdb:executive-committee:2027-01-14": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "ventura-county-wdb",
+        "board_name": "Ventura County WDB",
+        "confidence_notes": "Profiled Ventura extraction: uses the official public Google Calendar ICS embedded on the WDB meeting page; only full-board and executive committee events are published and canceled events are excluded.",
+        "location": "Ventura County Office Of Education, 5100 Adolfo Rd, Camarillo, CA 93012, USA",
+        "meeting_date": "2027-01-14",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://workforce.venturacounty.gov/resources/meeting-packets/",
+        "start_time": "09:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "ventura-county-wdb:executive-committee:2027-03-18": {
+      "last_seen_at": "2026-09-24T12:48:48.061110-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "ventura-county-wdb",
+        "board_name": "Ventura County WDB",
+        "confidence_notes": "Profiled Ventura extraction: uses the official public Google Calendar ICS embedded on the WDB meeting page; only full-board and executive committee events are published and canceled events are excluded.",
+        "location": "Ventura County Office Of Education, 5100 Adolfo Rd, Camarillo, CA 93012, USA",
+        "meeting_date": "2027-03-18",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://workforce.venturacounty.gov/resources/meeting-packets/",
+        "start_time": "09:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    }
+  },
+  "updated_at": "2026-09-24T12:59:45.343211-07:00",
+  "version": 1
+}

@@ -4,7 +4,7 @@
       "board_id": "golden-sierra-workforce-board",
       "status": "audited",
       "cadence": "Public meeting category currently shows Workforce Board and Executive Committee meetings; verify month/list category views daily because the general calendar includes unrelated workshops.",
-      "extraction_strategy": "generic",
+      "extraction_strategy": "golden_sierra_events",
       "agenda_rules": {
         "allowed_source_urls": [
           "https://goldensierra.com/calendar/category/public-meeting/workforce-board"
@@ -23,18 +23,30 @@
     },
     {
       "board_id": "contra-costa-county-wdb",
-      "status": "partially_audited",
-      "cadence": "Meetings & Agendas page states Executive Committee generally meets 2nd Wednesday monthly 3:00-5:00 PM; BED generally meets 1st Wednesday every other month 3:00-5:00 PM; Youth Council generally meets 4th Monday in Jan/Apr/Aug/Oct 12:00-1:30 PM. Full-board date cadence still needs verification.",
-      "extraction_strategy": "generic",
+      "status": "audited",
+      "cadence": "The county Legistar calendar is authoritative and currently uses combined Full Board/Executive Committee meetings rather than the older separate recurring pattern. Exact published Legistar rows control; the Sept. 16, 2026 combined meeting was at noon. Youth and BED rows share the same generic body name but are separate and excluded.",
+      "extraction_strategy": "contra_costa_legistar",
       "agenda_rules": {
-        "source": "https://www.wdbccc.com/meetings-agendas/",
-        "notes": "Visible dated Legistar links were present for BED and Youth sections during audit. Full Board of Directors dates were not visible in fetched HTML."
+        "source": "https://contra-costa.legistar.com/Calendar.aspx",
+        "supporting_page": "https://www.wdbccc.com/meetings-agendas/",
+        "required_subtype": "Full Board/Executive Committee"
       },
       "known_traps": [
         "The Board Member Interest page links to Meetings & Agendas but is not itself a schedule source.",
-        "Committee cadence text can be mistaken for specific meeting dates unless date links are section-scoped."
+        "Committee cadence text can be mistaken for specific meeting dates unless date links are section-scoped.",
+        "Legistar calls every WDB-related body Workforce Development Board; the subtype at the end of the location cell distinguishes Full Board/Executive, Youth, and BED meetings.",
+        "The October 2025 proposed 2026 calendar was superseded by actual Legistar postings and must not be projected."
       ],
-      "verification_notes": "Audited 2026-05-09 as partially complete; needs official full-board cadence/date confirmation."
+      "verification_notes": "Re-audited 2026-09-24. Official county Legistar calendar and September 16 meeting detail/agenda verified; custom subtype-aware parser added.",
+      "verified_meeting_dates": [
+        "2026-03-18",
+        "2026-06-17",
+        "2026-09-16"
+      ],
+      "verified_agenda_dates": [
+        "2026-03-18",
+        "2026-09-16"
+      ]
     },
     {
       "board_id": "novaworks-workforce-board",
@@ -55,7 +67,7 @@
       "board_id": "orange-county-wdb",
       "status": "audited",
       "cadence": "Official Meeting Agendas and Minutes page publishes full board and committee agenda packet links. Future cadence not fully inferable from fetched page, but source endpoint is verified.",
-      "extraction_strategy": "generic",
+      "extraction_strategy": "orange_ocwdb",
       "agenda_rules": {
         "source": "https://workforce.ocgov.com/oc-workforce-development-board/board-members/meeting-agendas-and-minutes",
         "date_match_required": true,
@@ -65,9 +77,10 @@
       },
       "known_traps": [
         "The policies/procedures page contains plan dates and should not be used as a meeting source.",
-        "Committee agenda packets are present on the same page as full board packets."
+        "Committee agenda packets are present on the same page as full board packets.",
+        "One-off cancellation PDFs are not live executive committee endpoints."
       ],
-      "verification_notes": "Audited 2026-05-09. Registry corrected from policies/procedures to Meeting Agendas and Minutes."
+      "verification_notes": "Audited 2026-06-10. Registry corrected from policies/procedures to Meeting Agendas and Minutes; stale executive cancellation PDF removed from live endpoint fields."
     },
     {
       "board_id": "south-bay-wib",
@@ -90,9 +103,10 @@
       },
       "known_traps": [
         "Dates on the page are grouped under headings; a date under Youth Development Council is not a full board meeting.",
-        "The page title and nav repeat 'South Bay Workforce Investment Board', so parser must start inside the 2026 Meeting Agendas content area."
+        "The page title and nav repeat 'South Bay Workforce Investment Board', so parser must start inside the 2026 Meeting Agendas content area.",
+        "Agenda PDF links are labeled only by meeting date, so date-labeled links under the allowed sections must be treated as agenda links."
       ],
-      "verification_notes": "Audited 2026-05-10. Section-aware parser publishes only SBWIB Executive Committee and South Bay Workforce Investment Board sections; other committees are documented but excluded."
+      "verification_notes": "Audited 2026-06-10. Section-aware parser publishes only SBWIB Executive Committee and South Bay Workforce Investment Board sections; other committees are documented but excluded. June 11, 2026 Executive Committee agenda is a date-labeled PDF link."
     },
     {
       "board_id": "stanislaus-county-wdb",
@@ -179,18 +193,25 @@
     },
     {
       "board_id": "madera-county-wdb",
-      "status": "partially_audited",
-      "cadence": "WDB page describes board meetings and public access, but fetched visible content only showed a stale June 18, 2025 special meeting agenda notice and no current 2026 meeting schedule.",
-      "extraction_strategy": "generic",
+      "status": "audited",
+      "cadence": "Current Madera County WDB site is maderaworkforce.org. Board Meetings page states the WDB meets every other month starting in February on the third Thursday at 3:00 PM at the Workforce Assistance Center Executive Conference Room, 2037 W. Cleveland Avenue, Madera. The visible 2026 board rows are February 19, April 16, and June 18 canceled. Executive Committee page states meetings occur monthly on the fourth Thursday as needed, but no current 2026 future executive row is posted.",
+      "extraction_strategy": "madera_board_archives",
       "agenda_rules": {
-        "source": "https://maderaworkforce.com/wdb",
-        "current_schedule_visible": false
+        "board_source": "https://www.maderaworkforce.org/wdb/workforce-board-meetings/",
+        "executive_source": "https://www.maderaworkforce.org/wdb/executive-committee-meetings/",
+        "date_match_required": true,
+        "exclude": [
+          "canceled rows",
+          "no quorum rows",
+          "homepage job fairs"
+        ]
       },
       "known_traps": [
-        "Homepage and What\u2019s New content includes job fair dates that are not board meetings.",
-        "Visible WDB page agenda notice was from June 18, 2025 and should not be published as current."
+        "maderaworkforce.com showed stale/partial shell content; current WDB meeting archives live under www.maderaworkforce.org/wdb/.",
+        "June 18, 2026 is explicitly canceled and must not be published.",
+        "If a WDB quorum is absent but an Executive Committee quorum is present, the source says an executive committee meeting may be conducted in place of the WDB meeting."
       ],
-      "verification_notes": "Partially audited 2026-05-09. WDB page verified as official, but current meeting cadence requires manual follow-up or another source."
+      "verification_notes": "Audited 2026-06-10. Current board and executive committee archive pages verified; parser added to skip canceled/no-quorum rows."
     },
     {
       "board_id": "imperial-county-wdb",
@@ -209,19 +230,19 @@
     },
     {
       "board_id": "san-luis-obispo-county-wdb",
-      "status": "partially_audited",
-      "cadence": "Board page explains WDB and committees. Executive Committee page states it meets second Wednesday of non-WDB meeting months (January, March, April, June, July, September, October, December) at 8:30 AM. Individual meeting detail page observed for June 10, 2026 Executive Committee at 8:30 AM. Full WDB cadence still needs confirmation.",
-      "extraction_strategy": "event_detail_title",
+      "status": "audited",
+      "cadence": "Full WDB meets quarterly on the first Thursday of February, May, August, and November at 8:30 AM. Executive Committee meets at 8:30 AM on the second Wednesday of non-WDB months: January, March, April, June, July, September, October, and December. The stable Meetings page is authoritative for cancellations, special meetings, exact locations, and agendas.",
+      "extraction_strategy": "slo_county_meetings",
       "agenda_rules": {
-        "board_page": "https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/board",
-        "executive_committee_page": "https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/board/executive-committee",
+        "board_page": "https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/meetings",
+        "executive_committee_page": "https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/meetings",
         "detail_pages_required": true
       },
       "known_traps": [
-        "Main Workforce Development Board landing page includes training/job-center announcements with dates that are not board meetings.",
-        "Executive Committee detail pages can be misclassified by generic text extraction unless title-scoped."
+        "The Board description page includes a dated county holiday notice that is not a WDB meeting.",
+        "Recurring cadence is an expectation only; cancellations and special meetings must follow the stable Meetings page."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Registry points to board/committee/detail pages; main landing page should not be parsed for meetings."
+      "verification_notes": "Audited 2026-09-24. Stable Meetings page confirmed with upcoming October 14 Executive Committee, November 5 Board, and December 9 Executive Committee rows."
     },
     {
       "board_id": "selaco-wdb",
@@ -236,41 +257,45 @@
         "Special Ad-Hoc Committee and historical Executive Committee PDFs appear on the same page as board agendas.",
         "The registry previously pointed executive_committee_url directly at a 2024 PDF; do not use stale PDF as live endpoint."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Keep agenda page as source; avoid stale PDF endpoint."
+      "verification_notes": "Partially audited 2026-06-10. Keep agenda page as source; stale 2024 executive PDF removed from live endpoint fields."
     },
     {
       "board_id": "santa-clara-county-work2future",
-      "status": "partially_audited",
-      "cadence": "Board + Committees page lists event cards for Board, Executive Committee, Youth Committee, and closed holiday events. Observed 2026 Board Meeting April 14 and Executive Committee April 2; no future post-May 9 board/executive meetings visible in fetched card list.",
-      "extraction_strategy": "event_detail_title",
+      "status": "audited",
+      "cadence": "Board + Committees page lists event cards for Board, Executive Committee, Youth Committee, and closed holiday events. On 2026-06-10 it showed a June 10, 2026 Executive Committee Meeting detail page with agenda, agenda packet, location, and Zoom link; April 14, 2026 Board Meeting is canceled.",
+      "extraction_strategy": "work2future_board_events",
       "agenda_rules": {
         "source": "https://www.work2future.org/board/",
         "detail_pages_required": true,
         "exclude": [
           "closed holidays",
-          "youth committee unless explicitly desired"
+          "youth committee unless explicitly desired",
+          "canceled board rows"
         ]
       },
       "known_traps": [
         "Event cards include holidays and Youth Committee meetings alongside board and executive committee meetings.",
-        "Agenda links live on individual event detail pages, not reliably in the board landing page card list."
+        "Agenda links live on individual event detail pages, not reliably in the board landing page card list.",
+        "Do not keep one-off past event details in the registry; discover current detail pages from the board landing page."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Detail event parser can handle individual Board and Executive Committee pages."
+      "verification_notes": "Audited 2026-06-10. Board event-card parser added; runner follows detail links to attach agenda, location, time, and Zoom."
     },
     {
       "board_id": "sacramento-seta",
-      "status": "partially_audited",
-      "cadence": "Board Operations page separates Governing Board, Community Action Board, Policy Council, Sacramento Works Inc., and committees. Agendas page has a Sacramento Works section but fetched HTML did not expose current dated meeting rows.",
-      "extraction_strategy": "generic",
+      "status": "audited",
+      "cadence": "Sacramento Works Inc. Board and Sacramento Works Executive Committee are published as recurring Tribe Events. Future 2026 board dates observed July 22, September 23, and November 25 at 9:00 AM; executive committee dates observed July 9, September 10, and November 12 at 4:00 PM.",
+      "extraction_strategy": "tribe_events_api",
       "agenda_rules": {
-        "board_operations": "https://www.seta.net/resources/board-operations/",
-        "agendas": "https://www.seta.net/resources/agendas/"
+        "board_api": "https://www.seta.net/wp-json/tribe/events/v1/events?search=Sacramento%20Works%2C%20Inc.%20Board",
+        "executive_api": "https://www.seta.net/wp-json/tribe/events/v1/events?search=Sacramento%20Works%20Executive%20Committee",
+        "detail_pages_required": true
       },
       "known_traps": [
         "SETA has multiple boards; Sacramento Works Inc. is the relevant workforce board section, not Governing Board or Head Start boards.",
-        "Agenda links may be embedded or hidden in accordions/JS and require further parser work."
+        "The Sacramento Works category also includes Youth Committee, Planning/Oversight Committee, Employment Outreach Committee, and public workshops.",
+        "The category iCalendar feed includes many non-board events; use exact title searches and exclude Youth/Planning/Outreach committees."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Correct relevant section identified; current cadence still needs extraction."
+      "verification_notes": "Audited 2026-06-11 from user-supplied event detail and official Tribe Events REST API. Parser added for Sacramento Works board and executive titles."
     },
     {
       "board_id": "northern-rural-training-nortec",
@@ -285,23 +310,29 @@
         "Historical agenda PDFs from many years are on the same page.",
         "Old Executive Committee PDFs should not be used as current executive source."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Needs PDF schedule parsing or accordion-specific extraction."
+      "verification_notes": "Partially audited 2026-06-10. Historical executive PDF removed from live endpoint fields. Needs PDF schedule parsing or accordion-specific extraction."
     },
     {
       "board_id": "mother-lode-workforce-development-board",
-      "status": "partially_audited",
-      "cadence": "Agendas & Minutes page is a Wix archive of agenda/minute PDFs. Existing registry includes a likely schedule PDF plus agenda archive, but fetched HTML did not expose current meeting dates to generic extraction.",
-      "extraction_strategy": "generic",
+      "status": "audited",
+      "cadence": "Current Board Meeting Schedule PDF lists 2026 WDB meetings on February 19, May 21, August 20, and November 19 from 12:00 to 2:00 PM. Primary location is 197 Mono Way, Suite B, Sonora, with Amador, Calaveras, and Mariposa teleconference locations.",
+      "extraction_strategy": "mother_lode_schedule",
       "agenda_rules": {
         "main": "https://www.mljt.org/wdb",
         "agendas": "https://www.mljt.org/agendas-and-minutes",
-        "schedule_pdf": "https://www.mljt.org/_files/ugd/754937_11c6509bdef5406d90073f4dac9d923c.pdf"
+        "schedule_pdf": "https://www.mljt.org/_files/ugd/754937_3e081757ab82424181297f1c7b5681b7.pdf",
+        "publish_section": "WDB Meetings",
+        "exclude_sections": [
+          "MLJT Board of Directors",
+          "CSEDD Meetings"
+        ]
       },
       "known_traps": [
-        "Wix PDF links are often unlabeled beyond AGENDA/MINUTES and require surrounding context or PDF parsing.",
-        "Many historical agenda PDFs are present."
+        "Wix archive links are labeled only AGENDA/MINUTES; use the parent row context to capture the date and body name.",
+        "MLJT Board of Directors and Central Sierra Economic Development District meetings appear in the same schedule PDF but are not WDB meetings for this calendar.",
+        "Canceled archive rows such as February 19, 2026 should not create agenda-backed meetings."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Needs PDF schedule extraction and Wix context handling."
+      "verification_notes": "Audited 2026-06-11 from user-supplied agendas/minutes page and current 2026 schedule PDF. Parser added for schedule PDF and Wix archive row context."
     },
     {
       "board_id": "alameda-county-wdb",
@@ -330,9 +361,9 @@
     },
     {
       "board_id": "anaheim-wdb",
-      "status": "partially_audited",
-      "cadence": "Boards and Commissions page states Workforce Development Board meets 3rd Wednesday every other month at 9:00 AM at Anaheim West Tower, Gordon Hoyt Conference Room. Agenda Center category has 2026 entries for February 18 and April 15, with April 15 canceled; no future post-May 9 dated agenda was visible.",
-      "extraction_strategy": "generic",
+      "status": "audited",
+      "cadence": "The official Boards and Commissions page states the Workforce Development Board meets at 9:00 AM on the third Wednesday every other month at Anaheim West Tower, Gordon Hoyt Conference Room. Agenda Center category 24 is the authoritative notice/archive source; 2026 rows are February 18, canceled April 15, and June 17.",
+      "extraction_strategy": "anaheim_civicengage",
       "agenda_rules": {
         "board_page": "https://www.anaheim.net/176/Boards-Commissions",
         "agenda_center": "https://www.anaheim.net/AgendaCenter/Workforce-Development-Board-24",
@@ -346,7 +377,15 @@
         "Anaheim has many boards in the same Boards and Commissions page; use only the Workforce Development Board section and AgendaCenter category 24.",
         "The previous registry pointed to City Council agendas and a Visit Anaheim subcontractor page; both are false sources."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Official endpoints corrected; future agenda cadence should be confirmed when the next AgendaCenter item appears."
+      "verification_notes": "Re-audited 2026-09-24. Official category 24 rows and same-row agenda links verified; parser skips canceled rows and never projects the recurring cadence.",
+      "verified_meeting_dates": [
+        "2026-02-18",
+        "2026-06-17"
+      ],
+      "verified_agenda_dates": [
+        "2026-02-18",
+        "2026-06-17"
+      ]
     },
     {
       "board_id": "foothill-wdb",
@@ -371,18 +410,23 @@
     },
     {
       "board_id": "fresno-regional-wdb",
-      "status": "partially_audited",
-      "cadence": "Current official domain is frwdb.net. Board & Committees page describes Executive Committee, Adult Council, Youth Council, and Skills Development Council but fetched HTML did not expose meeting dates or agenda links.",
-      "extraction_strategy": "generic",
+      "status": "audited",
+      "cadence": "FRWDB uses a Tribe Events calendar. Future full board events are titled FRWDB Meeting, with 2026 dates observed September 9 and December 2 at 4:00 PM. Executive Committee Meeting events are separate, with 2026 dates observed July 15 and October 21 at 3:00 PM.",
+      "extraction_strategy": "tribe_events_api",
       "agenda_rules": {
         "main": "https://frwdb.net/",
-        "board": "https://frwdb.net/board-of-directors/"
+        "events": "https://frwdb.net/events/",
+        "board_api_search": "FRWDB Meeting",
+        "executive_api_search": "Executive Committee Meeting",
+        "detail_pages_required": true
       },
       "known_traps": [
         "Old fresno-ca-wdb.com domain no longer resolves.",
-        "The Board & Committees page is structural/governance content, not a schedule source by itself."
+        "The Board & Committees page is structural/governance content, not a schedule source by itself.",
+        "The event calendar also contains FAWIC Board of Directors, Adult Council, Youth Council, Skills Development Council, and AJCC events that must not be published as WDB/full board events.",
+        "Agenda text may say an agenda is not yet available; detail pages should be revisited as the Brown Act posting window approaches."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Correct current domain found; agenda/schedule endpoint still needs discovery."
+      "verification_notes": "Audited 2026-06-11 from user-supplied Executive Committee detail page and official Tribe Events REST API searches. Parser added for FRWDB and Executive Committee titles/categories."
     },
     {
       "board_id": "humboldt-county-wdb",
@@ -428,47 +472,78 @@
     {
       "board_id": "kings-county-wdb",
       "status": "partially_audited",
-      "cadence": "County Boards & Commissions page identifies the Workforce Development Board and links Meetings, Contact, Calendar, and Website, but fetched HTML did not expose current WDB meeting dates or agendas. County Board of Supervisors agenda page is not the WDB source.",
+      "cadence": "Historical official agenda evidence says the WDB met at 10:00 AM on the first Thursday of every other month, but no current 2026 schedule or notice confirms that cadence. County Boards & Commissions and General Services/JTO pages do not expose current WDB dates to the automation.",
       "extraction_strategy": "generic",
       "agenda_rules": {
-        "board_page": "https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board"
+        "board_page": "https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board",
+        "user_supplied_jto": "https://www.countyofkingsca.gov/departments/general-services/jto"
       },
       "known_traps": [
         "kingsworkforce.org returned 403 to the fetcher.",
+        "The county General Services/JTO page also returned 403 during the 2026-06-11 follow-up.",
         "Kings County Board of Supervisors Calendar, Agenda and Action Summary is not the WDB meeting source."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Official county WDB page found; agenda/schedule endpoint still needs discovery."
+      "verification_notes": "Rechecked 2026-09-24. Official search results still expose only historical WDB events/agendas and current membership information; a current 2026 notice remains missing."
     },
     {
       "board_id": "long-beach-win",
       "status": "audited",
-      "cadence": "Long Beach Workforce Innovation Network Board page has a 2026 Scheduled Meetings block. Observed meetings: April 2, June 4, August 6, October 1, and December 3 from 9:00 to 11:00 AM at LBWIN Adult Career Services Center, 4811 Airport Plaza Dr. Ste 120.",
+      "cadence": "Long Beach Workforce Innovation Network Board page has a 2026 Scheduled Meetings block. Current observed meetings include April 2, June 11, August 6, October 1, and December 3 from 9:00 to 11:00 AM; June 11 is at Port of Long Beach, and later meetings are listed at LBWIN Adult Career Services Center, 4811 Airport Plaza Dr. Ste 120.",
       "extraction_strategy": "long_beach_lbwin_schedule",
       "agenda_rules": {
         "source": "https://www.longbeach.gov/edo/talent-workforce/workforce-development-board/",
-        "agenda_links_visible": false
+        "agenda_source": "https://longbeach.primegov.com/api/v2/PublicPortal/ListUpcomingMeetingsByCommitteeId?committeeId=126",
+        "agenda_links_visible_on_board_page": false
       },
       "known_traps": [
         "Old economicdevelopment/workforce-development URL redirects badly for urllib.",
-        "Board member biographies include many years and date-like text; only the Scheduled Meetings block should be parsed."
+        "Board member biographies include many years and date-like text; only the Scheduled Meetings block should be parsed.",
+        "Agendas are published through Long Beach OneMeeting/PrimeGov committee 126, not as links on the workforce board landing page."
       ],
-      "verification_notes": "Audited 2026-05-10. Current official URL and scheduled meeting block verified."
+      "verification_notes": "Audited 2026-06-10. Current official URL and scheduled meeting block verified; OneMeeting API includes June 11, 2026 LBWIN agenda document.",
+      "confirmed_meetings": [
+        {
+          "meeting_date": "2026-10-01",
+          "meeting_type": "Board Meeting",
+          "start_time": "09:00",
+          "location": "LBWIN Adult Career Services Center, 4811 Airport Plaza Dr. Ste 120, Long Beach, CA",
+          "source_url": "https://www.longbeach.gov/edo/talent-workforce/workforce-development-board/",
+          "notes": "Date, time, and location were verified from the official 2026 Scheduled Meetings block."
+        },
+        {
+          "meeting_date": "2026-12-03",
+          "meeting_type": "Board Meeting",
+          "start_time": "09:00",
+          "location": "LBWIN Adult Career Services Center, 4811 Airport Plaza Dr. Ste 120, Long Beach, CA",
+          "source_url": "https://www.longbeach.gov/edo/talent-workforce/workforce-development-board/",
+          "notes": "Date, time, and location were verified from the official 2026 Scheduled Meetings block."
+        }
+      ]
     },
     {
       "board_id": "los-angeles-city-wdb",
-      "status": "partially_audited",
-      "cadence": "Current City of Los Angeles WDB site is wiblacity.org. Meeting Calendar & Agendas page embeds a NovusAgenda iframe and states agendas/minutes/reports from the past six months are shown there; older documents through January 2019 are searchable, and older than January 2019 are in archive. Fetched HTML did not expose meeting rows without iframe handling.",
-      "extraction_strategy": "generic",
+      "status": "audited",
+      "cadence": "Current City of Los Angeles WDB site embeds a NovusAgenda iframe. The iframe exposed a July 21, 2026 WDB Quarterly Meeting and a May 21, 2026 WDB Quarterly Meeting with agenda PDF; no future executive committee row was visible in the default next-six-month result set on 2026-06-11.",
+      "extraction_strategy": "la_city_novus",
       "agenda_rules": {
         "main": "https://www.wiblacity.org/",
-        "calendar": "https://www.wiblacity.org/index.php/calendar",
-        "archive": "https://www.wiblacity.org/index.php/calendar/archive-calendar"
+        "calendar": "https://mail.wiblacity.org/index.php/calendar",
+        "novus_iframe": "https://wiblacity.novusagenda.com/agendapublic/meetingsgeneral.aspx",
+        "publish_types": [
+          "WDB QUARTERLY MEETING",
+          "WDB MEETING",
+          "EXECUTIVE COMMITTEE MEETING",
+          "SPECIAL EXECUTIVE COMMITTEE MEETING",
+          "WDB JOINT WDB EXECUTIVE AND FULL WDB"
+        ]
       },
       "known_traps": [
         "Old ewddlacity.com/index.php/wdb returns 404.",
-        "Calendar page requires NovusAgenda iframe handling; landing page program dates and newsletters should not be parsed as meetings."
+        "The www.wiblacity.org page embeds NovusAgenda, but mail.wiblacity.org exposed the iframe reliably during audit.",
+        "NovusAgenda includes Youth Council, Business Services/Marketing/RD, Oversight, orientation, and ad hoc rows in the same table; exclude them.",
+        "Some future Novus rows have an online agenda view before a PDF download appears."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Correct official WDB site and calendar page identified; parser still needs iframe/NovusAgenda support."
+      "verification_notes": "Audited 2026-06-11. Parser added for Novus meeting table and detail-page enrichment."
     },
     {
       "board_id": "los-angeles-county-wdb",
@@ -552,9 +627,9 @@
     },
     {
       "board_id": "richmond-wdb",
-      "status": "partially_audited",
-      "cadence": "Official page states WDB meets at 11:30 AM on the second Thursday of every other month, commencing with January, at RichmondWORKS. The WDB-specific page mentions a 2026 meeting schedule and says March 12, 2026 was canceled.",
-      "extraction_strategy": "generic",
+      "status": "audited",
+      "cadence": "The official page and linked 2026 calendar state meetings are held at 11:30 AM on the second Thursday every other month at RichmondWORKS, 330 25th Street. The annual schedule lists Jan 15, Mar 12, May 14, Jul 9, Sep 10, and Nov 12; the live page cancels Jul 9 and reschedules Sep 10 to Sep 17.",
+      "extraction_strategy": "richmond_wdb",
       "agenda_rules": {
         "source": "https://www.richmondca.gov/671/Richmond-WDB"
       },
@@ -562,7 +637,35 @@
         "City Council agenda documents page is not the WDB source.",
         "There are multiple Richmond WDB pages; use WDB-specific page 671 or boards-and-commissions page 1173, not City Council."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Correct page found; schedule link or agenda archive needs parser."
+      "verification_notes": "Re-audited 2026-09-24. Live page, annual schedule PDF, cancellations/reschedule, and date-labeled agenda/minutes links verified.",
+      "confirmed_meetings": [
+        {
+          "meeting_date": "2026-09-17",
+          "meeting_type": "Board Meeting",
+          "start_time": "11:30",
+          "location": "RichmondWORKS, 330 25th Street, Richmond, CA",
+          "source_url": "https://www.richmondca.gov/671/Richmond-WDB",
+          "notes": "Official live page rescheduled the September 10 meeting to September 17."
+        },
+        {
+          "meeting_date": "2026-11-12",
+          "meeting_type": "Board Meeting",
+          "start_time": "11:30",
+          "location": "RichmondWORKS, 330 25th Street, Richmond, CA",
+          "source_url": "https://www.richmondca.gov/DocumentCenter/View/78244/RWDB-Calendar-2026",
+          "notes": "Exact date, time, and location verified in the official 2026 meeting calendar."
+        }
+      ],
+      "verified_meeting_dates": [
+        "2026-01-15",
+        "2026-05-14",
+        "2026-09-17",
+        "2026-11-12"
+      ],
+      "verified_agenda_dates": [
+        "2026-01-15",
+        "2026-05-14"
+      ]
     },
     {
       "board_id": "riverside-county-wdb",
@@ -579,7 +682,21 @@
         "Regional committees and Riverside County Works committee are separate from full board/executive committee.",
         "Current official pages returned HTTP 403 to the automation during validation."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Current domain and schedule tables identified from official source/search, but pages returned HTTP 403 to the automation during runner validation."
+      "verification_notes": "Partially audited 2026-05-10. Current domain and schedule tables identified from official source/search, but pages returned HTTP 403 to the automation during runner validation.",
+      "confirmed_meetings": [
+        {
+          "meeting_date": "2026-12-09",
+          "meeting_type": "Board Meeting",
+          "source_url": "https://rivcoworkforce.org/workforce-development-board",
+          "notes": "Date was verified in the official 2026 full-board schedule; the current page blocks unattended requests."
+        },
+        {
+          "meeting_date": "2026-12-09",
+          "meeting_type": "Executive Committee",
+          "source_url": "https://rivcoworkforce.org/executive-committee",
+          "notes": "Date was verified in the official 2026 executive schedule; the current page blocks unattended requests."
+        }
+      ]
     },
     {
       "board_id": "san-benito-county-wdb",
@@ -604,6 +721,7 @@
       "agenda_rules": {
         "source": "https://workforce.org/boards/workforce-development-board/agendas-minutes/",
         "section": "Upcoming Meetings",
+        "agenda_links": "Download Agenda links are matched to meeting dates by dated PDF filenames.",
         "exclude": [
           "Audit Committee",
           "Policy Board"
@@ -611,10 +729,9 @@
       },
       "known_traps": [
         "Main workforce.org home returned 403 to registry audit, but the WDB agendas/minutes page is the correct source.",
-        "San Diego Consortium Policy Board is a separate board and should not be merged with WDB meetings.",
-        "WDB agendas/minutes page returned HTTP 403 to the automation during runner validation."
+        "San Diego Consortium Policy Board is a separate board and should not be merged with WDB meetings."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Upcoming WDB Board and Executive Committee list identified from official source/search, but the page returned HTTP 403 to the automation during runner validation."
+      "verification_notes": "Audited 2026-06-10 for agenda pairing. Official page exposes June 11, 2026 Board Meeting Download Agenda link at /wp-content/uploads/2026/06/2026-06-11-WDB-Agenda-1.pdf."
     },
     {
       "board_id": "san-joaquin-county-worknet",
@@ -622,14 +739,30 @@
       "cadence": "Official WDB page lists 2026 schedule: Feb 25, canceled Mar 25, May 27, Jul 22, Aug 26, Oct 28, Dec 16 combined November/December meeting.",
       "extraction_strategy": "san_joaquin_worknet",
       "agenda_rules": {
-        "source": "https://www.sjcworknet.org/wdb.asp",
-        "section": "Workforce Development Board Meeting Schedule"
+        "source": "https://sjcworknet.org/boards/wdb",
+        "agenda_api": "https://sjcworknet.org/api/agendas?boardId=cmp323sd50001ict5fpgb619o&dateFrom={year}-01-01&dateTo={year}-12-31&includeCancelled=true&page=1&pageSize=1000",
+        "section": "Workforce Development Board Agenda & Archive"
       },
       "known_traps": [
         "WorkNet homepage and STEP application packet are not WDB meeting sources.",
-        "Canceled March 25 row should be excluded."
+        "Canceled March 25 row should be excluded.",
+        "The retired /wdb.asp page now returns 404; use /boards/wdb and its official agenda API."
       ],
-      "verification_notes": "Audited 2026-05-10. Official WDB schedule section verified."
+      "verification_notes": "Re-audited 2026-09-24. New Next.js /boards/wdb page and board-specific agenda API decoded; confirmed 2026 schedule dates remain as fallbacks until each API record is published.",
+      "confirmed_meetings": [
+        {
+          "meeting_date": "2026-10-28",
+          "meeting_type": "Board Meeting",
+          "source_url": "https://sjcworknet.org/boards/wdb",
+          "notes": "Date was verified from the official 2026 WDB schedule before the old URL was retired."
+        },
+        {
+          "meeting_date": "2026-12-16",
+          "meeting_type": "Board Meeting",
+          "source_url": "https://sjcworknet.org/boards/wdb",
+          "notes": "Combined November/December meeting verified from the official 2026 WDB schedule before the old URL was retired."
+        }
+      ]
     },
     {
       "board_id": "san-bernardino-county-wdb",
@@ -661,73 +794,124 @@
     },
     {
       "board_id": "santa-ana-wdb",
-      "status": "partially_audited",
-      "cadence": "City agenda notifications page is not itself the WDB source; search results were polluted by Travel Santa Ana and Santa Ana water board pages. Current WDB-specific agenda source remains unresolved.",
-      "extraction_strategy": "no_publish",
+      "status": "audited",
+      "cadence": "Official Public Meetings category pages list Workforce Development Board events. 2026 future dates observed July 16, September 17, and November 19 from 8:00 to 9:30 AM at the WORK Center, 801 W Civic Center Dr, Suite 200, Santa Ana.",
+      "extraction_strategy": "santa_ana_wdb_events",
       "agenda_rules": {
-        "candidate_city_agendas": "https://www.santa-ana.org/agendas-and-minutes/"
+        "board_page": "https://www.santa-ana.org/workforce-development-board/",
+        "public_meetings_page_1": "https://www.santa-ana.org/events/categories/public-meetings/",
+        "public_meetings_page_2": "https://www.santa-ana.org/events/categories/public-meetings/?pno=2",
+        "agenda_source": "https://www.santa-ana.org/agendas-and-minutes/"
       },
       "known_traps": [
         "Travel Santa Ana and Santa Ana Regional Water Quality Control Board are false positives.",
-        "Agenda notifications subscription page is not a schedule source."
+        "The Public Meetings category contains many unrelated city boards and commissions; publish only event links whose label is exactly Workforce Development Board.",
+        "The event detail page points to City Clerk agendas/minutes rather than embedding the agenda PDF directly."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Needs WDB-specific official endpoint."
+      "verification_notes": "Audited 2026-06-11 from user-supplied event detail and official Public Meetings category pagination. Parser added for WDB event links."
     },
     {
       "board_id": "santa-barbara-county-wdb",
-      "status": "partially_audited",
-      "cadence": "County WDB page is under /611/Workforce-Development-Board and agenda archive under /3033/Board-Agendas. Fetched old /wdb shortcut returned Page Not Found. Current future 2026 meeting dates not confirmed.",
-      "extraction_strategy": "no_publish",
+      "status": "audited",
+      "cadence": "County WDB pages use CivicPlus HCMS agenda widgets. 2026 agenda records found for Full Board March 20 at 9:30 AM and Executive Committee January 21 and May 20 at 10:00 AM. Future rows are not yet visible as of 2026-06-11, but the widget tags will expose them when agendas are posted.",
+      "extraction_strategy": "santa_barbara_hcms",
       "agenda_rules": {
         "board": "https://www.countyofsb.org/611/Workforce-Development-Board",
-        "agendas": "https://www.countyofsb.org/3033/Board-Agendas"
+        "board_agendas": "https://www.countyofsb.org/3033/Board-Agendas",
+        "executive_agendas": "https://www.countyofsb.org/3034/Executive-Committee-Agendas",
+        "content_type": "agendasandminutes",
+        "current_tags": [
+          "ds-wdb-board-agendas-2026",
+          "ds-wdb-executive-agendas-2026"
+        ]
       },
       "known_traps": [
         "Old countyofsb.org/wdb shortcut returns Page Not Found.",
-        "BSCC Santa Barbara board agenda is unrelated."
+        "BSCC Santa Barbara board agenda is unrelated.",
+        "The official agenda pages use CivicPlus HCMS widgets rather than plain dated anchors.",
+        "The API meetingdate value is a date-like UTC timestamp; agenda PDFs provide the actual time and location.",
+        "Board and executive agenda pages are separate; both must be checked."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Correct county WDB pages found; needs parser for event/meeting widgets."
+      "verification_notes": "Audited 2026-06-11 from user-supplied Board Agendas page and Executive Committee archive. Public HCMS API parser added and agenda PDF asset links verified."
     },
     {
       "board_id": "solano-county-wdb",
-      "status": "partially_audited",
-      "cadence": "Solano County advisory body page says WDB meets the 3rd Friday of every other month starting in January, 8:30 AM to 10:30 AM, at 500 Chadbourne Road, Suite A, Fairfield. No agenda archive/current dated agenda row confirmed.",
-      "extraction_strategy": "no_publish",
+      "status": "audited",
+      "cadence": "Active WDB Solano Board of Directors page publishes 2026 agenda packets and a 2026 Meeting Calendar PDF. Calendar PDF lists Board of Directors meetings on January 23, March 20, May 15, July 17, September 18, and November 20, 2026, all 8:30 AM to 10:30 AM at Workforce Development Board of Solano County, 500 Chadbourne Road, Suite A, Fairfield.",
+      "extraction_strategy": "solano_board_calendar",
       "agenda_rules": {
-        "source": "https://www.solanocounty.gov/government/clerk-board/advisory-boards-committees-commissions/about-workforce-development-board"
+        "calendar_pdf": "https://solanoemployment.org/wp-content/uploads/2022/03/Board-of-Directors-2026-Meeting-Calendar.pdf",
+        "agenda_source": "https://solanoemployment.org/board-of-directors/",
+        "date_match_required": true,
+        "publish_sections": [
+          "Board of Directors Meetings"
+        ],
+        "exclude_sections": [
+          "Planning & Oversight Committee",
+          "Budget Committee",
+          "historical Executive Committee rows"
+        ]
       },
       "known_traps": [
-        "Old www.solanowdb.org host has SSL certificate mismatch.",
-        "Cadence alone is not being published until agenda source is confirmed."
+        "The www.solanoemployment.org URL variant can return a page-not-found shell; use solanoemployment.org.",
+        "Python urllib hits a TLS protocol failure on this host; fetcher uses curl fallback for this public source.",
+        "Committee agenda packet sections appear on the same page but are not full board/executive committee meetings for this calendar."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Official county advisory body page found; agenda source unresolved."
+      "verification_notes": "Audited 2026-06-10. Active WDB Solano source and 2026 calendar PDF verified; parser added for PDF schedule plus date-matched agenda packets."
     },
     {
       "board_id": "sonoma-county-wdb",
-      "status": "partially_audited",
-      "cadence": "Old sonomawdb.org domain did not resolve. Search did not surface a current WDB-specific agenda/schedule page during this pass.",
-      "extraction_strategy": "no_publish",
-      "agenda_rules": {},
+      "status": "audited",
+      "cadence": "Active Job Link Sonoma Board Meetings page publishes Workforce Investment Board and WIB Executive Committee events plus current agenda packets. Observed future/today rows on 2026-06-10 include June 10 Executive Committee, July 8 Executive Committee, July 8 Workforce Investment Board, and August 12 Executive Committee at Job Link Office, 2227 Capricorn Way, Santa Rosa.",
+      "extraction_strategy": "sonoma_joblink_board_meetings",
+      "agenda_rules": {
+        "source": "https://joblinksonoma.org/board-meetings/",
+        "publish": [
+          "WIB Executive Committee",
+          "Workforce Investment Board Meeting"
+        ],
+        "exclude": [
+          "WIB Labor Committee",
+          "Youth Committee",
+          "Membership Ad Hoc Committee",
+          "ad hoc committee rows"
+        ]
+      },
       "known_traps": [
-        "Sonoma County Board of Supervisors pages are false positives unless explicitly tied to WDB."
+        "Old sonomawdb.org no longer resolves.",
+        "Sonoma County Board of Supervisors pages are false positives unless explicitly tied to WDB.",
+        "Labor, youth, membership, and ad hoc committee agendas sit near the board/executive agenda links and must be excluded."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Needs manual official endpoint discovery."
+      "verification_notes": "Audited 2026-06-10. Active Job Link Sonoma board meeting page verified; parser added for event rows and agenda packet date matching."
     },
     {
       "board_id": "ventura-county-wdb",
-      "status": "partially_audited",
-      "cadence": "Current domain is workforce.venturacounty.gov. Meeting calendar/packet pages describe board meeting packet availability and committee structure, but fetched/search snippets did not expose current future date rows.",
-      "extraction_strategy": "no_publish",
+      "status": "audited",
+      "cadence": "The official meeting page embeds a public Google Calendar that is the operative schedule. Current confirmed rows include the Oct. 8, 2026 full board/strategic planning meeting, canceled Oct. 8 executive meeting, Dec. 3 full board meeting, Jan. 14 and Mar. 18, 2027 executive meetings, and Feb. 18, 2027 full board meeting. Exact events, not a projected recurrence, control.",
+      "extraction_strategy": "ventura_google_calendar_ics",
       "agenda_rules": {
         "main": "https://workforce.venturacounty.gov/",
-        "meetings": "https://workforce.venturacounty.gov/about-us/wdb-committees/",
+        "meetings": "https://workforce.venturacounty.gov/resources/meeting-packets/",
+        "calendar_ics": "https://calendar.google.com/calendar/ical/venturacountywdb%40gmail.com/public/basic.ics",
         "packets": "https://workforce.venturacounty.gov/resources/meeting-packets/"
       },
       "known_traps": [
         "Old vcwdb.org domain does not resolve.",
-        "Legacy workforceventuracounty.org pages exist; prefer workforce.venturacounty.gov."
+        "Legacy workforceventuracounty.org pages exist; prefer workforce.venturacounty.gov.",
+        "Archive pages linked from the packet page contain historical 2016-2020 packets and should not be used as current meeting notices."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Correct current domain found; meeting date extraction unresolved."
+      "verification_notes": "Re-audited 2026-09-24 in the rendered official page. The embedded calendar source and public ICS feed were identified and verified; parser filters to full board/executive events, skips cancellations, and extracts packet links and locations.",
+      "verified_meeting_dates": [
+        "2026-01-15",
+        "2026-10-08",
+        "2026-12-03",
+        "2027-01-14",
+        "2027-02-18",
+        "2027-03-18"
+      ],
+      "verified_agenda_dates": [
+        "2026-01-15"
+      ]
     },
     {
       "board_id": "verdugo-wdb",
@@ -746,15 +930,17 @@
     {
       "board_id": "yolo-county-wdb",
       "status": "partially_audited",
-      "cadence": "Registry source yoloworks.org was blocked by robots.txt for the automation. No alternate official agenda/schedule endpoint was confirmed in this pass.",
+      "cadence": "An official Yolo County release dated 2026-05-27 confirms in-person WIB meetings are held bimonthly on the second Wednesday from 8:30 AM to 10:30 AM at HHSA, 25 North Cottonwood Street in Woodland. Yoloworks.org and the user-supplied VOS notice URL remain blocked by robots.txt, so cadence is used only as an expectation and never as a published event.",
       "extraction_strategy": "no_publish",
       "agenda_rules": {
-        "blocked_source": "https://www.yoloworks.org/"
+        "blocked_source": "https://www.yoloworks.org/",
+        "user_supplied_blocked_document": "https://www.yoloworks.org/vosnet/gsipub/documentView.aspx?enc=KmsU3jC/4G9J9JwKNPNT/A=="
       },
       "known_traps": [
-        "Robots.txt disallows fetching current registry source."
+        "Robots.txt disallows fetching current registry source and direct VOS documentView URLs.",
+        "Do not bypass robots rules in the unattended daily automation."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Needs manual source discovery or robots-compliant alternate endpoint."
+      "verification_notes": "Rechecked 2026-09-24. Cadence is now confirmed from an official county release, but a robots-compliant dated notice/agenda index is still required."
     }
   ]
 }
