@@ -15,17 +15,18 @@ This file is the operating memory for the meeting monitor. The automation should
 - Official meeting source: `https://goldensierra.com/calendar/category/public-meeting/workforce-board`
 - Do not use: `https://goldensierra.com/calendar`
 - Current structure: The Workforce Board category page contains public meeting events for the full board and executive committee.
-- Cadence observed on 2026-05-09: May 21, 2026 has an Executive Committee meeting at 12:00 PM and Workforce Board meeting at 1:00 PM.
+- Cadence observed: paired Executive Committee and Workforce Board events commonly appear on the same date, with the Executive Committee immediately before the board. Confirmed examples include May 21 and September 17, 2026.
 - Known traps: the general calendar includes workshops and other non-board events; calendar UI controls can expose dates that are not meetings.
-- Automation rule: use the Workforce Board category page only.
+- Automation rule: use the Workforce Board category page only, publish exact event titles, and follow each event-detail link for agenda and venue data.
 
 ### Contra Costa County WDB
 
-- Official source: `https://www.wdbccc.com/meetings-agendas/`
-- Current structure: The page has sections for Board of Directors, Executive Committee, Business and Economic Development Committee, and Youth Committee.
-- Cadence observed on 2026-05-09: page text states Executive Committee generally meets 2nd Wednesday monthly from 3:00 PM to 5:00 PM; BED Committee generally meets 1st Wednesday every other month from 3:00 PM to 5:00 PM; Youth Council generally meets 4th Monday in Jan/Apr/Aug/Oct from 12:00 PM to 1:30 PM.
-- Known traps: Board Member Interest links to Meetings & Agendas but is not a schedule source. Committee cadence text is not the same thing as a published meeting date. Visible dated Legistar links were committee-specific during audit.
-- Status: partially audited; full Board of Directors cadence/dates still need official confirmation.
+- Official schedule/agenda source: `https://contra-costa.legistar.com/Calendar.aspx`
+- Supporting board page: `https://www.wdbccc.com/meetings-agendas/`
+- Current structure: Legistar names every WDB-related row `Workforce Development Board`; the subtype at the end of the location cell identifies `Full Board/Executive Committee`, Youth, or BED.
+- Cadence verified on 2026-09-24: actual 2026 postings use combined Full Board/Executive Committee meetings and do not follow the older proposed separate cadence. September 16 was a combined noon meeting with a published agenda.
+- Known traps: the October 2025 draft calendar was superseded by actual postings. The October 21, 2026 generic WDB row is Youth Committee and must not be published as full board/executive.
+- Automation rule: use `contra_costa_legistar`; require the exact `Full Board/Executive Committee` subtype and bind agenda/location/Zoom from that row.
 
 ### NOVAworks Workforce Board
 
@@ -104,18 +105,18 @@ This file is the operating memory for the meeting monitor. The automation should
 - Known traps: Agenda Center includes many unrelated county boards before the WDB sections. The old `/1709/Workforce-Development-Board` URL returns 404. Youth Council is a separate category.
 - Automation rule: use the `humboldt_civicengage` strategy and publish only Workforce Development Board and Workforce Development Board Executive Committee sections.
 
-## Partially Audited Sources
+## Additional Source Profiles
 
-These sources have official endpoints and known traps documented, but still need either future-date confirmation, a custom parser, or PDF/JavaScript handling before they should be promoted to `high`.
+This section includes both fully audited and still-partial sources. The generated `coverage_matrix.md` is authoritative for current status.
 
 ### Anaheim WDB
 
 - Official board source: `https://www.anaheim.net/176/Boards-Commissions`
 - Official agenda source: `https://www.anaheim.net/AgendaCenter/Workforce-Development-Board-24`
 - Current structure: Boards and Commissions page lists the WDB cadence; AgendaCenter category 24 lists agenda/minute items.
-- Cadence observed on 2026-05-10: WDB meets 3rd Wednesday every other month at 9:00 AM at Anaheim West Tower, Gordon Hoyt Conference Room. AgendaCenter showed 2026 entries for February 18 and canceled April 15; no future post-May 9 agenda item was visible.
+- Cadence verified on 2026-09-24: WDB meets 3rd Wednesday every other month at 9:00 AM at Anaheim West Tower, Gordon Hoyt Conference Room. AgendaCenter has February 18, canceled April 15, and June 17, 2026 rows; February and June have agendas.
 - Known traps: City Council agenda pages and Visit Anaheim subcontractor pages are false sources.
-- Automation rule: use only AgendaCenter category 24; do not infer future meetings from cadence until agenda entries are published.
+- Automation rule: use `anaheim_civicengage`; parse only category 24 rows, skip canceled rows, bind agendas from the same row, and never project cadence.
 
 ### Foothill WDB
 
@@ -217,12 +218,11 @@ These sources have official endpoints and known traps documented, but still need
 
 ### San Luis Obispo County WDB
 
-- Official board source: `https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/board`
-- Official executive source: `https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/board/executive-committee`
-- Current structure: board/committee pages describe bodies; individual meeting detail pages carry date, time, location, and agenda links.
-- Cadence observed on 2026-05-09: Executive Committee meets on the second Wednesday of non-WDB months (January, March, April, June, July, September, October, December) at 8:30 AM; detail page observed for June 10, 2026 at 8:30 AM.
-- Known traps: the WDB landing page has training and job-center announcements that can look like meeting dates.
-- Automation rule: do not parse the landing page; use event detail pages and infer meeting type from the detail title.
+- Official schedule source: `https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/meetings`
+- Current structure: a stable Upcoming/Archived Meetings table provides exact board and executive dates, detail links, times, locations, cancellations, and agenda documents.
+- Cadence confirmed on 2026-09-24: full WDB meets quarterly on the first Thursday of February, May, August, and November at 8:30 AM. Executive Committee meets on the second Wednesday of non-WDB months at 8:30 AM.
+- Known traps: the descriptive Board page contains a dated Native American Day closure notice that generic extraction incorrectly treated as a committee meeting.
+- Automation rule: use only the stable Meetings table, reject canceled rows, and follow each detail page for agenda documents.
 
 ### Santa Clara County work2future
 
@@ -275,10 +275,10 @@ These sources have official endpoints and known traps documented, but still need
 ### Richmond WDB
 
 - Official source: `https://www.richmondca.gov/671/Richmond-WDB`
-- Current structure: WDB-specific page describes cadence and links agenda/minutes; separate boards-and-commissions page also describes the WDB.
-- Cadence observed on 2026-05-10: board meets at 11:30 AM on the second Thursday of every other month, commencing with January; March 12, 2026 was canceled.
+- Current structure: the WDB-specific page links an annual schedule and date-labeled agenda/minutes documents; live cancellation/reschedule text overrides the annual PDF.
+- Cadence verified on 2026-09-24: 11:30 AM on the second Thursday every other month at RichmondWORKS, 330 25th Street. July 9 was canceled, September 10 moved to September 17, and November 12 remains scheduled.
 - Known traps: City Council agenda documents page is not a WDB source. Richmond has multiple WDB-related pages.
-- Automation rule: keep as medium confidence until the 2026 meeting schedule link or agenda archive can be parsed.
+- Automation rule: use `richmond_wdb`; parse only the `Agenda & Minutes` section and merge exact dates from the official schedule fallback.
 
 ### Riverside County WDB
 
@@ -311,8 +311,8 @@ These sources have official endpoints and known traps documented, but still need
 - Official source: `https://workforce.org/boards/workforce-development-board/agendas-minutes/`
 - Current structure: WDB Agendas & Minutes page has an `Upcoming Meetings` section for 2026 with alternating Executive Committee and Board Meeting rows.
 - Cadence observed on 2026-05-10: future rows after May 9 include May 14 Board; June 1 Executive; June 11 Board; August 31 Executive; September 10 Board; September 28 Executive; October 8 Board; November 2 Executive; November 12 Board; November 30 Executive; December 10 Board.
-- Known traps: main `workforce.org` and the WDB agendas page returned HTTP 403 to the automation during runner validation. San Diego Consortium Policy Board and Audit Committee are separate.
-- Automation rule: `san_diego_wdb` is implemented, but source remains medium until the daily runner can fetch it.
+- Known traps: San Diego Consortium Policy Board and Audit Committee are separate bodies. A same-date Audit Committee PDF must never be attached to an Executive Committee meeting.
+- Automation rule: `san_diego_wdb` parses only the Upcoming Meetings WDB/Executive rows and type-matches agenda files as well as matching their dates.
 
 ### San Francisco OEWD / WISF
 
@@ -324,53 +324,54 @@ These sources have official endpoints and known traps documented, but still need
 
 ### San Joaquin County WorkNet
 
-- Official source: `https://www.sjcworknet.org/wdb.asp`
-- Current structure: WDB page has a `Workforce Development Board Meeting Schedule` table.
+- Official source: `https://sjcworknet.org/boards/wdb`
+- Current structure: the replacement Next.js WDB page uses a board-specific `/api/agendas` endpoint. Each record carries the meeting date/time/location, cancellation status, and agenda attachment.
 - Cadence observed on 2026-05-10: February 25, canceled March 25, May 27, July 22, August 26, October 28, and combined November/December meeting on December 16, 2026.
 - Known traps: WorkNet homepage and STEP application packet are not WDB meeting sources.
-- Automation rule: use `san_joaquin_worknet`; parse only the official schedule section and skip canceled rows.
+- Automation rule: use `san_joaquin_worknet`; query board ID `cmp323sd50001ict5fpgb619o`, skip canceled/deleted records, and merge API details into the confirmed schedule fallbacks.
 
 ### Santa Ana WDB
 
-- Official candidate source: `https://www.santa-ana.org/agendas-and-minutes/`
-- Current structure: agenda notifications page links citywide agendas/minutes but is not itself a WDB schedule.
-- Cadence observed on 2026-05-10: no WDB-specific current schedule confirmed.
+- Official source: `https://www.santa-ana.org/events/category/public-meetings/`
+- Current structure: official Public Meetings event pages publish WDB dates, times, locations, and agenda links when posted.
+- 2026 schedule verified on 2026-06-11: July 16, September 17, and November 19 from 8:00 to 9:30 AM at the WORK Center.
 - Known traps: Travel Santa Ana and Santa Ana Regional Water Quality Control Board are unrelated false positives.
-- Automation rule: `no_publish` until a WDB-specific official endpoint is found.
+- Automation rule: publish only exact Workforce Development Board event titles from the official Public Meetings category.
 
 ### Santa Barbara County WDB
 
 - Official board source: `https://www.countyofsb.org/611/Workforce-Development-Board`
 - Official agenda archive: `https://www.countyofsb.org/3033/Board-Agendas`
-- Current structure: county WDB page has Events/Meetings widgets; Board Agendas page archives historical agendas.
-- Cadence observed on 2026-05-10: no current future 2026 meeting dates confirmed.
+- Current structure: county WDB pages use CivicPlus HCMS agenda widgets for Board and Executive Committee records and PDF assets.
+- 2026 records verified on 2026-06-11: Full Board March 20; Executive Committee January 21 and May 20. Future rows appear when the HCMS record is published.
 - Known traps: old `/wdb` shortcut returns Page Not Found. BSCC Santa Barbara board agenda is unrelated.
-- Automation rule: `no_publish` until current WDB event/meeting widgets are parsed.
+- Automation rule: query the public HCMS tags for Full Board and Executive Committee; attach only the PDF belonging to the same record.
 
 ### Solano County WDB
 
-- Official source: `https://www.solanocounty.gov/government/clerk-board/advisory-boards-committees-commissions/about-workforce-development-board`
-- Current structure: county advisory body page describes WDB membership and meeting cadence.
-- Cadence observed on 2026-05-10: 3rd Friday of every other month starting in January, 8:30 AM to 10:30 AM, at 500 Chadbourne Road, Suite A, Fairfield.
-- Known traps: old `www.solanowdb.org` has an SSL hostname mismatch. Cadence alone is not being published until agenda source is confirmed.
-- Automation rule: `no_publish` until agenda archive/current meeting rows are confirmed.
+- Official source: `https://www.wdbsolano.com/board-of-directors/`
+- Current structure: the active WDB Solano page publishes agenda packets and a separate annual Meeting Calendar PDF.
+- 2026 schedule verified on 2026-06-10: January 23, March 20, May 15, July 17, September 18, and November 20 from 8:30 to 10:30 AM at 500 Chadbourne Road, Suite A, Fairfield.
+- Known traps: old Solano county and `solanowdb.org` pages can outrank the active WDB Solano source in search results.
+- Automation rule: parse the annual calendar PDF for dates and match packet PDFs by exact date.
 
 ### Sonoma County WDB
 
-- Official source: unresolved.
-- Current structure: old `sonomawdb.org` did not resolve during audit.
-- Cadence observed on 2026-05-10: no current WDB-specific agenda/schedule endpoint confirmed.
-- Known traps: Sonoma County Board of Supervisors pages are false positives unless explicitly tied to WDB.
-- Automation rule: `no_publish` until official endpoint discovery is complete.
+- Official source: `https://joblinksonoma.org/board-meetings/`
+- Current structure: Job Link Sonoma publishes Workforce Investment Board and Executive Committee event rows plus agenda packets.
+- Cadence observed on 2026-06-10: future rows include separate board and executive dates/times at Job Link Office, 2227 Capricorn Way, Santa Rosa.
+- Known traps: the old `sonomawdb.org` domain is dead, and other Job Link committees share the page.
+- Automation rule: publish only Workforce Investment Board and WIB Executive Committee rows and match agenda packets by date.
 
 ### Ventura County WDB
 
 - Official source: `https://workforce.venturacounty.gov/`
 - Agenda/packet source: `https://workforce.venturacounty.gov/resources/meeting-packets/`
-- Current structure: current county workforce site describes WDB committees and meeting packets, but no safe current future date row was extracted in this pass.
-- Cadence observed on 2026-05-10: no current future schedule confirmed.
+- Machine-readable schedule: `https://calendar.google.com/calendar/ical/venturacountywdb%40gmail.com/public/basic.ics`
+- Current structure: the official meeting page embeds a public Google Calendar. Its published ICS feed carries exact dates, times, locations, cancellations, descriptions, and packet URLs.
+- Dates verified on 2026-09-24: Oct. 8 and Dec. 3, 2026 full board; Jan. 14 and Mar. 18, 2027 executive; Feb. 18, 2027 full board. The Oct. 8, 2026 executive meeting is canceled and excluded.
 - Known traps: old `vcwdb.org` does not resolve. Legacy `workforceventuracounty.org` pages exist; prefer `workforce.venturacounty.gov`.
-- Automation rule: `no_publish` until meeting packet/date extraction is implemented.
+- Automation rule: use `ventura_google_calendar_ics`; publish only full-board and executive titles, skip cancellations, and extract packet/location/virtual data from each event. The narrowly recognized public ICS subscription endpoint is treated as an explicit machine feed, not a crawlable UI page.
 
 ### Verdugo WDB
 
@@ -383,11 +384,25 @@ These sources have official endpoints and known traps documented, but still need
 ### Yolo County WDB
 
 - Official source: `https://www.yoloworks.org/`
-- Current structure: current registry source is blocked by robots.txt for the automation.
-- Cadence observed on 2026-05-10: no alternate official agenda/schedule endpoint confirmed.
+- Current structure: Yoloworks and the user-supplied VOS document endpoint are blocked by robots.txt for the automation.
+- Cadence confirmed from an official Yolo County release on 2026-09-24: in-person meetings are bimonthly on the second Wednesday from 8:30 to 10:30 AM at HHSA, 25 North Cottonwood Street, Woodland.
 - Known traps: robots.txt disallows fetching the current source.
 - Automation rule: `no_publish` until a robots-compliant alternate source is found.
 
 ## Remaining Audit Queue
 
-All source-registry boards now have at least a first-pass profile. Continue promoting medium-confidence sources to high only after the daily runner can fetch and parse their official schedule/agenda source without false positives.
+All source-registry boards have a first-pass profile, but coverage is not complete. The daily `coverage_matrix.md` is authoritative for the active queue.
+
+- No confirmed usable meeting notice: Kings County and Yolo County.
+- Automation-blocked official sources: Kern/Inyo/Mono, Kings, Los Angeles County, Riverside, and Yolo.
+- Yolo cadence is independently confirmed by an official 2026 county release as in-person, bimonthly, second Wednesday, 8:30-10:30 AM, but cadence must not be converted into calendar events without a specific notice.
+- Kings has old evidence of first-Thursday/every-other-month meetings, but no current 2026 notice or schedule has been located.
+- Ventura is resolved through the public ICS feed embedded in its official meeting page.
+
+## Persistence And Agenda Matching Rules
+
+- Confirmed future meetings are stored in `active_meetings.json`, committed by the daily workflow, and retained through temporary fetch failures or page-listing changes until the meeting date passes.
+- A missing row is not treated as a cancellation. Removal requires explicit official cancellation evidence or a reviewed correction.
+- Official dates already verified on pages that are now blocked or missing can be recorded as structured `confirmed_meetings` fallbacks in the source profile, with the original source URL and verification note.
+- Agenda links with an explicit date that conflicts with the meeting date are rejected even when they appear in the same HTML row. Generic filenames are accepted only from the exact meeting row/detail record.
+- Agenda emails are content-hash deduplicated. A first appearance sends an `Agenda available` email; a changed file sends an `Agenda updated` email.

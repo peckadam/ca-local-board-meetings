@@ -10,6 +10,10 @@ Microsoft Graph OneDrive/Outlook support still exists in the codebase, but the r
 - SQLite database: `data/local_board_meetings/meetings.sqlite3`
 - Reports: `data/local_board_meetings/reports/*.md` and `*.json`
 - Progress log: `data/local_board_meetings/progress_log.md`
+- Statewide coverage matrix: `data/local_board_meetings/coverage_matrix.md`
+- Historical coverage state: `data/local_board_meetings/coverage_history.json`
+- Persisted future-meeting state: `data/local_board_meetings/active_meetings.json`
+- Agenda email deduplication state: `data/local_board_meetings/agenda_notifications.json`
 - Local agenda cache: `data/local_board_meetings/agendas/`
 - Generated online calendar page: `data/local_board_meetings/public/index.html`
 - Generated calendar subscription feed: `data/local_board_meetings/public/calendar.ics`
@@ -44,13 +48,11 @@ make test
 
 ## Publish Online
 
-This repo publishes through GitHub Pages branch publishing, which avoids GitHub Actions permissions:
+This repo publishes through the same GitHub Actions workflow that performs the daily refresh:
 
 1. Open **Settings → Pages**.
-2. Set **Build and deployment → Source** to **Deploy from a branch**.
-3. Select branch **main**.
-4. Select folder **/docs**.
-5. Save.
+2. Set **Build and deployment → Source** to **GitHub Actions**.
+3. Leave that setting in place. The refresh workflow packages the `docs/` folder and deploys it after each successful run.
 
 The published page will use:
 
@@ -67,7 +69,32 @@ The preferred production scheduler is GitHub Actions:
 - Schedule: daily at `15:17 UTC`, which is morning Pacific time.
 - Manual run: GitHub repository -> Actions -> Refresh Local Board Meetings -> Run workflow.
 
-The workflow checks official source pages, regenerates `docs/index.html` and `docs/calendar.ics`, and commits/pushes changes only when the published calendar content changes.
+The workflow checks official source pages, regenerates `docs/index.html` and `docs/calendar.ics`, commits/pushes changed state, uploads the `docs/` folder as a Pages artifact, and deploys the live site. It has the required `contents: write`, `pages: write`, and `id-token: write` permissions.
+
+## Agenda Email Notifications
+
+When SMTP secrets are configured, the daily workflow emails `apeck@calworkforce.org` whenever an agenda is first found or its file content changes. Each message includes the board, meeting date/type, location and virtual link when known, direct agenda/source links, and an extractive summary of agenda items. A committed content-hash ledger prevents duplicate messages across stateless GitHub Actions runs.
+
+Add these repository secrets under **Settings -> Secrets and variables -> Actions**:
+
+- `AGENDA_SMTP_HOST`
+- `AGENDA_SMTP_PORT` (normally `587` for STARTTLS or `465` for SSL)
+- `AGENDA_SMTP_USERNAME`
+- `AGENDA_SMTP_PASSWORD`
+- `AGENDA_SMTP_FROM`
+- `AGENDA_SMTP_USE_SSL` (`true` only for implicit SSL, normally port 465)
+
+The recipient is fixed in the workflow as `apeck@calworkforce.org`. Before enabling delivery for the first time, record already-known agendas without sending an initial batch:
+
+```bash
+python -m etl.local_board_meetings.runner --bootstrap-agenda-notifications
+```
+
+To test configured delivery manually:
+
+```bash
+python -m etl.local_board_meetings.runner --notify-agendas --limit 3
+```
 
 For cron on a local machine, the refresh script remains available as a fallback:
 
@@ -80,10 +107,18 @@ For cron on a local machine, the refresh script remains available as a fallback:
 - The registry starts from the existing official CWA local-board website manifest and adds Mother Lode.
 - Exact meeting/agenda endpoints are refined as official pages reveal schedule, agenda, minutes, or executive committee links.
 - Source-specific structure, cadence, and false-positive traps are documented in `docs/local-board-source-intelligence.md` and encoded in `data/local_board_meetings/source_profiles.json` when a generic extractor is not reliable enough.
-- The fetcher uses a descriptive user agent, retry/backoff, and robots.txt checks by default.
+- The fetcher uses a descriptive user agent, retry/backoff, and robots.txt checks by default. A narrowly recognized public Google Calendar ICS subscription URL embedded by an official board page is treated as an explicit machine feed; this is not a general robots.txt bypass.
 - Meetings within 10 days are eligible for agenda downloads when an agenda URL has been found.
 - Missing agendas within 72 hours are expected sometimes, especially for special meetings, but are always listed in the run report.
 - Past meetings are retained in SQLite. The web calendar publishes future meetings only.
+- Confirmed future meetings remain in the persisted state when a source temporarily fails or stops showing an already-announced date; they age out after the meeting date instead of disappearing from the calendar.
+
+### Audit Snapshot (September 24, 2026)
+
+- 43 of 45 local boards have at least one confirmed meeting date in the historical coverage ledger.
+- 21 of 45 have at least one agenda matched to a board or executive committee meeting.
+- 29 of 45 have an audited source and documented cadence; 16 remain partial.
+- Kings County and Yolo County are the only boards without a confirmed usable meeting notice. Their current source constraints are documented in `docs/local-board-source-intelligence.md`.
 
 ## Optional Microsoft Graph Mode
 
@@ -100,4 +135,5 @@ Delegated Graph permissions:
 
 - If a board reports failures, open `data/local_board_meetings/progress_log.md` and verify the official schedule or agenda page manually.
 - If meetings are not found, the source may use embedded calendars, JavaScript rendering, or PDF-only schedule packets. Add the exact official page URL to `source_registry.csv`.
+- Review `data/local_board_meetings/coverage_matrix.md` after every run. `NO`, `partial`, and `review` cells are the explicit research queue; a successful fetch alone does not count as meeting or agenda coverage.
 - If the GitHub Pages deployment succeeds but the calendar app does not update immediately, wait for the calendar client’s refresh interval or remove/re-add the subscription.
