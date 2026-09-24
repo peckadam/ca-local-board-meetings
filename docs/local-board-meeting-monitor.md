@@ -73,7 +73,7 @@ The workflow checks official source pages, regenerates `docs/index.html` and `do
 
 ## Agenda Email Notifications
 
-When SMTP secrets are configured, the daily workflow emails `apeck@calworkforce.org` whenever an agenda is first found or its file content changes. Each message includes the board, meeting date/type, location and virtual link when known, direct agenda/source links, and an extractive summary of agenda items. A committed content-hash ledger prevents duplicate messages across stateless GitHub Actions runs.
+When SMTP secrets are configured, the daily workflow emails `apeck@calworkforce.org` whenever an agenda is first found or its file content changes. Each message includes the board, meeting date/type, location and virtual link when known, direct agenda/source links, and an automated narrative synopsis that distinguishes proposed decisions, informational reports, closed-session topics, and public comment. The synopsis uses prospective language and does not imply that an agendized action was approved. A committed content-hash ledger prevents duplicate messages across stateless GitHub Actions runs.
 
 Add these repository secrets under **Settings -> Secrets and variables -> Actions**:
 
