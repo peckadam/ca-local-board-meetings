@@ -29,7 +29,7 @@ def agenda_filename(meeting: Meeting) -> str:
 def download_agenda(meeting: Meeting, output_root: Path, respect_robots: bool = True) -> StoredAgenda | None:
     if not meeting.agenda_url:
         return None
-    page = fetch_url(meeting.agenda_url, respect_robots=respect_robots)
+    page = fetch_url(meeting.agenda_url, respect_robots=respect_robots, max_bytes=100 * 1024 * 1024)
     content = page.body
     digest = agenda_hash(content)
     folder = agenda_folder(output_root, meeting)

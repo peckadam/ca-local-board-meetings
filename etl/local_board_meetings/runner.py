@@ -3,24 +3,26 @@ from __future__ import annotations
 import argparse
 import logging
 from dataclasses import asdict, replace
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, time, timedelta, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from .agendas import agenda_folder, download_agenda
-from .agenda_content import extract_agenda_details
-from .extraction import extract_meetings, find_candidate_pages
+from .agenda_content import extract_agenda_details, extract_text_from_content
+from .agenda_notifications import SmtpConfig, process_agenda_notifications, smtp_sender
+from .coverage import update_coverage_history, write_coverage_report
+from .extraction import agenda_link_date_conflicts, best_agenda_for_date, extract_agenda_links, extract_meetings, find_candidate_pages, parse_time
 from .fetcher import fetch_url
 from .graph import CALENDAR_NAME, GraphClient, GraphConfigError
 from .models import BoardSource, Meeting, StoredAgenda
+from .meeting_state import merge_active_meetings
 from .registry import load_registry, mark_checked, save_registry
 from .reporting import append_progress_log, build_summary, write_reports
 from .site_profiles import load_profiles
 from .storage import (
     agenda_exists,
     connect,
-    future_meetings,
     meetings_for_calendar,
-    prune_unseen_future_meetings,
     save_agenda_record,
     set_calendar_event_id,
     upsert_meetings,
@@ -29,6 +31,7 @@ from .storage import (
 from .web_calendar import write_web_calendar
 
 LOGGER = logging.getLogger(__name__)
+RUN_TIMEZONE = ZoneInfo("America/Los_Angeles")
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = PROJECT_ROOT / "data" / "local_board_meetings"
 DEFAULT_REGISTRY = DATA_DIR / "source_registry.csv"
@@ -37,6 +40,10 @@ DEFAULT_REPORTS = DATA_DIR / "reports"
 DEFAULT_AGENDAS = DATA_DIR / "agendas"
 DEFAULT_PUBLIC = DATA_DIR / "public"
 DEFAULT_PROGRESS = DATA_DIR / "progress_log.md"
+DEFAULT_COVERAGE_HISTORY = DATA_DIR / "coverage_history.json"
+DEFAULT_COVERAGE_REPORT = DATA_DIR / "coverage_matrix.md"
+DEFAULT_NOTIFICATION_STATE = DATA_DIR / "agenda_notifications.json"
+DEFAULT_MEETING_STATE = DATA_DIR / "active_meetings.json"
 DEFAULT_SEED = PROJECT_ROOT / "data" / "cwa-local-board-logos" / "manifest.csv"
 
 
@@ -44,6 +51,8 @@ def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     logging.basicConfig(level=getattr(logging, args.log_level), format="%(levelname)s %(name)s: %(message)s")
     started_at = datetime.now(timezone.utc)
+    local_started_at = started_at.astimezone(RUN_TIMEZONE)
+    today = local_started_at.date()
     run_id = started_at.strftime("%Y%m%dT%H%M%SZ")
     mode = "live" if args.live else "dry-run"
     if args.live:
@@ -68,8 +77,13 @@ def main(argv: list[str] | None = None) -> int:
             source,
             args.lookahead_days,
             args.respect_robots,
+            today,
             profiles.get(source.board_id),
         )
+        source_meetings = _dedupe_meetings(
+            source_meetings + confirmed_profile_meetings(source, profiles.get(source.board_id), today, args.lookahead_days)
+        )
+        source_meetings = [_remove_conflicting_agenda(meeting) for meeting in source_meetings]
         all_meetings.extend(source_meetings)
         failures.extend(source_failures)
         updated_sources.append(updated_source)
@@ -77,18 +91,14 @@ def main(argv: list[str] | None = None) -> int:
     updated_by_id = {source.board_id: source for source in updated_sources}
     save_registry(args.registry, [updated_by_id.get(source.board_id, source) for source in all_sources])
     new_meetings, updated_meetings = upsert_meetings(conn, all_meetings, started_at)
-    prune_unseen_future_meetings(
-        conn,
-        [source.board_id for source in sources],
-        [meeting.stable_id for meeting in all_meetings],
-        started_at,
-    )
+    active_meetings = merge_active_meetings(args.meeting_state, all_meetings, local_started_at, today)
+    upsert_meetings(conn, active_meetings, started_at)
 
     agendas_downloaded = 0
     agenda_upload_links: dict[str, str] = {}
     if args.download_agendas or args.live:
         for meeting in all_meetings:
-            if should_check_agenda(meeting, started_at.date()):
+            if should_check_agenda(meeting, today):
                 agenda = download_agenda(meeting, args.agenda_dir, respect_robots=args.respect_robots)
                 if agenda and not agenda_exists(conn, agenda.meeting_id, agenda.source_url, agenda.sha256):
                     agendas_downloaded += 1
@@ -102,11 +112,42 @@ def main(argv: list[str] | None = None) -> int:
 
     events_updated = 0
     if args.live:
-        events_updated = sync_calendar_live(conn, args, started_at, agenda_upload_links)
-    web_calendar_paths = write_web_calendar(args.public_dir, future_meetings(conn, started_at), started_at)
+        events_updated = sync_calendar_live(conn, args, local_started_at, agenda_upload_links)
+
+    notifications_sent = 0
+    if args.notify_agendas or args.bootstrap_agenda_notifications:
+        sender = smtp_sender(SmtpConfig.from_env()) if args.notify_agendas else None
+        notifications_sent, notification_failures = process_agenda_notifications(
+            active_meetings,
+            args.notification_state,
+            today,
+            args.respect_robots,
+            sender,
+            bootstrap=args.bootstrap_agenda_notifications,
+        )
+        failures.extend(notification_failures)
+
+    coverage_history = update_coverage_history(
+        args.coverage_history,
+        conn,
+        all_sources,
+        active_meetings,
+        local_started_at,
+        profiles,
+    )
+    coverage_totals = write_coverage_report(
+        args.coverage_report,
+        coverage_history,
+        all_sources,
+        profiles,
+        all_meetings,
+        failures,
+        local_started_at,
+    )
+    web_calendar_paths = write_web_calendar(args.public_dir, active_meetings, local_started_at)
 
     summary = build_summary(
-        started_at=started_at,
+        started_at=local_started_at,
         mode=mode,
         boards_checked=len(sources),
         meetings=all_meetings,
@@ -114,9 +155,11 @@ def main(argv: list[str] | None = None) -> int:
         updated_meetings=updated_meetings,
         events_updated=events_updated,
         agendas_downloaded=agendas_downloaded,
+        agenda_notifications_sent=notifications_sent,
+        coverage=coverage_totals,
         failures=failures,
     )
-    write_run_log(conn, run_id, started_at, mode, summary)
+    write_run_log(conn, run_id, local_started_at, mode, summary)
     json_report, md_report = write_reports(args.report_dir, run_id, summary, all_meetings)
     append_progress_log(args.progress_log, summary)
     print(f"Run report: {md_report}")
@@ -126,14 +169,31 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Boards checked: {summary['boards_checked']}")
     print(f"Meetings found: {summary['meetings_found']}")
     print(f"Missing agendas within 72 hours: {len(summary['missing_agendas_within_72_hours'])}")
+    print(f"Agenda notifications sent: {summary['agenda_notifications_sent']}")
+    print(f"Boards with meeting history: {coverage_totals['boards_with_meetings']} of {coverage_totals['boards']}")
     print(f"Failures requiring human review: {len(summary['failures_requiring_human_review'])}")
     return 0
 
 
-def check_source(source: BoardSource, lookahead_days: int, respect_robots: bool, profile=None) -> tuple[list[Meeting], list[dict[str, str]], BoardSource]:
-    urls = [source.meeting_schedule_url, source.agenda_minutes_url, source.executive_committee_url, source.main_website]
+def check_source(
+    source: BoardSource,
+    lookahead_days: int,
+    respect_robots: bool,
+    today: date,
+    profile=None,
+) -> tuple[list[Meeting], list[dict[str, str]], BoardSource]:
+    urls = [
+        _expand_url_template(source.meeting_schedule_url, today, lookahead_days),
+        _expand_url_template(source.agenda_minutes_url, today, lookahead_days),
+        _expand_url_template(source.executive_committee_url, today, lookahead_days),
+        _expand_url_template(source.main_website, today, lookahead_days),
+    ]
     urls = list(dict.fromkeys([url for url in urls if url]))
-    configured_content_urls = {source.meeting_schedule_url, source.agenda_minutes_url, source.executive_committee_url} - {"", source.main_website}
+    configured_content_urls = {
+        _expand_url_template(source.meeting_schedule_url, today, lookahead_days),
+        _expand_url_template(source.agenda_minutes_url, today, lookahead_days),
+        _expand_url_template(source.executive_committee_url, today, lookahead_days),
+    } - {"", _expand_url_template(source.main_website, today, lookahead_days)}
     meetings: list[Meeting] = []
     failures: list[dict[str, str]] = []
     notes = source.notes
@@ -142,22 +202,27 @@ def check_source(source: BoardSource, lookahead_days: int, respect_robots: bool,
     for url in urls:
         try:
             page = fetch_url(url, respect_robots=respect_robots)
-            if "pdf" in page.content_type.lower():
+            is_pdf = "pdf" in page.content_type.lower() or page.url.lower().split("?", 1)[0].endswith(".pdf")
+            if is_pdf and not _profile_parses_pdf(profile):
                 continue
             if url != source.main_website or not configured_content_urls:
+                page_text = extract_text_from_content(page.body, page.content_type, page.url) if is_pdf else page.text
                 extracted = extract_meetings(
                     source,
-                    page.text,
+                    page_text,
                     page.url,
-                    date.today(),
+                    today,
                     lookahead_days,
                     extraction_strategy=profile.extraction_strategy if profile else "generic",
                 )
                 for meeting in extracted:
-                    enriched, enrichment_failure = enrich_meeting_from_agenda(meeting, respect_robots)
+                    detail_enriched, detail_failure = enrich_meeting_from_detail_page(meeting, page.url, respect_robots)
+                    if detail_failure:
+                        failures.append({"board_name": source.board_name, "url": meeting.source_page_url, "error": detail_failure})
+                    enriched, enrichment_failure = enrich_meeting_from_agenda(detail_enriched, respect_robots)
                     meetings.append(enriched)
                     if enrichment_failure:
-                        failures.append({"board_name": source.board_name, "url": meeting.agenda_url, "error": enrichment_failure})
+                        failures.append({"board_name": source.board_name, "url": detail_enriched.agenda_url, "error": enrichment_failure})
             if not profile or profile.status == "unaudited":
                 candidates = find_candidate_pages(page.text, page.url)
                 if candidates["meeting"]:
@@ -182,7 +247,7 @@ def check_source(source: BoardSource, lookahead_days: int, respect_robots: bool,
 
 
 def enrich_meeting_from_agenda(meeting: Meeting, respect_robots: bool) -> tuple[Meeting, str]:
-    if not meeting.agenda_url or (meeting.location and meeting.virtual_url):
+    if not meeting.agenda_url or (meeting.location and meeting.virtual_url and meeting.start_time):
         return meeting, ""
     try:
         page = fetch_url(meeting.agenda_url, timeout=15, retries=1, respect_robots=respect_robots)
@@ -197,9 +262,49 @@ def enrich_meeting_from_agenda(meeting: Meeting, respect_robots: bool) -> tuple[
     if details.virtual_url and not meeting.virtual_url:
         updates["virtual_url"] = details.virtual_url
         notes.append("virtual link")
+    if details.start_time and not meeting.start_time:
+        updates["start_time"] = details.start_time
+        notes.append("time")
     if not updates:
         return meeting, ""
     confidence_note = f"{meeting.confidence_notes} Agenda parsed for {' and '.join(notes)}.".strip()
+    return replace(meeting, **updates, confidence_notes=confidence_note), ""
+
+
+def enrich_meeting_from_detail_page(meeting: Meeting, originating_url: str, respect_robots: bool) -> tuple[Meeting, str]:
+    if not meeting.source_page_url or meeting.source_page_url == originating_url:
+        return meeting, ""
+    if meeting.agenda_url and meeting.location and meeting.virtual_url and meeting.start_time:
+        return meeting, ""
+    try:
+        page = fetch_url(meeting.source_page_url, timeout=15, retries=1, respect_robots=respect_robots)
+    except Exception as exc:
+        return meeting, f"Detail page enrichment failed: {exc}"
+    if "pdf" in page.content_type.lower():
+        return meeting, ""
+    detail_text = extract_text_from_content(page.body, page.content_type, page.url)
+    agenda = best_agenda_for_date(extract_agenda_links(page.text, page.url), meeting.meeting_date)
+    details = extract_agenda_details(page.body, page.content_type, page.url)
+    updates = {}
+    notes: list[str] = []
+    if agenda and not meeting.agenda_url:
+        updates["agenda_url"] = agenda.url
+        updates["agenda_label"] = agenda.label
+        notes.append("agenda")
+    if details.location and not meeting.location:
+        updates["location"] = details.location
+        notes.append("location")
+    if details.virtual_url and not meeting.virtual_url:
+        updates["virtual_url"] = details.virtual_url
+        notes.append("virtual link")
+    if not meeting.start_time:
+        detail_time = parse_time(detail_text)
+        if detail_time:
+            updates["start_time"] = detail_time
+            notes.append("time")
+    if not updates:
+        return meeting, ""
+    confidence_note = f"{meeting.confidence_notes} Detail page parsed for {' and '.join(notes)}.".strip()
     return replace(meeting, **updates, confidence_notes=confidence_note), ""
 
 
@@ -209,6 +314,63 @@ def should_check_agenda(meeting: Meeting, today: date) -> bool:
     if meeting.meeting_date >= today:
         return (meeting.meeting_date - today).days <= 10
     return (today - meeting.meeting_date).days <= 14
+
+
+def confirmed_profile_meetings(source: BoardSource, profile, today: date, lookahead_days: int) -> list[Meeting]:
+    if not profile or not profile.confirmed_meetings:
+        return []
+    max_date = today + timedelta(days=lookahead_days)
+    meetings: list[Meeting] = []
+    for item in profile.confirmed_meetings:
+        meeting_date = date.fromisoformat(item["meeting_date"])
+        if meeting_date < today - timedelta(days=14) or meeting_date > max_date:
+            continue
+        meetings.append(
+            Meeting(
+                board_id=source.board_id,
+                board_name=source.board_name,
+                meeting_type=item["meeting_type"],
+                meeting_date=meeting_date,
+                start_time=time.fromisoformat(item["start_time"]) if item.get("start_time") else None,
+                timezone="America/Los_Angeles",
+                location=item.get("location", ""),
+                virtual_url=item.get("virtual_url", ""),
+                source_page_url=item.get("source_url", source.meeting_schedule_url),
+                agenda_url=item.get("agenda_url", ""),
+                agenda_label=item.get("agenda_label", ""),
+                confidence_notes=f"Confirmed official schedule fallback. {item.get('notes', '')}".strip(),
+            )
+        )
+    return meetings
+
+
+def _remove_conflicting_agenda(meeting: Meeting) -> Meeting:
+    if not meeting.agenda_url:
+        return meeting
+    agenda_text = f"{meeting.agenda_label} {meeting.agenda_url}"
+    if not agenda_link_date_conflicts(agenda_text, meeting.meeting_date):
+        return meeting
+    note = "Rejected agenda because its filename date conflicts with the meeting date."
+    return replace(
+        meeting,
+        agenda_url="",
+        agenda_label="",
+        confidence_notes=_merge_notes(meeting.confidence_notes, note),
+    )
+
+
+def _profile_parses_pdf(profile) -> bool:
+    return bool(profile and profile.extraction_strategy in {"solano_board_calendar", "mother_lode_schedule"})
+
+
+def _expand_url_template(url: str, today: date, lookahead_days: int) -> str:
+    if not url:
+        return ""
+    return (
+        url.replace("{today}", today.isoformat())
+        .replace("{lookahead_date}", (today + timedelta(days=lookahead_days)).isoformat())
+        .replace("{year}", str(today.year))
+    )
 
 
 def upload_agenda_live(args: argparse.Namespace, agenda: StoredAgenda, meeting: Meeting) -> str:
@@ -248,8 +410,33 @@ def sync_calendar_live(conn, args: argparse.Namespace, started_at: datetime, age
 
 
 def _dedupe_meetings(meetings: list[Meeting]) -> list[Meeting]:
-    by_id = {meeting.stable_id: meeting for meeting in meetings}
+    by_id: dict[str, Meeting] = {}
+    for meeting in meetings:
+        existing = by_id.get(meeting.stable_id)
+        by_id[meeting.stable_id] = _merge_meeting(existing, meeting) if existing else meeting
     return sorted(by_id.values(), key=lambda m: (m.meeting_date, m.board_name, m.meeting_type))
+
+
+def _merge_meeting(existing: Meeting, incoming: Meeting) -> Meeting:
+    return replace(
+        incoming,
+        start_time=incoming.start_time or existing.start_time,
+        location=incoming.location or existing.location,
+        virtual_url=incoming.virtual_url or existing.virtual_url,
+        source_page_url=existing.source_page_url or incoming.source_page_url,
+        agenda_url=incoming.agenda_url or existing.agenda_url,
+        agenda_label=incoming.agenda_label or existing.agenda_label,
+        confidence_notes=_merge_notes(existing.confidence_notes, incoming.confidence_notes),
+    )
+
+
+def _merge_notes(first: str, second: str) -> str:
+    parts: list[str] = []
+    for note in (first, second):
+        note = note.strip()
+        if note and note not in parts:
+            parts.append(note)
+    return " ".join(parts)
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -267,6 +454,17 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--public-dir", type=Path, default=DEFAULT_PUBLIC)
     parser.add_argument("--progress-log", type=Path, default=DEFAULT_PROGRESS)
     parser.add_argument("--source-profiles", type=Path, default=DATA_DIR / "source_profiles.json")
+    parser.add_argument("--coverage-history", type=Path, default=DEFAULT_COVERAGE_HISTORY)
+    parser.add_argument("--coverage-report", type=Path, default=DEFAULT_COVERAGE_REPORT)
+    parser.add_argument("--notification-state", type=Path, default=DEFAULT_NOTIFICATION_STATE)
+    parser.add_argument("--meeting-state", type=Path, default=DEFAULT_MEETING_STATE)
+    notification_group = parser.add_mutually_exclusive_group()
+    notification_group.add_argument("--notify-agendas", action="store_true", help="Email newly available or changed agendas.")
+    notification_group.add_argument(
+        "--bootstrap-agenda-notifications",
+        action="store_true",
+        help="Record current agendas without emailing them, preventing an initial notification flood.",
+    )
     parser.add_argument("--respect-robots", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--log-level", default="INFO", choices=["DEBUG", "INFO", "WARNING", "ERROR"])
     return parser.parse_args(argv)

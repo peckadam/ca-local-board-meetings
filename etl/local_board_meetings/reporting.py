@@ -26,6 +26,8 @@ def build_summary(
     updated_meetings: int,
     events_updated: int,
     agendas_downloaded: int,
+    agenda_notifications_sent: int,
+    coverage: dict[str, int],
     failures: list[dict[str, str]],
 ) -> dict:
     missing = missing_agendas_within_72h(meetings, started_at)
@@ -38,6 +40,8 @@ def build_summary(
         "meetings_updated": updated_meetings,
         "events_updated": events_updated,
         "agendas_downloaded": agendas_downloaded,
+        "agenda_notifications_sent": agenda_notifications_sent,
+        "coverage": coverage,
         "missing_agendas_within_72_hours": [
             {
                 "meeting_id": meeting.stable_id,
@@ -71,6 +75,9 @@ def append_progress_log(path: Path, summary: dict) -> None:
         f"- Boards checked: {summary['boards_checked']}",
         f"- Meetings found: {summary['meetings_found']}",
         f"- Missing agendas within 72 hours: {len(missing)}",
+        f"- Agenda notifications sent: {summary.get('agenda_notifications_sent', 0)}",
+        f"- Boards with meeting history: {summary.get('coverage', {}).get('boards_with_meetings', 0)} of {summary.get('coverage', {}).get('boards', 0)}",
+        f"- Boards with agenda history: {summary.get('coverage', {}).get('boards_with_agendas', 0)} of {summary.get('coverage', {}).get('boards', 0)}",
         f"- Failures requiring human review: {len(failures)}",
     ]
     for failure in failures[:20]:
@@ -91,6 +98,9 @@ def _markdown(summary: dict, meetings: list[Meeting]) -> str:
         f"- New meetings added: {summary['new_meetings_added']}",
         f"- Events updated: {summary['events_updated']}",
         f"- Agendas downloaded: {summary['agendas_downloaded']}",
+        f"- Agenda notifications sent: {summary.get('agenda_notifications_sent', 0)}",
+        f"- Boards with meeting history: {summary.get('coverage', {}).get('boards_with_meetings', 0)} of {summary.get('coverage', {}).get('boards', 0)}",
+        f"- Boards with agenda history: {summary.get('coverage', {}).get('boards_with_agendas', 0)} of {summary.get('coverage', {}).get('boards', 0)}",
         f"- Missing agendas within 72 hours: {len(summary['missing_agendas_within_72_hours'])}",
         f"- Failures requiring human review: {len(summary['failures_requiring_human_review'])}",
         "",

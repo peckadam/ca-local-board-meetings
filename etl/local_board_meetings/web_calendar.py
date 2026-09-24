@@ -41,8 +41,18 @@ def render_ics(meetings: list[Meeting], generated_at: datetime) -> str:
     ]
     stamp = _utc_stamp(generated_at)
     for meeting in meetings:
-        start = datetime.combine(meeting.meeting_date, meeting.start_time or datetime.min.time().replace(hour=9))
-        end = start + timedelta(hours=1)
+        if meeting.start_time:
+            start = datetime.combine(meeting.meeting_date, meeting.start_time)
+            end = start + timedelta(hours=1)
+            timing = [
+                f"DTSTART;TZID=America/Los_Angeles:{start.strftime('%Y%m%dT%H%M%S')}",
+                f"DTEND;TZID=America/Los_Angeles:{end.strftime('%Y%m%dT%H%M%S')}",
+            ]
+        else:
+            timing = [
+                f"DTSTART;VALUE=DATE:{meeting.meeting_date.strftime('%Y%m%d')}",
+                f"DTEND;VALUE=DATE:{(meeting.meeting_date + timedelta(days=1)).strftime('%Y%m%d')}",
+            ]
         description = "\n".join(
             [
                 f"Source page: {meeting.source_page_url}",
@@ -57,8 +67,7 @@ def render_ics(meetings: list[Meeting], generated_at: datetime) -> str:
                 "BEGIN:VEVENT",
                 f"UID:{_ics_text(meeting.stable_id)}@cwa-local-board-meetings",
                 f"DTSTAMP:{stamp}",
-                f"DTSTART;TZID=America/Los_Angeles:{start.strftime('%Y%m%dT%H%M%S')}",
-                f"DTEND;TZID=America/Los_Angeles:{end.strftime('%Y%m%dT%H%M%S')}",
+                *timing,
                 f"SUMMARY:{_ics_text(f'{meeting.board_name} - {meeting.meeting_type}')}",
                 f"LOCATION:{_ics_text(meeting.location or meeting.virtual_url)}",
                 f"DESCRIPTION:{_ics_text(description)}",

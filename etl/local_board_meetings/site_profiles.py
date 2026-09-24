@@ -19,6 +19,9 @@ class SourceProfile:
     agenda_rules: dict[str, Any] | None = None
     known_traps: list[str] | None = None
     verification_notes: str = ""
+    confirmed_meetings: list[dict[str, str]] | None = None
+    verified_meeting_dates: list[str] | None = None
+    verified_agenda_dates: list[str] | None = None
 
 
 def load_profiles(path: Path = DEFAULT_PROFILE_PATH) -> dict[str, SourceProfile]:
