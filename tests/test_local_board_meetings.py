@@ -240,6 +240,55 @@ class LocalBoardMeetingTests(unittest.TestCase):
         )
         self.assertEqual(meetings, [])
 
+    def test_tulare_profile_extracts_second_date_in_two_column_schedule(self) -> None:
+        source = BoardSource(
+            board_id="tulare-county-wib",
+            board_name="Tulare County WIB",
+            local_area="Tulare County",
+            main_website="https://www.tularewib.org/",
+            meeting_schedule_url="https://www.tularewib.org/wibboard",
+            agenda_minutes_url="https://www.tularewib.org/wibboard",
+            executive_committee_url="https://www.tularewib.org/pec",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        html = """
+        <h2>Board Meeting Schedule</h2>
+        <p>WIB meetings are held the second Wednesday of the month at 7:30 a.m.
+        located at 309 W. Main St. Suite 130, Visalia, CA unless otherwise noted.</p>
+        <h3>2026</h3>
+        <p>January 14, 2026 &nbsp; July 8, 2026 (Canceled)</p>
+        <p>April 8, 2026 &nbsp; October 7, 2026 **</p>
+        <p>May 13, 2026 &nbsp; November 18, 2026 *</p>
+        <p>June 10, 2026 &nbsp; December 9, 2026 *</p>
+        <p>October meeting moved to the first Wednesday and will be held at the
+        Visalia Convention Center located at 303 E. Acequia Ave., Visalia, CA.</p>
+        <h3>2026 Board Agendas</h3>
+        <p><a href="/_files/21ddec71.pdf">September</a> October November December</p>
+        <h3>2026 Board Minutes</h3>
+        <p><a href="/december-minutes.pdf">December</a></p>
+        """
+        meetings = extract_meetings(
+            source,
+            html,
+            source.meeting_schedule_url,
+            date(2026, 9, 24),
+            180,
+            extraction_strategy="tulare_wib_board_only",
+        )
+        self.assertEqual(
+            [meeting.meeting_date for meeting in meetings],
+            [date(2026, 10, 7), date(2026, 11, 18), date(2026, 12, 9)],
+        )
+        self.assertEqual(meetings[0].start_time, time(7, 30))
+        self.assertEqual(
+            meetings[0].location,
+            "Visalia Convention Center, 303 E. Acequia Ave., Visalia, CA",
+        )
+        self.assertEqual(meetings[1].location, "309 W. Main St. Suite 130, Visalia, CA")
+        self.assertEqual(meetings[2].agenda_url, "")
+
     def test_workforce_alliance_profile_scopes_board_sections(self) -> None:
         source = BoardSource(
             board_id="workforce-alliance-north-bay",
