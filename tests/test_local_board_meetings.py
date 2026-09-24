@@ -7,7 +7,7 @@ from tempfile import TemporaryDirectory
 from types import SimpleNamespace
 from unittest.mock import patch
 
-from etl.local_board_meetings.agenda_notifications import process_agenda_notifications, summarize_agenda
+from etl.local_board_meetings.agenda_notifications import narrate_agenda, process_agenda_notifications, summarize_agenda
 from etl.local_board_meetings.agenda_content import extract_details_from_text
 from etl.local_board_meetings.extraction import extract_agenda_links, extract_meetings, infer_virtual_url, parse_date, parse_time
 from etl.local_board_meetings.fetcher import _is_public_calendar_feed
@@ -1109,7 +1109,9 @@ class LocalBoardMeetingTests(unittest.TestCase):
         self.assertEqual(len(sent), 1)
         self.assertIn("Agenda available:", sent[0]["Subject"])
         self.assertIn(meeting.agenda_url, sent[0].get_body(preferencelist=("plain",)).get_content())
-        self.assertIn("Approval of Minutes", sent[0].get_body(preferencelist=("plain",)).get_content())
+        self.assertIn("approval of minutes", sent[0].get_body(preferencelist=("plain",)).get_content())
+        self.assertIn("scheduled to consider", sent[0].get_body(preferencelist=("plain",)).get_content())
+        self.assertIn("not actions ultimately taken", sent[0].get_body(preferencelist=("plain",)).get_content())
 
     def test_conflicting_dated_agenda_is_removed_before_publication(self) -> None:
         meeting = Meeting(
@@ -1133,6 +1135,26 @@ class LocalBoardMeetingTests(unittest.TestCase):
     def test_agenda_summary_prefers_numbered_items(self) -> None:
         summary = summarize_agenda("Header\n1. Approval of Minutes\n2. Workforce Plan Update\nFooter")
         self.assertEqual(summary[:2], ["1. Approval of Minutes", "2. Workforce Plan Update"])
+
+    def test_agenda_narrative_distinguishes_decisions_reports_and_closed_session(self) -> None:
+        narrative = narrate_agenda(
+            [
+                "Non-Agenda Public Comment",
+                "Closed Session",
+                "Item 1: Conference with Legal Counsel - Anticipated Litigation",
+                "Action Items",
+                "Item 2: Approval of August 31, 2026, Minutes",
+                "Information Items",
+                "Item 3: October Workforce Development Board Agenda",
+                "Item 4: Executive Committee Chair Report",
+            ],
+            "Executive Committee",
+        )
+        self.assertIn("scheduled to consider approval of August 31, 2026, minutes", narrative)
+        self.assertIn("receive or discuss October Workforce Development Board agenda", narrative)
+        self.assertIn("closed session is listed concerning anticipated litigation", narrative)
+        self.assertIn("opportunity for public comment", narrative)
+        self.assertIn("not actions ultimately taken", narrative)
 
     def test_la_county_profile_excludes_finance_and_news_items(self) -> None:
         source = BoardSource(
