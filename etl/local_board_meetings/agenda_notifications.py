@@ -140,6 +140,68 @@ def summarize_agenda(text: str, max_items: int = 8) -> list[str]:
     return selected or ["The agenda was posted, but its text could not be summarized automatically."]
 
 
+def narrate_agenda(items: list[str], meeting_type: str = "Board Meeting") -> str:
+    action_items: list[str] = []
+    information_items: list[str] = []
+    closed_session_items: list[str] = []
+    other_items: list[str] = []
+    public_comment = False
+    section = ""
+
+    for raw_item in items:
+        topic = _clean_agenda_topic(raw_item)
+        lowered = topic.lower()
+        if not topic:
+            continue
+        if lowered in {"public comment", "non-agenda public comment", "public comments"}:
+            public_comment = True
+            continue
+        if re.fullmatch(r"(?:closed session|closed session items?)", lowered):
+            section = "closed"
+            continue
+        if re.fullmatch(r"(?:action|consent)(?: agenda)? items?", lowered):
+            section = "action"
+            continue
+        if re.fullmatch(r"(?:information|informational|discussion)(?: agenda)? items?", lowered):
+            section = "information"
+            continue
+
+        if section == "closed" or re.search(r"closed session|conference with (?:labor negotiator|legal counsel)|anticipated litigation", lowered):
+            closed_session_items.append(_closed_session_topic(topic))
+        elif section == "action" or re.search(
+            r"\b(?:approval|approve|adopt|authorize|authorization|recommendation|award|amend|ratif|elect|vote|possible action)\b",
+            lowered,
+        ):
+            action_items.append(topic)
+        elif section == "information" or re.search(
+            r"\b(?:report|update|presentation|briefing|review|discussion|status|information)\b",
+            lowered,
+        ):
+            information_items.append(topic)
+        else:
+            other_items.append(topic)
+
+    subject = "The board" if meeting_type == "Board Meeting" else f"The {meeting_type.lower()}"
+    sentences: list[str] = []
+    if action_items:
+        sentences.append(f"{subject} is scheduled to consider {_natural_list(action_items[:3])}.")
+    if information_items:
+        lead = "It will also receive or discuss" if sentences else f"{subject} is scheduled to receive or discuss"
+        sentences.append(f"{lead} {_natural_list(information_items[:3])}.")
+    if closed_session_items:
+        sentences.append(f"A closed session is listed concerning {_natural_list(closed_session_items[:2])}.")
+    if not sentences and other_items:
+        sentences.append(f"{subject} is scheduled to address {_natural_list(other_items[:4])}.")
+    elif other_items:
+        sentences.append(f"Other listed business includes {_natural_list(other_items[:2])}.")
+    if public_comment:
+        sentences.append("The agenda also provides an opportunity for public comment.")
+    if not sentences:
+        sentences.append("The agenda was posted, but its substantive items could not be summarized reliably from the extracted text.")
+    sentences.append("This automated synopsis describes the posted agenda, not actions ultimately taken at the meeting.")
+    return " ".join(sentences)
+
+
 def build_agenda_email(meeting: Meeting, summary: list[str], updated: bool = False) -> EmailMessage:
     status = "updated" if updated else "available"
     subject = f"Agenda {status}: {meeting.board_name} - {meeting.meeting_type} - {meeting.meeting_date.isoformat()}"
@@ -155,15 +217,60 @@ def build_agenda_email(meeting: Meeting, summary: list[str], updated: bool = Fal
     if meeting.virtual_url:
         details.append(f"Virtual meeting: {meeting.virtual_url}")
     details.extend([f"Agenda: {meeting.agenda_url}", f"Source: {meeting.source_page_url}"])
-    plain = "\n".join(details) + "\n\nAgenda summary:\n" + "\n".join(f"- {item}" for item in summary)
+    narrative = narrate_agenda(summary, meeting.meeting_type)
+    plain = "\n".join(details) + f"\n\nAutomated agenda synopsis:\n{narrative}"
     body = "".join(f"<p><strong>{html.escape(line.split(':', 1)[0])}:</strong>{html.escape(line.split(':', 1)[1])}</p>" for line in details)
-    bullets = "".join(f"<li>{html.escape(item)}</li>" for item in summary)
-    body += f'<p><a href="{html.escape(meeting.agenda_url, quote=True)}">Open the agenda</a></p><h2>Agenda summary</h2><ul>{bullets}</ul>'
+    body += (
+        f'<p><a href="{html.escape(meeting.agenda_url, quote=True)}">Open the agenda</a></p>'
+        f"<h2>Automated agenda synopsis</h2><p>{html.escape(narrative)}</p>"
+    )
     message = EmailMessage()
     message["Subject"] = subject
     message.set_content(plain)
     message.add_alternative(f"<html><body>{body}</body></html>", subtype="html")
     return message
+
+
+def _clean_agenda_topic(item: str) -> str:
+    topic = re.sub(r"^(?:item\s+)?(?:\d+|[IVX]+|[A-Z])[\s.:)-]+", "", item.strip(), flags=re.I)
+    topic = re.sub(r"\s+", " ", topic).strip(" .;:-")
+    for generic_noun in ("Agenda", "Minutes", "Report"):
+        topic = re.sub(rf"\b{generic_noun}\b", generic_noun.lower(), topic)
+    topic = re.sub(r"\bLegal Counsel\b", "legal counsel", topic, flags=re.I)
+    topic = re.sub(r"\bAnticipated Litigation\b", "anticipated litigation", topic, flags=re.I)
+    return topic
+
+
+def _closed_session_topic(topic: str) -> str:
+    match = re.match(r"conference with legal counsel\s*[-:–—]\s*(.+)", topic, flags=re.I)
+    return match.group(1) if match else topic
+
+
+def _natural_list(items: list[str]) -> str:
+    normalized = [_lower_topic_start(item) for item in items if item]
+    if len(normalized) <= 1:
+        return normalized[0] if normalized else "the listed business"
+    if len(normalized) == 2:
+        return f"{normalized[0]} and {normalized[1]}"
+    return f"{', '.join(normalized[:-1])}, and {normalized[-1]}"
+
+
+def _lower_topic_start(topic: str) -> str:
+    first, separator, remainder = topic.partition(" ")
+    generic_starts = {
+        "adoption",
+        "approval",
+        "authorization",
+        "conference",
+        "discussion",
+        "presentation",
+        "recommendation",
+        "review",
+        "update",
+    }
+    if first.lower() not in generic_starts:
+        return topic
+    return first[:1].lower() + first[1:] + (separator + remainder if separator else "")
 
 
 def _load_state(path: Path) -> dict:
