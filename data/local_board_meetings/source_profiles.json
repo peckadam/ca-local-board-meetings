@@ -144,12 +144,38 @@
         "committee_source": "https://www.tularewib.org/pec",
         "month_label_agendas": true
       },
+      "confirmed_meetings": [
+        {
+          "meeting_date": "2026-10-07",
+          "meeting_type": "Board Meeting",
+          "start_time": "07:30:00",
+          "location": "Visalia Convention Center, 303 E. Acequia Ave., Visalia, CA",
+          "source_url": "https://www.tularewib.org/wibboard",
+          "notes": "Official 2026 schedule: October meeting moved to the first Wednesday and to the Visalia Convention Center."
+        },
+        {
+          "meeting_date": "2026-11-18",
+          "meeting_type": "Board Meeting",
+          "start_time": "07:30:00",
+          "location": "309 W. Main St. Suite 130, Visalia, CA",
+          "source_url": "https://www.tularewib.org/wibboard",
+          "notes": "Official 2026 schedule: November meeting moved to the third Wednesday."
+        },
+        {
+          "meeting_date": "2026-12-09",
+          "meeting_type": "Board Meeting",
+          "start_time": "07:30:00",
+          "location": "309 W. Main St. Suite 130, Visalia, CA",
+          "source_url": "https://www.tularewib.org/wibboard",
+          "notes": "Official 2026 schedule."
+        }
+      ],
       "known_traps": [
         "Employment Connection homepage is not the agenda source.",
         "Wix PDF links may be labeled only by month under a year-specific agenda heading.",
         "Program & Evaluation Committee meetings are not full-board or executive-committee meetings and should not be published on this calendar."
       ],
-      "verification_notes": "Audited 2026-05-10. Board page publishes full WIB meetings and agendas. Program & Evaluation Committee page is tracked as source context but excluded from the public board/executive calendar."
+      "verification_notes": "Audited 2026-05-10 and reverified 2026-09-24. Board page publishes full WIB meetings and agendas. Program & Evaluation Committee page is tracked as source context but excluded from the public board/executive calendar. Confirmed schedule entries provide a fallback because tularewib.org may return HTTP 429 to GitHub-hosted runners."
     },
     {
       "board_id": "workforce-alliance-north-bay",
