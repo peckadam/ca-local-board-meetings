@@ -1,6 +1,6 @@
 # Local Board Coverage Matrix
 
-- Updated: 2026-09-24T14:34:26.362094-07:00
+- Updated: 2026-09-24T14:40:39.672338-07:00
 - Boards with at least one confirmed meeting date: 43 of 45
 - Boards with at least one agenda matched to a meeting: 21 of 45
 - Cadence documented with audited source context: 29 of 45
@@ -56,7 +56,7 @@
 | Santa Cruz County WDB / Santa Cruz County | yes | 2026-09-16 | yes | 1 / 1 | documented | ok |
 | Solano County WDB / Solano County | yes | 2026-11-20 | NO | 2 / 0 | documented | ok |
 | Sonoma County WDB / Sonoma County | yes | 2026-12-09 | yes | 4 / 0 | documented | ok |
-| South Bay WIB / Inglewood, Torrance, Carson, Hawthorne, Lawndale, El Segundo, Gardena, Lomita, Hermosa Beach, and Manhattan Beach, Redondo Beach | yes | 2026-09-17 | yes | 1 / 1 | documented | review |
+| South Bay WIB / Inglewood, Torrance, Carson, Hawthorne, Lawndale, El Segundo, Gardena, Lomita, Hermosa Beach, and Manhattan Beach, Redondo Beach | yes | 2026-09-17 | yes | 0 / 0 | documented | review |
 | Stanislaus County WDB / Stanislaus County | yes | 2026-12-07 | yes | 1 / 0 | documented | ok |
 | Tulare County WIB / Tulare County | yes | 2026-07-08 | yes | 0 / 0 | documented | review |
 | Ventura County WDB / Ventura County | yes | 2027-03-18 | yes | 5 / 0 | documented | ok |

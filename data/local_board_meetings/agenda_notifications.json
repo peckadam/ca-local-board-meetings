@@ -17,6 +17,15 @@
       "meeting_type": "Executive Committee",
       "recorded_at": "2026-09-24T14:13:45.824646+00:00",
       "sha256": "6603495bbbedc528d536aa07cbb0bf878e1a414f7718069fad6ba02fab5719a2"
+    },
+    "san-diego-workforce-partnership:executive-committee:2026-09-28": {
+      "agenda_url": "https://workforce.org/wp-content/uploads/2026/09/2026-09-28-Exec-Cmte-Agenda.pdf",
+      "board_name": "San Diego Workforce Partnership",
+      "delivery": "sent",
+      "meeting_date": "2026-09-28",
+      "meeting_type": "Executive Committee",
+      "recorded_at": "2026-09-24T21:42:38.744587+00:00",
+      "sha256": "5b1d4e2e8ca6bddcec4ebd68d9c3e4a1fee64ed146335883f49f9ab44796011f"
     }
   },
   "version": 1
