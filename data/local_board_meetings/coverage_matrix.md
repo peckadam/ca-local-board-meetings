@@ -1,11 +1,11 @@
 # Local Board Coverage Matrix
 
-- Updated: 2026-09-24T14:13:38.878109-07:00
+- Updated: 2026-09-24T14:34:26.362094-07:00
 - Boards with at least one confirmed meeting date: 43 of 45
 - Boards with at least one agenda matched to a meeting: 21 of 45
 - Cadence documented with audited source context: 29 of 45
 - Cadence still partial: 16 of 45
-- Boards with a fetch failure in this run: 10
+- Boards with a fetch failure in this run: 9
 
 `NO` and `review` cells are the active manual-research queue. Cadence is never used to publish an unconfirmed meeting.
 
@@ -14,7 +14,7 @@
 - No confirmed meeting notice/date: Kings County WDB, Yolo County WDB
 - No agenda ever matched to a meeting: Foothill WDB, Humboldt County WDB, Kern/Inyo/Mono WDB, Kings County WDB, Los Angeles County WDB, Madera County WDB, Monterey County WDB, Mother Lode Workforce Development Board, NOVAworks Workforce Board, North Central Counties (NCCC), Northern Rural Training (NoRTEC), Oakland WDB, Orange County WDB, Riverside County WDB, SELACO WDB, Sacramento (SETA), San Benito County WDB, San Bernardino County WDB, San Francisco OEWD, Santa Ana WDB, Santa Barbara County WDB, Solano County WDB, Verdugo WDB, Yolo County WDB
 - Cadence/source context still partial: Foothill WDB, Imperial County WDB, Kern/Inyo/Mono WDB, Kings County WDB, Los Angeles County WDB, Monterey County WDB, Northern Rural Training (NoRTEC), Oakland WDB, Riverside County WDB, SELACO WDB, San Benito County WDB, San Bernardino County WDB, San Diego Workforce Partnership, San Francisco OEWD, Verdugo WDB, Yolo County WDB
-- Fetch failure this run: Kern/Inyo/Mono WDB, Kings County WDB, Long Beach WIN, Los Angeles County WDB, Mother Lode Workforce Development Board, Riverside County WDB, Sacramento (SETA), South Bay WIB, Tulare County WIB, Yolo County WDB
+- Fetch failure this run: Kern/Inyo/Mono WDB, Kings County WDB, Long Beach WIN, Los Angeles County WDB, Mother Lode Workforce Development Board, Riverside County WDB, South Bay WIB, Tulare County WIB, Yolo County WDB
 
 | Board / local area | Meeting date ever found | Latest date | Agenda ever matched | Current meetings / agendas | Cadence | Fetch |
 |---|---:|---|---:|---:|---|---|
@@ -43,7 +43,7 @@
 | Richmond WDB / City of Richmond | yes | 2026-11-12 | yes | 2 / 0 | documented | ok |
 | Riverside County WDB / Riverside County | yes | 2026-12-09 | NO | 2 / 0 | partial | review |
 | SELACO WDB / Artesia, Bellflower, Cerritos, Downey, Lakewood, Norwalk | yes | 2026-05-28 | NO | 0 / 0 | partial | ok |
-| Sacramento (SETA) / Sacramento County | yes | 2026-11-25 | NO | 1 / 0 | documented | review |
+| Sacramento (SETA) / Sacramento County | yes | 2026-11-25 | NO | 2 / 0 | documented | ok |
 | San Benito County WDB / San Benito County | yes | 2021-10-12 | NO | 0 / 0 | partial | ok |
 | San Bernardino County WDB / San Bernardino County | yes | 2026-04-29 | NO | 0 / 0 | partial | ok |
 | San Diego Workforce Partnership / San Diego County | yes | 2027-03-11 | yes | 12 / 1 | partial | ok |
@@ -56,7 +56,7 @@
 | Santa Cruz County WDB / Santa Cruz County | yes | 2026-09-16 | yes | 1 / 1 | documented | ok |
 | Solano County WDB / Solano County | yes | 2026-11-20 | NO | 2 / 0 | documented | ok |
 | Sonoma County WDB / Sonoma County | yes | 2026-12-09 | yes | 4 / 0 | documented | ok |
-| South Bay WIB / Inglewood, Torrance, Carson, Hawthorne, Lawndale, El Segundo, Gardena, Lomita, Hermosa Beach, and Manhattan Beach, Redondo Beach | yes | 2026-09-17 | yes | 0 / 0 | documented | review |
+| South Bay WIB / Inglewood, Torrance, Carson, Hawthorne, Lawndale, El Segundo, Gardena, Lomita, Hermosa Beach, and Manhattan Beach, Redondo Beach | yes | 2026-09-17 | yes | 1 / 1 | documented | review |
 | Stanislaus County WDB / Stanislaus County | yes | 2026-12-07 | yes | 1 / 0 | documented | ok |
 | Tulare County WIB / Tulare County | yes | 2026-07-08 | yes | 0 / 0 | documented | review |
 | Ventura County WDB / Ventura County | yes | 2027-03-18 | yes | 5 / 0 | documented | ok |
