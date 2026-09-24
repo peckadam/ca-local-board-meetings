@@ -744,3 +744,29 @@ Moved Permanently
 - Review: Tulare County WIB - https://www.tularewib.org/wibboard - HTTP Error 429: Too Many Requests
 - Review: Tulare County WIB - https://www.tularewib.org/pec - HTTP Error 429: Too Many Requests
 
+## 2026-09-24T14:13:38.878109-07:00 (dry-run)
+
+- Boards checked: 45
+- Meetings found: 51
+- Missing agendas within 72 hours: 0
+- Agenda notifications sent: 0
+- Boards with meeting history: 43 of 45
+- Boards with agenda history: 21 of 45
+- Failures requiring human review: 16
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/full-wdb-board - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/executive-committee - HTTP Error 403: Forbidden
+- Review: Kern/Inyo/Mono WDB - https://www.employerstrainingresource.com/wdb/about-the-board - HTTP Error 403: Forbidden
+- Review: Kings County WDB - https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Long Beach WIN - https://longbeach.primegov.com/api/v2/PublicPortal/ListUpcomingMeetingsByCommitteeId?committeeId=126 - robots.txt disallows fetching https://longbeach.primegov.com/api/v2/PublicPortal/ListUpcomingMeetingsByCommitteeId?committeeId=126
+- Review: Los Angeles County WDB - https://www.ajcc.lacounty.gov/wdb - HTTP Error 403: Forbidden
+- Review: Mother Lode Workforce Development Board - https://www.mljt.org/wdb - HTTP Error 429: Too Many Requests
+- Review: Riverside County WDB - https://rivcoworkforce.org/workforce-development-board - HTTP Error 403: Forbidden
+- Review: Riverside County WDB - https://rivcoworkforce.org/executive-committee - HTTP Error 403: Forbidden
+- Review: Sacramento (SETA) - https://www.seta.net/wp-json/tribe/events/v1/events?search=Sacramento%20Works%2C%20Inc.%20Board&start_date=2026-09-24&end_date=2027-03-23&per_page=50 - Command '['curl', '-L', '--fail', '--silent', '--show-error', '--max-time', '8', '--max-filesize', '26214400', '-A', 'Mozilla/5.0 (compatible; CWA-local-board-meeting-monitor/0.1; +https://calworkforce.org)', '-H', 'Accept: text/html,application/pdf,*/*;q=0.8', 'https://www.seta.net/wp-json/tribe/events/v1/events?search=Sacramento%20Works%2C%20Inc.%20Board&start_date=2026-09-24&end_date=2027-03-23&per_page=50']' returned non-zero exit status 28.
+- Review: South Bay WIB - https://www.sbwib.org/2026-meeting-agendas - HTTP Error 429: Too Many Requests
+- Review: South Bay WIB - https://www.sbwib.org/ - HTTP Error 429: Too Many Requests
+- Review: Tulare County WIB - https://www.tularewib.org/wibboard - HTTP Error 429: Too Many Requests
+- Review: Tulare County WIB - https://www.tularewib.org/pec - HTTP Error 429: Too Many Requests
+- Review: Tulare County WIB - https://www.tularewib.org/ - HTTP Error 429: Too Many Requests
+- Review: Yolo County WDB - https://www.yoloworks.org/ - robots.txt disallows fetching https://www.yoloworks.org/
+
