@@ -1,7 +1,7 @@
 {
   "meetings": {
     "fresno-regional-wdb:board-meeting:2026-12-02": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -18,7 +18,7 @@
       }
     },
     "fresno-regional-wdb:executive-committee:2026-10-21": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -34,8 +34,42 @@
         "virtual_url": ""
       }
     },
+    "kern-inyo-mono-wdb:board-meeting:2026-12-16": {
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "kern-inyo-mono-wdb",
+        "board_name": "Kern/Inyo/Mono WDB",
+        "confidence_notes": "Confirmed official schedule fallback. Verified in the official 2026 board and committee meeting schedule.",
+        "location": "Recruitment Center, 1215 Olive Drive, Bakersfield, CA",
+        "meeting_date": "2026-12-16",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://www.employerstrainingresource.com/home/showpublisheddocument/22655/639138411480470000",
+        "start_time": "07:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "kern-inyo-mono-wdb:executive-committee:2026-12-03": {
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "kern-inyo-mono-wdb",
+        "board_name": "Kern/Inyo/Mono WDB",
+        "confidence_notes": "Confirmed official schedule fallback. Verified in the official 2026 board and committee meeting schedule.",
+        "location": "Recruitment Center, 1215 Olive Drive, Bakersfield, CA",
+        "meeting_date": "2026-12-03",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://www.employerstrainingresource.com/home/showpublisheddocument/22655/639138411480470000",
+        "start_time": "08:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
     "long-beach-win:board-meeting:2026-10-01": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -52,13 +86,13 @@
       }
     },
     "long-beach-win:board-meeting:2026-12-03": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
         "board_id": "long-beach-win",
         "board_name": "Long Beach WIN",
-        "confidence_notes": "Confirmed official schedule fallback. Date, time, and location were verified from the official 2026 Scheduled Meetings block.",
+        "confidence_notes": "Profiled Long Beach extraction: dates come only from the LBWIN scheduled meetings block, not board member biography text. Confirmed official schedule fallback. Date, time, and location were verified from the official 2026 Scheduled Meetings block.",
         "location": "LBWIN Adult Career Services Center, 4811 Airport Plaza Dr. Ste 120, Long Beach, CA",
         "meeting_date": "2026-12-03",
         "meeting_type": "Board Meeting",
@@ -68,8 +102,42 @@
         "virtual_url": ""
       }
     },
+    "los-angeles-county-wdb:board-meeting:2026-12-18": {
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "los-angeles-county-wdb",
+        "board_name": "Los Angeles County WDB",
+        "confidence_notes": "Confirmed official schedule fallback. Official December quarterly meeting event.",
+        "location": "DEO Headquarters, 510 S. Vermont Ave., Los Angeles, CA 90020",
+        "meeting_date": "2026-12-18",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://www.ajcc.lacounty.gov/Home/Components/Calendar/Event/162/64",
+        "start_time": "10:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "los-angeles-county-wdb:board-meeting:2027-03-19": {
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "los-angeles-county-wdb",
+        "board_name": "Los Angeles County WDB",
+        "confidence_notes": "Confirmed official schedule fallback. Official March quarterly meeting event.",
+        "location": "DEO Headquarters, 510 S. Vermont Ave., Los Angeles, CA 90020",
+        "meeting_date": "2027-03-19",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://www.ajcc.lacounty.gov/Home/Components/Calendar/Event/166/123",
+        "start_time": "10:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
     "mother-lode-workforce-development-board:board-meeting:2026-11-19": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -86,7 +154,7 @@
       }
     },
     "north-central-counties-nccc:board-meeting:2026-11-05": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -103,7 +171,7 @@
       }
     },
     "novaworks-workforce-board:board-meeting:2026-12-02": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -120,7 +188,7 @@
       }
     },
     "richmond-wdb:board-meeting:2026-11-12": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -137,41 +205,58 @@
       }
     },
     "riverside-county-wdb:board-meeting:2026-12-09": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
         "board_id": "riverside-county-wdb",
         "board_name": "Riverside County WDB",
         "confidence_notes": "Confirmed official schedule fallback. Date was verified in the official 2026 full-board schedule; the current page blocks unattended requests.",
-        "location": "",
+        "location": "March Field Air Museum, 22550 Van Buren Blvd., Riverside, CA 92518",
         "meeting_date": "2026-12-09",
         "meeting_type": "Board Meeting",
         "source_page_url": "https://rivcoworkforce.org/workforce-development-board",
-        "start_time": "",
+        "start_time": "11:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
+    "riverside-county-wdb:executive-committee:2026-10-07": {
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
+      "meeting": {
+        "agenda_label": "",
+        "agenda_url": "",
+        "board_id": "riverside-county-wdb",
+        "board_name": "Riverside County WDB",
+        "confidence_notes": "Confirmed official schedule fallback. Verified in the official 2026 executive schedule.",
+        "location": "Workforce Development, 1325 Spruce Street, Conference Room 4A, Riverside, CA 92507",
+        "meeting_date": "2026-10-07",
+        "meeting_type": "Executive Committee",
+        "source_page_url": "https://rivcoworkforce.org/executive-committee",
+        "start_time": "11:00:00",
         "timezone": "America/Los_Angeles",
         "virtual_url": ""
       }
     },
     "riverside-county-wdb:executive-committee:2026-12-09": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
         "board_id": "riverside-county-wdb",
         "board_name": "Riverside County WDB",
         "confidence_notes": "Confirmed official schedule fallback. Date was verified in the official 2026 executive schedule; the current page blocks unattended requests.",
-        "location": "",
+        "location": "March Field Air Museum, 22550 Van Buren Blvd., Riverside, CA 92518",
         "meeting_date": "2026-12-09",
         "meeting_type": "Executive Committee",
         "source_page_url": "https://rivcoworkforce.org/executive-committee",
-        "start_time": "",
+        "start_time": "11:00:00",
         "timezone": "America/Los_Angeles",
         "virtual_url": ""
       }
     },
     "sacramento-seta:board-meeting:2026-11-25": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -188,7 +273,7 @@
       }
     },
     "sacramento-seta:executive-committee:2026-11-12": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -205,7 +290,7 @@
       }
     },
     "san-diego-workforce-partnership:board-meeting:2026-10-08": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -222,7 +307,7 @@
       }
     },
     "san-diego-workforce-partnership:board-meeting:2026-11-12": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -239,7 +324,7 @@
       }
     },
     "san-diego-workforce-partnership:board-meeting:2026-12-10": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -256,7 +341,7 @@
       }
     },
     "san-diego-workforce-partnership:board-meeting:2027-01-14": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -273,7 +358,7 @@
       }
     },
     "san-diego-workforce-partnership:board-meeting:2027-02-11": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -290,7 +375,7 @@
       }
     },
     "san-diego-workforce-partnership:board-meeting:2027-03-11": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -307,7 +392,7 @@
       }
     },
     "san-diego-workforce-partnership:executive-committee:2026-09-28": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "Download Agenda",
         "agenda_url": "https://workforce.org/wp-content/uploads/2026/09/2026-09-28-Exec-Cmte-Agenda.pdf",
@@ -324,7 +409,7 @@
       }
     },
     "san-diego-workforce-partnership:executive-committee:2026-11-02": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -341,7 +426,7 @@
       }
     },
     "san-diego-workforce-partnership:executive-committee:2026-11-30": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -358,7 +443,7 @@
       }
     },
     "san-diego-workforce-partnership:executive-committee:2027-01-04": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -375,7 +460,7 @@
       }
     },
     "san-diego-workforce-partnership:executive-committee:2027-02-01": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -392,7 +477,7 @@
       }
     },
     "san-diego-workforce-partnership:executive-committee:2027-03-01": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -409,7 +494,7 @@
       }
     },
     "san-joaquin-county-worknet:board-meeting:2026-10-28": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -426,7 +511,7 @@
       }
     },
     "san-joaquin-county-worknet:board-meeting:2026-12-16": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -443,7 +528,7 @@
       }
     },
     "san-luis-obispo-county-wdb:board-meeting:2026-11-05": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -460,7 +545,7 @@
       }
     },
     "san-luis-obispo-county-wdb:executive-committee:2026-10-14": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -477,7 +562,7 @@
       }
     },
     "san-luis-obispo-county-wdb:executive-committee:2026-12-09": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -494,7 +579,7 @@
       }
     },
     "santa-ana-wdb:board-meeting:2026-11-19": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -511,7 +596,7 @@
       }
     },
     "solano-county-wdb:board-meeting:2026-11-20": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -528,7 +613,7 @@
       }
     },
     "sonoma-county-wdb:board-meeting:2026-11-18": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -545,7 +630,7 @@
       }
     },
     "sonoma-county-wdb:executive-committee:2026-10-14": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -562,7 +647,7 @@
       }
     },
     "sonoma-county-wdb:executive-committee:2026-11-18": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -579,7 +664,7 @@
       }
     },
     "sonoma-county-wdb:executive-committee:2026-12-09": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -596,7 +681,7 @@
       }
     },
     "stanislaus-county-wdb:board-meeting:2026-12-07": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -613,7 +698,7 @@
       }
     },
     "tulare-county-wib:board-meeting:2026-10-07": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -630,7 +715,7 @@
       }
     },
     "tulare-county-wib:board-meeting:2026-11-18": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -647,7 +732,7 @@
       }
     },
     "tulare-county-wib:board-meeting:2026-12-09": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -664,7 +749,7 @@
       }
     },
     "ventura-county-wdb:board-meeting:2026-10-08": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -681,7 +766,7 @@
       }
     },
     "ventura-county-wdb:board-meeting:2026-12-03": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -698,7 +783,7 @@
       }
     },
     "ventura-county-wdb:board-meeting:2027-02-18": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -715,7 +800,7 @@
       }
     },
     "ventura-county-wdb:executive-committee:2027-01-14": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -732,7 +817,7 @@
       }
     },
     "ventura-county-wdb:executive-committee:2027-03-18": {
-      "last_seen_at": "2026-09-25T08:04:57.541663-07:00",
+      "last_seen_at": "2026-09-25T08:50:12.925069-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -749,6 +834,6 @@
       }
     }
   },
-  "updated_at": "2026-09-25T08:04:57.541663-07:00",
+  "updated_at": "2026-09-25T08:50:12.925069-07:00",
   "version": 1
 }
