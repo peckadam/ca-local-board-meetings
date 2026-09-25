@@ -480,36 +480,74 @@
     },
     {
       "board_id": "kern-inyo-mono-wdb",
-      "status": "partially_audited",
-      "cadence": "Official WDB archive pages live under Employers Training Resource. Kern County BCC page states WDB meets no less than four times a year with time/place announced by chair or ETR. Full WDB agenda archive showed 2025 dates including February 19, May 28, September 24, and December 17; Executive Committee archive showed 2025 dates including February 6, May 15, September 11, and December 2. No current 2026 future meeting dates were visible in fetched HTML.",
+      "status": "audited",
+      "cadence": "The official 2026 schedule lists quarterly full-board meetings on February 18, May 27, September 23, and December 16 at 7:00 AM, and Executive Committee meetings on February 5, May 14, September 10, and December 3 at 8:00 AM. Exact agenda archive postings and special sessions control.",
       "extraction_strategy": "generic",
       "agenda_rules": {
         "board": "https://www.employerstrainingresource.com/wdb/full-wdb-board",
         "executive_committee": "https://www.employerstrainingresource.com/wdb/executive-committee",
+        "annual_schedule": "https://www.employerstrainingresource.com/home/showpublisheddocument/22655/639138411480470000",
         "county_bcc": "https://itsapps.kerncounty.com/Iframed/CMS/BCC-new/BCCdetail?BccID=67"
       },
       "known_traps": [
         "Old kern-inyo-mono.org domain does not resolve.",
         "Americas Job Center page is a descriptive overview, not an agenda schedule.",
-        "Agenda archives currently expose historical PDF links but not future schedule rows."
+        "The county CDN blocks GitHub-hosted requests, so verified annual dates must remain available while archive pages are retried for agendas."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Correct official archive pages identified; needs current 2026 schedule confirmation."
+      "verification_notes": "Re-audited 2026-09-25. Official 2026 schedule PDF and separate full-board/executive agenda archives verified.",
+      "confirmed_meetings": [
+        {
+          "meeting_date": "2026-12-03",
+          "meeting_type": "Executive Committee",
+          "start_time": "08:00",
+          "location": "Recruitment Center, 1215 Olive Drive, Bakersfield, CA",
+          "source_url": "https://www.employerstrainingresource.com/home/showpublisheddocument/22655/639138411480470000",
+          "notes": "Verified in the official 2026 board and committee meeting schedule."
+        },
+        {
+          "meeting_date": "2026-12-16",
+          "meeting_type": "Board Meeting",
+          "start_time": "07:00",
+          "location": "Recruitment Center, 1215 Olive Drive, Bakersfield, CA",
+          "source_url": "https://www.employerstrainingresource.com/home/showpublisheddocument/22655/639138411480470000",
+          "notes": "Verified in the official 2026 board and committee meeting schedule."
+        }
+      ],
+      "verified_meeting_dates": [
+        "2026-02-05",
+        "2026-02-18",
+        "2026-05-14",
+        "2026-05-27",
+        "2026-09-10",
+        "2026-09-23",
+        "2026-12-03",
+        "2026-12-16"
+      ],
+      "verified_agenda_dates": [
+        "2026-09-03"
+      ]
     },
     {
       "board_id": "kings-county-wdb",
       "status": "partially_audited",
-      "cadence": "Historical official agenda evidence says the WDB met at 10:00 AM on the first Thursday of every other month, but no current 2026 schedule or notice confirms that cadence. County Boards & Commissions and General Services/JTO pages do not expose current WDB dates to the automation.",
-      "extraction_strategy": "generic",
+      "cadence": "Historical official agenda evidence says the WDB met at 10:00 AM on the first Thursday of every other month, but no current schedule confirms that recurrence. The official General Services/JTO page is the authoritative packet index and currently exposes a March 12, 2026 packet.",
+      "extraction_strategy": "kings_jto_packets",
       "agenda_rules": {
         "board_page": "https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board",
-        "user_supplied_jto": "https://www.countyofkingsca.gov/departments/general-services/jto"
+        "packet_index": "https://www.countyofkingsca.gov/departments/general-services/jto"
       },
       "known_traps": [
         "kingsworkforce.org returned 403 to the fetcher.",
-        "The county General Services/JTO page also returned 403 during the 2026-06-11 follow-up.",
+        "The county CDN can return 403 to GitHub-hosted requests even though the JTO page is public.",
         "Kings County Board of Supervisors Calendar, Agenda and Action Summary is not the WDB meeting source."
       ],
-      "verification_notes": "Rechecked 2026-09-24. Official search results still expose only historical WDB events/agendas and current membership information; a current 2026 notice remains missing."
+      "verification_notes": "Re-audited 2026-09-25. The General Services/JTO page is the packet source; a board-specific section parser now excludes unrelated JTO documents.",
+      "verified_meeting_dates": [
+        "2026-03-12"
+      ],
+      "verified_agenda_dates": [
+        "2026-03-12"
+      ]
     },
     {
       "board_id": "long-beach-win",
@@ -573,8 +611,8 @@
     },
     {
       "board_id": "los-angeles-county-wdb",
-      "status": "partially_audited",
-      "cadence": "Current LA County WDB page lives on the AJCC site. The visible calendar exposed a June 2, 2026 Finance Committee item and news about a March 20, 2026 Regular Quarterly meeting recording; no future full board or executive committee meeting row was confirmed in fetched HTML.",
+      "status": "audited",
+      "cadence": "The official AJCC calendar publishes quarterly full-board event pages. Confirmed FY 2026-27 dates are September 18 and December 18, 2026, plus March 19 and June 25, 2027, from 10:00 AM to noon at DEO Headquarters. Exact event pages and agenda postings control.",
       "extraction_strategy": "la_county_wdb_calendar",
       "agenda_rules": {
         "source": "https://www.ajcc.lacounty.gov/wdb",
@@ -588,7 +626,39 @@
         "Old wdb.lacounty.gov domain does not resolve.",
         "Calendar includes committee and news items; Finance Committee should not be published as full board/executive."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Official AJCC WDB page identified; full board/executive future rows still need confirmation."
+      "verification_notes": "Re-audited 2026-09-25. Official quarterly event pages through June 2027 verified; profile fallbacks preserve dates when the county CDN blocks GitHub-hosted requests.",
+      "confirmed_meetings": [
+        {
+          "meeting_date": "2026-12-18",
+          "meeting_type": "Board Meeting",
+          "start_time": "10:00",
+          "location": "DEO Headquarters, 510 S. Vermont Ave., Los Angeles, CA 90020",
+          "source_url": "https://www.ajcc.lacounty.gov/Home/Components/Calendar/Event/162/64",
+          "notes": "Official December quarterly meeting event."
+        },
+        {
+          "meeting_date": "2027-03-19",
+          "meeting_type": "Board Meeting",
+          "start_time": "10:00",
+          "location": "DEO Headquarters, 510 S. Vermont Ave., Los Angeles, CA 90020",
+          "source_url": "https://www.ajcc.lacounty.gov/Home/Components/Calendar/Event/166/123",
+          "notes": "Official March quarterly meeting event."
+        },
+        {
+          "meeting_date": "2027-06-25",
+          "meeting_type": "Board Meeting",
+          "start_time": "10:00",
+          "location": "DEO Headquarters, 510 S. Vermont Ave., Los Angeles, CA 90020",
+          "source_url": "https://www.ajcc.lacounty.gov/Home/Components/Calendar/Event/168/123",
+          "notes": "Official June quarterly meeting event."
+        }
+      ],
+      "verified_meeting_dates": [
+        "2026-09-18",
+        "2026-12-18",
+        "2027-03-19",
+        "2027-06-25"
+      ]
     },
     {
       "board_id": "merced-county-wdb",
@@ -695,8 +765,8 @@
     },
     {
       "board_id": "riverside-county-wdb",
-      "status": "partially_audited",
-      "cadence": "Full board 2026 schedule lists Feb 25, canceled Apr 15, Aug 12, and Dec 9. Executive Committee 2026 schedule lists Feb 25, May 7, Jun 17, Aug 12, Oct 7, and Dec 9.",
+      "status": "audited",
+      "cadence": "Full board 2026 schedule lists February 25, canceled April 15, August 12, and December 9. Executive Committee schedule lists February 25, May 7, June 24, August 12, October 7, and December 9. Separate agenda sections are date matched.",
       "extraction_strategy": "riverside_wdb_schedule",
       "agenda_rules": {
         "full_board": "https://rivcoworkforce.org/workforce-development-board",
@@ -708,20 +778,46 @@
         "Regional committees and Riverside County Works committee are separate from full board/executive committee.",
         "Current official pages returned HTTP 403 to the automation during validation."
       ],
-      "verification_notes": "Partially audited 2026-05-10. Current domain and schedule tables identified from official source/search, but pages returned HTTP 403 to the automation during runner validation.",
+      "verification_notes": "Re-audited 2026-09-25. Full-board and executive schedules, locations, and 2026 agenda archives verified; profile fallbacks preserve future dates during CDN blocks.",
       "confirmed_meetings": [
+        {
+          "meeting_date": "2026-10-07",
+          "meeting_type": "Executive Committee",
+          "start_time": "11:00",
+          "location": "Workforce Development, 1325 Spruce Street, Conference Room 4A, Riverside, CA 92507",
+          "source_url": "https://rivcoworkforce.org/executive-committee",
+          "notes": "Verified in the official 2026 executive schedule."
+        },
         {
           "meeting_date": "2026-12-09",
           "meeting_type": "Board Meeting",
+          "start_time": "11:00",
+          "location": "March Field Air Museum, 22550 Van Buren Blvd., Riverside, CA 92518",
           "source_url": "https://rivcoworkforce.org/workforce-development-board",
           "notes": "Date was verified in the official 2026 full-board schedule; the current page blocks unattended requests."
         },
         {
           "meeting_date": "2026-12-09",
           "meeting_type": "Executive Committee",
+          "start_time": "11:00",
+          "location": "March Field Air Museum, 22550 Van Buren Blvd., Riverside, CA 92518",
           "source_url": "https://rivcoworkforce.org/executive-committee",
           "notes": "Date was verified in the official 2026 executive schedule; the current page blocks unattended requests."
         }
+      ],
+      "verified_meeting_dates": [
+        "2026-02-25",
+        "2026-05-07",
+        "2026-06-24",
+        "2026-08-12",
+        "2026-10-07",
+        "2026-12-09"
+      ],
+      "verified_agenda_dates": [
+        "2026-02-25",
+        "2026-05-07",
+        "2026-06-24",
+        "2026-08-12"
       ]
     },
     {
