@@ -11,11 +11,13 @@ from etl.local_board_meetings.agenda_notifications import narrate_agenda, proces
 from etl.local_board_meetings.agenda_content import extract_details_from_text
 from etl.local_board_meetings.cadence import CadenceRecord, cadence_counts, load_cadence_registry
 from etl.local_board_meetings.extraction import extract_agenda_links, extract_meetings, infer_virtual_url, parse_date, parse_time
-from etl.local_board_meetings.fetcher import _is_public_calendar_feed
+from etl.local_board_meetings.fetcher import FetchedPage, _is_public_calendar_feed
 from etl.local_board_meetings.graph import meeting_to_event_payload
 from etl.local_board_meetings.models import BoardSource, Meeting
 from etl.local_board_meetings.meeting_state import merge_active_meetings
-from etl.local_board_meetings.runner import _dedupe_meetings, _remove_conflicting_agenda, confirmed_profile_meetings
+from etl.local_board_meetings.reporting import build_summary
+from etl.local_board_meetings.runner import _dedupe_meetings, _remove_conflicting_agenda, check_source, confirmed_profile_meetings
+from etl.local_board_meetings.site_profiles import SourceProfile
 from etl.local_board_meetings.storage import agenda_hash, connect, future_meetings, prune_unseen_future_meetings, upsert_meetings
 from etl.local_board_meetings.web_calendar import render_html, render_ics
 
@@ -1414,6 +1416,116 @@ class LocalBoardMeetingTests(unittest.TestCase):
         self.assertEqual(len(meetings), 1)
         self.assertEqual(meetings[0].start_time, time(9))
 
+    def test_kings_jto_parser_uses_only_board_packet_section(self) -> None:
+        source = BoardSource(
+            board_id="kings-county-wdb",
+            board_name="Kings County WDB",
+            local_area="Kings County",
+            main_website="https://example.gov/jto",
+            meeting_schedule_url="https://example.gov/jto",
+            agenda_minutes_url="https://example.gov/jto",
+            executive_committee_url="",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        html = """
+        <a href="/local-plan.pdf">PY 25-28 Local Plan</a>
+        <h2>Workforce Development Board Meetings</h2>
+        <a href="/packet-2026-03-12.pdf">March 12, 2026 Packet</a>
+        <h4>For Kings EDC Click Here</h4>
+        <a href="/unrelated-2026-12-01.pdf">December 1, 2026 Packet</a>
+        """
+        meetings = extract_meetings(
+            source,
+            html,
+            source.meeting_schedule_url,
+            date(2026, 3, 1),
+            365,
+            extraction_strategy="kings_jto_packets",
+        )
+        self.assertEqual(len(meetings), 1)
+        self.assertEqual(meetings[0].meeting_date, date(2026, 3, 12))
+        self.assertEqual(meetings[0].agenda_url, "https://example.gov/packet-2026-03-12.pdf")
+
+    def test_audited_source_skips_homepage_and_marks_secondary_failure_degraded(self) -> None:
+        source = BoardSource(
+            board_id="sample-wdb",
+            board_name="Sample WDB",
+            local_area="Sample County",
+            main_website="https://example.gov/home",
+            meeting_schedule_url="https://example.gov/schedule",
+            agenda_minutes_url="https://example.gov/agenda",
+            executive_committee_url="",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        profile = SourceProfile(board_id="sample-wdb", status="audited", extraction_strategy="generic")
+        fetched: list[str] = []
+
+        def fake_fetch(url, **kwargs):
+            fetched.append(url)
+            if url.endswith("/agenda"):
+                raise RuntimeError("agenda endpoint unavailable")
+            return FetchedPage(url, 200, "text/html", b"<p>Board Meeting December 9, 2026 at 9:00 AM</p>")
+
+        with patch("etl.local_board_meetings.runner.fetch_url", side_effect=fake_fetch):
+            meetings, failures, _ = check_source(source, 180, True, date(2026, 9, 24), profile)
+        self.assertEqual(len(meetings), 1)
+        self.assertNotIn(source.main_website, fetched)
+        self.assertEqual(failures[0]["severity"], "warning")
+        self.assertEqual(failures[0]["source_role"], "agenda")
+
+    def test_verified_schedule_fallback_prevents_board_wide_failure(self) -> None:
+        source = BoardSource(
+            board_id="sample-wdb",
+            board_name="Sample WDB",
+            local_area="Sample County",
+            main_website="https://example.gov",
+            meeting_schedule_url="https://example.gov/schedule",
+            agenda_minutes_url="",
+            executive_committee_url="",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        profile = SourceProfile(
+            board_id="sample-wdb",
+            status="audited",
+            extraction_strategy="generic",
+            confirmed_meetings=[
+                {
+                    "meeting_date": "2026-12-09",
+                    "meeting_type": "Board Meeting",
+                    "source_url": "https://example.gov/schedule",
+                }
+            ],
+        )
+        with patch("etl.local_board_meetings.runner.fetch_url", side_effect=RuntimeError("blocked")):
+            _, failures, _ = check_source(source, 180, True, date(2026, 9, 24), profile)
+        self.assertEqual(failures[0]["severity"], "warning")
+
+    def test_summary_separates_blocking_failures_from_warnings(self) -> None:
+        summary = build_summary(
+            started_at=datetime(2026, 9, 24, tzinfo=timezone.utc),
+            mode="dry-run",
+            boards_checked=1,
+            meetings=[],
+            new_meetings=0,
+            updated_meetings=0,
+            events_updated=0,
+            agendas_downloaded=0,
+            agenda_notifications_sent=0,
+            coverage={},
+            failures=[
+                {"board_name": "Blocked", "error": "blocked", "severity": "error"},
+                {"board_name": "Degraded", "error": "partial", "severity": "warning"},
+            ],
+        )
+        self.assertEqual(len(summary["failures_requiring_human_review"]), 1)
+        self.assertEqual(len(summary["source_warnings"]), 1)
+
     def test_ventura_google_calendar_ics_filters_and_maps_events(self) -> None:
         source = BoardSource(
             board_id="ventura-county-wdb",
@@ -1713,11 +1825,18 @@ END:VCALENDAR"""
             cadence_records=records,
             coverage_history={"boards": {}},
             failures=[],
+            profiles={
+                source.board_id: SourceProfile(
+                    board_id=source.board_id,
+                    extraction_strategy="tribe_events_api",
+                )
+            },
         )
         self.assertIn("Cadence &amp; coverage", page)
         self.assertIn("Full board meets quarterly.", page)
         self.assertIn("No meeting date ever found", page)
         self.assertIn('<strong>1</strong><span>Quarterly</span>', page)
+        self.assertIn("Official events API plus event detail pages", page)
 
     def test_agenda_text_extracts_location_and_virtual_link(self) -> None:
         details = extract_details_from_text(
