@@ -122,18 +122,37 @@ Each daily run evaluates all 45 areas against four independent checks:
 - **Future coverage:** whether at least one future board or executive meeting is currently listed.
 - **Historical coverage:** whether any official meeting date has ever been confirmed.
 - **Cadence expectation:** whether the primary full board is monthly, quarterly, every other month, follows another published schedule, or remains unestablished.
-- **Source health:** whether the official source failed because of access controls, rate limits, robots.txt, or another network error.
+- **Source health:** whether every required official endpoint is usable, one secondary endpoint is degraded, or the primary meeting source is blocked.
 
-An area enters the review queue when its source fails, no meeting date has ever been found, or no future meeting is listed. Cadence is used only to identify likely gaps; it never generates a calendar event without an official date.
+An area enters the review queue when its primary source is blocked, a secondary endpoint is degraded, no meeting date has ever been found, or no future meeting is currently listed. A review row is therefore not automatically a source failure. Cadence is used only to identify likely gaps; it never generates a calendar event without an official date.
 
-### Audit Snapshot (September 24, 2026)
+Source health has three states:
 
-- 43 of 45 local boards have at least one confirmed meeting date in the historical coverage ledger.
-- 21 of 45 have at least one agenda matched to a board or executive committee meeting.
-- 29 of 45 have an audited source and documented cadence; 16 remain partial.
+- **OK:** the authoritative schedule and agenda mechanisms completed without a relevant fetch error.
+- **Degraded:** a secondary schedule, agenda, executive, or detail endpoint failed, but another authoritative endpoint or a manually verified official schedule still supplies meeting data.
+- **Blocked:** no authoritative endpoint succeeded and there is no verified official schedule fallback for the run.
+
+### Connector Hierarchy
+
+Each board profile records the narrowest official mechanism that fits its publishing system. The runner prefers, in order:
+
+1. An official API, public ICS feed, Legistar, NovusAgenda, or other structured agenda system.
+2. A board-specific event/category page and its event-detail records.
+3. An official annual schedule PDF paired with a board-specific agenda archive.
+4. A board-specific HTML schedule or packet list with section and date matching.
+5. Manually verified official meeting fallbacks when the same government source blocks unattended requests.
+
+Generic homepages are not probed for audited sources unless they are the documented authoritative endpoint. Agenda files are attached only by exact date and meeting type; cadence never projects an event.
+
+### Audit Snapshot (September 25, 2026)
+
+- 44 of 45 local boards have at least one confirmed meeting date in the historical coverage ledger.
+- 24 of 45 have at least one agenda matched to a board or executive committee meeting.
+- 32 of 45 have an audited source and documented cadence; 13 remain partial.
 - Primary full-board cadence: 1 monthly, 12 quarterly, 8 every other month, 9 other published patterns, and 15 not yet established.
-- 18 of 45 currently have at least one future meeting listed; 29 require meeting-coverage review, including source failures.
-- Kings County and Yolo County are the only boards without a confirmed usable meeting notice. Their current source constraints are documented in `docs/local-board-source-intelligence.md`.
+- 19 of 45 currently have at least one future meeting listed, representing 49 future board or executive meetings.
+- 30 areas require some coverage review, usually because no future notice is currently published; only 2 are source-blocked and 4 are degraded.
+- Yolo County is the only board without a confirmed usable meeting notice. Its current source constraints are documented in `docs/local-board-source-intelligence.md`.
 
 ## Optional Microsoft Graph Mode
 

@@ -138,18 +138,20 @@ This section includes both fully audited and still-partial sources. The generate
 
 - Official board source: `https://www.employerstrainingresource.com/wdb/full-wdb-board`
 - Official executive source: `https://www.employerstrainingresource.com/wdb/executive-committee`
-- Current structure: Employers Training Resource hosts archive pages for Full WDB Board and Executive Committee agendas; county BCC page describes the board and says it meets at least four times per year.
-- Cadence observed on 2026-05-10: historical 2025 full-board dates included February 19, May 28, September 24, and December 17; executive dates included February 6, May 15, September 11, and December 2. No current 2026 future date row was visible in fetched HTML.
+- Official 2026 schedule: `https://www.employerstrainingresource.com/home/showpublisheddocument/22655/639138411480470000`
+- Current structure: the annual schedule PDF supplies exact board and executive dates; separate Employers Training Resource pages hold the date-labeled agenda archives.
+- Cadence verified on 2026-09-25: full board meets February 18, May 27, September 23, and December 16 at 7:00 AM; Executive Committee meets February 5, May 14, September 10, and December 3 at 8:00 AM.
 - Known traps: old `kern-inyo-mono.org` domain no longer resolves. Americas Job Center overview is descriptive, not a schedule. The ETR pages returned 403 to the automation during validation.
-- Automation rule: keep as medium confidence and human-review blocked until the fetcher can reliably access the official archive pages or another official schedule source is found.
+- Automation rule: use the official annual schedule as verified meeting fallbacks and revisit both agenda archives daily. Archive fetch failures are degraded agenda access, not loss of the already verified meeting dates.
 
 ### Kings County WDB
 
-- Official source: `https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board`
-- Current structure: county Boards & Commissions page identifies the WDB and links meetings/contact/calendar/website controls, but fetched HTML did not expose WDB dates or agenda files.
-- Cadence observed on 2026-05-10: no current meeting cadence was confirmed.
-- Known traps: `kingsworkforce.org` returned 403; Board of Supervisors agenda pages are not WDB meeting sources.
-- Automation rule: keep as medium confidence until a fetchable official agenda/schedule endpoint is found.
+- Official packet source: `https://www.countyofkingsca.gov/departments/general-services/jto`
+- Current structure: the county JTO page contains a specific `Workforce Development Board Meetings` section with date-labeled packets. The general Boards & Commissions profile is descriptive and is not the packet source.
+- Meeting verified on 2026-09-25: March 12, 2026 packet at `https://www.countyofkingsca.gov/home/showpublisheddocument/40936/639166184563330000`.
+- Cadence status: historical notices suggest every other month, but no current official annual schedule confirms that pattern and no future notice is published.
+- Known traps: the JTO page also contains unrelated job-training documents; extraction must remain inside the WDB meeting heading. The county CDN returns HTTP 403 to the GitHub runner.
+- Automation rule: use `kings_jto_packets`, accept packet links only from the WDB meeting section, and keep the area blocked for future discovery until a future packet or separate official schedule is available.
 
 ### Los Angeles City WDB
 
@@ -162,10 +164,10 @@ This section includes both fully audited and still-partial sources. The generate
 ### Los Angeles County WDB
 
 - Official source: `https://www.ajcc.lacounty.gov/wdb`
-- Current structure: AJCC WDB page has visible calendar and news items; calendar can include committee-specific entries.
-- Cadence observed on 2026-05-10: visible item found for June 2, 2026 Finance Committee; news item referenced a March 20, 2026 Regular Quarterly meeting recording. No future full board or executive committee row was confirmed.
+- Current structure: the AJCC WDB calendar links official event-detail records. Detail titles, dates, times, and locations are authoritative; committee-specific entries share the same calendar.
+- Future meetings verified on 2026-09-25: December 18, 2026; March 19, 2027; and June 25, 2027, each from 10:00 AM to noon at DEO Headquarters, 510 S. Vermont Avenue, Los Angeles.
 - Known traps: old `wdb.lacounty.gov` domain does not resolve. Finance Committee, orientation, and recording/news rows must not be published as full board/executive meetings. The AJCC page returned 403 to the automation during validation.
-- Automation rule: use `la_county_wdb_calendar` and publish only full WDB or Executive Committee entries.
+- Automation rule: use `la_county_wdb_calendar`, publish only full WDB or Executive Committee entries, and retain the verified event-detail records as schedule fallbacks while the calendar endpoint is degraded.
 
 ### Merced County WDB
 
@@ -285,9 +287,9 @@ This section includes both fully audited and still-partial sources. The generate
 - Official full-board source: `https://rivcoworkforce.org/workforce-development-board`
 - Official executive source: `https://rivcoworkforce.org/executive-committee`
 - Current structure: full board and executive committee pages have separate 2026 schedule tables and agenda archives.
-- Cadence observed on 2026-05-10: full-board dates listed February 25, canceled April 15, August 12, and December 9; executive dates listed February 25, May 7, June 17, August 12, October 7, and December 9.
+- Cadence verified on 2026-09-25: full-board dates are February 25, canceled April 15, August 12, and December 9; executive dates are February 25, May 7, June 24, August 12, October 7, and December 9.
 - Known traps: old `www.rivcoworkforce.com` has a certificate mismatch. Riverside County Works and regional committees are separate. Current official pages returned HTTP 403 to the automation during validation.
-- Automation rule: `riverside_wdb_schedule` is implemented, but the source remains medium until the daily runner can fetch the official pages.
+- Automation rule: use `riverside_wdb_schedule` and retain the October 7 and December 9 verified dates as official fallbacks. Treat current 403 responses as degraded endpoint access and continue daily agenda retries.
 
 ### San Benito County WDB
 
@@ -393,10 +395,11 @@ This section includes both fully audited and still-partial sources. The generate
 
 All source-registry boards have a first-pass profile, but coverage is not complete. The daily `coverage_matrix.md` is authoritative for the active queue.
 
-- No confirmed usable meeting notice: Kings County and Yolo County.
-- Automation-blocked official sources: Kern/Inyo/Mono, Kings, Los Angeles County, Riverside, and Yolo.
+- No confirmed usable meeting notice: Yolo County.
+- Source-blocked official source: Kings and Yolo. Kings has a verified March 12, 2026 packet but no future notice; Yolo has neither a current meeting notice nor a robots-compliant index.
+- Degraded official sources with verified fallback dates: Kern/Inyo/Mono, Los Angeles County, and Riverside. Long Beach is also degraded because the PrimeGov agenda endpoint disallows crawling, while its official board schedule remains usable.
 - Yolo cadence is independently confirmed by an official 2026 county release as in-person, bimonthly, second Wednesday, 8:30-10:30 AM, but cadence must not be converted into calendar events without a specific notice.
-- Kings has old evidence of first-Thursday/every-other-month meetings, but no current 2026 notice or schedule has been located.
+- Kings has a verified March 12 packet and old evidence of first-Thursday/every-other-month meetings, but no current future notice or annual schedule has been located.
 - Ventura is resolved through the public ICS feed embedded in its official meeting page.
 
 ## Persistence And Agenda Matching Rules
