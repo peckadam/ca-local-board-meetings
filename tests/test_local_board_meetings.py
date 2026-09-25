@@ -9,6 +9,7 @@ from unittest.mock import patch
 
 from etl.local_board_meetings.agenda_notifications import narrate_agenda, process_agenda_notifications, summarize_agenda
 from etl.local_board_meetings.agenda_content import extract_details_from_text
+from etl.local_board_meetings.cadence import CadenceRecord, cadence_counts, load_cadence_registry
 from etl.local_board_meetings.extraction import extract_agenda_links, extract_meetings, infer_virtual_url, parse_date, parse_time
 from etl.local_board_meetings.fetcher import _is_public_calendar_feed
 from etl.local_board_meetings.graph import meeting_to_event_payload
@@ -1669,6 +1670,54 @@ END:VCALENDAR"""
         html = render_html([meeting], datetime(2026, 5, 1, tzinfo=timezone.utc))
         self.assertIn("webcal://peckadam.github.io/ca-local-board-meetings/calendar.ics", html)
         self.assertIn("https://peckadam.github.io/ca-local-board-meetings/calendar.ics", html)
+
+    def test_cadence_registry_covers_every_local_board(self) -> None:
+        records = load_cadence_registry()
+        self.assertEqual(len(records), 45)
+        self.assertEqual(
+            cadence_counts(records),
+            {
+                "Quarterly": 12,
+                "Every other month": 8,
+                "Other published cadence": 9,
+                "Not established": 15,
+                "Monthly": 1,
+            },
+        )
+
+    def test_html_cadence_tab_flags_missing_meeting_coverage(self) -> None:
+        source = BoardSource(
+            board_id="sample-wdb",
+            board_name="Sample WDB",
+            local_area="Sample County",
+            main_website="https://example.gov",
+            meeting_schedule_url="https://example.gov/meetings",
+            agenda_minutes_url="",
+            executive_committee_url="",
+            notes="test",
+            last_checked_at="",
+            confidence="high",
+        )
+        records = {
+            source.board_id: CadenceRecord(
+                source.board_id,
+                "Quarterly",
+                "confirmed",
+                "Full board meets quarterly.",
+            )
+        }
+        page = render_html(
+            [],
+            datetime(2026, 9, 24, tzinfo=timezone.utc),
+            sources=[source],
+            cadence_records=records,
+            coverage_history={"boards": {}},
+            failures=[],
+        )
+        self.assertIn("Cadence &amp; coverage", page)
+        self.assertIn("Full board meets quarterly.", page)
+        self.assertIn("No meeting date ever found", page)
+        self.assertIn('<strong>1</strong><span>Quarterly</span>', page)
 
     def test_agenda_text_extracts_location_and_virtual_link(self) -> None:
         details = extract_details_from_text(
