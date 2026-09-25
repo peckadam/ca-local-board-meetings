@@ -1,13 +1,13 @@
 # Local Board Coverage Matrix
 
-- Updated: 2026-09-25T08:50:12.925069-07:00
+- Updated: 2026-09-25T12:14:04.764701-07:00
 - Boards with at least one confirmed meeting date: 44 of 45
 - Boards with at least one agenda matched to a meeting: 24 of 45
 - Cadence documented with audited source context: 32 of 45
 - Cadence still partial: 13 of 45
 - Boards with at least one future meeting listed: 19 of 45
-- Boards needing meeting-coverage review: 32
-- Boards with all authoritative source access blocked: 3
+- Boards needing meeting-coverage review: 33
+- Boards with all authoritative source access blocked: 4
 - Boards with a degraded secondary endpoint or verified fallback: 6
 
 `NO` and `review` cells are the active manual-research queue. Cadence is never used to publish an unconfirmed meeting.
@@ -17,7 +17,7 @@
 - No confirmed meeting notice/date: Yolo County WDB
 - No agenda ever matched to a meeting: Foothill WDB, Humboldt County WDB, Los Angeles County WDB, Madera County WDB, Monterey County WDB, Mother Lode Workforce Development Board, NOVAworks Workforce Board, North Central Counties (NCCC), Northern Rural Training (NoRTEC), Oakland WDB, Orange County WDB, SELACO WDB, Sacramento (SETA), San Benito County WDB, San Bernardino County WDB, San Francisco OEWD, Santa Ana WDB, Santa Barbara County WDB, Solano County WDB, Verdugo WDB, Yolo County WDB
 - Cadence/source context still partial: Foothill WDB, Imperial County WDB, Kings County WDB, Monterey County WDB, Northern Rural Training (NoRTEC), Oakland WDB, SELACO WDB, San Benito County WDB, San Bernardino County WDB, San Diego Workforce Partnership, San Francisco OEWD, Verdugo WDB, Yolo County WDB
-- Source access blocked this run: Kings County WDB, South Bay WIB, Yolo County WDB
+- Source access blocked this run: Kings County WDB, Sacramento (SETA), South Bay WIB, Yolo County WDB
 - Source partly degraded this run: Kern/Inyo/Mono WDB, Long Beach WIN, Los Angeles County WDB, Mother Lode Workforce Development Board, Riverside County WDB, Tulare County WIB
 
 | Board / local area | Meeting date ever found | Latest date | Agenda ever matched | Future meetings / agendas | Primary cadence | Coverage signal | Source context | Fetch |
@@ -47,7 +47,7 @@
 | Richmond WDB / City of Richmond | yes | 2026-11-12 | yes | 1 / 0 | Every other month | Future meeting listed | documented | ok |
 | Riverside County WDB / Riverside County | yes | 2026-12-09 | yes | 3 / 0 | Other published cadence | Source partly degraded (agenda/executive/schedule); Future meeting listed | documented | degraded |
 | SELACO WDB / Artesia, Bellflower, Cerritos, Downey, Lakewood, Norwalk | yes | 2026-05-28 | NO | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
-| Sacramento (SETA) / Sacramento County | yes | 2026-11-25 | NO | 2 / 0 | Every other month | Future meeting listed | documented | ok |
+| Sacramento (SETA) / Sacramento County | yes | 2026-11-25 | NO | 2 / 0 | Every other month | Source access blocked (agenda/executive/schedule); Future meeting listed | documented | blocked |
 | San Benito County WDB / San Benito County | yes | 2021-10-12 | NO | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
 | San Bernardino County WDB / San Bernardino County | yes | 2026-04-29 | NO | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
 | San Diego Workforce Partnership / San Diego County | yes | 2027-03-11 | yes | 12 / 1 | Other published cadence | Future meeting listed | partial | ok |
