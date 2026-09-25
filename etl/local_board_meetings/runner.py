@@ -10,6 +10,7 @@ from zoneinfo import ZoneInfo
 from .agendas import agenda_folder, download_agenda
 from .agenda_content import extract_agenda_details, extract_text_from_content
 from .agenda_notifications import SmtpConfig, process_agenda_notifications, smtp_sender
+from .cadence import load_cadence_registry
 from .coverage import update_coverage_history, write_coverage_report
 from .extraction import agenda_link_date_conflicts, best_agenda_for_date, extract_agenda_links, extract_meetings, find_candidate_pages, parse_time
 from .fetcher import fetch_url
@@ -135,16 +136,26 @@ def main(argv: list[str] | None = None) -> int:
         local_started_at,
         profiles,
     )
+    cadence_records = load_cadence_registry()
     coverage_totals = write_coverage_report(
         args.coverage_report,
         coverage_history,
         all_sources,
         profiles,
-        all_meetings,
+        active_meetings,
         failures,
         local_started_at,
+        cadence_records,
     )
-    web_calendar_paths = write_web_calendar(args.public_dir, active_meetings, local_started_at)
+    web_calendar_paths = write_web_calendar(
+        args.public_dir,
+        active_meetings,
+        local_started_at,
+        sources=all_sources,
+        cadence_records=cadence_records,
+        coverage_history=coverage_history,
+        failures=failures,
+    )
 
     summary = build_summary(
         started_at=local_started_at,

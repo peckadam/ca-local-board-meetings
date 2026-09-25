@@ -6,6 +6,7 @@ import sqlite3
 from datetime import datetime
 from pathlib import Path
 
+from .cadence import CadenceRecord, build_cadence_coverage_rows, cadence_counts
 from .models import BoardSource, Meeting
 from .site_profiles import SourceProfile
 
@@ -72,11 +73,17 @@ def write_coverage_report(
     current_meetings: list[Meeting],
     failures: list[dict[str, str]],
     checked_at: datetime,
+    cadence_records: dict[str, CadenceRecord] | None = None,
 ) -> dict[str, int]:
     current_by_board: dict[str, list[Meeting]] = {}
     for meeting in current_meetings:
         current_by_board.setdefault(meeting.board_id, []).append(meeting)
     failed_boards = {failure.get("board_name", "") for failure in failures}
+    cadence_records = cadence_records or {}
+    cadence_coverage = {
+        row.board_id: row
+        for row in build_cadence_coverage_rows(sources, cadence_records, current_meetings, history, failures)
+    }
     rows = []
     for source in sorted(sources, key=lambda item: item.board_name):
         record = history.get("boards", {}).get(source.board_id, {})
@@ -85,8 +92,10 @@ def write_coverage_report(
         profile = profiles.get(source.board_id)
         cadence = _cadence_status(profile)
         current = current_by_board.get(source.board_id, [])
+        cadence_row = cadence_coverage.get(source.board_id)
         rows.append(
             {
+                "board_id": source.board_id,
                 "board": source.board_name,
                 "area": source.local_area,
                 "meeting_history": "yes" if dates else "NO",
@@ -95,6 +104,9 @@ def write_coverage_report(
                 "current_meetings": len(current),
                 "current_agendas": sum(bool(meeting.agenda_url) for meeting in current),
                 "cadence": cadence,
+                "primary_cadence": cadence_row.category if cadence_row else "Not established",
+                "meeting_gap": cadence_row.coverage_signal if cadence_row else "Cadence record missing",
+                "meeting_gap_level": cadence_row.coverage_level if cadence_row else "review",
                 "fetch": "review" if source.board_name in failed_boards else "ok",
             }
         )
@@ -105,7 +117,10 @@ def write_coverage_report(
         "cadence_understood": sum(row["cadence"] == "documented" for row in rows),
         "cadence_partial": sum(row["cadence"] == "partial" for row in rows),
         "fetch_review": sum(row["fetch"] == "review" for row in rows),
+        "boards_with_future_meetings": sum(bool(current_by_board.get(row["board_id"])) for row in rows),
+        "boards_needing_meeting_review": sum(row["meeting_gap_level"] == "review" for row in rows),
     }
+    totals.update({f"cadence_{key.lower().replace(' ', '_')}": value for key, value in cadence_counts(cadence_records).items()})
     missing_meetings = [row["board"] for row in rows if row["meeting_history"] == "NO"]
     missing_agendas = [row["board"] for row in rows if row["agenda_history"] == "NO"]
     partial_cadence = [row["board"] for row in rows if row["cadence"] != "documented"]
@@ -118,6 +133,8 @@ def write_coverage_report(
         f"- Boards with at least one agenda matched to a meeting: {totals['boards_with_agendas']} of {totals['boards']}",
         f"- Cadence documented with audited source context: {totals['cadence_understood']} of {totals['boards']}",
         f"- Cadence still partial: {totals['cadence_partial']} of {totals['boards']}",
+        f"- Boards with at least one future meeting listed: {totals['boards_with_future_meetings']} of {totals['boards']}",
+        f"- Boards needing meeting-coverage review: {totals['boards_needing_meeting_review']}",
         f"- Boards with a fetch failure in this run: {totals['fetch_review']}",
         "",
         "`NO` and `review` cells are the active manual-research queue. Cadence is never used to publish an unconfirmed meeting.",
@@ -129,14 +146,14 @@ def write_coverage_report(
         f"- Cadence/source context still partial: {_join_names(partial_cadence)}",
         f"- Fetch failure this run: {_join_names(fetch_review)}",
         "",
-        "| Board / local area | Meeting date ever found | Latest date | Agenda ever matched | Current meetings / agendas | Cadence | Fetch |",
-        "|---|---:|---|---:|---:|---|---|",
+        "| Board / local area | Meeting date ever found | Latest date | Agenda ever matched | Future meetings / agendas | Primary cadence | Coverage signal | Source context | Fetch |",
+        "|---|---:|---|---:|---:|---|---|---|---|",
     ]
     for row in rows:
         lines.append(
             f"| {row['board']} / {row['area']} | {row['meeting_history']} | {row['latest_date']} | "
             f"{row['agenda_history']} | {row['current_meetings']} / {row['current_agendas']} | "
-            f"{row['cadence']} | {row['fetch']} |"
+            f"{row['primary_cadence']} | {row['meeting_gap']} | {row['cadence']} | {row['fetch']} |"
         )
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")

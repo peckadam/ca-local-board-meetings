@@ -4,7 +4,8 @@ import html
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from .models import Meeting
+from .cadence import CadenceCoverageRow, CadenceRecord, build_cadence_coverage_rows, cadence_counts
+from .models import BoardSource, Meeting
 
 CALENDAR_TITLE = "California Local Workforce Board Meetings"
 CALENDAR_FEED_NAME = "Local Board Meetings"
@@ -12,7 +13,16 @@ PUBLIC_CALENDAR_URL = "https://peckadam.github.io/ca-local-board-meetings/calend
 WEBCAL_URL = "webcal://peckadam.github.io/ca-local-board-meetings/calendar.ics"
 
 
-def write_web_calendar(output_dir: Path, meetings: list[Meeting], generated_at: datetime) -> tuple[Path, Path]:
+def write_web_calendar(
+    output_dir: Path,
+    meetings: list[Meeting],
+    generated_at: datetime,
+    *,
+    sources: list[BoardSource] | None = None,
+    cadence_records: dict[str, CadenceRecord] | None = None,
+    coverage_history: dict | None = None,
+    failures: list[dict[str, str]] | None = None,
+) -> tuple[Path, Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
     future = sorted(
         [meeting for meeting in meetings if meeting.meeting_date >= generated_at.date()],
@@ -21,7 +31,17 @@ def write_web_calendar(output_dir: Path, meetings: list[Meeting], generated_at: 
     ics_path = output_dir / "calendar.ics"
     html_path = output_dir / "index.html"
     ics_path.write_text(render_ics(future, generated_at), encoding="utf-8")
-    html_path.write_text(render_html(future, generated_at), encoding="utf-8")
+    html_path.write_text(
+        render_html(
+            future,
+            generated_at,
+            sources=sources or [],
+            cadence_records=cadence_records or {},
+            coverage_history=coverage_history or {},
+            failures=failures or [],
+        ),
+        encoding="utf-8",
+    )
     return html_path, ics_path
 
 
@@ -79,10 +99,35 @@ def render_ics(meetings: list[Meeting], generated_at: datetime) -> str:
     return "\r\n".join(_fold_ics(line) for line in lines) + "\r\n"
 
 
-def render_html(meetings: list[Meeting], generated_at: datetime) -> str:
+def render_html(
+    meetings: list[Meeting],
+    generated_at: datetime,
+    *,
+    sources: list[BoardSource] | None = None,
+    cadence_records: dict[str, CadenceRecord] | None = None,
+    coverage_history: dict | None = None,
+    failures: list[dict[str, str]] | None = None,
+) -> str:
     rows = "\n".join(_meeting_row(meeting) for meeting in meetings)
     if not rows:
         rows = '<tr><td colspan="5">No future meetings discovered yet.</td></tr>'
+    cadence_records = cadence_records or {}
+    cadence_rows = build_cadence_coverage_rows(
+        sources or [],
+        cadence_records,
+        meetings,
+        coverage_history or {},
+        failures or [],
+    )
+    cadence_table_rows = "\n".join(_cadence_row(row) for row in cadence_rows)
+    if not cadence_table_rows:
+        cadence_table_rows = '<tr><td colspan="7">Cadence coverage data is not available.</td></tr>'
+    counts = cadence_counts(cadence_records)
+    review_count = sum(row.coverage_level == "review" for row in cadence_rows)
+    metrics = "\n".join(
+        _cadence_metric(label, counts.get(label, 0))
+        for label in ("Monthly", "Quarterly", "Every other month", "Other published cadence", "Not established")
+    )
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -137,6 +182,89 @@ def render_html(meetings: list[Meeting], generated_at: datetime) -> str:
       font-weight: 600;
       font-size: 14px;
     }}
+    .tabs {{
+      display: flex;
+      gap: 24px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 20px;
+    }}
+    .tab {{
+      appearance: none;
+      border: 0;
+      border-bottom: 3px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+      padding: 10px 2px 9px;
+    }}
+    .tab[aria-selected="true"] {{
+      border-bottom-color: var(--accent);
+      color: var(--ink);
+    }}
+    [role="tabpanel"][hidden] {{
+      display: none;
+    }}
+    .section-heading {{
+      margin: 0 0 6px;
+      font-size: 20px;
+      letter-spacing: 0;
+    }}
+    .section-note {{
+      color: var(--muted);
+      line-height: 1.5;
+      margin: 0 0 18px;
+      max-width: 980px;
+    }}
+    .stats {{
+      display: grid;
+      grid-template-columns: repeat(5, minmax(120px, 1fr));
+      border: 1px solid var(--line);
+      margin-bottom: 18px;
+    }}
+    .metric {{
+      border-right: 1px solid var(--line);
+      padding: 14px;
+    }}
+    .metric:last-child {{
+      border-right: 0;
+    }}
+    .metric strong {{
+      display: block;
+      font-size: 24px;
+      margin-bottom: 3px;
+    }}
+    .metric span {{
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }}
+    .review-summary {{
+      border-left: 4px solid var(--warn);
+      margin: 0 0 18px;
+      padding: 8px 12px;
+    }}
+    .status {{
+      font-weight: 700;
+    }}
+    .status-review {{
+      color: var(--warn);
+    }}
+    .status-ok {{
+      color: #23733b;
+    }}
+    .status-unknown {{
+      color: var(--muted);
+    }}
+    .cadence-summary {{
+      color: var(--muted);
+      display: block;
+      line-height: 1.4;
+      margin-top: 4px;
+      max-width: 460px;
+    }}
     table {{
       width: 100%;
       border-collapse: collapse;
@@ -162,6 +290,12 @@ def render_html(meetings: list[Meeting], generated_at: datetime) -> str:
       font-weight: 600;
     }}
     @media (max-width: 720px) {{
+      .stats {{
+        grid-template-columns: 1fr 1fr;
+      }}
+      .metric {{
+        border-bottom: 1px solid var(--line);
+      }}
       table, thead, tbody, tr, th, td {{
         display: block;
       }}
@@ -194,21 +328,63 @@ def render_html(meetings: list[Meeting], generated_at: datetime) -> str:
       <a href="{html.escape(WEBCAL_URL)}">Subscribe feed</a>
       <a href="{html.escape(PUBLIC_CALENDAR_URL)}">Download ICS file</a>
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Board</th>
-          <th>Meeting Type</th>
-          <th>Agenda</th>
-          <th>Source</th>
-        </tr>
-      </thead>
-      <tbody>
-        {rows}
-      </tbody>
-    </table>
+    <div class="tabs" role="tablist" aria-label="Calendar views">
+      <button class="tab" id="meetings-tab" role="tab" aria-selected="true" aria-controls="meetings-panel">Meetings</button>
+      <button class="tab" id="cadence-tab" role="tab" aria-selected="false" aria-controls="cadence-panel">Cadence &amp; coverage</button>
+    </div>
+    <section id="meetings-panel" role="tabpanel" aria-labelledby="meetings-tab">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Board</th>
+            <th>Meeting Type</th>
+            <th>Agenda</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows}
+        </tbody>
+      </table>
+    </section>
+    <section id="cadence-panel" role="tabpanel" aria-labelledby="cadence-tab" hidden>
+      <h2 class="section-heading">Local area meeting cadence</h2>
+      <p class="section-note">Cadence categories describe the primary full board. Executive committee patterns are included in the notes. Published dates always control; cadence is an audit expectation and never creates an unconfirmed calendar event.</p>
+      <div class="stats">
+        {metrics}
+      </div>
+      <p class="review-summary"><strong>{review_count} areas need review.</strong> These areas have a source failure, no meeting date ever found, or no future meeting currently listed.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Local area</th>
+            <th>Board</th>
+            <th>Primary cadence</th>
+            <th>Cadence evidence</th>
+            <th>Next / latest known</th>
+            <th>Coverage signal</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          {cadence_table_rows}
+        </tbody>
+      </table>
+    </section>
   </main>
+  <script>
+    const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+    for (const tab of tabs) {{
+      tab.addEventListener('click', () => {{
+        for (const item of tabs) {{
+          const selected = item === tab;
+          item.setAttribute('aria-selected', String(selected));
+          document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+        }}
+      }});
+    }}
+  </script>
 </body>
 </html>
 """
@@ -226,6 +402,32 @@ def _meeting_row(meeting: Meeting) -> str:
   <td data-label="Meeting Type">{html.escape(meeting.meeting_type)}</td>
   <td data-label="Agenda">{agenda}</td>
   <td data-label="Source"><a href="{html.escape(meeting.source_page_url)}">Source</a></td>
+</tr>"""
+
+
+def _cadence_metric(label: str, count: int) -> str:
+    return f'<div class="metric"><strong>{count}</strong><span>{html.escape(label)}</span></div>'
+
+
+def _cadence_row(row: CadenceCoverageRow) -> str:
+    confidence = "confirmed" if row.confidence == "confirmed" else row.confidence
+    evidence = (
+        f"{html.escape(row.summary)}"
+        f'<span class="cadence-summary">Classification: {html.escape(confidence)}</span>'
+    )
+    meeting_dates = (
+        f"Next: {html.escape(row.next_meeting)}"
+        if row.next_meeting
+        else f"Latest: {html.escape(row.latest_known_meeting)}" if row.latest_known_meeting else "None found"
+    )
+    return f"""<tr>
+  <td data-label="Local area">{html.escape(row.local_area)}</td>
+  <td data-label="Board">{html.escape(row.board_name)}</td>
+  <td data-label="Primary cadence">{html.escape(row.category)}</td>
+  <td data-label="Cadence evidence">{evidence}</td>
+  <td data-label="Next / latest known">{meeting_dates}</td>
+  <td data-label="Coverage signal"><span class="status status-{html.escape(row.coverage_level)}">{html.escape(row.coverage_signal)}</span></td>
+  <td data-label="Source"><a href="{html.escape(row.source_url)}">Source</a></td>
 </tr>"""
 
 
