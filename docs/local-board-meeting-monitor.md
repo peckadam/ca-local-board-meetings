@@ -12,6 +12,7 @@ Microsoft Graph OneDrive/Outlook support still exists in the codebase, but the r
 - Progress log: `data/local_board_meetings/progress_log.md`
 - Statewide coverage matrix: `data/local_board_meetings/coverage_matrix.md`
 - Historical coverage state: `data/local_board_meetings/coverage_history.json`
+- Structured full-board cadence registry: `data/local_board_meetings/cadence_registry.json`
 - Persisted future-meeting state: `data/local_board_meetings/active_meetings.json`
 - Agenda email deduplication state: `data/local_board_meetings/agenda_notifications.json`
 - Local agenda cache: `data/local_board_meetings/agendas/`
@@ -112,12 +113,26 @@ For cron on a local machine, the refresh script remains available as a fallback:
 - Missing agendas within 72 hours are expected sometimes, especially for special meetings, but are always listed in the run report.
 - Past meetings are retained in SQLite. The web calendar publishes future meetings only.
 - Confirmed future meetings remain in the persisted state when a source temporarily fails or stops showing an already-announced date; they age out after the meeting date instead of disappearing from the calendar.
+- The online page includes a **Cadence & coverage** tab. It compares the documented full-board cadence with future calendar entries and historical evidence for every local area.
+
+## Meeting-Coverage Review
+
+Each daily run evaluates all 45 areas against four independent checks:
+
+- **Future coverage:** whether at least one future board or executive meeting is currently listed.
+- **Historical coverage:** whether any official meeting date has ever been confirmed.
+- **Cadence expectation:** whether the primary full board is monthly, quarterly, every other month, follows another published schedule, or remains unestablished.
+- **Source health:** whether the official source failed because of access controls, rate limits, robots.txt, or another network error.
+
+An area enters the review queue when its source fails, no meeting date has ever been found, or no future meeting is listed. Cadence is used only to identify likely gaps; it never generates a calendar event without an official date.
 
 ### Audit Snapshot (September 24, 2026)
 
 - 43 of 45 local boards have at least one confirmed meeting date in the historical coverage ledger.
 - 21 of 45 have at least one agenda matched to a board or executive committee meeting.
 - 29 of 45 have an audited source and documented cadence; 16 remain partial.
+- Primary full-board cadence: 1 monthly, 12 quarterly, 8 every other month, 9 other published patterns, and 15 not yet established.
+- 18 of 45 currently have at least one future meeting listed; 29 require meeting-coverage review, including source failures.
 - Kings County and Yolo County are the only boards without a confirmed usable meeting notice. Their current source constraints are documented in `docs/local-board-source-intelligence.md`.
 
 ## Optional Microsoft Graph Mode
