@@ -225,6 +225,8 @@ def extract_meetings(
         return extract_richmond_wdb(source, html, page_url, today, lookahead_days)
     if extraction_strategy == "contra_costa_legistar":
         return extract_contra_costa_legistar(source, html, page_url, today, lookahead_days)
+    if extraction_strategy == "kings_jto_packets":
+        return extract_kings_jto_packets(source, html, page_url, today, lookahead_days)
     soup = BeautifulSoup(html, "html.parser")
     agenda_links = extract_agenda_links(html, page_url)
     text_blocks = _candidate_text_blocks(soup)
@@ -252,6 +254,56 @@ def extract_meetings(
         )
         meetings[meeting.stable_id] = meeting
     return sorted(meetings.values(), key=lambda m: (m.meeting_date, m.board_name, m.meeting_type))
+
+
+def extract_kings_jto_packets(
+    source: BoardSource,
+    html: str,
+    page_url: str,
+    today: date,
+    lookahead_days: int,
+) -> list[Meeting]:
+    soup = BeautifulSoup(html, "html.parser")
+    heading = next(
+        (
+            node
+            for node in soup.find_all(["h1", "h2", "h3", "h4"])
+            if "workforce development board meetings" in node.get_text(" ", strip=True).lower()
+        ),
+        None,
+    )
+    if not heading:
+        return []
+    meetings: dict[str, Meeting] = {}
+    max_date = today + timedelta(days=lookahead_days)
+    for node in heading.find_all_next():
+        if node is not heading and node.name in {"h1", "h2", "h3", "h4"}:
+            break
+        if node.name != "a" or not node.get("href"):
+            continue
+        label = node.get_text(" ", strip=True)
+        if "packet" not in label.lower():
+            continue
+        meeting_date = parse_date(label, today, lookahead_days)
+        if not meeting_date or meeting_date < today - timedelta(days=14) or meeting_date > max_date:
+            continue
+        agenda_url = absolute_url(page_url, node["href"].strip())
+        meeting = Meeting(
+            board_id=source.board_id,
+            board_name=source.board_name,
+            meeting_type="Board Meeting",
+            meeting_date=meeting_date,
+            start_time=None,
+            timezone="America/Los_Angeles",
+            location="",
+            virtual_url="",
+            source_page_url=page_url,
+            agenda_url=agenda_url,
+            agenda_label=label,
+            confidence_notes="Profiled Kings County extraction: only packet links under the official JTO Workforce Development Board Meetings heading are published.",
+        )
+        meetings[meeting.stable_id] = meeting
+    return sorted(meetings.values(), key=lambda meeting: meeting.meeting_date)
 
 
 def extract_tulare_wib_board_meetings(

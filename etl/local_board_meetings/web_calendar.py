@@ -6,6 +6,7 @@ from pathlib import Path
 
 from .cadence import CadenceCoverageRow, CadenceRecord, build_cadence_coverage_rows, cadence_counts
 from .models import BoardSource, Meeting
+from .site_profiles import SourceProfile, mechanism_label
 
 CALENDAR_TITLE = "California Local Workforce Board Meetings"
 CALENDAR_FEED_NAME = "Local Board Meetings"
@@ -22,6 +23,7 @@ def write_web_calendar(
     cadence_records: dict[str, CadenceRecord] | None = None,
     coverage_history: dict | None = None,
     failures: list[dict[str, str]] | None = None,
+    profiles: dict[str, SourceProfile] | None = None,
 ) -> tuple[Path, Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
     future = sorted(
@@ -39,6 +41,7 @@ def write_web_calendar(
             cadence_records=cadence_records or {},
             coverage_history=coverage_history or {},
             failures=failures or [],
+            profiles=profiles or {},
         ),
         encoding="utf-8",
     )
@@ -107,6 +110,7 @@ def render_html(
     cadence_records: dict[str, CadenceRecord] | None = None,
     coverage_history: dict | None = None,
     failures: list[dict[str, str]] | None = None,
+    profiles: dict[str, SourceProfile] | None = None,
 ) -> str:
     rows = "\n".join(_meeting_row(meeting) for meeting in meetings)
     if not rows:
@@ -119,9 +123,10 @@ def render_html(
         coverage_history or {},
         failures or [],
     )
-    cadence_table_rows = "\n".join(_cadence_row(row) for row in cadence_rows)
+    profiles = profiles or {}
+    cadence_table_rows = "\n".join(_cadence_row(row, profiles.get(row.board_id)) for row in cadence_rows)
     if not cadence_table_rows:
-        cadence_table_rows = '<tr><td colspan="7">Cadence coverage data is not available.</td></tr>'
+        cadence_table_rows = '<tr><td colspan="8">Cadence coverage data is not available.</td></tr>'
     counts = cadence_counts(cadence_records)
     review_count = sum(row.coverage_level == "review" for row in cadence_rows)
     metrics = "\n".join(
@@ -354,7 +359,7 @@ def render_html(
       <div class="stats">
         {metrics}
       </div>
-      <p class="review-summary"><strong>{review_count} areas need review.</strong> These areas have a source failure, no meeting date ever found, or no future meeting currently listed.</p>
+      <p class="review-summary"><strong>{review_count} areas need review.</strong> These areas have blocked or degraded source access, no meeting date ever found, or no future meeting currently listed.</p>
       <table>
         <thead>
           <tr>
@@ -362,6 +367,7 @@ def render_html(
             <th>Board</th>
             <th>Primary cadence</th>
             <th>Cadence evidence</th>
+            <th>Meeting / agenda mechanism</th>
             <th>Next / latest known</th>
             <th>Coverage signal</th>
             <th>Source</th>
@@ -409,7 +415,7 @@ def _cadence_metric(label: str, count: int) -> str:
     return f'<div class="metric"><strong>{count}</strong><span>{html.escape(label)}</span></div>'
 
 
-def _cadence_row(row: CadenceCoverageRow) -> str:
+def _cadence_row(row: CadenceCoverageRow, profile: SourceProfile | None = None) -> str:
     confidence = "confirmed" if row.confidence == "confirmed" else row.confidence
     evidence = (
         f"{html.escape(row.summary)}"
@@ -425,6 +431,7 @@ def _cadence_row(row: CadenceCoverageRow) -> str:
   <td data-label="Board">{html.escape(row.board_name)}</td>
   <td data-label="Primary cadence">{html.escape(row.category)}</td>
   <td data-label="Cadence evidence">{evidence}</td>
+  <td data-label="Meeting / agenda mechanism">{html.escape(mechanism_label(profile))}</td>
   <td data-label="Next / latest known">{meeting_dates}</td>
   <td data-label="Coverage signal"><span class="status status-{html.escape(row.coverage_level)}">{html.escape(row.coverage_signal)}</span></td>
   <td data-label="Source"><a href="{html.escape(row.source_url)}">Source</a></td>

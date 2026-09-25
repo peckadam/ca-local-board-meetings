@@ -5,6 +5,7 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 
 from .models import Meeting
+from .source_health import is_blocking_failure
 
 
 def missing_agendas_within_72h(meetings: list[Meeting], now: datetime) -> list[Meeting]:
@@ -31,6 +32,8 @@ def build_summary(
     failures: list[dict[str, str]],
 ) -> dict:
     missing = missing_agendas_within_72h(meetings, started_at)
+    blocking_failures = [failure for failure in failures if is_blocking_failure(failure)]
+    source_warnings = [failure for failure in failures if not is_blocking_failure(failure)]
     return {
         "started_at": started_at.isoformat(),
         "mode": mode,
@@ -52,7 +55,8 @@ def build_summary(
             }
             for meeting in missing
         ],
-        "failures_requiring_human_review": failures,
+        "failures_requiring_human_review": blocking_failures,
+        "source_warnings": source_warnings,
     }
 
 
@@ -68,6 +72,7 @@ def write_reports(output_dir: Path, run_id: str, summary: dict, meetings: list[M
 def append_progress_log(path: Path, summary: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     failures = summary["failures_requiring_human_review"]
+    warnings = summary.get("source_warnings", [])
     missing = summary["missing_agendas_within_72_hours"]
     lines = [
         f"## {summary['started_at']} ({summary['mode']})",
@@ -79,9 +84,12 @@ def append_progress_log(path: Path, summary: dict) -> None:
         f"- Boards with meeting history: {summary.get('coverage', {}).get('boards_with_meetings', 0)} of {summary.get('coverage', {}).get('boards', 0)}",
         f"- Boards with agenda history: {summary.get('coverage', {}).get('boards_with_agendas', 0)} of {summary.get('coverage', {}).get('boards', 0)}",
         f"- Failures requiring human review: {len(failures)}",
+        f"- Degraded source warnings: {len(warnings)}",
     ]
     for failure in failures[:20]:
         lines.append(f"- Review: {failure.get('board_name', 'unknown')} - {failure.get('url', '')} - {failure.get('error', '')}")
+    for warning in warnings[:20]:
+        lines.append(f"- Warning: {warning.get('board_name', 'unknown')} - {warning.get('source_role', '')} - {warning.get('error', '')}")
     lines.append("")
     existing = path.read_text(encoding="utf-8") if path.exists() else "# Local Board Meeting Monitor Progress Log\n\n"
     path.write_text(existing + "\n".join(lines) + "\n", encoding="utf-8")
@@ -103,6 +111,7 @@ def _markdown(summary: dict, meetings: list[Meeting]) -> str:
         f"- Boards with agenda history: {summary.get('coverage', {}).get('boards_with_agendas', 0)} of {summary.get('coverage', {}).get('boards', 0)}",
         f"- Missing agendas within 72 hours: {len(summary['missing_agendas_within_72_hours'])}",
         f"- Failures requiring human review: {len(summary['failures_requiring_human_review'])}",
+        f"- Degraded source warnings: {len(summary.get('source_warnings', []))}",
         "",
         "## Meetings",
         "",
@@ -121,4 +130,11 @@ def _markdown(summary: dict, meetings: list[Meeting]) -> str:
         lines.extend(["", "## Human Review"])
         for failure in summary["failures_requiring_human_review"]:
             lines.append(f"- {failure.get('board_name', 'unknown')}: {failure.get('url', '')} - {failure.get('error', '')}")
+    if summary.get("source_warnings"):
+        lines.extend(["", "## Source Warnings"])
+        for warning in summary["source_warnings"]:
+            lines.append(
+                f"- {warning.get('board_name', 'unknown')} ({warning.get('source_role', 'source')}): "
+                f"{warning.get('url', '')} - {warning.get('error', '')}"
+            )
     return "\n".join(lines) + "\n"

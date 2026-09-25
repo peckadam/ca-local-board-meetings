@@ -24,8 +24,35 @@ class SourceProfile:
     verified_agenda_dates: list[str] | None = None
 
 
+MECHANISM_LABELS = {
+    "tribe_events_api": "Official events API plus event detail pages",
+    "ventura_google_calendar_ics": "Official public ICS feed plus packet archive",
+    "contra_costa_legistar": "Official Legistar calendar and agenda rows",
+    "la_city_novus": "Official NovusAgenda meeting portal",
+    "san_joaquin_worknet": "Official agenda JSON API",
+    "santa_barbara_hcms": "Official county agenda widget API",
+    "mother_lode_schedule": "Official annual schedule PDF plus agenda archive",
+    "solano_board_calendar": "Official annual schedule PDF plus board archive",
+    "kings_jto_packets": "Official JTO packet list",
+    "no_publish": "Official source tracked; connector still requires verification",
+    "generic": "Official HTML or PDF page with date-matched agenda parsing",
+}
+
+
 def load_profiles(path: Path = DEFAULT_PROFILE_PATH) -> dict[str, SourceProfile]:
     if not path.exists():
         return {}
     raw = json.loads(path.read_text(encoding="utf-8"))
     return {item["board_id"]: SourceProfile(**item) for item in raw.get("profiles", [])}
+
+
+def mechanism_label(profile: SourceProfile | None) -> str:
+    if not profile:
+        return "Generic official-page discovery"
+    label = MECHANISM_LABELS.get(
+        profile.extraction_strategy,
+        "Official board-specific page parser",
+    )
+    if profile.confirmed_meetings:
+        label += " plus verified schedule fallback"
+    return label

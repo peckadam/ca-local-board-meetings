@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .models import BoardSource, Meeting
+from .source_health import failure_health_by_board, failure_roles_by_board
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -55,7 +56,8 @@ def build_cadence_coverage_rows(
     meetings_by_board: dict[str, list[Meeting]] = {}
     for meeting in meetings:
         meetings_by_board.setdefault(meeting.board_id, []).append(meeting)
-    failed_boards = {failure.get("board_name", "") for failure in failures}
+    source_health = failure_health_by_board(failures)
+    source_roles = failure_roles_by_board(failures)
     history_by_board = coverage_history.get("boards", {})
     rows: list[CadenceCoverageRow] = []
 
@@ -70,8 +72,14 @@ def build_cadence_coverage_rows(
         latest_known = dates[-1] if dates else ""
 
         signals: list[str] = []
-        if source.board_name in failed_boards:
-            signals.append("Source fetch failed")
+        health = source_health.get(source.board_name)
+        if health:
+            role_text = "/".join(sorted(source_roles.get(source.board_name, set()))) or "source"
+            signals.append(
+                f"Source access blocked ({role_text})"
+                if health == "blocked"
+                else f"Source partly degraded ({role_text})"
+            )
         if not dates:
             signals.append("No meeting date ever found")
         if future:
@@ -81,7 +89,7 @@ def build_cadence_coverage_rows(
         else:
             signals.append("No future meeting despite known cadence")
         signal = "; ".join(signals)
-        level = "review" if source.board_name in failed_boards or not dates or not future else "ok"
+        level = "review" if health or not dates or not future else "ok"
 
         rows.append(
             CadenceCoverageRow(

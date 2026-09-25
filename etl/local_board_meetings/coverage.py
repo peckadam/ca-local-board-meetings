@@ -9,6 +9,7 @@ from pathlib import Path
 from .cadence import CadenceRecord, build_cadence_coverage_rows, cadence_counts
 from .models import BoardSource, Meeting
 from .site_profiles import SourceProfile
+from .source_health import failure_health_by_board
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -78,7 +79,7 @@ def write_coverage_report(
     current_by_board: dict[str, list[Meeting]] = {}
     for meeting in current_meetings:
         current_by_board.setdefault(meeting.board_id, []).append(meeting)
-    failed_boards = {failure.get("board_name", "") for failure in failures}
+    source_health = failure_health_by_board(failures)
     cadence_records = cadence_records or {}
     cadence_coverage = {
         row.board_id: row
@@ -107,7 +108,7 @@ def write_coverage_report(
                 "primary_cadence": cadence_row.category if cadence_row else "Not established",
                 "meeting_gap": cadence_row.coverage_signal if cadence_row else "Cadence record missing",
                 "meeting_gap_level": cadence_row.coverage_level if cadence_row else "review",
-                "fetch": "review" if source.board_name in failed_boards else "ok",
+                "fetch": source_health.get(source.board_name, "ok"),
             }
         )
     totals = {
@@ -116,7 +117,8 @@ def write_coverage_report(
         "boards_with_agendas": sum(row["agenda_history"] == "yes" for row in rows),
         "cadence_understood": sum(row["cadence"] == "documented" for row in rows),
         "cadence_partial": sum(row["cadence"] == "partial" for row in rows),
-        "fetch_review": sum(row["fetch"] == "review" for row in rows),
+        "fetch_review": sum(row["fetch"] == "blocked" for row in rows),
+        "fetch_degraded": sum(row["fetch"] == "degraded" for row in rows),
         "boards_with_future_meetings": sum(bool(current_by_board.get(row["board_id"])) for row in rows),
         "boards_needing_meeting_review": sum(row["meeting_gap_level"] == "review" for row in rows),
     }
@@ -124,7 +126,8 @@ def write_coverage_report(
     missing_meetings = [row["board"] for row in rows if row["meeting_history"] == "NO"]
     missing_agendas = [row["board"] for row in rows if row["agenda_history"] == "NO"]
     partial_cadence = [row["board"] for row in rows if row["cadence"] != "documented"]
-    fetch_review = [row["board"] for row in rows if row["fetch"] == "review"]
+    fetch_review = [row["board"] for row in rows if row["fetch"] == "blocked"]
+    fetch_degraded = [row["board"] for row in rows if row["fetch"] == "degraded"]
     lines = [
         "# Local Board Coverage Matrix",
         "",
@@ -135,7 +138,8 @@ def write_coverage_report(
         f"- Cadence still partial: {totals['cadence_partial']} of {totals['boards']}",
         f"- Boards with at least one future meeting listed: {totals['boards_with_future_meetings']} of {totals['boards']}",
         f"- Boards needing meeting-coverage review: {totals['boards_needing_meeting_review']}",
-        f"- Boards with a fetch failure in this run: {totals['fetch_review']}",
+        f"- Boards with all authoritative source access blocked: {totals['fetch_review']}",
+        f"- Boards with a degraded secondary endpoint or verified fallback: {totals['fetch_degraded']}",
         "",
         "`NO` and `review` cells are the active manual-research queue. Cadence is never used to publish an unconfirmed meeting.",
         "",
@@ -144,7 +148,8 @@ def write_coverage_report(
         f"- No confirmed meeting notice/date: {_join_names(missing_meetings)}",
         f"- No agenda ever matched to a meeting: {_join_names(missing_agendas)}",
         f"- Cadence/source context still partial: {_join_names(partial_cadence)}",
-        f"- Fetch failure this run: {_join_names(fetch_review)}",
+        f"- Source access blocked this run: {_join_names(fetch_review)}",
+        f"- Source partly degraded this run: {_join_names(fetch_degraded)}",
         "",
         "| Board / local area | Meeting date ever found | Latest date | Agenda ever matched | Future meetings / agendas | Primary cadence | Coverage signal | Source context | Fetch |",
         "|---|---:|---|---:|---:|---|---|---|---|",

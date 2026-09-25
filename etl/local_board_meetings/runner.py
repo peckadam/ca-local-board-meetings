@@ -155,6 +155,7 @@ def main(argv: list[str] | None = None) -> int:
         cadence_records=cadence_records,
         coverage_history=coverage_history,
         failures=failures,
+        profiles=profiles,
     )
 
     summary = build_summary(
@@ -193,30 +194,37 @@ def check_source(
     today: date,
     profile=None,
 ) -> tuple[list[Meeting], list[dict[str, str]], BoardSource]:
-    urls = [
-        _expand_url_template(source.meeting_schedule_url, today, lookahead_days),
-        _expand_url_template(source.agenda_minutes_url, today, lookahead_days),
-        _expand_url_template(source.executive_committee_url, today, lookahead_days),
-        _expand_url_template(source.main_website, today, lookahead_days),
-    ]
-    urls = list(dict.fromkeys([url for url in urls if url]))
-    configured_content_urls = {
-        _expand_url_template(source.meeting_schedule_url, today, lookahead_days),
-        _expand_url_template(source.agenda_minutes_url, today, lookahead_days),
-        _expand_url_template(source.executive_committee_url, today, lookahead_days),
-    } - {"", _expand_url_template(source.main_website, today, lookahead_days)}
+    endpoint_roles: dict[str, set[str]] = {}
+    for role, raw_url in (
+        ("schedule", source.meeting_schedule_url),
+        ("agenda", source.agenda_minutes_url),
+        ("executive", source.executive_committee_url),
+    ):
+        url = _expand_url_template(raw_url, today, lookahead_days)
+        if url:
+            endpoint_roles.setdefault(url, set()).add(role)
+    # An audited profile has explicit authoritative endpoints. Probing its generic
+    # homepage adds noise and can turn an irrelevant outage into a board failure.
+    if not endpoint_roles or not profile or profile.status == "unaudited":
+        main_url = _expand_url_template(source.main_website, today, lookahead_days)
+        if main_url:
+            endpoint_roles.setdefault(main_url, set()).add("main")
+    urls = list(endpoint_roles)
     meetings: list[Meeting] = []
     failures: list[dict[str, str]] = []
     notes = source.notes
     confidence = source.confidence
     candidate_updates: dict[str, str] = {}
+    successful_roles: set[str] = set()
+    fetch_errors: list[tuple[str, Exception]] = []
     for url in urls:
         try:
             page = fetch_url(url, respect_robots=respect_robots)
+            successful_roles.update(endpoint_roles[url])
             is_pdf = "pdf" in page.content_type.lower() or page.url.lower().split("?", 1)[0].endswith(".pdf")
             if is_pdf and not _profile_parses_pdf(profile):
                 continue
-            if url != source.main_website or not configured_content_urls:
+            if "main" not in endpoint_roles[url] or len(endpoint_roles) == 1:
                 page_text = extract_text_from_content(page.body, page.content_type, page.url) if is_pdf else page.text
                 extracted = extract_meetings(
                     source,
@@ -229,11 +237,25 @@ def check_source(
                 for meeting in extracted:
                     detail_enriched, detail_failure = enrich_meeting_from_detail_page(meeting, page.url, respect_robots)
                     if detail_failure:
-                        failures.append({"board_name": source.board_name, "url": meeting.source_page_url, "error": detail_failure})
+                        failures.append({
+                            "board_name": source.board_name,
+                            "url": meeting.source_page_url,
+                            "error": detail_failure,
+                            "severity": "warning",
+                            "category": "detail_enrichment",
+                            "source_role": "detail",
+                        })
                     enriched, enrichment_failure = enrich_meeting_from_agenda(detail_enriched, respect_robots)
                     meetings.append(enriched)
                     if enrichment_failure:
-                        failures.append({"board_name": source.board_name, "url": detail_enriched.agenda_url, "error": enrichment_failure})
+                        failures.append({
+                            "board_name": source.board_name,
+                            "url": detail_enriched.agenda_url,
+                            "error": enrichment_failure,
+                            "severity": "warning",
+                            "category": "agenda_enrichment",
+                            "source_role": "agenda",
+                        })
             if not profile or profile.status == "unaudited":
                 candidates = find_candidate_pages(page.text, page.url)
                 if candidates["meeting"]:
@@ -243,7 +265,21 @@ def check_source(
                 if candidates["executive"]:
                     candidate_updates["executive_committee_url"] = candidates["executive"][0]
         except Exception as exc:
-            failures.append({"board_name": source.board_name, "url": url, "error": str(exc)})
+            fetch_errors.append((url, exc))
+    has_authoritative_success = bool(successful_roles & {"schedule", "agenda", "executive"})
+    has_verified_fallback = bool(confirmed_profile_meetings(source, profile, today, lookahead_days))
+    fetch_severity = "warning" if has_authoritative_success or has_verified_fallback else "error"
+    for url, exc in fetch_errors:
+        failures.append(
+            {
+                "board_name": source.board_name,
+                "url": url,
+                "error": str(exc),
+                "severity": fetch_severity,
+                "category": "endpoint_fetch",
+                "source_role": ",".join(sorted(endpoint_roles[url])),
+            }
+        )
     data = asdict(mark_checked(source, notes=notes, confidence=confidence))
     applied_candidate_update = False
     for key, value in candidate_updates.items():
