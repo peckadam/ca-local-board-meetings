@@ -52,6 +52,89 @@
       font-weight: 600;
       font-size: 14px;
     }
+    .tabs {
+      display: flex;
+      gap: 24px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 20px;
+    }
+    .tab {
+      appearance: none;
+      border: 0;
+      border-bottom: 3px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+      padding: 10px 2px 9px;
+    }
+    .tab[aria-selected="true"] {
+      border-bottom-color: var(--accent);
+      color: var(--ink);
+    }
+    [role="tabpanel"][hidden] {
+      display: none;
+    }
+    .section-heading {
+      margin: 0 0 6px;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+    .section-note {
+      color: var(--muted);
+      line-height: 1.5;
+      margin: 0 0 18px;
+      max-width: 980px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(120px, 1fr));
+      border: 1px solid var(--line);
+      margin-bottom: 18px;
+    }
+    .metric {
+      border-right: 1px solid var(--line);
+      padding: 14px;
+    }
+    .metric:last-child {
+      border-right: 0;
+    }
+    .metric strong {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 3px;
+    }
+    .metric span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .review-summary {
+      border-left: 4px solid var(--warn);
+      margin: 0 0 18px;
+      padding: 8px 12px;
+    }
+    .status {
+      font-weight: 700;
+    }
+    .status-review {
+      color: var(--warn);
+    }
+    .status-ok {
+      color: #23733b;
+    }
+    .status-unknown {
+      color: var(--muted);
+    }
+    .cadence-summary {
+      color: var(--muted);
+      display: block;
+      line-height: 1.4;
+      margin-top: 4px;
+      max-width: 460px;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
@@ -77,6 +160,12 @@
       font-weight: 600;
     }
     @media (max-width: 720px) {
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+      .metric {
+        border-bottom: 1px solid var(--line);
+      }
       table, thead, tbody, tr, th, td {
         display: block;
       }
@@ -102,39 +191,30 @@
 <body>
   <header>
     <h1>California Local Workforce Board Meetings</h1>
-    <div class="meta">Generated 2026-09-24 23:21 UTC</div>
+    <div class="meta">Generated 2026-09-25 15:04 UTC</div>
   </header>
   <main>
     <div class="actions">
       <a href="webcal://peckadam.github.io/ca-local-board-meetings/calendar.ics">Subscribe feed</a>
       <a href="https://peckadam.github.io/ca-local-board-meetings/calendar.ics">Download ICS file</a>
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Board</th>
-          <th>Meeting Type</th>
-          <th>Agenda</th>
-          <th>Source</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-  <td data-label="Date">2026-09-24</td>
-  <td data-label="Board">Los Angeles City WDB</td>
-  <td data-label="Meeting Type">Executive Committee</td>
-  <td data-label="Agenda"><a href="https://wiblacity.novusagenda.com/agendapublic/DisplayAgendaPDF.ashx?MeetingID=412">Agenda</a></td>
-  <td data-label="Source"><a href="https://wiblacity.novusagenda.com/agendapublic/MeetingView.aspx?MeetingID=412&amp;MinutesMeetingID=-1&amp;doctype=Agenda">Source</a></td>
-</tr>
-<tr>
-  <td data-label="Date">2026-09-24</td>
-  <td data-label="Board">Fresno Regional WDB</td>
-  <td data-label="Meeting Type">Board Meeting</td>
-  <td data-label="Agenda"><a href="https://frwdb.net/wp-content/uploads/2026/09/9-24-26-FRWDB-Packet.pdf">Agenda</a></td>
-  <td data-label="Source"><a href="https://frwdb.net/event/special-frwdb-meeting-2/">Source</a></td>
-</tr>
-<tr>
+    <div class="tabs" role="tablist" aria-label="Calendar views">
+      <button class="tab" id="meetings-tab" role="tab" aria-selected="true" aria-controls="meetings-panel">Meetings</button>
+      <button class="tab" id="cadence-tab" role="tab" aria-selected="false" aria-controls="cadence-panel">Cadence &amp; coverage</button>
+    </div>
+    <section id="meetings-panel" role="tabpanel" aria-labelledby="meetings-tab">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Board</th>
+            <th>Meeting Type</th>
+            <th>Agenda</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
   <td data-label="Date">2026-09-28</td>
   <td data-label="Board">San Diego Workforce Partnership</td>
   <td data-label="Meeting Type">Executive Committee</td>
@@ -442,8 +522,453 @@
   <td data-label="Agenda"><span class="missing">Missing</span></td>
   <td data-label="Source"><a href="https://workforce.venturacounty.gov/resources/meeting-packets/">Source</a></td>
 </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </section>
+    <section id="cadence-panel" role="tabpanel" aria-labelledby="cadence-tab" hidden>
+      <h2 class="section-heading">Local area meeting cadence</h2>
+      <p class="section-note">Cadence categories describe the primary full board. Executive committee patterns are included in the notes. Published dates always control; cadence is an audit expectation and never creates an unconfirmed calendar event.</p>
+      <div class="stats">
+        <div class="metric"><strong>1</strong><span>Monthly</span></div>
+<div class="metric"><strong>12</strong><span>Quarterly</span></div>
+<div class="metric"><strong>8</strong><span>Every other month</span></div>
+<div class="metric"><strong>9</strong><span>Other published cadence</span></div>
+<div class="metric"><strong>15</strong><span>Not established</span></div>
+      </div>
+      <p class="review-summary"><strong>32 areas need review.</strong> These areas have a source failure, no meeting date ever found, or no future meeting currently listed.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Local area</th>
+            <th>Board</th>
+            <th>Primary cadence</th>
+            <th>Cadence evidence</th>
+            <th>Next / latest known</th>
+            <th>Coverage signal</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+  <td data-label="Local area">Alameda County (excluding Oakland)</td>
+  <td data-label="Board">Alameda County WDB</td>
+  <td data-label="Primary cadence">Quarterly</td>
+  <td data-label="Cadence evidence">Full board is described as quarterly; Executive Committee notices are published separately.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Latest: 2026-09-17</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future meeting despite known cadence</span></td>
+  <td data-label="Source"><a href="https://acwdb.org/boards/">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">City of Anaheim</td>
+  <td data-label="Board">Anaheim WDB</td>
+  <td data-label="Primary cadence">Every other month</td>
+  <td data-label="Cadence evidence">Third Wednesday every other month at 9:00 AM, subject to cancellations.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Latest: 2026-06-17</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future meeting despite known cadence</span></td>
+  <td data-label="Source"><a href="https://www.anaheim.net/AgendaCenter/Workforce-Development-Board-24">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Contra Costa County</td>
+  <td data-label="Board">Contra Costa County WDB</td>
+  <td data-label="Primary cadence">Quarterly</td>
+  <td data-label="Cadence evidence">Combined Full Board/Executive Committee notices have followed a March, June, September pattern; exact Legistar postings control.<span class="cadence-summary">Classification: inferred</span></td>
+  <td data-label="Next / latest known">Latest: 2026-09-16</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future meeting despite known cadence</span></td>
+  <td data-label="Source"><a href="https://contra-costa.legistar.com/Calendar.aspx">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Pasadena, Arcadia, Duarte, Monrovia, Sierra Madre, South Pasadena</td>
+  <td data-label="Board">Foothill WDB</td>
+  <td data-label="Primary cadence">Not established</td>
+  <td data-label="Cadence evidence">Individual board and executive events are published, but a recurring full-board cadence has not been confirmed.<span class="cadence-summary">Classification: unknown</span></td>
+  <td data-label="Next / latest known">Latest: 2026-05-07</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future date; cadence unknown</span></td>
+  <td data-label="Source"><a href="https://fwdbworks.org/events/">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Fresno County</td>
+  <td data-label="Board">Fresno Regional WDB</td>
+  <td data-label="Primary cadence">Other published cadence</td>
+  <td data-label="Cadence evidence">Board and Executive Committee dates are published as separate calendar events; no fixed full-board rule is stated.<span class="cadence-summary">Classification: inferred</span></td>
+  <td data-label="Next / latest known">Next: 2026-10-21</td>
+  <td data-label="Coverage signal"><span class="status status-ok">Future meeting listed</span></td>
+  <td data-label="Source"><a href="https://frwdb.net/wp-json/tribe/events/v1/events?search=FRWDB%20Meeting&amp;start_date={today}&amp;end_date={lookahead_date}&amp;per_page=50">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Alpine, El Dorado, and Placer Counties</td>
+  <td data-label="Board">Golden Sierra Workforce Board</td>
+  <td data-label="Primary cadence">Not established</td>
+  <td data-label="Cadence evidence">The public-meeting category is authoritative, but a recurring full-board cadence has not been confirmed.<span class="cadence-summary">Classification: unknown</span></td>
+  <td data-label="Next / latest known">Latest: 2026-09-17</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future date; cadence unknown</span></td>
+  <td data-label="Source"><a href="https://goldensierra.com/calendar/category/public-meeting/workforce-board">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Humboldt County</td>
+  <td data-label="Board">Humboldt County WDB</td>
+  <td data-label="Primary cadence">Quarterly</td>
+  <td data-label="Cadence evidence">County source states that full-board meetings are held quarterly; Executive Committee notices use a separate category.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Latest: 2026-04-24</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future meeting despite known cadence</span></td>
+  <td data-label="Source"><a href="https://humboldtgov.org/agendacenter">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Imperial County</td>
+  <td data-label="Board">Imperial County WDB</td>
+  <td data-label="Primary cadence">Not established</td>
+  <td data-label="Cadence evidence">Individual event notices are available, but the full-board recurrence remains unconfirmed.<span class="cadence-summary">Classification: unknown</span></td>
+  <td data-label="Next / latest known">Latest: 2026-05-27</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future date; cadence unknown</span></td>
+  <td data-label="Source"><a href="https://www.ivworkforce.com/about/meetings">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Kern, Inyo, and Mono Counties</td>
+  <td data-label="Board">Kern/Inyo/Mono WDB</td>
+  <td data-label="Primary cadence">Quarterly</td>
+  <td data-label="Cadence evidence">The board meets no fewer than four times per year; dates and places are announced by the chair or ETR.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Latest: 2025-12-17</td>
+  <td data-label="Coverage signal"><span class="status status-review">Source fetch failed; No future meeting despite known cadence</span></td>
+  <td data-label="Source"><a href="https://www.employerstrainingresource.com/wdb/full-wdb-board">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Kings County</td>
+  <td data-label="Board">Kings County WDB</td>
+  <td data-label="Primary cadence">Not established</td>
+  <td data-label="Cadence evidence">Historical notices suggest every other month, but no current official schedule confirms that pattern.<span class="cadence-summary">Classification: unknown</span></td>
+  <td data-label="Next / latest known">None found</td>
+  <td data-label="Coverage signal"><span class="status status-review">Source fetch failed; No meeting date ever found; No future date; cadence unknown</span></td>
+  <td data-label="Source"><a href="https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions/workforce-development-board">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Cities of Long Beach and Signal Hill</td>
+  <td data-label="Board">Long Beach WIN</td>
+  <td data-label="Primary cadence">Every other month</td>
+  <td data-label="Cadence evidence">The published 2026 schedule follows an April, June, August, October, December pattern.<span class="cadence-summary">Classification: inferred</span></td>
+  <td data-label="Next / latest known">Next: 2026-10-01</td>
+  <td data-label="Coverage signal"><span class="status status-review">Source fetch failed; Future meeting listed</span></td>
+  <td data-label="Source"><a href="https://www.longbeach.gov/edo/talent-workforce/workforce-development-board/">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">City of Los Angeles</td>
+  <td data-label="Board">Los Angeles City WDB</td>
+  <td data-label="Primary cadence">Quarterly</td>
+  <td data-label="Cadence evidence">Full-board events are identified as WDB Quarterly Meetings in the official NovusAgenda system.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Latest: 2026-09-24</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future meeting despite known cadence</span></td>
+  <td data-label="Source"><a href="https://wiblacity.novusagenda.com/agendapublic/meetingsgeneral.aspx">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Los Angeles County</td>
+  <td data-label="Board">Los Angeles County WDB</td>
+  <td data-label="Primary cadence">Quarterly</td>
+  <td data-label="Cadence evidence">Official material describes the regular full-board meeting as quarterly; future notices remain difficult to fetch.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Latest: 2026-03-20</td>
+  <td data-label="Coverage signal"><span class="status status-review">Source fetch failed; No future meeting despite known cadence</span></td>
+  <td data-label="Source"><a href="https://www.ajcc.lacounty.gov/wdb">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Madera County</td>
+  <td data-label="Board">Madera County WDB</td>
+  <td data-label="Primary cadence">Every other month</td>
+  <td data-label="Cadence evidence">Full board meets every other month beginning in February; Executive Committee meets monthly as needed.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Latest: 2026-06-18</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future meeting despite known cadence</span></td>
+  <td data-label="Source"><a href="https://www.maderaworkforce.org/wdb/workforce-board-meetings/">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Merced County</td>
+  <td data-label="Board">Merced County WDB</td>
+  <td data-label="Primary cadence">Quarterly</td>
+  <td data-label="Cadence evidence">Full board meets on the last Thursday of each quarter; Executive Committee meets in odd-numbered months.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Latest: 2026-06-08</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future meeting despite known cadence</span></td>
+  <td data-label="Source"><a href="https://worknetmerced.com/workforce-development">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Monterey County</td>
+  <td data-label="Board">Monterey County WDB</td>
+  <td data-label="Primary cadence">Not established</td>
+  <td data-label="Cadence evidence">Individual MCWDB event pages are published, but a recurring full-board cadence has not been confirmed.<span class="cadence-summary">Classification: unknown</span></td>
+  <td data-label="Next / latest known">Latest: 2026-06-25</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future date; cadence unknown</span></td>
+  <td data-label="Source"><a href="https://montereycountyworks.com/events/mcwdb-meeting-jun-25-2026/">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Amador, Calaveras, Mariposa, and Tuolumne Counties</td>
+  <td data-label="Board">Mother Lode Workforce Development Board</td>
+  <td data-label="Primary cadence">Quarterly</td>
+  <td data-label="Cadence evidence">The official annual schedule lists four full-board meetings in February, May, August, and November.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Next: 2026-11-19</td>
+  <td data-label="Coverage signal"><span class="status status-review">Source fetch failed; Future meeting listed</span></td>
+  <td data-label="Source"><a href="https://www.mljt.org/_files/ugd/754937_3e081757ab82424181297f1c7b5681b7.pdf">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">San Mateo County &amp; Silicon Valley</td>
+  <td data-label="Board">NOVAworks Workforce Board</td>
+  <td data-label="Primary cadence">Other published cadence</td>
+  <td data-label="Cadence evidence">The board publishes individual dates; the observed 2026 schedule does not establish a monthly or quarterly rule.<span class="cadence-summary">Classification: inferred</span></td>
+  <td data-label="Next / latest known">Next: 2026-12-02</td>
+  <td data-label="Coverage signal"><span class="status status-ok">Future meeting listed</span></td>
+  <td data-label="Source"><a href="https://novaworks.org/about-us/board/">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Colusa, Glenn, Sutter, and Yuba Counties</td>
+  <td data-label="Board">North Central Counties (NCCC)</td>
+  <td data-label="Primary cadence">Quarterly</td>
+  <td data-label="Cadence evidence">The annual schedule lists four full-board dates, with additional meetings allowed as necessary.<span class="cadence-summary">Classification: inferred</span></td>
+  <td data-label="Next / latest known">Next: 2026-11-05</td>
+  <td data-label="Coverage signal"><span class="status status-ok">Future meeting listed</span></td>
+  <td data-label="Source"><a href="https://www.northcentralcounties.com/nccc-workforce-development-board">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">11 Northern Counties</td>
+  <td data-label="Board">Northern Rural Training (NoRTEC)</td>
+  <td data-label="Primary cadence">Not established</td>
+  <td data-label="Cadence evidence">Annual archives and partner notices exist, but no current recurring full-board cadence is confirmed.<span class="cadence-summary">Classification: unknown</span></td>
+  <td data-label="Next / latest known">Latest: 2026-06-08</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future date; cadence unknown</span></td>
+  <td data-label="Source"><a href="https://www.ncen.org/images/documents/Mous/2025-2028/Notice%20of%20Partner%20Meetings.pdf">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">City of Oakland</td>
+  <td data-label="Board">Oakland WDB</td>
+  <td data-label="Primary cadence">Quarterly</td>
+  <td data-label="Cadence evidence">Regular meetings are stated as the first Thursday of February, May, August, and November.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Latest: 2026-03-20</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future meeting despite known cadence</span></td>
+  <td data-label="Source"><a href="https://www.oaklandca.gov/Government/Boards-Commissions/Workforce-Development-Board">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Orange County</td>
+  <td data-label="Board">Orange County WDB</td>
+  <td data-label="Primary cadence">Not established</td>
+  <td data-label="Cadence evidence">The official agenda archive is verified, but a future full-board cadence has not been established.<span class="cadence-summary">Classification: unknown</span></td>
+  <td data-label="Next / latest known">Latest: 2026-04-29</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future date; cadence unknown</span></td>
+  <td data-label="Source"><a href="https://workforce.ocgov.com/oc-workforce-development-board/board-members/meeting-agendas-and-minutes">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">City of Richmond</td>
+  <td data-label="Board">Richmond WDB</td>
+  <td data-label="Primary cadence">Every other month</td>
+  <td data-label="Cadence evidence">The official calendar states meetings occur at 11:30 AM on the second Thursday every other month.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Next: 2026-11-12</td>
+  <td data-label="Coverage signal"><span class="status status-ok">Future meeting listed</span></td>
+  <td data-label="Source"><a href="https://www.richmondca.gov/671/Richmond-WDB">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Riverside County</td>
+  <td data-label="Board">Riverside County WDB</td>
+  <td data-label="Primary cadence">Other published cadence</td>
+  <td data-label="Cadence evidence">Annual full-board and Executive Committee schedules are published, but dates do not follow one stable recurrence.<span class="cadence-summary">Classification: inferred</span></td>
+  <td data-label="Next / latest known">Next: 2026-12-09</td>
+  <td data-label="Coverage signal"><span class="status status-review">Source fetch failed; Future meeting listed</span></td>
+  <td data-label="Source"><a href="https://rivcoworkforce.org/workforce-development-board">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Artesia, Bellflower, Cerritos, Downey, Lakewood, Norwalk</td>
+  <td data-label="Board">SELACO WDB</td>
+  <td data-label="Primary cadence">Not established</td>
+  <td data-label="Cadence evidence">The agenda archive separates several bodies, but the upcoming full-board cadence still needs confirmation.<span class="cadence-summary">Classification: unknown</span></td>
+  <td data-label="Next / latest known">Latest: 2026-05-28</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future date; cadence unknown</span></td>
+  <td data-label="Source"><a href="https://www.selacowdb.com/agendas/">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Sacramento County</td>
+  <td data-label="Board">Sacramento (SETA)</td>
+  <td data-label="Primary cadence">Every other month</td>
+  <td data-label="Cadence evidence">Sacramento Works board dates follow a July, September, November pattern; executive dates are published separately.<span class="cadence-summary">Classification: inferred</span></td>
+  <td data-label="Next / latest known">Next: 2026-11-12</td>
+  <td data-label="Coverage signal"><span class="status status-ok">Future meeting listed</span></td>
+  <td data-label="Source"><a href="https://www.seta.net/wp-json/tribe/events/v1/events?search=Sacramento%20Works%2C%20Inc.%20Board&amp;start_date={today}&amp;end_date={lookahead_date}&amp;per_page=50">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">San Benito County</td>
+  <td data-label="Board">San Benito County WDB</td>
+  <td data-label="Primary cadence">Not established</td>
+  <td data-label="Cadence evidence">The official packet archive is known, but no current full-board schedule or recurrence has been confirmed.<span class="cadence-summary">Classification: unknown</span></td>
+  <td data-label="Next / latest known">Latest: 2021-10-12</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future date; cadence unknown</span></td>
+  <td data-label="Source"><a href="https://sbcjobs.org/meeting-packets/">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">San Bernardino County</td>
+  <td data-label="Board">San Bernardino County WDB</td>
+  <td data-label="Primary cadence">Not established</td>
+  <td data-label="Cadence evidence">Agenda notices are posted, but the current recurring full-board cadence has not been confirmed.<span class="cadence-summary">Classification: unknown</span></td>
+  <td data-label="Next / latest known">Latest: 2026-04-29</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future date; cadence unknown</span></td>
+  <td data-label="Source"><a href="https://workforce.sbcounty.gov/about/board-agenda/">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">San Diego County</td>
+  <td data-label="Board">San Diego Workforce Partnership</td>
+  <td data-label="Primary cadence">Other published cadence</td>
+  <td data-label="Cadence evidence">The official page publishes an annual sequence of board and Executive Committee dates rather than one simple recurrence.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Next: 2026-09-28</td>
+  <td data-label="Coverage signal"><span class="status status-ok">Future meeting listed</span></td>
+  <td data-label="Source"><a href="https://workforce.org/boards/workforce-development-board/agendas-minutes/">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">San Francisco City/County</td>
+  <td data-label="Board">San Francisco OEWD</td>
+  <td data-label="Primary cadence">Quarterly</td>
+  <td data-label="Cadence evidence">The official WISF page states that board and Executive Committee meetings occur quarterly.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Latest: 2026-05-06</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future meeting despite known cadence</span></td>
+  <td data-label="Source"><a href="https://www.sf.gov/departments--workforce-investment-san-francisco-wisf-board">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">San Joaquin County</td>
+  <td data-label="Board">San Joaquin County WorkNet</td>
+  <td data-label="Primary cadence">Other published cadence</td>
+  <td data-label="Cadence evidence">An annual schedule is published, including cancellations and a combined November/December meeting.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Next: 2026-10-28</td>
+  <td data-label="Coverage signal"><span class="status status-ok">Future meeting listed</span></td>
+  <td data-label="Source"><a href="https://sjcworknet.org/boards/wdb">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">San Luis Obispo County</td>
+  <td data-label="Board">San Luis Obispo County WDB</td>
+  <td data-label="Primary cadence">Quarterly</td>
+  <td data-label="Cadence evidence">Full board meets quarterly in February, May, August, and November; Executive Committee meets in non-board months.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Next: 2026-10-14</td>
+  <td data-label="Coverage signal"><span class="status status-ok">Future meeting listed</span></td>
+  <td data-label="Source"><a href="https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/meetings">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">City of Santa Ana</td>
+  <td data-label="Board">Santa Ana WDB</td>
+  <td data-label="Primary cadence">Every other month</td>
+  <td data-label="Cadence evidence">Published 2026 full-board events follow a July, September, November pattern.<span class="cadence-summary">Classification: inferred</span></td>
+  <td data-label="Next / latest known">Next: 2026-11-19</td>
+  <td data-label="Coverage signal"><span class="status status-ok">Future meeting listed</span></td>
+  <td data-label="Source"><a href="https://www.santa-ana.org/events/categories/public-meetings/">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Santa Barbara County</td>
+  <td data-label="Board">Santa Barbara County WDB</td>
+  <td data-label="Primary cadence">Not established</td>
+  <td data-label="Cadence evidence">The agenda widget exposes notices shortly before meetings, but a recurring full-board cadence is not yet confirmed.<span class="cadence-summary">Classification: unknown</span></td>
+  <td data-label="Next / latest known">Latest: 2026-05-20</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future date; cadence unknown</span></td>
+  <td data-label="Source"><a href="https://www.countyofsb.org/3033/Board-Agendas">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">San Jose &amp; Santa Clara</td>
+  <td data-label="Board">Santa Clara County (work2future)</td>
+  <td data-label="Primary cadence">Not established</td>
+  <td data-label="Cadence evidence">Board and committee event cards are published, but the current full-board recurrence has not been established.<span class="cadence-summary">Classification: unknown</span></td>
+  <td data-label="Next / latest known">Latest: 2026-09-17</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future date; cadence unknown</span></td>
+  <td data-label="Source"><a href="https://www.work2future.org/board/">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Santa Cruz County</td>
+  <td data-label="Board">Santa Cruz County WDB</td>
+  <td data-label="Primary cadence">Other published cadence</td>
+  <td data-label="Cadence evidence">Full Board and Executive Committee dates are published in separate sections without a stated recurrence rule.<span class="cadence-summary">Classification: inferred</span></td>
+  <td data-label="Next / latest known">Latest: 2026-09-16</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future meeting despite known cadence</span></td>
+  <td data-label="Source"><a href="https://workforcescc.com/board-meetings/">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Solano County</td>
+  <td data-label="Board">Solano County WDB</td>
+  <td data-label="Primary cadence">Every other month</td>
+  <td data-label="Cadence evidence">The annual calendar lists board meetings in January, March, May, July, September, and November.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Next: 2026-11-20</td>
+  <td data-label="Coverage signal"><span class="status status-ok">Future meeting listed</span></td>
+  <td data-label="Source"><a href="https://solanoemployment.org/wp-content/uploads/2022/03/Board-of-Directors-2026-Meeting-Calendar.pdf">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Sonoma County</td>
+  <td data-label="Board">Sonoma County WDB</td>
+  <td data-label="Primary cadence">Other published cadence</td>
+  <td data-label="Cadence evidence">Board and Executive Committee events are published individually; no single full-board recurrence is stated.<span class="cadence-summary">Classification: inferred</span></td>
+  <td data-label="Next / latest known">Next: 2026-10-14</td>
+  <td data-label="Coverage signal"><span class="status status-ok">Future meeting listed</span></td>
+  <td data-label="Source"><a href="https://joblinksonoma.org/board-meetings/">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Inglewood, Torrance, Carson, Hawthorne, Lawndale, El Segundo, Gardena, Lomita, Hermosa Beach, and Manhattan Beach, Redondo Beach</td>
+  <td data-label="Board">South Bay WIB</td>
+  <td data-label="Primary cadence">Other published cadence</td>
+  <td data-label="Cadence evidence">The annual agenda page publishes exact full-board and Executive Committee dates by section.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Latest: 2026-09-17</td>
+  <td data-label="Coverage signal"><span class="status status-review">Source fetch failed; No future meeting despite known cadence</span></td>
+  <td data-label="Source"><a href="https://www.sbwib.org/2026-meeting-agendas">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Stanislaus County</td>
+  <td data-label="Board">Stanislaus County WDB</td>
+  <td data-label="Primary cadence">Not established</td>
+  <td data-label="Cadence evidence">The page publishes one upcoming full-board meeting at a time, so a recurring cadence has not been confirmed.<span class="cadence-summary">Classification: unknown</span></td>
+  <td data-label="Next / latest known">Next: 2026-12-07</td>
+  <td data-label="Coverage signal"><span class="status status-ok">Future meeting listed</span></td>
+  <td data-label="Source"><a href="https://www.stanworkforce.com/workforce-board/">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Tulare County</td>
+  <td data-label="Board">Tulare County WIB</td>
+  <td data-label="Primary cadence">Monthly</td>
+  <td data-label="Cadence evidence">Full board normally meets at 7:30 AM on the second Wednesday each month, with published exceptions and cancellations.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Next: 2026-10-07</td>
+  <td data-label="Coverage signal"><span class="status status-review">Source fetch failed; Future meeting listed</span></td>
+  <td data-label="Source"><a href="https://www.tularewib.org/wibboard">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Ventura County</td>
+  <td data-label="Board">Ventura County WDB</td>
+  <td data-label="Primary cadence">Other published cadence</td>
+  <td data-label="Cadence evidence">The embedded official calendar publishes exact board and Executive Committee events; exact postings control.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">Next: 2026-10-08</td>
+  <td data-label="Coverage signal"><span class="status status-ok">Future meeting listed</span></td>
+  <td data-label="Source"><a href="https://calendar.google.com/calendar/ical/venturacountywdb%40gmail.com/public/basic.ics">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Burbank, Glendale, La Cañada Flintridge</td>
+  <td data-label="Board">Verdugo WDB</td>
+  <td data-label="Primary cadence">Not established</td>
+  <td data-label="Cadence evidence">Packet dates are visible, but no current recurring full-board schedule has been confirmed.<span class="cadence-summary">Classification: unknown</span></td>
+  <td data-label="Next / latest known">Latest: 2026-03-11</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future date; cadence unknown</span></td>
+  <td data-label="Source"><a href="https://verdugoworks.com/board/">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Lake, Marin, Mendocino, Napa</td>
+  <td data-label="Board">Workforce Alliance North Bay</td>
+  <td data-label="Primary cadence">Not established</td>
+  <td data-label="Cadence evidence">Regional board and Executive Committee dates are sectioned, but a recurring full-board cadence is not stated.<span class="cadence-summary">Classification: unknown</span></td>
+  <td data-label="Next / latest known">Latest: 2026-09-10</td>
+  <td data-label="Coverage signal"><span class="status status-review">No future date; cadence unknown</span></td>
+  <td data-label="Source"><a href="https://www.workforcealliancenorthbay.org/board-meetings/">Source</a></td>
+</tr>
+<tr>
+  <td data-label="Local area">Yolo County</td>
+  <td data-label="Board">Yolo County WDB</td>
+  <td data-label="Primary cadence">Every other month</td>
+  <td data-label="Cadence evidence">An official county release states that WIB meetings occur every other month on the second Wednesday.<span class="cadence-summary">Classification: confirmed</span></td>
+  <td data-label="Next / latest known">None found</td>
+  <td data-label="Coverage signal"><span class="status status-review">Source fetch failed; No meeting date ever found; No future meeting despite known cadence</span></td>
+  <td data-label="Source"><a href="https://www.yoloworks.org/">Source</a></td>
+</tr>
+        </tbody>
+      </table>
+    </section>
   </main>
+  <script>
+    const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+    for (const tab of tabs) {
+      tab.addEventListener('click', () => {
+        for (const item of tabs) {
+          const selected = item === tab;
+          item.setAttribute('aria-selected', String(selected));
+          document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+        }
+      });
+    }
+  </script>
 </body>
 </html>
