@@ -1,6 +1,6 @@
 # Local Board Coverage Matrix
 
-- Updated: 2026-09-26T11:35:33.756497-07:00
+- Updated: 2026-09-27T11:58:20.549916-07:00
 - Boards with at least one confirmed meeting date: 44 of 45
 - Boards with at least one agenda matched to a meeting: 24 of 45
 - Cadence documented with audited source context: 32 of 45
@@ -32,7 +32,7 @@
 | Imperial County WDB / Imperial County | yes | 2026-05-27 | yes | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
 | Kern/Inyo/Mono WDB / Kern, Inyo, and Mono Counties | yes | 2026-12-16 | yes | 2 / 0 | Quarterly | Source partly degraded (agenda/executive/schedule); Future meeting listed | documented | degraded |
 | Kings County WDB / Kings County | yes | 2026-03-12 | yes | 0 / 0 | Not established | Source access blocked (agenda/schedule); No future date; cadence unknown | partial | blocked |
-| Long Beach WIN / Cities of Long Beach and Signal Hill | yes | 2026-12-03 | yes | 2 / 0 | Every other month | Source partly degraded (agenda); Future meeting listed | documented | degraded |
+| Long Beach WIN / Cities of Long Beach and Signal Hill | yes | 2026-12-03 | yes | 2 / 0 | Every other month | Source partly degraded (agenda/schedule); Future meeting listed | documented | degraded |
 | Los Angeles City WDB / City of Los Angeles | yes | 2026-09-24 | yes | 0 / 0 | Quarterly | No future meeting despite known cadence | documented | ok |
 | Los Angeles County WDB / Los Angeles County | yes | 2027-06-25 | NO | 2 / 0 | Quarterly | Source partly degraded (agenda/schedule); Future meeting listed | documented | degraded |
 | Madera County WDB / Madera County | yes | 2026-06-18 | NO | 0 / 0 | Every other month | No future meeting despite known cadence | documented | ok |
