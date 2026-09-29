@@ -1,6 +1,6 @@
 # Local Board Coverage Matrix
 
-- Updated: 2026-09-28T14:13:07.236655-07:00
+- Updated: 2026-09-29T12:58:13.592929-07:00
 - Boards with at least one confirmed meeting date: 44 of 45
 - Boards with at least one agenda matched to a meeting: 24 of 45
 - Cadence documented with audited source context: 32 of 45
@@ -50,7 +50,7 @@
 | Sacramento (SETA) / Sacramento County | yes | 2026-11-25 | NO | 2 / 0 | Every other month | Future meeting listed | documented | ok |
 | San Benito County WDB / San Benito County | yes | 2021-10-12 | NO | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
 | San Bernardino County WDB / San Bernardino County | yes | 2026-04-29 | NO | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
-| San Diego Workforce Partnership / San Diego County | yes | 2027-03-11 | yes | 12 / 1 | Other published cadence | Future meeting listed | partial | ok |
+| San Diego Workforce Partnership / San Diego County | yes | 2027-03-11 | yes | 11 / 0 | Other published cadence | Future meeting listed | partial | ok |
 | San Francisco OEWD / San Francisco City/County | yes | 2026-05-06 | NO | 0 / 0 | Quarterly | No future meeting despite known cadence | partial | ok |
 | San Joaquin County WorkNet / San Joaquin County | yes | 2026-12-16 | yes | 2 / 0 | Other published cadence | Future meeting listed | documented | ok |
 | San Luis Obispo County WDB / San Luis Obispo County | yes | 2026-12-09 | yes | 3 / 0 | Quarterly | Future meeting listed | documented | ok |
