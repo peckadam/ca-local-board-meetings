@@ -1,14 +1,14 @@
 # Local Board Coverage Matrix
 
-- Updated: 2026-10-01T13:20:02.508258-07:00
+- Updated: 2026-10-02T12:55:56.369272-07:00
 - Boards with at least one confirmed meeting date: 44 of 45
 - Boards with at least one agenda matched to a meeting: 24 of 45
 - Cadence documented with audited source context: 32 of 45
 - Cadence still partial: 13 of 45
 - Boards with at least one future meeting listed: 19 of 45
 - Boards needing meeting-coverage review: 32
-- Boards with all authoritative source access blocked: 3
-- Boards with a degraded secondary endpoint or verified fallback: 6
+- Boards with all authoritative source access blocked: 4
+- Boards with a degraded secondary endpoint or verified fallback: 5
 
 `NO` and `review` cells are the active manual-research queue. Cadence is never used to publish an unconfirmed meeting.
 
@@ -17,8 +17,8 @@
 - No confirmed meeting notice/date: Yolo County WDB
 - No agenda ever matched to a meeting: Foothill WDB, Humboldt County WDB, Los Angeles County WDB, Madera County WDB, Monterey County WDB, Mother Lode Workforce Development Board, NOVAworks Workforce Board, North Central Counties (NCCC), Northern Rural Training (NoRTEC), Oakland WDB, Orange County WDB, SELACO WDB, Sacramento (SETA), San Benito County WDB, San Bernardino County WDB, San Francisco OEWD, Santa Ana WDB, Santa Barbara County WDB, Solano County WDB, Verdugo WDB, Yolo County WDB
 - Cadence/source context still partial: Foothill WDB, Imperial County WDB, Kings County WDB, Monterey County WDB, Northern Rural Training (NoRTEC), Oakland WDB, SELACO WDB, San Benito County WDB, San Bernardino County WDB, San Diego Workforce Partnership, San Francisco OEWD, Verdugo WDB, Yolo County WDB
-- Source access blocked this run: Kings County WDB, South Bay WIB, Yolo County WDB
-- Source partly degraded this run: Kern/Inyo/Mono WDB, Long Beach WIN, Los Angeles County WDB, Mother Lode Workforce Development Board, Riverside County WDB, Tulare County WIB
+- Source access blocked this run: Kings County WDB, South Bay WIB, Tulare County WIB, Yolo County WDB
+- Source partly degraded this run: Kern/Inyo/Mono WDB, Long Beach WIN, Los Angeles County WDB, Mother Lode Workforce Development Board, Riverside County WDB
 
 | Board / local area | Meeting date ever found | Latest date | Agenda ever matched | Future meetings / agendas | Primary cadence | Coverage signal | Source context | Fetch |
 |---|---:|---|---:|---:|---|---|---|---|
@@ -32,7 +32,7 @@
 | Imperial County WDB / Imperial County | yes | 2026-05-27 | yes | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
 | Kern/Inyo/Mono WDB / Kern, Inyo, and Mono Counties | yes | 2026-12-16 | yes | 2 / 0 | Quarterly | Source partly degraded (agenda/executive/schedule); Future meeting listed | documented | degraded |
 | Kings County WDB / Kings County | yes | 2026-03-12 | yes | 0 / 0 | Not established | Source access blocked (agenda/schedule); No future date; cadence unknown | partial | blocked |
-| Long Beach WIN / Cities of Long Beach and Signal Hill | yes | 2026-12-03 | yes | 2 / 0 | Every other month | Source partly degraded (agenda); Future meeting listed | documented | degraded |
+| Long Beach WIN / Cities of Long Beach and Signal Hill | yes | 2026-12-03 | yes | 1 / 0 | Every other month | Source partly degraded (agenda); Future meeting listed | documented | degraded |
 | Los Angeles City WDB / City of Los Angeles | yes | 2026-09-24 | yes | 0 / 0 | Quarterly | No future meeting despite known cadence | documented | ok |
 | Los Angeles County WDB / Los Angeles County | yes | 2027-06-25 | NO | 2 / 0 | Quarterly | Source partly degraded (agenda/schedule); Future meeting listed | documented | degraded |
 | Madera County WDB / Madera County | yes | 2026-06-18 | NO | 0 / 0 | Every other month | No future meeting despite known cadence | documented | ok |
@@ -62,8 +62,8 @@
 | Sonoma County WDB / Sonoma County | yes | 2026-12-09 | yes | 4 / 0 | Other published cadence | Future meeting listed | documented | ok |
 | South Bay WIB / Inglewood, Torrance, Carson, Hawthorne, Lawndale, El Segundo, Gardena, Lomita, Hermosa Beach, and Manhattan Beach, Redondo Beach | yes | 2026-09-17 | yes | 0 / 0 | Other published cadence | Source access blocked (agenda/schedule); No future meeting despite known cadence | documented | blocked |
 | Stanislaus County WDB / Stanislaus County | yes | 2026-12-07 | yes | 1 / 0 | Not established | Future meeting listed | documented | ok |
-| Tulare County WIB / Tulare County | yes | 2026-12-09 | yes | 3 / 0 | Monthly | Source partly degraded (agenda/executive/schedule); Future meeting listed | documented | degraded |
-| Ventura County WDB / Ventura County | yes | 2027-03-18 | yes | 5 / 0 | Other published cadence | Future meeting listed | documented | ok |
+| Tulare County WIB / Tulare County | yes | 2026-12-09 | yes | 3 / 1 | Monthly | Source access blocked (agenda/executive); Future meeting listed | documented | blocked |
+| Ventura County WDB / Ventura County | yes | 2027-03-18 | yes | 5 / 1 | Other published cadence | Future meeting listed | documented | ok |
 | Verdugo WDB / Burbank, Glendale, La Cañada Flintridge | yes | 2026-03-11 | NO | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
 | Workforce Alliance North Bay / Lake, Marin, Mendocino, Napa | yes | 2026-09-10 | yes | 0 / 0 | Not established | No future date; cadence unknown | documented | ok |
 | Yolo County WDB / Yolo County | NO |  | NO | 0 / 0 | Every other month | Source access blocked (agenda/schedule); No meeting date ever found; No future meeting despite known cadence | partial | blocked |

@@ -1113,3 +1113,27 @@ Moved Permanently
 - Warning: Tulare County WIB - agenda,schedule - HTTP Error 429: Too Many Requests
 - Warning: Tulare County WIB - executive - HTTP Error 429: Too Many Requests
 
+## 2026-10-02T12:55:56.369272-07:00 (dry-run)
+
+- Boards checked: 45
+- Meetings found: 39
+- Missing agendas within 72 hours: 0
+- Agenda notifications sent: 1
+- Boards with meeting history: 44 of 45
+- Boards with agenda history: 24 of 45
+- Failures requiring human review: 4
+- Degraded source warnings: 9
+- Review: Kings County WDB - https://www.countyofkingsca.gov/departments/general-services/jto - HTTP Error 403: Forbidden
+- Review: South Bay WIB - https://www.sbwib.org/2026-meeting-agendas - HTTP Error 429: Too Many Requests
+- Review: Yolo County WDB - https://www.yoloworks.org/ - robots.txt disallows fetching https://www.yoloworks.org/
+- Review: Tulare County WIB - https://www.tularewib.org/_files/ugd/58cba3_56c895e449494e5185560af6cc368429.pdf - Agenda notification failed: HTTP Error 429: Too Many Requests
+- Warning: Kern/Inyo/Mono WDB - agenda,schedule - HTTP Error 403: Forbidden
+- Warning: Kern/Inyo/Mono WDB - executive - HTTP Error 403: Forbidden
+- Warning: Long Beach WIN - agenda - robots.txt disallows fetching https://longbeach.primegov.com/api/v2/PublicPortal/ListUpcomingMeetingsByCommitteeId?committeeId=126
+- Warning: Los Angeles County WDB - agenda,schedule - HTTP Error 403: Forbidden
+- Warning: Mother Lode Workforce Development Board - agenda - HTTP Error 429: Too Many Requests
+- Warning: Riverside County WDB - agenda,schedule - HTTP Error 403: Forbidden
+- Warning: Riverside County WDB - executive - HTTP Error 403: Forbidden
+- Warning: Tulare County WIB - agenda - Agenda location enrichment failed: HTTP Error 429: Too Many Requests
+- Warning: Tulare County WIB - executive - HTTP Error 429: Too Many Requests
+
