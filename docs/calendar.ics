@@ -11,7 +11,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:tulare-county-wib:board-meeting:2026-10-07@cwa-local-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261007T073000
 DTEND;TZID=America/Los_Angeles:20261007T083000
 SUMMARY:Tulare County WIB - Board Meeting
@@ -26,7 +26,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:riverside-county-wdb:executive-committee:2026-10-07@cwa-local-board-mee
  tings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261007T110000
 DTEND;TZID=America/Los_Angeles:20261007T120000
 SUMMARY:Riverside County WDB - Executive Committee
@@ -41,7 +41,7 @@ URL:https://rivcoworkforce.org/executive-committee
 END:VEVENT
 BEGIN:VEVENT
 UID:ventura-county-wdb:board-meeting:2026-10-08@cwa-local-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261008T090000
 DTEND;TZID=America/Los_Angeles:20261008T100000
 SUMMARY:Ventura County WDB - Board Meeting
@@ -61,7 +61,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-diego-workforce-partnership:board-meeting:2026-10-08@cwa-local-boar
  d-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261008T120000
 DTEND;TZID=America/Los_Angeles:20261008T130000
 SUMMARY:San Diego Workforce Partnership - Board Meeting
@@ -78,7 +78,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-luis-obispo-county-wdb:executive-committee:2026-10-14@cwa-local-boa
  rd-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261014T083000
 DTEND;TZID=America/Los_Angeles:20261014T093000
 SUMMARY:San Luis Obispo County WDB - Executive Committee
@@ -97,7 +97,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:sonoma-county-wdb:executive-committee:2026-10-14@cwa-local-board-meetin
  gs
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261014T160000
 DTEND;TZID=America/Los_Angeles:20261014T170000
 SUMMARY:Sonoma County WDB - Executive Committee
@@ -113,7 +113,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:fresno-regional-wdb:executive-committee:2026-10-21@cwa-local-board-meet
  ings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261021T150000
 DTEND;TZID=America/Los_Angeles:20261021T160000
 SUMMARY:Fresno Regional WDB - Executive Committee
@@ -128,7 +128,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-joaquin-county-worknet:board-meeting:2026-10-28@cwa-local-board-mee
  tings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;VALUE=DATE:20261028
 DTEND;VALUE=DATE:20261029
 SUMMARY:San Joaquin County WorkNet - Board Meeting
@@ -142,7 +142,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-diego-workforce-partnership:executive-committee:2026-11-02@cwa-loca
  l-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261102T110000
 DTEND;TZID=America/Los_Angeles:20261102T120000
 SUMMARY:San Diego Workforce Partnership - Executive Committee
@@ -159,7 +159,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:north-central-counties-nccc:board-meeting:2026-11-05@cwa-local-board-me
  etings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;VALUE=DATE:20261105
 DTEND;VALUE=DATE:20261106
 SUMMARY:North Central Counties (NCCC) - Board Meeting
@@ -174,7 +174,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-luis-obispo-county-wdb:board-meeting:2026-11-05@cwa-local-board-mee
  tings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261105T083000
 DTEND;TZID=America/Los_Angeles:20261105T093000
 SUMMARY:San Luis Obispo County WDB - Board Meeting
@@ -191,7 +191,7 @@ URL:https://www.slocounty.ca.gov/departments/social-services/workforce-deve
 END:VEVENT
 BEGIN:VEVENT
 UID:richmond-wdb:board-meeting:2026-11-12@cwa-local-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261112T113000
 DTEND;TZID=America/Los_Angeles:20261112T123000
 SUMMARY:Richmond WDB - Board Meeting
@@ -206,7 +206,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-diego-workforce-partnership:board-meeting:2026-11-12@cwa-local-boar
  d-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261112T120000
 DTEND;TZID=America/Los_Angeles:20261112T130000
 SUMMARY:San Diego Workforce Partnership - Board Meeting
@@ -222,7 +222,7 @@ URL:https://workforce.org/boards/workforce-development-board/agendas-minute
 END:VEVENT
 BEGIN:VEVENT
 UID:sacramento-seta:executive-committee:2026-11-12@cwa-local-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261112T160000
 DTEND;TZID=America/Los_Angeles:20261112T170000
 SUMMARY:Sacramento (SETA) - Executive Committee
@@ -239,7 +239,7 @@ URL:https://www.seta.net/event/sacramento-works-executive-committee-6/2026-
 END:VEVENT
 BEGIN:VEVENT
 UID:tulare-county-wib:board-meeting:2026-11-18@cwa-local-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261118T073000
 DTEND;TZID=America/Los_Angeles:20261118T083000
 SUMMARY:Tulare County WIB - Board Meeting
@@ -253,7 +253,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:sonoma-county-wdb:executive-committee:2026-11-18@cwa-local-board-meetin
  gs
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261118T140000
 DTEND;TZID=America/Los_Angeles:20261118T150000
 SUMMARY:Sonoma County WDB - Executive Committee
@@ -268,7 +268,7 @@ URL:https://joblinksonoma.org/board-meetings/
 END:VEVENT
 BEGIN:VEVENT
 UID:sonoma-county-wdb:board-meeting:2026-11-18@cwa-local-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261118T150000
 DTEND;TZID=America/Los_Angeles:20261118T160000
 SUMMARY:Sonoma County WDB - Board Meeting
@@ -283,7 +283,7 @@ URL:https://joblinksonoma.org/board-meetings/
 END:VEVENT
 BEGIN:VEVENT
 UID:santa-ana-wdb:board-meeting:2026-11-19@cwa-local-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261119T080000
 DTEND;TZID=America/Los_Angeles:20261119T090000
 SUMMARY:Santa Ana WDB - Board Meeting
@@ -301,7 +301,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:mother-lode-workforce-development-board:board-meeting:2026-11-19@cwa-lo
  cal-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261119T120000
 DTEND;TZID=America/Los_Angeles:20261119T130000
 SUMMARY:Mother Lode Workforce Development Board - Board Meeting
@@ -323,7 +323,7 @@ URL:https://e85de41c-b9bd-45fc-a931-088ba93eab1c.filesusr.com/ugd/754937_3e
 END:VEVENT
 BEGIN:VEVENT
 UID:solano-county-wdb:board-meeting:2026-11-20@cwa-local-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261120T083000
 DTEND;TZID=America/Los_Angeles:20261120T093000
 SUMMARY:Solano County WDB - Board Meeting
@@ -341,7 +341,7 @@ URL:https://solanoemployment.org/wp-content/uploads/2022/03/Board-of-Direct
 END:VEVENT
 BEGIN:VEVENT
 UID:sacramento-seta:board-meeting:2026-11-25@cwa-local-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261125T090000
 DTEND;TZID=America/Los_Angeles:20261125T100000
 SUMMARY:Sacramento (SETA) - Board Meeting
@@ -358,7 +358,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-diego-workforce-partnership:executive-committee:2026-11-30@cwa-loca
  l-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261130T110000
 DTEND;TZID=America/Los_Angeles:20261130T120000
 SUMMARY:San Diego Workforce Partnership - Executive Committee
@@ -375,7 +375,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:novaworks-workforce-board:board-meeting:2026-12-02@cwa-local-board-meet
  ings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261202T120000
 DTEND;TZID=America/Los_Angeles:20261202T130000
 SUMMARY:NOVAworks Workforce Board - Board Meeting
@@ -388,7 +388,7 @@ URL:https://novaworks.org/about-us/board/
 END:VEVENT
 BEGIN:VEVENT
 UID:fresno-regional-wdb:board-meeting:2026-12-02@cwa-local-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261202T160000
 DTEND;TZID=America/Los_Angeles:20261202T170000
 SUMMARY:Fresno Regional WDB - Board Meeting
@@ -403,7 +403,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:kern-inyo-mono-wdb:executive-committee:2026-12-03@cwa-local-board-meeti
  ngs
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261203T080000
 DTEND;TZID=America/Los_Angeles:20261203T090000
 SUMMARY:Kern/Inyo/Mono WDB - Executive Committee
@@ -418,7 +418,7 @@ URL:https://www.employerstrainingresource.com/home/showpublisheddocument/22
 END:VEVENT
 BEGIN:VEVENT
 UID:long-beach-win:board-meeting:2026-12-03@cwa-local-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261203T090000
 DTEND;TZID=America/Los_Angeles:20261203T100000
 SUMMARY:Long Beach WIN - Board Meeting
@@ -437,7 +437,7 @@ URL:https://www.longbeach.gov/edo/talent-workforce/workforce-development-bo
 END:VEVENT
 BEGIN:VEVENT
 UID:ventura-county-wdb:board-meeting:2026-12-03@cwa-local-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261203T090000
 DTEND;TZID=America/Los_Angeles:20261203T100000
 SUMMARY:Ventura County WDB - Board Meeting
@@ -454,7 +454,7 @@ URL:https://workforce.venturacounty.gov/resources/meeting-packets/
 END:VEVENT
 BEGIN:VEVENT
 UID:stanislaus-county-wdb:board-meeting:2026-12-07@cwa-local-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261207T120000
 DTEND;TZID=America/Los_Angeles:20261207T130000
 SUMMARY:Stanislaus County WDB - Board Meeting
@@ -468,7 +468,7 @@ URL:https://www.stanworkforce.com/workforce-board/
 END:VEVENT
 BEGIN:VEVENT
 UID:tulare-county-wib:board-meeting:2026-12-09@cwa-local-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261209T073000
 DTEND;TZID=America/Los_Angeles:20261209T083000
 SUMMARY:Tulare County WIB - Board Meeting
@@ -482,7 +482,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-luis-obispo-county-wdb:executive-committee:2026-12-09@cwa-local-boa
  rd-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261209T083000
 DTEND;TZID=America/Los_Angeles:20261209T093000
 SUMMARY:San Luis Obispo County WDB - Executive Committee
@@ -500,7 +500,7 @@ URL:https://www.slocounty.ca.gov/departments/social-services/workforce-deve
 END:VEVENT
 BEGIN:VEVENT
 UID:riverside-county-wdb:board-meeting:2026-12-09@cwa-local-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261209T110000
 DTEND;TZID=America/Los_Angeles:20261209T120000
 SUMMARY:Riverside County WDB - Board Meeting
@@ -517,7 +517,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:riverside-county-wdb:executive-committee:2026-12-09@cwa-local-board-mee
  tings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261209T110000
 DTEND;TZID=America/Los_Angeles:20261209T120000
 SUMMARY:Riverside County WDB - Executive Committee
@@ -533,7 +533,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:sonoma-county-wdb:executive-committee:2026-12-09@cwa-local-board-meetin
  gs
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261209T160000
 DTEND;TZID=America/Los_Angeles:20261209T170000
 SUMMARY:Sonoma County WDB - Executive Committee
@@ -549,7 +549,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-diego-workforce-partnership:board-meeting:2026-12-10@cwa-local-boar
  d-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261210T120000
 DTEND;TZID=America/Los_Angeles:20261210T130000
 SUMMARY:San Diego Workforce Partnership - Board Meeting
@@ -566,7 +566,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-joaquin-county-worknet:board-meeting:2026-12-16@cwa-local-board-mee
  tings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;VALUE=DATE:20261216
 DTEND;VALUE=DATE:20261217
 SUMMARY:San Joaquin County WorkNet - Board Meeting
@@ -580,7 +580,7 @@ URL:https://sjcworknet.org/boards/wdb
 END:VEVENT
 BEGIN:VEVENT
 UID:kern-inyo-mono-wdb:board-meeting:2026-12-16@cwa-local-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261216T070000
 DTEND;TZID=America/Los_Angeles:20261216T080000
 SUMMARY:Kern/Inyo/Mono WDB - Board Meeting
@@ -596,7 +596,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:los-angeles-county-wdb:board-meeting:2026-12-18@cwa-local-board-meeting
  s
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20261218T100000
 DTEND;TZID=America/Los_Angeles:20261218T110000
 SUMMARY:Los Angeles County WDB - Board Meeting
@@ -611,7 +611,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-diego-workforce-partnership:executive-committee:2027-01-04@cwa-loca
  l-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20270104T110000
 DTEND;TZID=America/Los_Angeles:20270104T120000
 SUMMARY:San Diego Workforce Partnership - Executive Committee
@@ -628,7 +628,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:ventura-county-wdb:executive-committee:2027-01-14@cwa-local-board-meeti
  ngs
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20270114T090000
 DTEND;TZID=America/Los_Angeles:20270114T100000
 SUMMARY:Ventura County WDB - Executive Committee
@@ -646,7 +646,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-diego-workforce-partnership:board-meeting:2027-01-14@cwa-local-boar
  d-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20270114T120000
 DTEND;TZID=America/Los_Angeles:20270114T130000
 SUMMARY:San Diego Workforce Partnership - Board Meeting
@@ -663,7 +663,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-diego-workforce-partnership:executive-committee:2027-02-01@cwa-loca
  l-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20270201T110000
 DTEND;TZID=America/Los_Angeles:20270201T120000
 SUMMARY:San Diego Workforce Partnership - Executive Committee
@@ -680,7 +680,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-diego-workforce-partnership:board-meeting:2027-02-11@cwa-local-boar
  d-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20270211T120000
 DTEND;TZID=America/Los_Angeles:20270211T130000
 SUMMARY:San Diego Workforce Partnership - Board Meeting
@@ -696,7 +696,7 @@ URL:https://workforce.org/boards/workforce-development-board/agendas-minute
 END:VEVENT
 BEGIN:VEVENT
 UID:ventura-county-wdb:board-meeting:2027-02-18@cwa-local-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20270218T090000
 DTEND;TZID=America/Los_Angeles:20270218T100000
 SUMMARY:Ventura County WDB - Board Meeting
@@ -714,7 +714,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-diego-workforce-partnership:executive-committee:2027-03-01@cwa-loca
  l-board-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20270301T110000
 DTEND;TZID=America/Los_Angeles:20270301T120000
 SUMMARY:San Diego Workforce Partnership - Executive Committee
@@ -731,7 +731,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:san-diego-workforce-partnership:board-meeting:2027-03-11@cwa-local-boar
  d-meetings
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20270311T120000
 DTEND;TZID=America/Los_Angeles:20270311T130000
 SUMMARY:San Diego Workforce Partnership - Board Meeting
@@ -748,7 +748,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:ventura-county-wdb:executive-committee:2027-03-18@cwa-local-board-meeti
  ngs
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20270318T090000
 DTEND;TZID=America/Los_Angeles:20270318T100000
 SUMMARY:Ventura County WDB - Executive Committee
@@ -766,7 +766,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:los-angeles-county-wdb:board-meeting:2027-03-19@cwa-local-board-meeting
  s
-DTSTAMP:20261003T184018Z
+DTSTAMP:20261004T183741Z
 DTSTART;TZID=America/Los_Angeles:20270319T100000
 DTEND;TZID=America/Los_Angeles:20270319T110000
 SUMMARY:Los Angeles County WDB - Board Meeting
