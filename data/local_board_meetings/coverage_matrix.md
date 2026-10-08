@@ -1,6 +1,6 @@
 # Local Board Coverage Matrix
 
-- Updated: 2026-10-07T13:35:14.879235-07:00
+- Updated: 2026-10-08T13:40:51.515212-07:00
 - Boards with at least one confirmed meeting date: 44 of 45
 - Boards with at least one agenda matched to a meeting: 24 of 45
 - Cadence documented with audited source context: 32 of 45
@@ -45,7 +45,7 @@
 | Oakland WDB / City of Oakland | yes | 2026-03-20 | NO | 0 / 0 | Quarterly | No future meeting despite known cadence | partial | ok |
 | Orange County WDB / Orange County | yes | 2026-04-29 | NO | 0 / 0 | Not established | No future date; cadence unknown | documented | ok |
 | Richmond WDB / City of Richmond | yes | 2026-11-12 | yes | 1 / 0 | Every other month | Future meeting listed | documented | ok |
-| Riverside County WDB / Riverside County | yes | 2026-12-09 | yes | 3 / 0 | Other published cadence | Source partly degraded (agenda/executive/schedule); Future meeting listed | documented | degraded |
+| Riverside County WDB / Riverside County | yes | 2026-12-09 | yes | 2 / 0 | Other published cadence | Source partly degraded (agenda/executive/schedule); Future meeting listed | documented | degraded |
 | SELACO WDB / Artesia, Bellflower, Cerritos, Downey, Lakewood, Norwalk | yes | 2026-05-28 | NO | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
 | Sacramento (SETA) / Sacramento County | yes | 2026-11-25 | NO | 2 / 0 | Every other month | Future meeting listed | documented | ok |
 | San Benito County WDB / San Benito County | yes | 2021-10-12 | NO | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
@@ -62,7 +62,7 @@
 | Sonoma County WDB / Sonoma County | yes | 2026-12-09 | yes | 4 / 0 | Other published cadence | Future meeting listed | documented | ok |
 | South Bay WIB / Inglewood, Torrance, Carson, Hawthorne, Lawndale, El Segundo, Gardena, Lomita, Hermosa Beach, and Manhattan Beach, Redondo Beach | yes | 2026-09-17 | yes | 0 / 0 | Other published cadence | Source access blocked (agenda/schedule); No future meeting despite known cadence | documented | blocked |
 | Stanislaus County WDB / Stanislaus County | yes | 2026-12-07 | yes | 1 / 0 | Not established | Future meeting listed | documented | ok |
-| Tulare County WIB / Tulare County | yes | 2026-12-09 | yes | 3 / 0 | Monthly | Source partly degraded (agenda/executive/schedule); Future meeting listed | documented | degraded |
+| Tulare County WIB / Tulare County | yes | 2026-12-09 | yes | 2 / 0 | Monthly | Source partly degraded (agenda/executive/schedule); Future meeting listed | documented | degraded |
 | Ventura County WDB / Ventura County | yes | 2027-03-18 | yes | 6 / 1 | Other published cadence | Future meeting listed | documented | ok |
 | Verdugo WDB / Burbank, Glendale, La Cañada Flintridge | yes | 2026-03-11 | NO | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
 | Workforce Alliance North Bay / Lake, Marin, Mendocino, Napa | yes | 2026-09-10 | yes | 0 / 0 | Not established | No future date; cadence unknown | documented | ok |
