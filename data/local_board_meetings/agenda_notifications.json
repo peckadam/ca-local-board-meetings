@@ -27,6 +27,24 @@
       "recorded_at": "2026-09-24T21:42:38.744587+00:00",
       "sha256": "5b1d4e2e8ca6bddcec4ebd68d9c3e4a1fee64ed146335883f49f9ab44796011f"
     },
+    "san-luis-obispo-county-wdb:executive-committee:2026-10-14": {
+      "agenda_url": "https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/forms-documents/meeting-agendas/executive-committee/exec-2026-10-14-agenda-packet",
+      "board_name": "San Luis Obispo County WDB",
+      "delivery": "sent",
+      "meeting_date": "2026-10-14",
+      "meeting_type": "Executive Committee",
+      "recorded_at": "2026-10-09T20:07:14.848400+00:00",
+      "sha256": "c75cb242590b52a3e73300988acd751678768a76a76b2d31ef2aa4450b7d1d08"
+    },
+    "sonoma-county-wdb:executive-committee:2026-10-14": {
+      "agenda_url": "https://s42248.pcdn.co/wp-content/uploads/10-14-2026-WIBE-Agenda-Packet.pdf",
+      "board_name": "Sonoma County WDB",
+      "delivery": "sent",
+      "meeting_date": "2026-10-14",
+      "meeting_type": "Executive Committee",
+      "recorded_at": "2026-10-09T20:07:16.354643+00:00",
+      "sha256": "d8d63f43631b3814345504cfd48c0a4c06168c86d480d43739df7cf53f2e96c2"
+    },
     "ventura-county-wdb:board-meeting:2026-10-08": {
       "agenda_url": "http://vcportal.ventura.org/wdb/current-meeting-packets/2026-10-08-wdb-meeting-packet.pdf",
       "board_name": "Ventura County WDB",
