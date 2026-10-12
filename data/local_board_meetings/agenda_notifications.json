@@ -18,6 +18,15 @@
       "recorded_at": "2026-09-24T14:13:45.824646+00:00",
       "sha256": "6603495bbbedc528d536aa07cbb0bf878e1a414f7718069fad6ba02fab5719a2"
     },
+    "madera-county-wdb:board-meeting:2026-10-15": {
+      "agenda_url": "https://www.maderaworkforce.org/wdb/wp-content/uploads/sites/3/2026/10/WDB-Agenda-Packet-2026.10.15.pdf",
+      "board_name": "Madera County WDB",
+      "delivery": "sent",
+      "meeting_date": "2026-10-15",
+      "meeting_type": "Board Meeting",
+      "recorded_at": "2026-10-12T22:30:32.727586+00:00",
+      "sha256": "34058303f6b185b1a281abf1a86a563dd591ebf5029f1eb7628193913e2d5f41"
+    },
     "san-diego-workforce-partnership:executive-committee:2026-09-28": {
       "agenda_url": "https://workforce.org/wp-content/uploads/2026/09/2026-09-28-Exec-Cmte-Agenda.pdf",
       "board_name": "San Diego Workforce Partnership",

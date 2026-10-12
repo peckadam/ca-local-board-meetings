@@ -1,7 +1,7 @@
 {
   "meetings": {
     "fresno-regional-wdb:board-meeting:2026-12-02": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -18,7 +18,7 @@
       }
     },
     "fresno-regional-wdb:executive-committee:2026-10-21": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -35,7 +35,7 @@
       }
     },
     "kern-inyo-mono-wdb:board-meeting:2026-12-16": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -52,7 +52,7 @@
       }
     },
     "kern-inyo-mono-wdb:executive-committee:2026-12-03": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -69,7 +69,7 @@
       }
     },
     "long-beach-win:board-meeting:2026-12-03": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -86,7 +86,7 @@
       }
     },
     "long-beach-win:board-meeting:2026-12-10": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -103,7 +103,7 @@
       }
     },
     "los-angeles-county-wdb:board-meeting:2026-12-18": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -120,7 +120,7 @@
       }
     },
     "los-angeles-county-wdb:board-meeting:2027-03-19": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -136,8 +136,25 @@
         "virtual_url": ""
       }
     },
+    "madera-county-wdb:board-meeting:2026-10-15": {
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
+      "meeting": {
+        "agenda_label": "Agenda Packet",
+        "agenda_url": "https://www.maderaworkforce.org/wdb/wp-content/uploads/sites/3/2026/10/WDB-Agenda-Packet-2026.10.15.pdf",
+        "board_id": "madera-county-wdb",
+        "board_name": "Madera County WDB",
+        "confidence_notes": "Profiled Madera extraction: official board/executive archive rows are parsed by date, canceled/no-quorum rows are excluded, and agenda packets are date-matched. Agenda parsed for time.",
+        "location": "Workforce Assistance Center Executive Conference Room, 2037 W. Cleveland Avenue, Madera, CA 93637",
+        "meeting_date": "2026-10-15",
+        "meeting_type": "Board Meeting",
+        "source_page_url": "https://www.maderaworkforce.org/wdb/workforce-board-meetings/",
+        "start_time": "15:00:00",
+        "timezone": "America/Los_Angeles",
+        "virtual_url": ""
+      }
+    },
     "mother-lode-workforce-development-board:board-meeting:2026-11-19": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -154,7 +171,7 @@
       }
     },
     "north-central-counties-nccc:board-meeting:2026-11-05": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -205,7 +222,7 @@
       }
     },
     "novaworks-workforce-board:board-meeting:2026-12-02": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -222,7 +239,7 @@
       }
     },
     "richmond-wdb:board-meeting:2026-11-12": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -239,7 +256,7 @@
       }
     },
     "riverside-county-wdb:board-meeting:2026-12-09": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -256,7 +273,7 @@
       }
     },
     "riverside-county-wdb:executive-committee:2026-12-09": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -273,7 +290,7 @@
       }
     },
     "sacramento-seta:board-meeting:2026-11-25": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -290,7 +307,7 @@
       }
     },
     "sacramento-seta:executive-committee:2026-11-12": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -477,7 +494,7 @@
       }
     },
     "san-joaquin-county-worknet:board-meeting:2026-10-28": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "Agenda",
         "agenda_url": "",
@@ -494,7 +511,7 @@
       }
     },
     "san-joaquin-county-worknet:board-meeting:2026-12-16": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -511,7 +528,7 @@
       }
     },
     "san-luis-obispo-county-wdb:board-meeting:2026-11-05": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -528,9 +545,9 @@
       }
     },
     "san-luis-obispo-county-wdb:executive-committee:2026-10-14": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
-        "agenda_label": "EXEC-2026-10-14-Agenda",
+        "agenda_label": "EXEC-2026-10-14-Agenda-Packet",
         "agenda_url": "https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/forms-documents/meeting-agendas/executive-committee/exec-2026-10-14-agenda-packet",
         "board_id": "san-luis-obispo-county-wdb",
         "board_name": "San Luis Obispo County WDB",
@@ -545,7 +562,7 @@
       }
     },
     "san-luis-obispo-county-wdb:executive-committee:2026-12-09": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -562,7 +579,7 @@
       }
     },
     "santa-ana-wdb:board-meeting:2026-11-19": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -579,7 +596,7 @@
       }
     },
     "solano-county-wdb:board-meeting:2026-11-20": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -596,7 +613,7 @@
       }
     },
     "sonoma-county-wdb:board-meeting:2026-11-18": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -613,7 +630,7 @@
       }
     },
     "sonoma-county-wdb:executive-committee:2026-10-14": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "10-14-2026 WIBE Agenda Packet",
         "agenda_url": "https://s42248.pcdn.co/wp-content/uploads/10-14-2026-WIBE-Agenda-Packet.pdf",
@@ -630,7 +647,7 @@
       }
     },
     "sonoma-county-wdb:executive-committee:2026-11-18": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -647,7 +664,7 @@
       }
     },
     "sonoma-county-wdb:executive-committee:2026-12-09": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -664,7 +681,7 @@
       }
     },
     "stanislaus-county-wdb:board-meeting:2026-12-07": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -681,7 +698,7 @@
       }
     },
     "tulare-county-wib:board-meeting:2026-11-18": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -698,7 +715,7 @@
       }
     },
     "tulare-county-wib:board-meeting:2026-12-09": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -732,7 +749,7 @@
       }
     },
     "ventura-county-wdb:board-meeting:2026-12-10": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -749,7 +766,7 @@
       }
     },
     "ventura-county-wdb:board-meeting:2027-02-18": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -766,7 +783,7 @@
       }
     },
     "ventura-county-wdb:executive-committee:2027-01-14": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -783,7 +800,7 @@
       }
     },
     "ventura-county-wdb:executive-committee:2027-03-18": {
-      "last_seen_at": "2026-10-11T12:32:14.574257-07:00",
+      "last_seen_at": "2026-10-12T15:28:56.913172-07:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -800,6 +817,6 @@
       }
     }
   },
-  "updated_at": "2026-10-11T12:32:14.574257-07:00",
+  "updated_at": "2026-10-12T15:28:56.913172-07:00",
   "version": 1
 }
