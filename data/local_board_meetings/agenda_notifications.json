@@ -24,8 +24,8 @@
       "delivery": "sent",
       "meeting_date": "2026-10-15",
       "meeting_type": "Board Meeting",
-      "recorded_at": "2026-10-12T22:30:32.727586+00:00",
-      "sha256": "34058303f6b185b1a281abf1a86a563dd591ebf5029f1eb7628193913e2d5f41"
+      "recorded_at": "2026-10-13T20:40:29.074356+00:00",
+      "sha256": "ad423cbffaed023c74129ff655af68ad3eb38309c2a7fbb23c99b23edfbd70d2"
     },
     "san-diego-workforce-partnership:executive-committee:2026-09-28": {
       "agenda_url": "https://workforce.org/wp-content/uploads/2026/09/2026-09-28-Exec-Cmte-Agenda.pdf",
@@ -42,8 +42,17 @@
       "delivery": "sent",
       "meeting_date": "2026-10-14",
       "meeting_type": "Executive Committee",
-      "recorded_at": "2026-10-09T20:07:14.848400+00:00",
-      "sha256": "c75cb242590b52a3e73300988acd751678768a76a76b2d31ef2aa4450b7d1d08"
+      "recorded_at": "2026-10-13T20:40:27.535472+00:00",
+      "sha256": "49493d66b2e68b8295267ded4c450ebae70a27736d0186266841387d3430eb41"
+    },
+    "santa-barbara-county-wdb:board-meeting:2026-10-16": {
+      "agenda_url": "https://content.civicplus.com/api/assets/ca-santabarbaracounty/a896caf7-2abd-4cf0-ac60-71708289af69",
+      "board_name": "Santa Barbara County WDB",
+      "delivery": "sent",
+      "meeting_date": "2026-10-16",
+      "meeting_type": "Board Meeting",
+      "recorded_at": "2026-10-13T20:40:30.087515+00:00",
+      "sha256": "42ce120ffce73cc3e48fce823b5963fe3ae18be8c45fbcef9bc9e51454e64c5c"
     },
     "sonoma-county-wdb:executive-committee:2026-10-14": {
       "agenda_url": "https://s42248.pcdn.co/wp-content/uploads/10-14-2026-WIBE-Agenda-Packet.pdf",
