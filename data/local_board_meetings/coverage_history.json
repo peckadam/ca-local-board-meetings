@@ -60,10 +60,11 @@
     },
     "fresno-regional-wdb": {
       "agenda_dates": [
-        "2026-09-24"
+        "2026-09-24",
+        "2026-10-21"
       ],
       "board_name": "Fresno Regional WDB",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "Fresno County",
       "meeting_dates": [
         "2026-07-15",
@@ -120,7 +121,7 @@
         "2026-09-03"
       ],
       "board_name": "Kern/Inyo/Mono WDB",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "Kern, Inyo, and Mono Counties",
       "meeting_dates": [
         "2025-02-06",
@@ -158,7 +159,7 @@
         "2026-06-11"
       ],
       "board_name": "Long Beach WIN",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "Cities of Long Beach and Signal Hill",
       "meeting_dates": [
         "2026-04-02",
@@ -186,7 +187,7 @@
     "los-angeles-county-wdb": {
       "agenda_dates": [],
       "board_name": "Los Angeles County WDB",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "Los Angeles County",
       "meeting_dates": [
         "2026-03-20",
@@ -201,7 +202,7 @@
         "2026-10-15"
       ],
       "board_name": "Madera County WDB",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "Madera County",
       "meeting_dates": [
         "2026-02-19",
@@ -234,7 +235,7 @@
     "mother-lode-workforce-development-board": {
       "agenda_dates": [],
       "board_name": "Mother Lode Workforce Development Board",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "Amador, Calaveras, Mariposa, and Tuolumne Counties",
       "meeting_dates": [
         "2026-02-19",
@@ -246,7 +247,7 @@
     "north-central-counties-nccc": {
       "agenda_dates": [],
       "board_name": "North Central Counties (NCCC)",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "Colusa, Glenn, Sutter, and Yuba Counties",
       "meeting_dates": [
         "2026-02-19",
@@ -258,18 +259,19 @@
     "northern-rural-training-nortec": {
       "agenda_dates": [],
       "board_name": "Northern Rural Training (NoRTEC)",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "11 Northern Counties",
       "meeting_dates": [
         "2026-06-08",
         "2026-10-12",
-        "2026-10-13"
+        "2026-10-13",
+        "2026-10-15"
       ]
     },
     "novaworks-workforce-board": {
       "agenda_dates": [],
       "board_name": "NOVAworks Workforce Board",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "San Mateo County & Silicon Valley",
       "meeting_dates": [
         "2026-04-22",
@@ -303,7 +305,7 @@
         "2026-05-14"
       ],
       "board_name": "Richmond WDB",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "City of Richmond",
       "meeting_dates": [
         "2026-01-15",
@@ -323,7 +325,7 @@
         "2026-08-12"
       ],
       "board_name": "Riverside County WDB",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "Riverside County",
       "meeting_dates": [
         "2026-02-25",
@@ -339,7 +341,7 @@
     "sacramento-seta": {
       "agenda_dates": [],
       "board_name": "Sacramento (SETA)",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "Sacramento County",
       "meeting_dates": [
         "2026-07-09",
@@ -376,7 +378,7 @@
         "2026-09-28"
       ],
       "board_name": "San Diego Workforce Partnership",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "San Diego County",
       "meeting_dates": [
         "2026-05-14",
@@ -413,7 +415,7 @@
         "2026-05-27"
       ],
       "board_name": "San Joaquin County WorkNet",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "San Joaquin County",
       "meeting_dates": [
         "2026-02-25",
@@ -431,7 +433,7 @@
         "2026-10-14"
       ],
       "board_name": "San Luis Obispo County WDB",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "San Luis Obispo County",
       "meeting_dates": [
         "2026-05-06",
@@ -447,7 +449,7 @@
     "santa-ana-wdb": {
       "agenda_dates": [],
       "board_name": "Santa Ana WDB",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "City of Santa Ana",
       "meeting_dates": [
         "2026-07-16",
@@ -460,7 +462,7 @@
         "2026-10-16"
       ],
       "board_name": "Santa Barbara County WDB",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "Santa Barbara County",
       "meeting_dates": [
         "2026-01-21",
@@ -471,10 +473,11 @@
     },
     "santa-clara-county-work2future": {
       "agenda_dates": [
-        "2026-09-17"
+        "2026-09-17",
+        "2026-10-15"
       ],
       "board_name": "Santa Clara County (work2future)",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "San Jose & Santa Clara",
       "meeting_dates": [
         "2026-04-14",
@@ -490,14 +493,16 @@
         "2026-09-16"
       ],
       "board_name": "Santa Cruz County WDB",
-      "last_meeting_seen_at": "2026-09-24T07:17:00.031740-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "Santa Cruz County",
       "meeting_dates": [
         "2026-02-04",
         "2026-03-04",
         "2026-04-29",
         "2026-05-20",
-        "2026-09-16"
+        "2026-09-16",
+        "2026-10-28",
+        "2026-12-09"
       ]
     },
     "selaco-wdb": {
@@ -512,7 +517,7 @@
     "solano-county-wdb": {
       "agenda_dates": [],
       "board_name": "Solano County WDB",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "Solano County",
       "meeting_dates": [
         "2026-01-23",
@@ -529,7 +534,7 @@
         "2026-10-14"
       ],
       "board_name": "Sonoma County WDB",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "Sonoma County",
       "meeting_dates": [
         "2026-06-10",
@@ -561,7 +566,7 @@
         "2026-05-07"
       ],
       "board_name": "Stanislaus County WDB",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "Stanislaus County",
       "meeting_dates": [
         "2026-05-05",
@@ -579,7 +584,7 @@
         "2026-10-07"
       ],
       "board_name": "Tulare County WIB",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "Tulare County",
       "meeting_dates": [
         "2026-05-04",
@@ -597,7 +602,7 @@
         "2026-10-08"
       ],
       "board_name": "Ventura County WDB",
-      "last_meeting_seen_at": "2026-10-13T13:38:58.760419-07:00",
+      "last_meeting_seen_at": "2026-10-14T12:20:33.678665-07:00",
       "local_area": "Ventura County",
       "meeting_dates": [
         "2026-01-15",
@@ -646,6 +651,6 @@
       "meeting_dates": []
     }
   },
-  "updated_at": "2026-10-13T13:38:58.760419-07:00",
+  "updated_at": "2026-10-14T12:20:33.678665-07:00",
   "version": 1
 }
