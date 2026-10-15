@@ -1,6 +1,6 @@
 # Local Board Coverage Matrix
 
-- Updated: 2026-10-14T12:20:33.678665-07:00
+- Updated: 2026-10-15T12:05:34.083997-07:00
 - Boards with at least one confirmed meeting date: 44 of 45
 - Boards with at least one agenda matched to a meeting: 26 of 45
 - Cadence documented with audited source context: 32 of 45
@@ -53,13 +53,13 @@
 | San Diego Workforce Partnership / San Diego County | yes | 2027-03-11 | yes | 10 / 0 | Other published cadence | Future meeting listed | partial | ok |
 | San Francisco OEWD / San Francisco City/County | yes | 2026-05-06 | NO | 0 / 0 | Quarterly | No future meeting despite known cadence | partial | ok |
 | San Joaquin County WorkNet / San Joaquin County | yes | 2026-12-16 | yes | 2 / 0 | Other published cadence | Future meeting listed | documented | ok |
-| San Luis Obispo County WDB / San Luis Obispo County | yes | 2026-12-09 | yes | 3 / 1 | Quarterly | Future meeting listed | documented | ok |
+| San Luis Obispo County WDB / San Luis Obispo County | yes | 2026-12-09 | yes | 2 / 0 | Quarterly | Future meeting listed | documented | ok |
 | Santa Ana WDB / City of Santa Ana | yes | 2026-11-19 | NO | 1 / 0 | Every other month | Future meeting listed | documented | ok |
 | Santa Barbara County WDB / Santa Barbara County | yes | 2026-10-16 | yes | 1 / 1 | Not established | Future meeting listed | documented | ok |
 | Santa Clara County (work2future) / San Jose & Santa Clara | yes | 2026-10-15 | yes | 1 / 1 | Not established | Future meeting listed | documented | ok |
 | Santa Cruz County WDB / Santa Cruz County | yes | 2026-12-09 | yes | 2 / 0 | Other published cadence | Future meeting listed | documented | ok |
 | Solano County WDB / Solano County | yes | 2026-11-20 | NO | 1 / 0 | Every other month | Future meeting listed | documented | ok |
-| Sonoma County WDB / Sonoma County | yes | 2026-12-09 | yes | 4 / 1 | Other published cadence | Future meeting listed | documented | ok |
+| Sonoma County WDB / Sonoma County | yes | 2026-12-09 | yes | 3 / 0 | Other published cadence | Future meeting listed | documented | ok |
 | South Bay WIB / Inglewood, Torrance, Carson, Hawthorne, Lawndale, El Segundo, Gardena, Lomita, Hermosa Beach, and Manhattan Beach, Redondo Beach | yes | 2026-09-17 | yes | 0 / 0 | Other published cadence | Source access blocked (agenda/schedule); No future meeting despite known cadence | documented | blocked |
 | Stanislaus County WDB / Stanislaus County | yes | 2026-12-07 | yes | 1 / 0 | Not established | Future meeting listed | documented | ok |
 | Tulare County WIB / Tulare County | yes | 2026-12-09 | yes | 2 / 0 | Monthly | Source partly degraded (agenda/executive/schedule); Future meeting listed | documented | degraded |
