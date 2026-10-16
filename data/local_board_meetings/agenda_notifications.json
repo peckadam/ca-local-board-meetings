@@ -1,5 +1,14 @@
 {
   "notifications": {
+    "foothill-wdb:board-meeting:2026-10-19": {
+      "agenda_url": "https://fwdbworks.org/wp/wp-content/uploads/2026/10/FWDB-Business-Services-Agenda-10.19.26.pdf",
+      "board_name": "Foothill WDB",
+      "delivery": "sent",
+      "meeting_date": "2026-10-19",
+      "meeting_type": "Board Meeting",
+      "recorded_at": "2026-10-16T18:48:42.367871+00:00",
+      "sha256": "294e3322f4644e1d426fa01736c1663ffdf6a22fadd6f6dd8cb9870ed171c39b"
+    },
     "fresno-regional-wdb:board-meeting:2026-09-24": {
       "agenda_url": "https://frwdb.net/wp-content/uploads/2026/09/9-24-26-FRWDB-Packet.pdf",
       "board_name": "Fresno Regional WDB",
