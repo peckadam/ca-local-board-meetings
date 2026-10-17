@@ -19,13 +19,13 @@
       "sha256": "e4afffc57c26305574f92be1ad9bd99802fb0e22694b43b8ffbf0e621c88bf3c"
     },
     "fresno-regional-wdb:executive-committee:2026-10-21": {
-      "agenda_url": "https://frwdb.net/wp-content/uploads/2025/11/10-21-26-Executive-Committee-Packet.pdf",
+      "agenda_url": "https://frwdb.net/wp-content/uploads/2025/11/10-21-26-Executive-Committee-Packet-1.pdf",
       "board_name": "Fresno Regional WDB",
       "delivery": "sent",
       "meeting_date": "2026-10-21",
       "meeting_type": "Executive Committee",
-      "recorded_at": "2026-10-14T19:22:23.909965+00:00",
-      "sha256": "a09e2fbd68cdbdd278281fc9474a2563707df87d192c2fd3499110825b3f7a5b"
+      "recorded_at": "2026-10-17T17:54:11.515486+00:00",
+      "sha256": "eebf06a062cb966f2f19888c431c3f8be4652446aefd78586ae59faf21c7f127"
     },
     "los-angeles-city-wdb:executive-committee:2026-09-24": {
       "agenda_url": "https://wiblacity.novusagenda.com/agendapublic/DisplayAgendaPDF.ashx?MeetingID=412",
@@ -44,6 +44,15 @@
       "meeting_type": "Board Meeting",
       "recorded_at": "2026-10-14T19:22:19.666733+00:00",
       "sha256": "34058303f6b185b1a281abf1a86a563dd591ebf5029f1eb7628193913e2d5f41"
+    },
+    "northern-rural-training-nortec:executive-committee:2026-10-22": {
+      "agenda_url": "https://www.ncen.org/images/documents/meetings/2014_2015/Planning_Agenda_1014.pdf",
+      "board_name": "Northern Rural Training (NoRTEC)",
+      "delivery": "sent",
+      "meeting_date": "2026-10-22",
+      "meeting_type": "Executive Committee",
+      "recorded_at": "2026-10-17T17:54:14.030568+00:00",
+      "sha256": "8aefdc38fc7d665c473555a2a2498947b8dae49779834dc072affbf5e0b5aa6c"
     },
     "san-diego-workforce-partnership:executive-committee:2026-09-28": {
       "agenda_url": "https://workforce.org/wp-content/uploads/2026/09/2026-09-28-Exec-Cmte-Agenda.pdf",
