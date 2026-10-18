@@ -1505,3 +1505,29 @@ Moved Permanently
 - Warning: Ventura County WDB - detail - Detail page enrichment failed: HTTP Error 403: Forbidden
 - Warning: Ventura County WDB - agenda - HTTP Error 403: Forbidden
 
+## 2026-10-18T11:03:50.330010-07:00 (dry-run)
+
+- Boards checked: 45
+- Meetings found: 48
+- Missing agendas within 72 hours: 2
+- Agenda notifications sent: 1
+- Boards with meeting history: 44 of 45
+- Boards with agenda history: 28 of 45
+- Failures requiring human review: 4
+- Degraded source warnings: 11
+- Review: Anaheim WDB - https://www.anaheim.net/AgendaCenter/Workforce-Development-Board-24 - HTTP Error 403: Forbidden
+- Review: Kings County WDB - https://www.countyofkingsca.gov/departments/general-services/jto - HTTP Error 403: Forbidden
+- Review: South Bay WIB - https://www.sbwib.org/2026-meeting-agendas - HTTP Error 429: Too Many Requests
+- Review: Yolo County WDB - https://www.yoloworks.org/ - robots.txt disallows fetching https://www.yoloworks.org/
+- Warning: Kern/Inyo/Mono WDB - agenda,schedule - HTTP Error 403: Forbidden
+- Warning: Kern/Inyo/Mono WDB - executive - HTTP Error 403: Forbidden
+- Warning: Long Beach WIN - agenda - robots.txt disallows fetching https://longbeach.primegov.com/api/v2/PublicPortal/ListUpcomingMeetingsByCommitteeId?committeeId=126
+- Warning: Los Angeles County WDB - agenda,schedule - HTTP Error 403: Forbidden
+- Warning: Mother Lode Workforce Development Board - agenda - HTTP Error 429: Too Many Requests
+- Warning: Riverside County WDB - agenda,schedule - HTTP Error 403: Forbidden
+- Warning: Riverside County WDB - executive - HTTP Error 403: Forbidden
+- Warning: San Joaquin County WorkNet - schedule - HTTP Error 502: Bad Gateway
+- Warning: San Joaquin County WorkNet - agenda - Command '['curl', '-L', '--fail', '--silent', '--show-error', '--max-time', '8', '--max-filesize', '26214400', '-A', 'Mozilla/5.0 (compatible; CWA-local-board-meeting-monitor/0.1; +https://calworkforce.org)', '-H', 'Accept: text/html,application/pdf,*/*;q=0.8', 'https://sjcworknet.org/api/agendas?boardId=cmp323sd50001ict5fpgb619o&dateFrom=2026-01-01&dateTo=2026-12-31&includeCancelled=true&page=1&pageSize=1000']' returned non-zero exit status 22.
+- Warning: Tulare County WIB - agenda,schedule - HTTP Error 429: Too Many Requests
+- Warning: Tulare County WIB - executive - HTTP Error 429: Too Many Requests
+
