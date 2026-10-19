@@ -1,14 +1,14 @@
 # Local Board Coverage Matrix
 
-- Updated: 2026-10-18T11:03:50.330010-07:00
+- Updated: 2026-10-19T13:33:52.210877-07:00
 - Boards with at least one confirmed meeting date: 44 of 45
 - Boards with at least one agenda matched to a meeting: 28 of 45
 - Cadence documented with audited source context: 32 of 45
 - Cadence still partial: 13 of 45
 - Boards with at least one future meeting listed: 23 of 45
-- Boards needing meeting-coverage review: 29
+- Boards needing meeting-coverage review: 28
 - Boards with all authoritative source access blocked: 4
-- Boards with a degraded secondary endpoint or verified fallback: 7
+- Boards with a degraded secondary endpoint or verified fallback: 6
 
 `NO` and `review` cells are the active manual-research queue. Cadence is never used to publish an unconfirmed meeting.
 
@@ -18,7 +18,7 @@
 - No agenda ever matched to a meeting: Humboldt County WDB, Los Angeles County WDB, Monterey County WDB, Mother Lode Workforce Development Board, NOVAworks Workforce Board, North Central Counties (NCCC), Oakland WDB, Orange County WDB, SELACO WDB, Sacramento (SETA), San Benito County WDB, San Bernardino County WDB, San Francisco OEWD, Santa Ana WDB, Solano County WDB, Verdugo WDB, Yolo County WDB
 - Cadence/source context still partial: Foothill WDB, Imperial County WDB, Kings County WDB, Monterey County WDB, Northern Rural Training (NoRTEC), Oakland WDB, SELACO WDB, San Benito County WDB, San Bernardino County WDB, San Diego Workforce Partnership, San Francisco OEWD, Verdugo WDB, Yolo County WDB
 - Source access blocked this run: Anaheim WDB, Kings County WDB, South Bay WIB, Yolo County WDB
-- Source partly degraded this run: Kern/Inyo/Mono WDB, Long Beach WIN, Los Angeles County WDB, Mother Lode Workforce Development Board, Riverside County WDB, San Joaquin County WorkNet, Tulare County WIB
+- Source partly degraded this run: Kern/Inyo/Mono WDB, Long Beach WIN, Los Angeles County WDB, Mother Lode Workforce Development Board, Riverside County WDB, Tulare County WIB
 
 | Board / local area | Meeting date ever found | Latest date | Agenda ever matched | Future meetings / agendas | Primary cadence | Coverage signal | Source context | Fetch |
 |---|---:|---|---:|---:|---|---|---|---|
@@ -52,7 +52,7 @@
 | San Bernardino County WDB / San Bernardino County | yes | 2026-04-29 | NO | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
 | San Diego Workforce Partnership / San Diego County | yes | 2027-03-11 | yes | 10 / 0 | Other published cadence | Future meeting listed | partial | ok |
 | San Francisco OEWD / San Francisco City/County | yes | 2026-05-06 | NO | 0 / 0 | Quarterly | No future meeting despite known cadence | partial | ok |
-| San Joaquin County WorkNet / San Joaquin County | yes | 2026-12-16 | yes | 2 / 0 | Other published cadence | Source partly degraded (agenda/schedule); Future meeting listed | documented | degraded |
+| San Joaquin County WorkNet / San Joaquin County | yes | 2026-12-16 | yes | 2 / 0 | Other published cadence | Future meeting listed | documented | ok |
 | San Luis Obispo County WDB / San Luis Obispo County | yes | 2026-12-09 | yes | 2 / 0 | Quarterly | Future meeting listed | documented | ok |
 | Santa Ana WDB / City of Santa Ana | yes | 2026-11-19 | NO | 1 / 0 | Every other month | Future meeting listed | documented | ok |
 | Santa Barbara County WDB / Santa Barbara County | yes | 2026-10-16 | yes | 0 / 0 | Not established | No future date; cadence unknown | documented | ok |
