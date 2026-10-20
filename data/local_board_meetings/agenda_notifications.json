@@ -54,6 +54,15 @@
       "recorded_at": "2026-10-19T20:37:43.598389+00:00",
       "sha256": "8aefdc38fc7d665c473555a2a2498947b8dae49779834dc072affbf5e0b5aa6c"
     },
+    "orange-county-wdb:board-meeting:2026-10-28": {
+      "agenda_url": "https://workforce.oc.gov/sites/cid/files/2026-10/OCWDB%20Full%20Board%20Meeting%20Packet%2010.28.26.pdf",
+      "board_name": "Orange County WDB",
+      "delivery": "sent",
+      "meeting_date": "2026-10-28",
+      "meeting_type": "Board Meeting",
+      "recorded_at": "2026-10-20T19:14:33.397356+00:00",
+      "sha256": "e86bda62cf78cb442b181838e1f35d453809b2dc6d1a92c43b94876a104a3cfb"
+    },
     "san-diego-workforce-partnership:executive-committee:2026-09-28": {
       "agenda_url": "https://workforce.org/wp-content/uploads/2026/09/2026-09-28-Exec-Cmte-Agenda.pdf",
       "board_name": "San Diego Workforce Partnership",
