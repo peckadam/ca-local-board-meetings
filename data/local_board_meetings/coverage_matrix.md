@@ -1,6 +1,6 @@
 # Local Board Coverage Matrix
 
-- Updated: 2026-10-20T12:12:40.293074-07:00
+- Updated: 2026-10-21T12:16:57.943274-07:00
 - Boards with at least one confirmed meeting date: 44 of 45
 - Boards with at least one agenda matched to a meeting: 29 of 45
 - Cadence documented with audited source context: 32 of 45
@@ -46,7 +46,7 @@
 | Orange County WDB / Orange County | yes | 2026-10-28 | yes | 1 / 1 | Not established | Future meeting listed | documented | ok |
 | Richmond WDB / City of Richmond | yes | 2026-11-12 | yes | 1 / 0 | Every other month | Future meeting listed | documented | ok |
 | Riverside County WDB / Riverside County | yes | 2026-12-09 | yes | 2 / 0 | Other published cadence | Source partly degraded (agenda/executive/schedule); Future meeting listed | documented | degraded |
-| SELACO WDB / Artesia, Bellflower, Cerritos, Downey, Lakewood, Norwalk | yes | 2026-10-22 | NO | 4 / 0 | Not established | Future meeting listed | partial | ok |
+| SELACO WDB / Artesia, Bellflower, Cerritos, Downey, Lakewood, Norwalk | yes | 2026-10-22 | NO | 2 / 0 | Not established | Future meeting listed | partial | ok |
 | Sacramento (SETA) / Sacramento County | yes | 2026-11-25 | NO | 2 / 0 | Every other month | Future meeting listed | documented | ok |
 | San Benito County WDB / San Benito County | yes | 2021-10-12 | NO | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
 | San Bernardino County WDB / San Bernardino County | yes | 2026-04-29 | NO | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
