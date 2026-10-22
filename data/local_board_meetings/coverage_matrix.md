@@ -1,6 +1,6 @@
 # Local Board Coverage Matrix
 
-- Updated: 2026-10-21T12:16:57.943274-07:00
+- Updated: 2026-10-22T12:11:52.284412-07:00
 - Boards with at least one confirmed meeting date: 44 of 45
 - Boards with at least one agenda matched to a meeting: 29 of 45
 - Cadence documented with audited source context: 32 of 45
@@ -26,7 +26,7 @@
 | Anaheim WDB / City of Anaheim | yes | 2026-06-17 | yes | 0 / 0 | Every other month | Source access blocked (agenda/schedule); No future meeting despite known cadence | documented | blocked |
 | Contra Costa County WDB / Contra Costa County | yes | 2026-09-16 | yes | 0 / 0 | Quarterly | No future meeting despite known cadence | documented | ok |
 | Foothill WDB / Pasadena, Arcadia, Duarte, Monrovia, Sierra Madre, South Pasadena | yes | 2026-10-19 | yes | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
-| Fresno Regional WDB / Fresno County | yes | 2027-01-20 | yes | 3 / 1 | Other published cadence | Future meeting listed | documented | ok |
+| Fresno Regional WDB / Fresno County | yes | 2027-01-20 | yes | 2 / 0 | Other published cadence | Future meeting listed | documented | ok |
 | Golden Sierra Workforce Board / Alpine, El Dorado, and Placer Counties | yes | 2026-09-17 | yes | 0 / 0 | Not established | No future date; cadence unknown | documented | ok |
 | Humboldt County WDB / Humboldt County | yes | 2026-04-24 | NO | 0 / 0 | Quarterly | No future meeting despite known cadence | documented | ok |
 | Imperial County WDB / Imperial County | yes | 2026-05-27 | yes | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
