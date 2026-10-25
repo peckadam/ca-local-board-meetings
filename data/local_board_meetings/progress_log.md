@@ -1674,3 +1674,24 @@ Moved Permanently
 - Warning: Tulare County WIB - agenda,schedule - HTTP Error 429: Too Many Requests
 - Warning: Tulare County WIB - executive - HTTP Error 429: Too Many Requests
 
+## 2026-10-25T11:23:06.309197-07:00 (dry-run)
+
+- Boards checked: 45
+- Meetings found: 47
+- Missing agendas within 72 hours: 2
+- Agenda notifications sent: 0
+- Boards with meeting history: 44 of 45
+- Boards with agenda history: 29 of 45
+- Failures requiring human review: 4
+- Degraded source warnings: 6
+- Review: Anaheim WDB - https://www.anaheim.net/AgendaCenter/Workforce-Development-Board-24 - HTTP Error 403: Forbidden
+- Review: Golden Sierra Workforce Board - https://goldensierra.com/calendar/category/public-meeting/workforce-board - Command '['curl', '-L', '--fail', '--silent', '--show-error', '--max-time', '8', '--max-filesize', '26214400', '-A', 'Mozilla/5.0 (compatible; CWA-local-board-meeting-monitor/0.1; +https://calworkforce.org)', '-H', 'Accept: text/html,application/pdf,*/*;q=0.8', 'https://goldensierra.com/calendar/category/public-meeting/workforce-board']' returned non-zero exit status 28.
+- Review: Kings County WDB - https://www.countyofkingsca.gov/departments/general-services/jto - HTTP Error 403: Forbidden
+- Review: Yolo County WDB - https://www.yoloworks.org/ - robots.txt disallows fetching https://www.yoloworks.org/
+- Warning: Kern/Inyo/Mono WDB - agenda,schedule - HTTP Error 403: Forbidden
+- Warning: Kern/Inyo/Mono WDB - executive - HTTP Error 403: Forbidden
+- Warning: Long Beach WIN - agenda - robots.txt disallows fetching https://longbeach.primegov.com/api/v2/PublicPortal/ListUpcomingMeetingsByCommitteeId?committeeId=126
+- Warning: Los Angeles County WDB - agenda,schedule - HTTP Error 403: Forbidden
+- Warning: Riverside County WDB - agenda,schedule - HTTP Error 403: Forbidden
+- Warning: Riverside County WDB - executive - HTTP Error 403: Forbidden
+
