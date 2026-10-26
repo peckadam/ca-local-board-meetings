@@ -99,6 +99,15 @@
       "recorded_at": "2026-10-14T19:22:22.225537+00:00",
       "sha256": "92b113a7e70d6b6626c1104213fcb1ec898a2a5e9de4ec62ca3770a45d5371fe"
     },
+    "santa-cruz-county-wdb:executive-committee:2026-10-28": {
+      "agenda_url": "https://workforcescc.com/wp-content/uploads/2026/10/10.28.26-Agenda-Packet.pdf",
+      "board_name": "Santa Cruz County WDB",
+      "delivery": "sent",
+      "meeting_date": "2026-10-28",
+      "meeting_type": "Executive Committee",
+      "recorded_at": "2026-10-26T20:29:26.904928+00:00",
+      "sha256": "c27bb24702b653ad935991f1ede2c4aa38c20737d3c876bb2569ed2d7e2962ea"
+    },
     "sonoma-county-wdb:executive-committee:2026-10-14": {
       "agenda_url": "https://s42248.pcdn.co/wp-content/uploads/10-14-2026-WIBE-Agenda-Packet.pdf",
       "board_name": "Sonoma County WDB",
