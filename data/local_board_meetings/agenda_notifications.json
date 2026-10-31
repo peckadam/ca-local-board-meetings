@@ -72,6 +72,15 @@
       "recorded_at": "2026-09-24T21:42:38.744587+00:00",
       "sha256": "5b1d4e2e8ca6bddcec4ebd68d9c3e4a1fee64ed146335883f49f9ab44796011f"
     },
+    "san-luis-obispo-county-wdb:board-meeting:2026-11-05": {
+      "agenda_url": "https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/forms-documents/meeting-agendas/workforce-development-board-(full-board)/wdb-2026-11-05-agenda-packet",
+      "board_name": "San Luis Obispo County WDB",
+      "delivery": "sent",
+      "meeting_date": "2026-11-05",
+      "meeting_type": "Board Meeting",
+      "recorded_at": "2026-10-31T19:17:48.187444+00:00",
+      "sha256": "a28a3a1022c17fd402617b8b1170203551fedc9c640d21461973ccfaae5d7af0"
+    },
     "san-luis-obispo-county-wdb:executive-committee:2026-10-14": {
       "agenda_url": "https://www.slocounty.ca.gov/departments/social-services/workforce-development-board/forms-documents/meeting-agendas/executive-committee/exec-2026-10-14-agenda-packet",
       "board_name": "San Luis Obispo County WDB",
