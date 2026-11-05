@@ -1,12 +1,12 @@
 # Local Board Coverage Matrix
 
-- Updated: 2026-11-04T13:17:03.317374-08:00
+- Updated: 2026-11-05T13:27:40.743875-08:00
 - Boards with at least one confirmed meeting date: 44 of 45
 - Boards with at least one agenda matched to a meeting: 29 of 45
 - Cadence documented with audited source context: 32 of 45
 - Cadence still partial: 13 of 45
-- Boards with at least one future meeting listed: 23 of 45
-- Boards needing meeting-coverage review: 26
+- Boards with at least one future meeting listed: 21 of 45
+- Boards needing meeting-coverage review: 28
 - Boards with all authoritative source access blocked: 3
 - Boards with a degraded secondary endpoint or verified fallback: 4
 
@@ -25,7 +25,7 @@
 | Alameda County WDB / Alameda County (excluding Oakland) | yes | 2026-09-17 | yes | 0 / 0 | Quarterly | No future meeting despite known cadence | documented | ok |
 | Anaheim WDB / City of Anaheim | yes | 2026-06-17 | yes | 0 / 0 | Every other month | Source access blocked (agenda/schedule); No future meeting despite known cadence | documented | blocked |
 | Contra Costa County WDB / Contra Costa County | yes | 2026-09-16 | yes | 0 / 0 | Quarterly | No future meeting despite known cadence | documented | ok |
-| Foothill WDB / Pasadena, Arcadia, Duarte, Monrovia, Sierra Madre, South Pasadena | yes | 2026-11-04 | yes | 1 / 1 | Not established | Future meeting listed | partial | ok |
+| Foothill WDB / Pasadena, Arcadia, Duarte, Monrovia, Sierra Madre, South Pasadena | yes | 2026-11-04 | yes | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
 | Fresno Regional WDB / Fresno County | yes | 2027-04-21 | yes | 3 / 0 | Other published cadence | Future meeting listed | documented | ok |
 | Golden Sierra Workforce Board / Alpine, El Dorado, and Placer Counties | yes | 2026-11-19 | yes | 2 / 0 | Not established | Future meeting listed | documented | ok |
 | Humboldt County WDB / Humboldt County | yes | 2026-04-24 | NO | 0 / 0 | Quarterly | No future meeting despite known cadence | documented | ok |
@@ -41,7 +41,7 @@
 | Mother Lode Workforce Development Board / Amador, Calaveras, Mariposa, and Tuolumne Counties | yes | 2026-11-19 | NO | 1 / 0 | Quarterly | Future meeting listed | documented | ok |
 | NOVAworks Workforce Board / San Mateo County & Silicon Valley | yes | 2026-12-02 | NO | 1 / 0 | Other published cadence | Future meeting listed | documented | ok |
 | North Central Counties (NCCC) / Colusa, Glenn, Sutter, and Yuba Counties | yes | 2026-11-05 | NO | 1 / 0 | Quarterly | Future meeting listed | documented | ok |
-| Northern Rural Training (NoRTEC) / 11 Northern Counties | yes | 2026-11-04 | yes | 1 / 0 | Not established | Future meeting listed | partial | ok |
+| Northern Rural Training (NoRTEC) / 11 Northern Counties | yes | 2026-11-04 | yes | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
 | Oakland WDB / City of Oakland | yes | 2026-03-20 | NO | 0 / 0 | Quarterly | No future meeting despite known cadence | partial | ok |
 | Orange County WDB / Orange County | yes | 2026-10-28 | yes | 0 / 0 | Not established | No future date; cadence unknown | documented | ok |
 | Richmond WDB / City of Richmond | yes | 2026-11-12 | yes | 1 / 0 | Every other month | Future meeting listed | documented | ok |
