@@ -1,12 +1,12 @@
 # Local Board Coverage Matrix
 
-- Updated: 2026-11-05T13:27:40.743875-08:00
+- Updated: 2026-11-06T12:51:42.556344-08:00
 - Boards with at least one confirmed meeting date: 44 of 45
 - Boards with at least one agenda matched to a meeting: 29 of 45
 - Cadence documented with audited source context: 32 of 45
 - Cadence still partial: 13 of 45
-- Boards with at least one future meeting listed: 21 of 45
-- Boards needing meeting-coverage review: 28
+- Boards with at least one future meeting listed: 20 of 45
+- Boards needing meeting-coverage review: 29
 - Boards with all authoritative source access blocked: 3
 - Boards with a degraded secondary endpoint or verified fallback: 4
 
@@ -40,7 +40,7 @@
 | Monterey County WDB / Monterey County | yes | 2026-06-25 | NO | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
 | Mother Lode Workforce Development Board / Amador, Calaveras, Mariposa, and Tuolumne Counties | yes | 2026-11-19 | NO | 1 / 0 | Quarterly | Future meeting listed | documented | ok |
 | NOVAworks Workforce Board / San Mateo County & Silicon Valley | yes | 2026-12-02 | NO | 1 / 0 | Other published cadence | Future meeting listed | documented | ok |
-| North Central Counties (NCCC) / Colusa, Glenn, Sutter, and Yuba Counties | yes | 2026-11-05 | NO | 1 / 0 | Quarterly | Future meeting listed | documented | ok |
+| North Central Counties (NCCC) / Colusa, Glenn, Sutter, and Yuba Counties | yes | 2026-11-05 | NO | 0 / 0 | Quarterly | No future meeting despite known cadence | documented | ok |
 | Northern Rural Training (NoRTEC) / 11 Northern Counties | yes | 2026-11-04 | yes | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
 | Oakland WDB / City of Oakland | yes | 2026-03-20 | NO | 0 / 0 | Quarterly | No future meeting despite known cadence | partial | ok |
 | Orange County WDB / Orange County | yes | 2026-10-28 | yes | 0 / 0 | Not established | No future date; cadence unknown | documented | ok |
@@ -53,7 +53,7 @@
 | San Diego Workforce Partnership / San Diego County | yes | 2027-03-11 | yes | 9 / 0 | Other published cadence | Future meeting listed | partial | ok |
 | San Francisco OEWD / San Francisco City/County | yes | 2026-05-06 | NO | 0 / 0 | Quarterly | No future meeting despite known cadence | partial | ok |
 | San Joaquin County WorkNet / San Joaquin County | yes | 2026-12-16 | yes | 1 / 0 | Other published cadence | Future meeting listed | documented | ok |
-| San Luis Obispo County WDB / San Luis Obispo County | yes | 2026-12-09 | yes | 2 / 1 | Quarterly | Future meeting listed | documented | ok |
+| San Luis Obispo County WDB / San Luis Obispo County | yes | 2026-12-09 | yes | 1 / 0 | Quarterly | Future meeting listed | documented | ok |
 | Santa Ana WDB / City of Santa Ana | yes | 2026-11-19 | NO | 1 / 0 | Every other month | Future meeting listed | documented | ok |
 | Santa Barbara County WDB / Santa Barbara County | yes | 2026-10-16 | yes | 0 / 0 | Not established | No future date; cadence unknown | documented | ok |
 | Santa Clara County (work2future) / San Jose & Santa Clara | yes | 2026-10-15 | yes | 0 / 0 | Not established | No future date; cadence unknown | documented | ok |
