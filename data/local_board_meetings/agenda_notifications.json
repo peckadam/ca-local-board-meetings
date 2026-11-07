@@ -143,6 +143,15 @@
       "meeting_type": "Board Meeting",
       "recorded_at": "2026-10-08T20:42:29.690015+00:00",
       "sha256": "fefe9b25a4d78ea1d96e819bdddfb53a117508268b5167dc9aac08aaddd7e2ff"
+    },
+    "workforce-alliance-north-bay:executive-committee:2026-11-10": {
+      "agenda_url": "https://www.workforcealliancenorthbay.org/wp-content/uploads/2026/11/Workforce-Allliance-Executive-Committee-Meeting-Agenda-11-10-2026.pdf",
+      "board_name": "Workforce Alliance North Bay",
+      "delivery": "sent",
+      "meeting_date": "2026-11-10",
+      "meeting_type": "Executive Committee",
+      "recorded_at": "2026-11-07T19:25:39.958186+00:00",
+      "sha256": "139d2e9d01691e9493df6bbb8a41a53cd4b9b5bfaeecdef8f33e37d9a66ea26a"
     }
   },
   "version": 1
