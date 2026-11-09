@@ -135,6 +135,15 @@
       "recorded_at": "2026-10-09T20:07:16.354643+00:00",
       "sha256": "d8d63f43631b3814345504cfd48c0a4c06168c86d480d43739df7cf53f2e96c2"
     },
+    "south-bay-wib:executive-committee:2026-11-12": {
+      "agenda_url": "https://www.sbwib.org/_files/ugd/b8c0dc_879a6c2cb63341cc95f2113cfbc30aab.pdf",
+      "board_name": "South Bay WIB",
+      "delivery": "sent",
+      "meeting_date": "2026-11-12",
+      "meeting_type": "Executive Committee",
+      "recorded_at": "2026-11-09T23:47:38.760448+00:00",
+      "sha256": "f109a18bf36d9dce8ad7c833e0d8a17943897d94841c1562dbe794fc1adae3f5"
+    },
     "ventura-county-wdb:board-meeting:2026-10-08": {
       "agenda_url": "http://vcportal.ventura.org/wdb/current-meeting-packets/2026-10-08-wdb-meeting-packet.pdf",
       "board_name": "Ventura County WDB",

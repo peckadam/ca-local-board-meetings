@@ -1,12 +1,12 @@
 # Local Board Coverage Matrix
 
-- Updated: 2026-11-08T11:38:50.976352-08:00
+- Updated: 2026-11-09T15:45:54.303711-08:00
 - Boards with at least one confirmed meeting date: 44 of 45
 - Boards with at least one agenda matched to a meeting: 29 of 45
 - Cadence documented with audited source context: 32 of 45
 - Cadence still partial: 13 of 45
-- Boards with at least one future meeting listed: 21 of 45
-- Boards needing meeting-coverage review: 28
+- Boards with at least one future meeting listed: 22 of 45
+- Boards needing meeting-coverage review: 27
 - Boards with all authoritative source access blocked: 3
 - Boards with a degraded secondary endpoint or verified fallback: 4
 
@@ -60,7 +60,7 @@
 | Santa Cruz County WDB / Santa Cruz County | yes | 2026-12-09 | yes | 1 / 0 | Other published cadence | Future meeting listed | documented | ok |
 | Solano County WDB / Solano County | yes | 2026-11-20 | NO | 1 / 0 | Every other month | Future meeting listed | documented | ok |
 | Sonoma County WDB / Sonoma County | yes | 2026-12-09 | yes | 3 / 0 | Other published cadence | Future meeting listed | documented | ok |
-| South Bay WIB / Inglewood, Torrance, Carson, Hawthorne, Lawndale, El Segundo, Gardena, Lomita, Hermosa Beach, and Manhattan Beach, Redondo Beach | yes | 2026-10-15 | yes | 0 / 0 | Other published cadence | No future meeting despite known cadence | documented | ok |
+| South Bay WIB / Inglewood, Torrance, Carson, Hawthorne, Lawndale, El Segundo, Gardena, Lomita, Hermosa Beach, and Manhattan Beach, Redondo Beach | yes | 2026-11-12 | yes | 1 / 1 | Other published cadence | Future meeting listed | documented | ok |
 | Stanislaus County WDB / Stanislaus County | yes | 2026-12-07 | yes | 1 / 0 | Not established | Future meeting listed | documented | ok |
 | Tulare County WIB / Tulare County | yes | 2026-12-09 | yes | 2 / 0 | Monthly | Future meeting listed | documented | ok |
 | Ventura County WDB / Ventura County | yes | 2027-04-15 | yes | 6 / 0 | Other published cadence | Future meeting listed | documented | ok |
