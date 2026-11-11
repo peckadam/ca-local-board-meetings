@@ -1,5 +1,14 @@
 {
   "notifications": {
+    "alameda-county-wdb:executive-committee:2026-11-18": {
+      "agenda_url": "https://acwdb.org/wp-content/uploads/2026/11/11.18.26-EC-Packet-FINAL.pdf",
+      "board_name": "Alameda County WDB",
+      "delivery": "sent",
+      "meeting_date": "2026-11-18",
+      "meeting_type": "Executive Committee",
+      "recorded_at": "2026-11-11T21:56:16.248098+00:00",
+      "sha256": "748bc092ecdef6c59cb9f53c01c11a6159d7bbbd74ab3f4163612432887575bf"
+    },
     "foothill-wdb:board-meeting:2026-10-19": {
       "agenda_url": "https://fwdbworks.org/wp/wp-content/uploads/2026/10/FWDB-Business-Services-Agenda-10.19.26.pdf",
       "board_name": "Foothill WDB",
