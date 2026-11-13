@@ -45,6 +45,15 @@
       "recorded_at": "2026-10-17T17:54:11.515486+00:00",
       "sha256": "eebf06a062cb966f2f19888c431c3f8be4652446aefd78586ae59faf21c7f127"
     },
+    "golden-sierra-workforce-board:board-meeting:2026-11-19": {
+      "agenda_url": "https://goldensierra.com/c/uploads/6461/WDB-Agenda-Packet-2026-11-19-rev1.pdf",
+      "board_name": "Golden Sierra Workforce Board",
+      "delivery": "sent",
+      "meeting_date": "2026-11-19",
+      "meeting_type": "Board Meeting",
+      "recorded_at": "2026-11-13T21:26:17.305375+00:00",
+      "sha256": "42d86befea8e8a534769b1d771234517f087ff72f666f9ffe9161386d8a5e2ce"
+    },
     "los-angeles-city-wdb:executive-committee:2026-09-24": {
       "agenda_url": "https://wiblacity.novusagenda.com/agendapublic/DisplayAgendaPDF.ashx?MeetingID=412",
       "board_name": "Los Angeles City WDB",
