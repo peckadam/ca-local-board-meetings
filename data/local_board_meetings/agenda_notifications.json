@@ -54,6 +54,15 @@
       "recorded_at": "2026-11-13T21:26:17.305375+00:00",
       "sha256": "42d86befea8e8a534769b1d771234517f087ff72f666f9ffe9161386d8a5e2ce"
     },
+    "golden-sierra-workforce-board:executive-committee:2026-11-19": {
+      "agenda_url": "https://goldensierra.com/c/uploads/6461/EC-Agenda-Packet-2026-11-19.pdf",
+      "board_name": "Golden Sierra Workforce Board",
+      "delivery": "sent",
+      "meeting_date": "2026-11-19",
+      "meeting_type": "Executive Committee",
+      "recorded_at": "2026-11-14T19:56:12.088448+00:00",
+      "sha256": "6af377facca80229c72640845b881db242e07c8c9ea4fb7070e2eeb8652314e8"
+    },
     "los-angeles-city-wdb:executive-committee:2026-09-24": {
       "agenda_url": "https://wiblacity.novusagenda.com/agendapublic/DisplayAgendaPDF.ashx?MeetingID=412",
       "board_name": "Los Angeles City WDB",
@@ -144,6 +153,15 @@
       "recorded_at": "2026-10-26T20:29:26.904928+00:00",
       "sha256": "c27bb24702b653ad935991f1ede2c4aa38c20737d3c876bb2569ed2d7e2962ea"
     },
+    "sonoma-county-wdb:board-meeting:2026-11-18": {
+      "agenda_url": "https://s42248.pcdn.co/wp-content/uploads/11-18-2026-WIB-Agenda-Packet.pdf",
+      "board_name": "Sonoma County WDB",
+      "delivery": "sent",
+      "meeting_date": "2026-11-18",
+      "meeting_type": "Board Meeting",
+      "recorded_at": "2026-11-14T19:56:06.785010+00:00",
+      "sha256": "c00bfcf2ed7c8dc580eb5d0f4137c9163707fcba1fa6473337864d5a6850fd34"
+    },
     "sonoma-county-wdb:executive-committee:2026-10-14": {
       "agenda_url": "https://s42248.pcdn.co/wp-content/uploads/10-14-2026-WIBE-Agenda-Packet.pdf",
       "board_name": "Sonoma County WDB",
@@ -153,6 +171,15 @@
       "recorded_at": "2026-10-09T20:07:16.354643+00:00",
       "sha256": "d8d63f43631b3814345504cfd48c0a4c06168c86d480d43739df7cf53f2e96c2"
     },
+    "sonoma-county-wdb:executive-committee:2026-11-18": {
+      "agenda_url": "https://s42248.pcdn.co/wp-content/uploads/11-18-2026-WIB-Agenda-Packet.pdf",
+      "board_name": "Sonoma County WDB",
+      "delivery": "sent",
+      "meeting_date": "2026-11-18",
+      "meeting_type": "Executive Committee",
+      "recorded_at": "2026-11-14T19:56:08.392285+00:00",
+      "sha256": "c00bfcf2ed7c8dc580eb5d0f4137c9163707fcba1fa6473337864d5a6850fd34"
+    },
     "south-bay-wib:executive-committee:2026-11-12": {
       "agenda_url": "https://www.sbwib.org/_files/ugd/b8c0dc_879a6c2cb63341cc95f2113cfbc30aab.pdf",
       "board_name": "South Bay WIB",
@@ -161,6 +188,15 @@
       "meeting_type": "Executive Committee",
       "recorded_at": "2026-11-09T23:47:38.760448+00:00",
       "sha256": "f109a18bf36d9dce8ad7c833e0d8a17943897d94841c1562dbe794fc1adae3f5"
+    },
+    "tulare-county-wib:board-meeting:2026-11-18": {
+      "agenda_url": "https://www.tularewib.org/_files/ugd/58cba3_801dc5add6904db6b5c64462c107616d.pdf",
+      "board_name": "Tulare County WIB",
+      "delivery": "sent",
+      "meeting_date": "2026-11-18",
+      "meeting_type": "Board Meeting",
+      "recorded_at": "2026-11-14T19:56:10.447827+00:00",
+      "sha256": "8b30b2492df9ac0a9f9981fb5003e2798fd0f0894d4d0305f85af93f7ac9828d"
     },
     "ventura-county-wdb:board-meeting:2026-10-08": {
       "agenda_url": "http://vcportal.ventura.org/wdb/current-meeting-packets/2026-10-08-wdb-meeting-packet.pdf",
