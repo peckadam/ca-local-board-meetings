@@ -135,6 +135,15 @@
       "recorded_at": "2026-10-13T20:40:30.087515+00:00",
       "sha256": "42ce120ffce73cc3e48fce823b5963fe3ae18be8c45fbcef9bc9e51454e64c5c"
     },
+    "santa-barbara-county-wdb:executive-committee:2026-11-18": {
+      "agenda_url": "https://content.civicplus.com/api/assets/ca-santabarbaracounty/5c8f810b-b365-4c7d-89ea-a778c6555e4f",
+      "board_name": "Santa Barbara County WDB",
+      "delivery": "sent",
+      "meeting_date": "2026-11-18",
+      "meeting_type": "Executive Committee",
+      "recorded_at": "2026-11-15T20:24:13.003385+00:00",
+      "sha256": "cca766f3c9d7937f7dfb4ec9990aef4fd1b3688d306c6fdb8a7f13a1bde05c71"
+    },
     "santa-clara-county-work2future:executive-committee:2026-10-15": {
       "agenda_url": "https://www.work2future.org/wp-content/uploads/2026/10/20261015_ExecCmte_Agenda.pdf",
       "board_name": "Santa Clara County (work2future)",

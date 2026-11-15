@@ -1,12 +1,12 @@
 # Local Board Coverage Matrix
 
-- Updated: 2026-11-14T11:54:47.770715-08:00
+- Updated: 2026-11-15T12:22:40.541497-08:00
 - Boards with at least one confirmed meeting date: 44 of 45
 - Boards with at least one agenda matched to a meeting: 29 of 45
 - Cadence documented with audited source context: 32 of 45
 - Cadence still partial: 13 of 45
-- Boards with at least one future meeting listed: 21 of 45
-- Boards needing meeting-coverage review: 28
+- Boards with at least one future meeting listed: 22 of 45
+- Boards needing meeting-coverage review: 27
 - Boards with all authoritative source access blocked: 3
 - Boards with a degraded secondary endpoint or verified fallback: 4
 
@@ -55,7 +55,7 @@
 | San Joaquin County WorkNet / San Joaquin County | yes | 2026-12-16 | yes | 1 / 0 | Other published cadence | Future meeting listed | documented | ok |
 | San Luis Obispo County WDB / San Luis Obispo County | yes | 2026-12-09 | yes | 1 / 0 | Quarterly | Future meeting listed | documented | ok |
 | Santa Ana WDB / City of Santa Ana | yes | 2026-11-19 | NO | 1 / 0 | Every other month | Future meeting listed | documented | ok |
-| Santa Barbara County WDB / Santa Barbara County | yes | 2026-10-16 | yes | 0 / 0 | Not established | No future date; cadence unknown | documented | ok |
+| Santa Barbara County WDB / Santa Barbara County | yes | 2026-11-18 | yes | 1 / 1 | Not established | Future meeting listed | documented | ok |
 | Santa Clara County (work2future) / San Jose & Santa Clara | yes | 2026-10-15 | yes | 0 / 0 | Not established | No future date; cadence unknown | documented | ok |
 | Santa Cruz County WDB / Santa Cruz County | yes | 2026-12-09 | yes | 1 / 0 | Other published cadence | Future meeting listed | documented | ok |
 | Solano County WDB / Solano County | yes | 2026-11-20 | NO | 1 / 0 | Every other month | Future meeting listed | documented | ok |
