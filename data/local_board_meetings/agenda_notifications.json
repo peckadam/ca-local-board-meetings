@@ -60,8 +60,8 @@
       "delivery": "sent",
       "meeting_date": "2026-11-19",
       "meeting_type": "Executive Committee",
-      "recorded_at": "2026-11-14T19:56:12.088448+00:00",
-      "sha256": "6af377facca80229c72640845b881db242e07c8c9ea4fb7070e2eeb8652314e8"
+      "recorded_at": "2026-11-16T23:45:27.725858+00:00",
+      "sha256": "aba15273c8f6b94fd6920e324dced5aa125a1fb143e793bf3084c42480839043"
     },
     "los-angeles-city-wdb:executive-committee:2026-09-24": {
       "agenda_url": "https://wiblacity.novusagenda.com/agendapublic/DisplayAgendaPDF.ashx?MeetingID=412",
