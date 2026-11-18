@@ -1,6 +1,6 @@
 # Local Board Coverage Matrix
 
-- Updated: 2026-11-17T14:51:42.070352-08:00
+- Updated: 2026-11-18T14:34:18.072233-08:00
 - Boards with at least one confirmed meeting date: 44 of 45
 - Boards with at least one agenda matched to a meeting: 29 of 45
 - Cadence documented with audited source context: 32 of 45
