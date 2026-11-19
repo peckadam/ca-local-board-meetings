@@ -1,24 +1,7 @@
 {
   "meetings": {
-    "alameda-county-wdb:executive-committee:2026-11-18": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
-      "meeting": {
-        "agenda_label": "11/18/2026 \u2013 Executive Committee",
-        "agenda_url": "https://acwdb.org/wp-content/uploads/2026/11/11.18.26-EC-Packet-FINAL.pdf",
-        "board_id": "alameda-county-wdb",
-        "board_name": "Alameda County WDB",
-        "confidence_notes": "Profiled Alameda extraction: only Quarterly Board Meeting and Executive Committee links on the official Board and Committees page are published. Agenda parsed for location and time.",
-        "location": "Gail Steele Multi-Service Center, 24100 Amador Street, Hayward, CA 94544-1203",
-        "meeting_date": "2026-11-18",
-        "meeting_type": "Executive Committee",
-        "source_page_url": "https://acwdb.org/boards/",
-        "start_time": "09:30:00",
-        "timezone": "America/Los_Angeles",
-        "virtual_url": ""
-      }
-    },
     "fresno-regional-wdb:board-meeting:2026-12-02": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -35,7 +18,7 @@
       }
     },
     "fresno-regional-wdb:executive-committee:2027-01-20": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -52,7 +35,7 @@
       }
     },
     "fresno-regional-wdb:executive-committee:2027-04-21": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -69,7 +52,7 @@
       }
     },
     "golden-sierra-workforce-board:board-meeting:2026-11-19": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "Download Agenda Packet",
         "agenda_url": "https://goldensierra.com/c/uploads/6461/WDB-Agenda-Packet-2026-11-19-rev1.pdf",
@@ -86,7 +69,7 @@
       }
     },
     "golden-sierra-workforce-board:executive-committee:2026-11-19": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "Download Agenda Packet",
         "agenda_url": "https://goldensierra.com/c/uploads/6461/EC-Agenda-Packet-2026-11-19.pdf",
@@ -103,7 +86,7 @@
       }
     },
     "kern-inyo-mono-wdb:board-meeting:2026-12-16": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -120,7 +103,7 @@
       }
     },
     "kern-inyo-mono-wdb:executive-committee:2026-12-03": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -137,7 +120,7 @@
       }
     },
     "long-beach-win:board-meeting:2026-12-03": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -154,7 +137,7 @@
       }
     },
     "long-beach-win:board-meeting:2026-12-10": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -171,7 +154,7 @@
       }
     },
     "los-angeles-county-wdb:board-meeting:2026-12-18": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -188,7 +171,7 @@
       }
     },
     "los-angeles-county-wdb:board-meeting:2027-03-19": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -205,7 +188,7 @@
       }
     },
     "mother-lode-workforce-development-board:board-meeting:2026-11-19": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -222,7 +205,7 @@
       }
     },
     "northern-rural-training-nortec:executive-committee:2026-11-19": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -239,7 +222,7 @@
       }
     },
     "novaworks-workforce-board:board-meeting:2026-12-02": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -256,7 +239,7 @@
       }
     },
     "riverside-county-wdb:board-meeting:2026-12-09": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -273,7 +256,7 @@
       }
     },
     "riverside-county-wdb:executive-committee:2026-12-09": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -443,7 +426,7 @@
       }
     },
     "san-joaquin-county-worknet:board-meeting:2026-12-16": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -460,7 +443,7 @@
       }
     },
     "san-luis-obispo-county-wdb:executive-committee:2026-12-09": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -493,25 +476,8 @@
         "virtual_url": ""
       }
     },
-    "santa-barbara-county-wdb:executive-committee:2026-11-18": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
-      "meeting": {
-        "agenda_label": "Agenda PDF",
-        "agenda_url": "https://content.civicplus.com/api/assets/ca-santabarbaracounty/5c8f810b-b365-4c7d-89ea-a778c6555e4f",
-        "board_id": "santa-barbara-county-wdb",
-        "board_name": "Santa Barbara County WDB",
-        "confidence_notes": "Profiled Santa Barbara CivicPlus extraction: WDB agenda widgets are read through the public HCMS API by year tag; agenda PDF assets are linked directly when present. Agenda parsed for location and time.",
-        "location": "106 Wedgewood Rd,",
-        "meeting_date": "2026-11-18",
-        "meeting_type": "Executive Committee",
-        "source_page_url": "https://www.countyofsb.org/wdb-about-us-executive-committee-agendas",
-        "start_time": "10:00:00",
-        "timezone": "America/Los_Angeles",
-        "virtual_url": ""
-      }
-    },
     "santa-cruz-county-wdb:board-meeting:2026-12-09": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -528,14 +494,14 @@
       }
     },
     "solano-county-wdb:board-meeting:2026-11-20": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
         "board_id": "solano-county-wdb",
         "board_name": "Solano County WDB",
         "confidence_notes": "Profiled Solano extraction: future board dates come from the official 2026 Board of Directors meeting calendar PDF; agenda packets are date-matched from the Board of Directors page when posted.",
-        "location": "Workforce Development Board of Solano County, 500 Chadbourne Road, Suite A, Fairfield, CA 94534",
+        "location": "Workforce Development Board of Solano County, 500 Chadbourne Road, Suite A, Fairfield CA 94534",
         "meeting_date": "2026-11-20",
         "meeting_type": "Board Meeting",
         "source_page_url": "https://solanoemployment.org/wp-content/uploads/2022/03/Board-of-Directors-2026-Meeting-Calendar.pdf",
@@ -544,42 +510,8 @@
         "virtual_url": ""
       }
     },
-    "sonoma-county-wdb:board-meeting:2026-11-18": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
-      "meeting": {
-        "agenda_label": "11-18-2026 WIB Agenda Packet",
-        "agenda_url": "https://s42248.pcdn.co/wp-content/uploads/11-18-2026-WIB-Agenda-Packet_updated.pdf",
-        "board_id": "sonoma-county-wdb",
-        "board_name": "Sonoma County WDB",
-        "confidence_notes": "Profiled Sonoma extraction: only Job Link Sonoma WIB Executive Committee and Workforce Investment Board event rows are published; labor, youth, membership, and ad hoc committee rows are excluded.",
-        "location": "Job Link Office, 2227 Capricorn Way, Santa Rosa, CA",
-        "meeting_date": "2026-11-18",
-        "meeting_type": "Board Meeting",
-        "source_page_url": "https://joblinksonoma.org/board-meetings/",
-        "start_time": "15:00:00",
-        "timezone": "America/Los_Angeles",
-        "virtual_url": ""
-      }
-    },
-    "sonoma-county-wdb:executive-committee:2026-11-18": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
-      "meeting": {
-        "agenda_label": "11-18-2026 WIB Agenda Packet",
-        "agenda_url": "https://s42248.pcdn.co/wp-content/uploads/11-18-2026-WIB-Agenda-Packet_updated.pdf",
-        "board_id": "sonoma-county-wdb",
-        "board_name": "Sonoma County WDB",
-        "confidence_notes": "Profiled Sonoma extraction: only Job Link Sonoma WIB Executive Committee and Workforce Investment Board event rows are published; labor, youth, membership, and ad hoc committee rows are excluded.",
-        "location": "Job Link Office",
-        "meeting_date": "2026-11-18",
-        "meeting_type": "Executive Committee",
-        "source_page_url": "https://joblinksonoma.org/board-meetings/",
-        "start_time": "15:00:00",
-        "timezone": "America/Los_Angeles",
-        "virtual_url": ""
-      }
-    },
     "sonoma-county-wdb:executive-committee:2026-12-09": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -596,7 +528,7 @@
       }
     },
     "stanislaus-county-wdb:board-meeting:2026-12-07": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -612,25 +544,8 @@
         "virtual_url": ""
       }
     },
-    "tulare-county-wib:board-meeting:2026-11-18": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
-      "meeting": {
-        "agenda_label": "2026 Board Agendas - November",
-        "agenda_url": "https://www.tularewib.org/_files/ugd/58cba3_801dc5add6904db6b5c64462c107616d.pdf",
-        "board_id": "tulare-county-wib",
-        "board_name": "Tulare County WIB",
-        "confidence_notes": "Profiled Tulare extraction: date read from the official annual WIB schedule; the two-column layout is parsed one date at a time and canceled meetings are excluded. Confirmed official schedule fallback. Official 2026 schedule: November meeting moved to the third Wednesday.",
-        "location": "309 W. Main St. Suite 130, Visalia, CA",
-        "meeting_date": "2026-11-18",
-        "meeting_type": "Board Meeting",
-        "source_page_url": "https://www.tularewib.org/wibboard",
-        "start_time": "07:30:00",
-        "timezone": "America/Los_Angeles",
-        "virtual_url": ""
-      }
-    },
     "tulare-county-wib:board-meeting:2026-12-09": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -664,7 +579,7 @@
       }
     },
     "ventura-county-wdb:board-meeting:2026-12-10": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -681,7 +596,7 @@
       }
     },
     "ventura-county-wdb:board-meeting:2027-02-18": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -698,7 +613,7 @@
       }
     },
     "ventura-county-wdb:board-meeting:2027-04-15": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -715,7 +630,7 @@
       }
     },
     "ventura-county-wdb:executive-committee:2027-01-14": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -732,7 +647,7 @@
       }
     },
     "ventura-county-wdb:executive-committee:2027-03-18": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -749,7 +664,7 @@
       }
     },
     "ventura-county-wdb:executive-committee:2027-05-13": {
-      "last_seen_at": "2026-11-18T14:34:18.072233-08:00",
+      "last_seen_at": "2026-11-19T14:39:09.430999-08:00",
       "meeting": {
         "agenda_label": "",
         "agenda_url": "",
@@ -766,6 +681,6 @@
       }
     }
   },
-  "updated_at": "2026-11-18T14:34:18.072233-08:00",
+  "updated_at": "2026-11-19T14:39:09.430999-08:00",
   "version": 1
 }

@@ -1,12 +1,12 @@
 # Local Board Coverage Matrix
 
-- Updated: 2026-11-18T14:34:18.072233-08:00
+- Updated: 2026-11-19T14:39:09.430999-08:00
 - Boards with at least one confirmed meeting date: 44 of 45
 - Boards with at least one agenda matched to a meeting: 29 of 45
 - Cadence documented with audited source context: 32 of 45
 - Cadence still partial: 13 of 45
-- Boards with at least one future meeting listed: 22 of 45
-- Boards needing meeting-coverage review: 27
+- Boards with at least one future meeting listed: 20 of 45
+- Boards needing meeting-coverage review: 29
 - Boards with all authoritative source access blocked: 3
 - Boards with a degraded secondary endpoint or verified fallback: 4
 
@@ -22,7 +22,7 @@
 
 | Board / local area | Meeting date ever found | Latest date | Agenda ever matched | Future meetings / agendas | Primary cadence | Coverage signal | Source context | Fetch |
 |---|---:|---|---:|---:|---|---|---|---|
-| Alameda County WDB / Alameda County (excluding Oakland) | yes | 2026-11-18 | yes | 1 / 1 | Quarterly | Future meeting listed | documented | ok |
+| Alameda County WDB / Alameda County (excluding Oakland) | yes | 2026-11-18 | yes | 0 / 0 | Quarterly | No future meeting despite known cadence | documented | ok |
 | Anaheim WDB / City of Anaheim | yes | 2026-06-17 | yes | 0 / 0 | Every other month | Source access blocked (agenda/schedule); No future meeting despite known cadence | documented | blocked |
 | Contra Costa County WDB / Contra Costa County | yes | 2026-09-16 | yes | 0 / 0 | Quarterly | No future meeting despite known cadence | documented | ok |
 | Foothill WDB / Pasadena, Arcadia, Duarte, Monrovia, Sierra Madre, South Pasadena | yes | 2026-11-04 | yes | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
@@ -55,14 +55,14 @@
 | San Joaquin County WorkNet / San Joaquin County | yes | 2026-12-16 | yes | 1 / 0 | Other published cadence | Future meeting listed | documented | ok |
 | San Luis Obispo County WDB / San Luis Obispo County | yes | 2026-12-09 | yes | 1 / 0 | Quarterly | Future meeting listed | documented | ok |
 | Santa Ana WDB / City of Santa Ana | yes | 2026-11-19 | NO | 1 / 0 | Every other month | Future meeting listed | documented | ok |
-| Santa Barbara County WDB / Santa Barbara County | yes | 2026-11-18 | yes | 1 / 1 | Not established | Future meeting listed | documented | ok |
+| Santa Barbara County WDB / Santa Barbara County | yes | 2026-11-18 | yes | 0 / 0 | Not established | No future date; cadence unknown | documented | ok |
 | Santa Clara County (work2future) / San Jose & Santa Clara | yes | 2026-10-15 | yes | 0 / 0 | Not established | No future date; cadence unknown | documented | ok |
 | Santa Cruz County WDB / Santa Cruz County | yes | 2026-12-09 | yes | 1 / 0 | Other published cadence | Future meeting listed | documented | ok |
 | Solano County WDB / Solano County | yes | 2026-11-20 | NO | 1 / 0 | Every other month | Future meeting listed | documented | ok |
-| Sonoma County WDB / Sonoma County | yes | 2026-12-09 | yes | 3 / 2 | Other published cadence | Future meeting listed | documented | ok |
+| Sonoma County WDB / Sonoma County | yes | 2026-12-09 | yes | 1 / 0 | Other published cadence | Future meeting listed | documented | ok |
 | South Bay WIB / Inglewood, Torrance, Carson, Hawthorne, Lawndale, El Segundo, Gardena, Lomita, Hermosa Beach, and Manhattan Beach, Redondo Beach | yes | 2026-11-12 | yes | 0 / 0 | Other published cadence | No future meeting despite known cadence | documented | ok |
 | Stanislaus County WDB / Stanislaus County | yes | 2026-12-07 | yes | 1 / 0 | Not established | Future meeting listed | documented | ok |
-| Tulare County WIB / Tulare County | yes | 2026-12-09 | yes | 2 / 1 | Monthly | Future meeting listed | documented | ok |
+| Tulare County WIB / Tulare County | yes | 2026-12-09 | yes | 1 / 0 | Monthly | Future meeting listed | documented | ok |
 | Ventura County WDB / Ventura County | yes | 2027-05-13 | yes | 7 / 0 | Other published cadence | Future meeting listed | documented | ok |
 | Verdugo WDB / Burbank, Glendale, La Cañada Flintridge | yes | 2026-03-11 | NO | 0 / 0 | Not established | No future date; cadence unknown | partial | ok |
 | Workforce Alliance North Bay / Lake, Marin, Mendocino, Napa | yes | 2026-11-10 | yes | 0 / 0 | Not established | No future date; cadence unknown | documented | ok |
