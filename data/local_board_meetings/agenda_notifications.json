@@ -189,6 +189,15 @@
       "recorded_at": "2026-11-17T22:53:16.615375+00:00",
       "sha256": "ff072cb27207c52ec90fad18350670916b758ddd16469eb172057982c1aad392"
     },
+    "sonoma-county-wdb:executive-committee:2026-11-24": {
+      "agenda_url": "https://s42248.pcdn.co/wp-content/uploads/11-24-2026-WIB-Agenda.pdf",
+      "board_name": "Sonoma County WDB",
+      "delivery": "sent",
+      "meeting_date": "2026-11-24",
+      "meeting_type": "Executive Committee",
+      "recorded_at": "2026-11-20T22:15:26.939914+00:00",
+      "sha256": "8452bdbe0df02fccac92bc3554818c61824d53e68b770e964fc96afba738e6ec"
+    },
     "south-bay-wib:executive-committee:2026-11-12": {
       "agenda_url": "https://www.sbwib.org/_files/ugd/b8c0dc_879a6c2cb63341cc95f2113cfbc30aab.pdf",
       "board_name": "South Bay WIB",
