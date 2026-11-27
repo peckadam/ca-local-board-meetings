@@ -2339,3 +2339,22 @@ Moved Permanently
 - Warning: Riverside County WDB - agenda,schedule - HTTP Error 403: Forbidden
 - Warning: Riverside County WDB - executive - HTTP Error 403: Forbidden
 
+## 2026-11-27T15:25:17.607731-08:00 (dry-run)
+
+- Boards checked: 45
+- Meetings found: 33
+- Missing agendas within 72 hours: 2
+- Agenda notifications sent: 0
+- Boards with meeting history: 44 of 45
+- Boards with agenda history: 30 of 45
+- Failures requiring human review: 2
+- Degraded source warnings: 6
+- Review: Anaheim WDB - https://www.anaheim.net/AgendaCenter/Workforce-Development-Board-24 - HTTP Error 403: Forbidden
+- Review: Kings County WDB - https://www.countyofkingsca.gov/departments/general-services/jto - HTTP Error 403: Forbidden
+- Warning: Kern/Inyo/Mono WDB - agenda,schedule - HTTP Error 403: Forbidden
+- Warning: Kern/Inyo/Mono WDB - executive - HTTP Error 403: Forbidden
+- Warning: Long Beach WIN - agenda - robots.txt disallows fetching https://longbeach.primegov.com/api/v2/PublicPortal/ListUpcomingMeetingsByCommitteeId?committeeId=126
+- Warning: Los Angeles County WDB - agenda,schedule - HTTP Error 403: Forbidden
+- Warning: Riverside County WDB - agenda,schedule - HTTP Error 403: Forbidden
+- Warning: Riverside County WDB - executive - HTTP Error 403: Forbidden
+
